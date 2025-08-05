@@ -1,0 +1,94 @@
+{
+  "header": {
+    "phone": "+44 20 7946 0958",
+    "email": "support@uketaservice.com",
+    "available": "연중무휴 24시간",
+    "title": "영국 ETA 신청",
+    "trackApplication": "신청 추적",
+    "startApplication": "신청 시작"
+  },
+  "hero": {
+    "title": "영국 ETA 신청하기",
+    "subtitle": "빠르고 안전하며 전문적인 영국 전자여행허가 서비스. 전문가의 세심한 관리와 안내로 신청을 처리합니다.",
+    "features": {
+      "processing": "평균 72시간 처리 시간",
+      "secure": "안전한 문서 처리 및 데이터 보호",
+      "support": "전 과정에 걸친 전문가 지원",
+      "submission": "전문적인 신청 제출"
+    },
+    "startButton": "신청 시작",
+    "learnMore": "더 알아보기"
+  },
+  "trust": {
+    "processing": "평균 처리 시간",
+    "processingTime": "72시간",
+    "applications": "처리된 신청",
+    "applicationsCount": "10,000+",
+    "notice": "이 서비스는 독립적인 제3자에 의해 제공되며 영국 정부와 관련이 없습니다."
+  },
+  "steps": {
+    "title": "간단한 4단계 과정",
+    "subtitle": "가이드된 과정을 통해 몇 분 만에 영국 ETA 신청을 완료하세요.",
+    "step1": {
+      "title": "신청서 작성",
+      "description": "개인 및 여행 세부 정보로 안전한 온라인 양식을 완성하세요.",
+      "time": "5-10분"
+    },
+    "step2": {
+      "title": "문서 업로드",
+      "description": "암호화된 플랫폼에 여권과 사진을 안전하게 업로드하세요.",
+      "time": "2-3분"
+    },
+    "step3": {
+      "title": "결제하기",
+      "description": "여러 결제 옵션을 사용한 안전한 결제 처리.",
+      "time": "1-2분"
+    },
+    "step4": {
+      "title": "ETA 수령",
+      "description": "승인된 ETA를 이메일 받은편지함으로 직접 받으세요.",
+      "time": "24-72시간"
+    }
+  },
+  "footer": {
+    "disclaimer": "이 웹사이트는 독립적인 제3자에 의해 운영되며 영국 정부나 영국 비자 및 이민청(UKVI)과 관련이 없습니다.",
+    "brand": {
+      "title": "브랜드",
+      "about": "회사 소개",
+      "contact": "문의하기",
+      "careers": "채용"
+    },
+    "quickLinks": {
+      "title": "빠른 링크",
+      "howItWorks": "작동 방식",
+      "requirements": "요구사항",
+      "faq": "FAQ",
+      "support": "지원"
+    },
+    "legal": {
+      "title": "법적 고지",
+      "privacy": "개인정보 처리방침",
+      "terms": "서비스 약관",
+      "refund": "환불 정책",
+      "cookies": "쿠키 정책"
+    },
+    "support": {
+      "title": "지원",
+      "email": "support@uketaservice.com",
+      "phone": "+44 20 7946 0958",
+      "hours": "연중무휴 24시간"
+    },
+    "security": {
+      "secure": "SSL 보안",
+      "gdpr": "GDPR 준수",
+      "encrypted": "데이터 암호화"
+    }
+  },
+  "application": {
+    "title": "영국 ETA 신청 양식",
+    "subtitle": "모든 필수 필드를 정확하게 작성해주세요",
+    "continue": "계속",
+    "back": "뒤로",
+    "submit": "신청 제출"
+  }
+}

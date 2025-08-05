@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -20,7 +21,15 @@ const languages = [
 ];
 
 export const LanguageSwitcher = () => {
-  const [currentLanguage, setCurrentLanguage] = useState(languages[0]);
+  const { i18n } = useTranslation();
+  const [currentLanguage, setCurrentLanguage] = useState(
+    languages.find(lang => lang.code === i18n.language) || languages[0]
+  );
+
+  const handleLanguageChange = (language: typeof languages[0]) => {
+    setCurrentLanguage(language);
+    i18n.changeLanguage(language.code);
+  };
 
   return (
     <DropdownMenu>
@@ -35,7 +44,7 @@ export const LanguageSwitcher = () => {
         {languages.map((language) => (
           <DropdownMenuItem
             key={language.code}
-            onClick={() => setCurrentLanguage(language)}
+            onClick={() => handleLanguageChange(language)}
             className="gap-3 cursor-pointer"
           >
             <span className="text-xl">{language.flag}</span>

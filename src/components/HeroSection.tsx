@@ -1,8 +1,12 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, ArrowRight, Clock, Users } from 'lucide-react';
 
 export const HeroSection = () => {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
   return (
     <section className="gradient-hero text-primary-foreground py-16 md:py-24">
       <div className="container mx-auto px-4">

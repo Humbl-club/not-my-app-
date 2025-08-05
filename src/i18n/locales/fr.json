@@ -1,0 +1,94 @@
+{
+  "header": {
+    "phone": "+44 20 7946 0958",
+    "email": "support@uketaservice.com",
+    "available": "Disponible 24h/24 et 7j/7",
+    "title": "Demande ETA Royaume-Uni",
+    "trackApplication": "Suivre la demande",
+    "startApplication": "Commencer la demande"
+  },
+  "hero": {
+    "title": "Demandez votre ETA pour le Royaume-Uni",
+    "subtitle": "Service ETA rapide, sécurisé et professionnel. Nous traitons votre demande avec expertise et accompagnement.",
+    "features": {
+      "processing": "Temps de traitement moyen de 72 heures",
+      "secure": "Traitement sécurisé des documents et protection des données",
+      "support": "Support expert tout au long du processus",
+      "submission": "Soumission professionnelle de demande"
+    },
+    "startButton": "Commencer la demande",
+    "learnMore": "En savoir plus"
+  },
+  "trust": {
+    "processing": "Traitement moyen",
+    "processingTime": "72h",
+    "applications": "Demandes traitées",
+    "applicationsCount": "10 000+",
+    "notice": "Ce service est fourni par un tiers indépendant et n'est pas affilié au gouvernement britannique."
+  },
+  "steps": {
+    "title": "Processus simple en 4 étapes",
+    "subtitle": "Complétez votre demande ETA Royaume-Uni en quelques minutes avec notre processus guidé.",
+    "step1": {
+      "title": "Remplir la demande",
+      "description": "Complétez le formulaire en ligne sécurisé avec vos détails personnels et de voyage.",
+      "time": "5-10 minutes"
+    },
+    "step2": {
+      "title": "Télécharger les documents",
+      "description": "Téléchargez votre passeport et photo en toute sécurité sur notre plateforme cryptée.",
+      "time": "2-3 minutes"
+    },
+    "step3": {
+      "title": "Effectuer le paiement",
+      "description": "Traitement de paiement sécurisé avec plusieurs options de paiement disponibles.",
+      "time": "1-2 minutes"
+    },
+    "step4": {
+      "title": "Recevoir l'ETA",
+      "description": "Recevez votre ETA approuvée directement dans votre boîte e-mail.",
+      "time": "24-72 heures"
+    }
+  },
+  "footer": {
+    "disclaimer": "Ce site web est exploité par un tiers indépendant et n'est pas affilié au gouvernement britannique ou à UK Visas and Immigration (UKVI).",
+    "brand": {
+      "title": "Marque",
+      "about": "À propos de nous",
+      "contact": "Nous contacter",
+      "careers": "Carrières"
+    },
+    "quickLinks": {
+      "title": "Liens rapides",
+      "howItWorks": "Comment ça marche",
+      "requirements": "Exigences",
+      "faq": "FAQ",
+      "support": "Support"
+    },
+    "legal": {
+      "title": "Légal",
+      "privacy": "Politique de confidentialité",
+      "terms": "Conditions de service",
+      "refund": "Politique de remboursement",
+      "cookies": "Politique de cookies"
+    },
+    "support": {
+      "title": "Support",
+      "email": "support@uketaservice.com",
+      "phone": "+44 20 7946 0958",
+      "hours": "Disponible 24h/24 et 7j/7"
+    },
+    "security": {
+      "secure": "SSL Sécurisé",
+      "gdpr": "Conforme RGPD",
+      "encrypted": "Données cryptées"
+    }
+  },
+  "application": {
+    "title": "Formulaire de demande ETA Royaume-Uni",
+    "subtitle": "Veuillez remplir tous les champs requis avec précision",
+    "continue": "Continuer",
+    "back": "Retour",
+    "submit": "Soumettre la demande"
+  }
+}

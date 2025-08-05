@@ -1,0 +1,94 @@
+{
+  "header": {
+    "phone": "+44 20 7946 0958",
+    "email": "support@uketaservice.com",
+    "available": "Available 24/7",
+    "title": "UK ETA Application",
+    "trackApplication": "Track Application",
+    "startApplication": "Start Application"
+  },
+  "hero": {
+    "title": "Apply for Your UK ETA",
+    "subtitle": "Fast, secure, and professional UK Electronic Travel Authorisation service. We handle your application with expert care and guidance.",
+    "features": {
+      "processing": "72-hour average processing time",
+      "secure": "Secure document handling and data protection",
+      "support": "Expert support throughout the process",
+      "submission": "Professional application submission"
+    },
+    "startButton": "Start Application",
+    "learnMore": "Learn More"
+  },
+  "trust": {
+    "processing": "Average Processing",
+    "processingTime": "72hrs",
+    "applications": "Applications Processed",
+    "applicationsCount": "10,000+",
+    "notice": "This service is provided by an independent third-party and is not affiliated with the UK government."
+  },
+  "steps": {
+    "title": "Simple 4-Step Process",
+    "subtitle": "Complete your UK ETA application in just a few minutes with our guided process.",
+    "step1": {
+      "title": "Fill Application",
+      "description": "Complete the secure online form with your personal and travel details.",
+      "time": "5-10 minutes"
+    },
+    "step2": {
+      "title": "Upload Documents",
+      "description": "Upload your passport and photo securely to our encrypted platform.",
+      "time": "2-3 minutes"
+    },
+    "step3": {
+      "title": "Make Payment",
+      "description": "Secure payment processing with multiple payment options available.",
+      "time": "1-2 minutes"
+    },
+    "step4": {
+      "title": "Receive ETA",
+      "description": "Get your approved ETA delivered directly to your email inbox.",
+      "time": "24-72 hours"
+    }
+  },
+  "footer": {
+    "disclaimer": "This website is operated by an independent third-party and is not affiliated with the UK Government or UK Visas and Immigration (UKVI).",
+    "brand": {
+      "title": "Brand",
+      "about": "About Us",
+      "contact": "Contact Us",
+      "careers": "Careers"
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "howItWorks": "How It Works",
+      "requirements": "Requirements",
+      "faq": "FAQ",
+      "support": "Support"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "refund": "Refund Policy",
+      "cookies": "Cookie Policy"
+    },
+    "support": {
+      "title": "Support",
+      "email": "support@uketaservice.com",
+      "phone": "+44 20 7946 0958",
+      "hours": "Available 24/7"
+    },
+    "security": {
+      "secure": "SSL Secured",
+      "gdpr": "GDPR Compliant",
+      "encrypted": "Data Encrypted"
+    }
+  },
+  "application": {
+    "title": "UK ETA Application Form",
+    "subtitle": "Please fill out all required fields accurately",
+    "continue": "Continue",
+    "back": "Back",
+    "submit": "Submit Application"
+  }
+}

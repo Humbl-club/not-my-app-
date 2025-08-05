@@ -1,0 +1,94 @@
+{
+  "header": {
+    "phone": "+44 20 7946 0958",
+    "email": "support@uketaservice.com",
+    "available": "24/7全天候服务",
+    "title": "英国ETA申请",
+    "trackApplication": "跟踪申请",
+    "startApplication": "开始申请"
+  },
+  "hero": {
+    "title": "申请您的英国ETA",
+    "subtitle": "快速、安全、专业的英国电子旅行授权服务。我们以专业的关怀和指导处理您的申请。",
+    "features": {
+      "processing": "平均72小时处理时间",
+      "secure": "安全的文档处理和数据保护",
+      "support": "整个过程的专家支持",
+      "submission": "专业申请提交"
+    },
+    "startButton": "开始申请",
+    "learnMore": "了解更多"
+  },
+  "trust": {
+    "processing": "平均处理时间",
+    "processingTime": "72小时",
+    "applications": "已处理申请",
+    "applicationsCount": "10,000+",
+    "notice": "此服务由独立第三方提供，与英国政府无关联。"
+  },
+  "steps": {
+    "title": "简单的4步流程",
+    "subtitle": "通过我们的引导流程，仅需几分钟即可完成您的英国ETA申请。",
+    "step1": {
+      "title": "填写申请",
+      "description": "使用您的个人和旅行详细信息完成安全的在线表格。",
+      "time": "5-10分钟"
+    },
+    "step2": {
+      "title": "上传文档",
+      "description": "安全地将您的护照和照片上传到我们的加密平台。",
+      "time": "2-3分钟"
+    },
+    "step3": {
+      "title": "付款",
+      "description": "安全的付款处理，提供多种付款选项。",
+      "time": "1-2分钟"
+    },
+    "step4": {
+      "title": "接收ETA",
+      "description": "直接在您的电子邮件收件箱中获得已批准的ETA。",
+      "time": "24-72小时"
+    }
+  },
+  "footer": {
+    "disclaimer": "本网站由独立第三方运营，与英国政府或英国签证和移民局(UKVI)无关联。",
+    "brand": {
+      "title": "品牌",
+      "about": "关于我们",
+      "contact": "联系我们",
+      "careers": "职业"
+    },
+    "quickLinks": {
+      "title": "快速链接",
+      "howItWorks": "如何工作",
+      "requirements": "要求",
+      "faq": "常见问题",
+      "support": "支持"
+    },
+    "legal": {
+      "title": "法律",
+      "privacy": "隐私政策",
+      "terms": "服务条款",
+      "refund": "退款政策",
+      "cookies": "Cookie政策"
+    },
+    "support": {
+      "title": "支持",
+      "email": "support@uketaservice.com",
+      "phone": "+44 20 7946 0958",
+      "hours": "24/7全天候服务"
+    },
+    "security": {
+      "secure": "SSL安全",
+      "gdpr": "GDPR合规",
+      "encrypted": "数据加密"
+    }
+  },
+  "application": {
+    "title": "英国ETA申请表",
+    "subtitle": "请准确填写所有必填字段",
+    "continue": "继续",
+    "back": "返回",
+    "submit": "提交申请"
+  }
+}
