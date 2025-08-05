@@ -16,8 +16,8 @@ const Application = () => {
           {/* Progress Bar */}
           <div className="mb-8">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium">Step 1 of 4</span>
-              <span className="text-sm text-muted-foreground">25% Complete</span>
+              <span className="text-sm font-medium">{t('application.progress.step', { current: 1, total: 4 })}</span>
+              <span className="text-sm text-muted-foreground">{t('application.progress.complete', { percent: 25 })}</span>
             </div>
             <Progress value={25} className="h-2" />
           </div>
@@ -31,28 +31,28 @@ const Application = () => {
           {/* Application Form */}
           <Card>
             <CardHeader>
-              <CardTitle>Personal Information</CardTitle>
+              <CardTitle>{t('application.personalInfo.title')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    First Name *
+                    {t('application.personalInfo.firstName')} {t('application.personalInfo.required')}
                   </label>
                   <input
                     type="text"
                     className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="Enter your first name"
+                    placeholder={t('application.personalInfo.firstNamePlaceholder')}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Last Name *
+                    {t('application.personalInfo.lastName')} {t('application.personalInfo.required')}
                   </label>
                   <input
                     type="text"
                     className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="Enter your last name"
+                    placeholder={t('application.personalInfo.lastNamePlaceholder')}
                   />
                 </div>
               </div>
@@ -60,7 +60,7 @@ const Application = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Date of Birth *
+                    {t('application.personalInfo.dateOfBirth')} {t('application.personalInfo.required')}
                   </label>
                   <input
                     type="date"
@@ -69,10 +69,10 @@ const Application = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Nationality *
+                    {t('application.personalInfo.nationality')} {t('application.personalInfo.required')}
                   </label>
                   <select className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
-                    <option value="">Select nationality</option>
+                    <option value="">{t('application.personalInfo.nationalityPlaceholder')}</option>
                     <option value="US">United States</option>
                     <option value="CA">Canada</option>
                     <option value="AU">Australia</option>
@@ -84,23 +84,23 @@ const Application = () => {
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Email Address *
+                  {t('application.personalInfo.email')} {t('application.personalInfo.required')}
                 </label>
                 <input
                   type="email"
                   className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="Enter your email address"
+                  placeholder={t('application.personalInfo.emailPlaceholder')}
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Passport Number *
+                  {t('application.personalInfo.passportNumber')} {t('application.personalInfo.required')}
                 </label>
                 <input
                   type="text"
                   className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="Enter your passport number"
+                  placeholder={t('application.personalInfo.passportNumberPlaceholder')}
                 />
               </div>
             </CardContent>

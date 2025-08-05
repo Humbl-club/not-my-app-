@@ -85,10 +85,29 @@
     }
   },
   "application": {
-    "title": "نموذج طلب تصريح السفر الإلكتروني للمملكة المتحدة",
-    "subtitle": "يرجى ملء جميع الحقول المطلوبة بدقة",
+    "title": "طلب تصريح السفر الإلكتروني للمملكة المتحدة",
+    "subtitle": "أكمل طلبك في دقائق",
     "continue": "متابعة",
     "back": "رجوع",
-    "submit": "تقديم الطلب"
+    "submit": "تقديم الطلب",
+    "progress": {
+      "step": "الخطوة {{current}} من {{total}}",
+      "complete": "{{percent}}% مكتمل"
+    },
+    "personalInfo": {
+      "title": "المعلومات الشخصية",
+      "firstName": "الاسم الأول",
+      "firstNamePlaceholder": "أدخل اسمك الأول",
+      "lastName": "اسم العائلة",
+      "lastNamePlaceholder": "أدخل اسم عائلتك",
+      "dateOfBirth": "تاريخ الميلاد",
+      "nationality": "الجنسية",
+      "nationalityPlaceholder": "اختر الجنسية",
+      "email": "عنوان البريد الإلكتروني",
+      "emailPlaceholder": "أدخل عنوان بريدك الإلكتروني",
+      "passportNumber": "رقم جواز السفر",
+      "passportNumberPlaceholder": "أدخل رقم جواز سفرك",
+      "required": "*"
+    }
   }
 }

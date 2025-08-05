@@ -96,10 +96,29 @@
     }
   },
   "application": {
-    "title": "英国ETA申请表",
-    "subtitle": "请准确填写所有必填字段",
+    "title": "申请英国ETA",
+    "subtitle": "几分钟内完成您的申请",
     "continue": "继续",
     "back": "返回",
-    "submit": "提交申请"
+    "submit": "提交申请",
+    "progress": {
+      "step": "第{{current}}步，共{{total}}步",
+      "complete": "{{percent}}% 完成"
+    },
+    "personalInfo": {
+      "title": "个人信息",
+      "firstName": "名字",
+      "firstNamePlaceholder": "请输入您的名字",
+      "lastName": "姓氏",
+      "lastNamePlaceholder": "请输入您的姓氏",
+      "dateOfBirth": "出生日期",
+      "nationality": "国籍",
+      "nationalityPlaceholder": "选择国籍",
+      "email": "电子邮箱地址",
+      "emailPlaceholder": "请输入您的电子邮箱地址",
+      "passportNumber": "护照号码",
+      "passportNumberPlaceholder": "请输入您的护照号码",
+      "required": "*"
+    }
   }
 }

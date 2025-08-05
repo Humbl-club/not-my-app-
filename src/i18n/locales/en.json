@@ -140,10 +140,135 @@
     "copyright": "© 2024 UK ETA Application Service. All rights reserved."
   },
   "application": {
-    "title": "UK ETA Application Form",
-    "subtitle": "Please fill out all required fields accurately",
+    "title": "Apply for UK ETA",
+    "subtitle": "Complete your application in minutes",
     "continue": "Continue",
     "back": "Back",
-    "submit": "Submit Application"
+    "submit": "Submit Application",
+    "progress": {
+      "step": "Step {{current}} of {{total}}",
+      "complete": "{{percent}}% Complete"
+    },
+    "personalInfo": {
+      "title": "Personal Information",
+      "firstName": "First Name",
+      "firstNamePlaceholder": "Enter your first name",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Enter your last name",
+      "dateOfBirth": "Date of Birth",
+      "nationality": "Nationality",
+      "nationalityPlaceholder": "Select nationality",
+      "email": "Email Address",
+      "emailPlaceholder": "Enter your email address",
+      "passportNumber": "Passport Number",
+      "passportNumberPlaceholder": "Enter your passport number",
+      "required": "*"
+    },
+    "documents": {
+      "title": "Upload Documents",
+      "subtitle": "Please upload the required documents",
+      "passport": {
+        "title": "Passport Information Page",
+        "description": "Upload a clear photo of your passport's information page",
+        "requirements": "JPEG, PNG or PDF • Max 10MB • Clear and readable",
+        "chooseFile": "Choose File",
+        "dragDrop": "Drag and drop your file here"
+      },
+      "photo": {
+        "title": "Personal Photo",
+        "description": "Upload a recent passport-style photo of yourself",
+        "requirements": "JPEG or PNG • Max 5MB • Passport style photo",
+        "chooseFile": "Choose File",
+        "takePhoto": "Take Photo",
+        "dragDrop": "Drag and drop your file here"
+      }
+    },
+    "payment": {
+      "title": "Payment Details",
+      "subtitle": "Complete your payment to submit your application",
+      "cardholderName": "Cardholder Name",
+      "cardholderNamePlaceholder": "Enter cardholder name",
+      "cardNumber": "Card Number",
+      "cardNumberPlaceholder": "1234 5678 9012 3456",
+      "expiryDate": "Expiry Date",
+      "expiryDatePlaceholder": "MM/YY",
+      "cvv": "CVV",
+      "cvvPlaceholder": "123",
+      "orderSummary": "Order Summary",
+      "applicationFee": "UK ETA Application Fee",
+      "serviceFee": "Service Fee",
+      "total": "Total",
+      "securePayment": "Your payment information is secure and encrypted",
+      "completePayment": "Complete Payment",
+      "currency": "£"
+    },
+    "confirmation": {
+      "title": "Application Submitted Successfully!",
+      "subtitle": "Your UK ETA application has been received and is being processed",
+      "applicationDetails": "Application Details",
+      "referenceNumber": "Reference Number",
+      "submissionDate": "Submission Date",
+      "processingTime": "Estimated Processing Time",
+      "amountPaid": "Amount Paid",
+      "nextSteps": {
+        "title": "What happens next?",
+        "step1": {
+          "title": "Email Confirmation",
+          "description": "You will receive a confirmation email with your reference number"
+        },
+        "step2": {
+          "title": "Processing",
+          "description": "We will review your application and documents"
+        },
+        "step3": {
+          "title": "ETA Delivery",
+          "description": "Your approved ETA will be sent to your email address"
+        }
+      },
+      "actions": {
+        "downloadReceipt": "Download Receipt",
+        "emailReceipt": "Email Receipt",
+        "trackApplication": "Track Application"
+      },
+      "support": {
+        "title": "Need Help?",
+        "email": "Email Support",
+        "phone": "Phone Support",
+        "hours": "Available 24/7"
+      },
+      "returnHome": "Return to Home"
+    },
+    "track": {
+      "title": "Track Your Application",
+      "subtitle": "Enter your reference number to check the status of your UK ETA application",
+      "referenceNumber": "Reference Number",
+      "referenceNumberPlaceholder": "Enter your reference number",
+      "search": "Search",
+      "applicationStatus": "Application Status",
+      "applicantName": "Applicant Name",
+      "submissionDate": "Submission Date",
+      "currentStatus": "Current Status",
+      "estimatedCompletion": "Estimated Completion",
+      "emailNotifications": "You will receive email notifications at each stage of processing",
+      "timeline": {
+        "submitted": "Submitted",
+        "documentsVerified": "Documents Verified",
+        "underReview": "Under Review",
+        "etaIssued": "ETA Issued"
+      },
+      "help": {
+        "title": "Need Help?",
+        "contactUs": "Contact Us",
+        "email": "support@uketaapplication.com",
+        "phone": "+44 20 7946 0958",
+        "hours": "Monday - Friday, 9:00 AM - 6:00 PM GMT",
+        "processingTimes": {
+          "title": "Processing Times",
+          "standard": "Standard: 3-5 business days",
+          "peak": "Peak Season: 5-7 business days",
+          "complex": "Complex Cases: 7-10 business days"
+        }
+      }
+    }
   }
 }
