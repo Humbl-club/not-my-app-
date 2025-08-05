@@ -2,8 +2,13 @@ import React from 'react';
 import { Shield, Phone, Mail } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const Header = () => {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  
   return (
     <header className="bg-white shadow-sm border-b border-border">
       {/* Top bar with contact info */}
@@ -21,7 +26,7 @@ export const Header = () => {
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-xs">Available 24/7</span>
+              <span className="text-xs">{t('header.available247')}</span>
               <LanguageSwitcher />
             </div>
           </div>
@@ -36,17 +41,17 @@ export const Header = () => {
               <Shield className="h-6 w-6 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-primary">UK ETA Application</h1>
-              <p className="text-xs text-muted-foreground">Official Electronic Travel Authorization</p>
+              <h1 className="text-xl font-bold text-primary">{t('header.title')}</h1>
+              <p className="text-xs text-muted-foreground">{t('header.subtitle')}</p>
             </div>
           </div>
           
           <div className="flex items-center gap-4">
-            <Button variant="outline" size="sm">
-              Track Application
+            <Button variant="outline" size="sm" onClick={() => navigate('/track')}>
+              {t('header.trackApplication')}
             </Button>
-            <Button variant="default" size="sm">
-              Start Application
+            <Button variant="default" size="sm" onClick={() => navigate('/application')}>
+              {t('header.startApplication')}
             </Button>
           </div>
         </div>
