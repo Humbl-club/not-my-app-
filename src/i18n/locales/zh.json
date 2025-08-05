@@ -2,22 +2,33 @@
   "header": {
     "phone": "+44 20 7946 0958",
     "email": "support@uketaservice.com",
-    "available": "24/7全天候服务",
+    "available247": "24/7全天候服务",
     "title": "英国ETA申请",
+    "subtitle": "官方电子旅行授权",
     "trackApplication": "跟踪申请",
     "startApplication": "开始申请"
   },
   "hero": {
     "title": "申请您的英国ETA",
-    "subtitle": "快速、安全、专业的英国电子旅行授权服务。我们以专业的关怀和指导处理您的申请。",
-    "features": {
-      "processing": "平均72小时处理时间",
-      "secure": "安全的文档处理和数据保护",
-      "support": "整个过程的专家支持",
-      "submission": "专业申请提交"
+    "subtitle": "电子旅行授权",
+    "description": "快速、安全、无障碍的英国ETA申请服务。仅需72小时即可获得授权。",
+    "feature1": "简单的3步申请流程",
+    "feature2": "包含专家文档审查",
+    "feature3": "24/7多语言支持",
+    "feature4": "退款保证",
+    "startApplication": "开始申请",
+    "learnMore": "了解更多",
+    "stats": {
+      "title": "处理统计",
+      "processingTime": "72小时",
+      "processingLabel": "平均处理时间",
+      "applicationsCount": "10,000+",
+      "applicationsLabel": "已处理申请"
     },
-    "startButton": "开始申请",
-    "learnMore": "了解更多"
+    "notice": {
+      "title": "重要提示：",
+      "text": "这是一个独立的第三方服务，与英国政府或UKVI无关联。"
+    }
   },
   "trust": {
     "processing": "平均处理时间",

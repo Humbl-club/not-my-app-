@@ -2,22 +2,33 @@
   "header": {
     "phone": "+44 20 7946 0958",
     "email": "support@uketaservice.com",
-    "available": "Available 24/7",
+    "available247": "Available 24/7",
     "title": "UK ETA Application",
+    "subtitle": "Official Electronic Travel Authorization",
     "trackApplication": "Track Application",
     "startApplication": "Start Application"
   },
   "hero": {
     "title": "Apply for Your UK ETA",
-    "subtitle": "Fast, secure, and professional UK Electronic Travel Authorisation service. We handle your application with expert care and guidance.",
-    "features": {
-      "processing": "72-hour average processing time",
-      "secure": "Secure document handling and data protection",
-      "support": "Expert support throughout the process",
-      "submission": "Professional application submission"
+    "subtitle": "Electronic Travel Authorization",
+    "description": "Fast, secure, and hassle-free UK ETA application service. Get your authorization in as little as 72 hours.",
+    "feature1": "Simple 3-step application process",
+    "feature2": "Expert document review included",
+    "feature3": "24/7 multilingual support",
+    "feature4": "Money-back guarantee",
+    "startApplication": "Start Application",
+    "learnMore": "Learn More",
+    "stats": {
+      "title": "Processing Statistics",
+      "processingTime": "72hrs",
+      "processingLabel": "Average Processing",
+      "applicationsCount": "10,000+",
+      "applicationsLabel": "Applications Processed"
     },
-    "startButton": "Start Application",
-    "learnMore": "Learn More"
+    "notice": {
+      "title": "Important Notice:",
+      "text": "This is an independent third-party service and is not affiliated with the UK Government or UKVI."
+    }
   },
   "trust": {
     "processing": "Average Processing",

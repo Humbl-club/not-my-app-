@@ -2,22 +2,33 @@
   "header": {
     "phone": "+44 20 7946 0958",
     "email": "support@uketaservice.com",
-    "available": "연중무휴 24시간",
+    "available247": "연중무휴 24시간",
     "title": "영국 ETA 신청",
+    "subtitle": "공식 전자여행허가",
     "trackApplication": "신청 추적",
     "startApplication": "신청 시작"
   },
   "hero": {
     "title": "영국 ETA 신청하기",
-    "subtitle": "빠르고 안전하며 전문적인 영국 전자여행허가 서비스. 전문가의 세심한 관리와 안내로 신청을 처리합니다.",
-    "features": {
-      "processing": "평균 72시간 처리 시간",
-      "secure": "안전한 문서 처리 및 데이터 보호",
-      "support": "전 과정에 걸친 전문가 지원",
-      "submission": "전문적인 신청 제출"
+    "subtitle": "전자여행허가",
+    "description": "빠르고 안전하며 번거로움 없는 영국 ETA 신청 서비스. 단 72시간 만에 허가를 받으세요.",
+    "feature1": "간단한 3단계 신청 과정",
+    "feature2": "전문가 문서 검토 포함",
+    "feature3": "24/7 다국어 지원",
+    "feature4": "환불 보장",
+    "startApplication": "신청 시작",
+    "learnMore": "더 알아보기",
+    "stats": {
+      "title": "처리 통계",
+      "processingTime": "72시간",
+      "processingLabel": "평균 처리 시간",
+      "applicationsCount": "10,000+",
+      "applicationsLabel": "처리된 신청"
     },
-    "startButton": "신청 시작",
-    "learnMore": "더 알아보기"
+    "notice": {
+      "title": "중요 공지:",
+      "text": "이는 독립적인 제3자 서비스이며 영국 정부나 UKVI와 관련이 없습니다."
+    }
   },
   "trust": {
     "processing": "평균 처리 시간",

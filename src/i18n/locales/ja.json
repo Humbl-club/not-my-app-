@@ -2,22 +2,33 @@
   "header": {
     "phone": "+44 20 7946 0958",
     "email": "support@uketaservice.com",
-    "available": "24時間365日対応",
+    "available247": "24時間365日対応",
     "title": "英国ETA申請",
+    "subtitle": "公式電子渡航認証",
     "trackApplication": "申請追跡",
     "startApplication": "申請開始"
   },
   "hero": {
     "title": "英国ETAを申請する",
-    "subtitle": "迅速、安全、専門的な英国電子渡航認証サービス。専門家のケアとガイダンスであなたの申請を処理します。",
-    "features": {
-      "processing": "平均72時間の処理時間",
-      "secure": "安全な書類処理とデータ保護",
-      "support": "プロセス全体を通じた専門家サポート",
-      "submission": "プロフェッショナルな申請提出"
+    "subtitle": "電子渡航認証",
+    "description": "迅速、安全、手間なしの英国ETA申請サービス。わずか72時間で認証を取得できます。",
+    "feature1": "シンプルな3ステップ申請プロセス",
+    "feature2": "専門家による書類審査が含まれます",
+    "feature3": "24/7多言語サポート",
+    "feature4": "返金保証",
+    "startApplication": "申請開始",
+    "learnMore": "詳細を見る",
+    "stats": {
+      "title": "処理統計",
+      "processingTime": "72時間",
+      "processingLabel": "平均処理時間",
+      "applicationsCount": "10,000+",
+      "applicationsLabel": "処理済み申請"
     },
-    "startButton": "申請開始",
-    "learnMore": "詳細を見る"
+    "notice": {
+      "title": "重要なお知らせ：",
+      "text": "これは独立した第三者サービスであり、英国政府やUKVIとは関係ありません。"
+    }
   },
   "trust": {
     "processing": "平均処理時間",

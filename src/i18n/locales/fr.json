@@ -2,22 +2,33 @@
   "header": {
     "phone": "+44 20 7946 0958",
     "email": "support@uketaservice.com",
-    "available": "Disponible 24h/24 et 7j/7",
-    "title": "Demande ETA Royaume-Uni",
-    "trackApplication": "Suivre la demande",
-    "startApplication": "Commencer la demande"
+    "available247": "Disponible 24h/24 et 7j/7",
+    "title": "Demande d'ETA au Royaume-Uni",
+    "subtitle": "Autorisation Électronique de Voyage Officielle",
+    "trackApplication": "Suivre la Demande",
+    "startApplication": "Commencer la Demande"
   },
   "hero": {
     "title": "Demandez votre ETA pour le Royaume-Uni",
-    "subtitle": "Service ETA rapide, sécurisé et professionnel. Nous traitons votre demande avec expertise et accompagnement.",
-    "features": {
-      "processing": "Temps de traitement moyen de 72 heures",
-      "secure": "Traitement sécurisé des documents et protection des données",
-      "support": "Support expert tout au long du processus",
-      "submission": "Soumission professionnelle de demande"
+    "subtitle": "Autorisation Électronique de Voyage",
+    "description": "Service de demande d'ETA au Royaume-Uni rapide, sécurisé et sans tracas. Obtenez votre autorisation en seulement 72 heures.",
+    "feature1": "Processus de demande simple en 3 étapes",
+    "feature2": "Examen expert des documents inclus",
+    "feature3": "Support multilingue 24h/24 et 7j/7",
+    "feature4": "Garantie de remboursement",
+    "startApplication": "Commencer la Demande",
+    "learnMore": "En Savoir Plus",
+    "stats": {
+      "title": "Statistiques de Traitement",
+      "processingTime": "72h",
+      "processingLabel": "Traitement Moyen",
+      "applicationsCount": "10 000+",
+      "applicationsLabel": "Demandes Traitées"
     },
-    "startButton": "Commencer la demande",
-    "learnMore": "En savoir plus"
+    "notice": {
+      "title": "Avis Important:",
+      "text": "Il s'agit d'un service tiers indépendant qui n'est pas affilié au gouvernement britannique ou à l'UKVI."
+    }
   },
   "trust": {
     "processing": "Traitement moyen",
