@@ -1,27 +1,30 @@
 import React from 'react';
 import { Shield, Lock, Clock, CheckCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export const TrustIndicators = () => {
+  const { t } = useTranslation();
+  
   const indicators = [
     {
       icon: Shield,
-      title: 'Secure & Encrypted',
-      description: 'SSL encrypted data protection'
+      title: t('trustIndicators.secure.title'),
+      description: t('trustIndicators.secure.description')
     },
     {
       icon: CheckCircle,
-      title: 'GDPR Compliant',
-      description: 'Full data protection compliance'
+      title: t('trustIndicators.gdpr.title'),
+      description: t('trustIndicators.gdpr.description')
     },
     {
       icon: Clock,
-      title: '24/7 Support',
-      description: 'Round-the-clock assistance'
+      title: t('trustIndicators.support.title'),
+      description: t('trustIndicators.support.description')
     },
     {
       icon: Lock,
-      title: 'Trusted Service',
-      description: '10,000+ successful applications'
+      title: t('trustIndicators.trusted.title'),
+      description: t('trustIndicators.trusted.description')
     }
   ];
 

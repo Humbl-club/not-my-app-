@@ -50,39 +50,83 @@
       "time": "24-72 ore"
     }
   },
+  "trustIndicators": {
+    "secure": {
+      "title": "Sicuro e Crittografato",
+      "description": "Protezione dati SSL crittografata"
+    },
+    "gdpr": {
+      "title": "Conforme GDPR",
+      "description": "Piena conformità alla protezione dati"
+    },
+    "support": {
+      "title": "Supporto 24/7",
+      "description": "Assistenza 24 ore su 24"
+    },
+    "trusted": {
+      "title": "Servizio Affidabile",
+      "description": "Oltre 10.000 richieste di successo"
+    }
+  },
+  "applicationSteps": {
+    "title": "Processo Semplice in 4 Passaggi",
+    "subtitle": "Il nostro processo di richiesta semplificato rende ottenere il tuo ETA del Regno Unito veloce e facile",
+    "step1": {
+      "title": "Completare Richiesta",
+      "description": "Compila il modulo online sicuro con i tuoi dettagli personali e di viaggio.",
+      "time": "5-10 minuti"
+    },
+    "step2": {
+      "title": "Caricare Documenti",
+      "description": "Invia la copia del passaporto e la foto. Il nostro sistema convalida automaticamente tutti i requisiti.",
+      "time": "2-3 minuti"
+    },
+    "step3": {
+      "title": "Pagamento Sicuro",
+      "description": "Paga in modo sicuro con carta di credito, debito o PayPal. Tutte le transazioni sono crittografate.",
+      "time": "1-2 minuti"
+    },
+    "step4": {
+      "title": "Ricevere Autorizzazione",
+      "description": "Ottieni il tuo ETA del Regno Unito via email entro 72 ore. Traccia lo stato della tua richiesta online.",
+      "time": "Fino a 72 ore"
+    }
+  },
   "footer": {
     "disclaimer": "Questo sito web è gestito da un terzo indipendente e non è affiliato al Governo del Regno Unito o UK Visas and Immigration (UKVI).",
     "brand": {
-      "title": "Brand",
-      "about": "Chi siamo",
-      "contact": "Contattaci",
-      "careers": "Carriere"
+      "title": "Richiesta ETA Regno Unito",
+      "subtitle": "Fornitore di servizi terzo",
+      "description": "Assistenza professionale per richiesta ETA Regno Unito con supporto esperto e elaborazione sicura."
     },
     "quickLinks": {
-      "title": "Link rapidi",
-      "howItWorks": "Come funziona",
-      "requirements": "Requisiti",
-      "faq": "FAQ",
-      "support": "Supporto"
+      "title": "Link Rapidi",
+      "startApplication": "Iniziare Richiesta",
+      "trackApplication": "Tracciare Richiesta",
+      "requirements": "Requisiti ETA",
+      "processingTimes": "Tempi di Elaborazione"
     },
     "legal": {
       "title": "Legale",
-      "privacy": "Politica privacy",
-      "terms": "Termini di servizio",
-      "refund": "Politica rimborsi",
-      "cookies": "Politica cookie"
+      "privacy": "Politica Privacy",
+      "terms": "Termini e Condizioni",
+      "refund": "Politica Rimborsi",
+      "cookies": "Politica Cookie"
     },
     "support": {
       "title": "Supporto",
-      "email": "support@uketaservice.com",
+      "phoneLabel": "Supporto Telefonico",
       "phone": "+44 20 7946 0958",
-      "hours": "Disponibile 24/7"
+      "emailLabel": "Supporto Email",
+      "email": "support@uketaapplication.com",
+      "contactButton": "Contattare Supporto"
     },
     "security": {
-      "secure": "SSL Sicuro",
+      "ssl": "SSL Sicuro",
       "gdpr": "Conforme GDPR",
-      "encrypted": "Dati crittografati"
-    }
+      "pci": "Certificato PCI DSS"
+    },
+    "copyright": "© 2024 Servizio Richiesta ETA Regno Unito. Tutti i diritti riservati."
   },
   "application": {
     "title": "Modulo richiesta ETA Regno Unito",

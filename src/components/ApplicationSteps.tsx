@@ -1,36 +1,39 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { FileText, Upload, CreditCard, CheckCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export const ApplicationSteps = () => {
+  const { t } = useTranslation();
+  
   const steps = [
     {
       icon: FileText,
       number: '01',
-      title: 'Complete Application',
-      description: 'Fill out the secure online form with your personal details and travel information.',
-      time: '5-10 minutes'
+      title: t('applicationSteps.step1.title'),
+      description: t('applicationSteps.step1.description'),
+      time: t('applicationSteps.step1.time')
     },
     {
       icon: Upload,
       number: '02', 
-      title: 'Upload Documents',
-      description: 'Submit your passport copy and photo. Our system validates all requirements automatically.',
-      time: '2-3 minutes'
+      title: t('applicationSteps.step2.title'),
+      description: t('applicationSteps.step2.description'),
+      time: t('applicationSteps.step2.time')
     },
     {
       icon: CreditCard,
       number: '03',
-      title: 'Secure Payment',
-      description: 'Pay securely with credit card, debit card, or PayPal. All transactions are encrypted.',
-      time: '1-2 minutes'
+      title: t('applicationSteps.step3.title'),
+      description: t('applicationSteps.step3.description'),
+      time: t('applicationSteps.step3.time')
     },
     {
       icon: CheckCircle,
       number: '04',
-      title: 'Receive Authorization',
-      description: 'Get your UK ETA via email within 72 hours. Track your application status online.',
-      time: 'Up to 72 hours'
+      title: t('applicationSteps.step4.title'),
+      description: t('applicationSteps.step4.description'),
+      time: t('applicationSteps.step4.time')
     }
   ];
 
@@ -39,10 +42,10 @@ export const ApplicationSteps = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            Simple 4-Step Process
+            {t('applicationSteps.title')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Our streamlined application process makes getting your UK ETA quick and easy
+            {t('applicationSteps.subtitle')}
           </p>
         </div>
 
