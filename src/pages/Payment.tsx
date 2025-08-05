@@ -16,16 +16,16 @@ const Payment = () => {
           {/* Progress Bar */}
           <div className="mb-8">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium">Step 3 of 4</span>
-              <span className="text-sm text-muted-foreground">75% Complete</span>
+              <span className="text-sm font-medium">{t('application.progress.step', { current: 3, total: 4 })}</span>
+              <span className="text-sm text-muted-foreground">{t('application.progress.complete', { percent: 75 })}</span>
             </div>
             <Progress value={75} className="h-2" />
           </div>
 
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-2">Payment</h1>
-            <p className="text-muted-foreground">Complete your payment to submit your application</p>
+            <h1 className="text-3xl font-bold mb-2">{t('application.payment.title')}</h1>
+            <p className="text-muted-foreground">{t('application.payment.subtitle')}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

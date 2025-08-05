@@ -16,16 +16,16 @@ const Documents = () => {
           {/* Progress Bar */}
           <div className="mb-8">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium">Step 2 of 4</span>
-              <span className="text-sm text-muted-foreground">50% Complete</span>
+              <span className="text-sm font-medium">{t('application.progress.step', { current: 2, total: 4 })}</span>
+              <span className="text-sm text-muted-foreground">{t('application.progress.complete', { percent: 50 })}</span>
             </div>
             <Progress value={50} className="h-2" />
           </div>
 
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-2">Upload Documents</h1>
-            <p className="text-muted-foreground">Please upload your passport and photo</p>
+            <h1 className="text-3xl font-bold mb-2">{t('application.documents.title')}</h1>
+            <p className="text-muted-foreground">{t('application.documents.subtitle')}</p>
           </div>
 
           {/* Document Upload */}
