@@ -69,7 +69,8 @@ const applicantBase = z
       .string()
       .min(1, 'Passport number is required')
       .regex(passportRegex, 'Use 6-9 characters (letters and numbers)'),
-    job: z.string().min(1, 'Job title is required'),
+    hasJob: z.enum(['yes', 'no'], { required_error: 'Please answer this question' }),
+    job: z.string().optional(),
     hasCriminalConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer this question' }),
     hasWarCrimesConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer this question' }),
     useSameAddressAsPrimary: z.boolean().optional().default(false),
@@ -85,14 +86,29 @@ const applicantBase = z
       if (!val.address?.city || !cityRegex.test(val.address.city)) {
         ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Enter a valid city', path: ['address', 'city'] });
       }
-      if (!val.address?.state || !stateRegex.test(val.address.state)) {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Enter a valid state/province', path: ['address', 'state'] });
+      const countryCode = val.address?.country ?? '';
+      const stateRequired = ['US','CA'].includes(countryCode);
+      if (stateRequired) {
+        if (!val.address?.state || !stateRegex.test(val.address.state)) {
+          ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Enter a valid state/province', path: ['address', 'state'] });
+        }
+      } else {
+        if (val.address?.state && !stateRegex.test(val.address.state)) {
+          ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Enter a valid state/province', path: ['address', 'state'] });
+        }
       }
       if (!val.address?.postalCode || !postalRegex.test(val.address.postalCode)) {
         ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Enter a valid postal code', path: ['address', 'postalCode'] });
       }
       if (!val.address?.country || !nationalityRegex.test(val.address.country)) {
         ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Please select a country', path: ['address', 'country'] });
+      }
+    }
+
+    // Employment validation
+    if (val.hasJob === 'yes') {
+      if (!val.job || val.job.trim().length < 2) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Job title is required', path: ['job'] });
       }
     }
 
@@ -124,6 +140,7 @@ const defaultApplicant = (shareAddress = false, shareEmail = false): z.infer<typ
   additionalNationalities: [],
   email: '',
   passportNumber: '',
+  hasJob: undefined as any,
   job: '',
   hasCriminalConvictions: undefined as any,
   hasWarCrimesConvictions: undefined as any,
@@ -175,7 +192,7 @@ const Application = () => {
     for (let i = 0; i < errs.length; i++) {
       const e = errs[i];
       if (!e) continue;
-      const order = ['firstName','lastName','dateOfBirth','nationality','email','passportNumber','job','hasCriminalConvictions','hasWarCrimesConvictions'];
+      const order = ['firstName','lastName','dateOfBirth','nationality','email','passportNumber','hasJob','job','hasCriminalConvictions','hasWarCrimesConvictions'];
       for (const k of order) { if (e?.[k]) return `applicants.${i}.${k}` as const; }
       if (e?.additionalNationalities && Array.isArray(e.additionalNationalities)) {
         for (let j = 0; j < e.additionalNationalities.length; j++) {
@@ -248,6 +265,7 @@ const Application = () => {
                   {fields.map((field, idx) => {
                     const useSame = applicants?.[idx]?.useSameAddressAsPrimary;
                     const hasApplicantError = !!formState.errors?.applicants?.[idx];
+                    const stateRequired = ['US','CA'].includes((applicants?.[idx]?.address?.country as string) || '');
                     return (
                       <div key={field.id} className={cn("rounded-lg border p-4 space-y-4", hasApplicantError && "border-destructive/50 ring-1 ring-destructive/30 bg-destructive/5")}>
                         <div className="flex items-center justify-between">
@@ -522,34 +540,11 @@ const Application = () => {
 
                         <FormField
                           control={control}
-                          name={`applicants.${idx}.job`}
+                          name={`applicants.${idx}.hasJob`}
                           render={({ field, fieldState }) => (
                             <FormItem>
                               <FormLabel>
-                                What's your job? <span aria-hidden="true" className="text-destructive">*</span>
-                              </FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  type="text"
-                                  inputMode="text"
-                                  placeholder="Enter your job title"
-                                  aria-required="true"
-                                  aria-invalid={!!fieldState.error}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={control}
-                          name={`applicants.${idx}.hasCriminalConvictions`}
-                          render={({ field, fieldState }) => (
-                            <FormItem>
-                              <FormLabel>
-                                Have you ever had criminal convictions? <span aria-hidden="true" className="text-destructive">*</span>
+                                {t('application.employment.hasJob.label', { defaultValue: 'Do you have a job?' })} <span aria-hidden="true" className="text-destructive">*</span>
                               </FormLabel>
                               <FormControl>
                                 <RadioGroup
@@ -558,12 +553,12 @@ const Application = () => {
                                   className="flex space-x-6"
                                 >
                                   <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="yes" id={`criminal-yes-${idx}`} />
-                                    <label htmlFor={`criminal-yes-${idx}`} className="text-sm">Yes</label>
+                                    <RadioGroupItem value="yes" id={`hasjob-yes-${idx}`} />
+                                    <label htmlFor={`hasjob-yes-${idx}`} className="text-sm">{t('application.options.yes', { defaultValue: 'Yes' })}</label>
                                   </div>
                                   <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="no" id={`criminal-no-${idx}`} />
-                                    <label htmlFor={`criminal-no-${idx}`} className="text-sm">No</label>
+                                    <RadioGroupItem value="no" id={`hasjob-no-${idx}`} />
+                                    <label htmlFor={`hasjob-no-${idx}`} className="text-sm">{t('application.options.no', { defaultValue: 'No' })}</label>
                                   </div>
                                 </RadioGroup>
                               </FormControl>
@@ -572,34 +567,31 @@ const Application = () => {
                           )}
                         />
 
-                        <FormField
-                          control={control}
-                          name={`applicants.${idx}.hasWarCrimesConvictions`}
-                          render={({ field, fieldState }) => (
-                            <FormItem>
-                              <FormLabel>
-                                Have you ever been suspected or convicted of war crimes, terrorism or extremism? <span aria-hidden="true" className="text-destructive">*</span>
-                              </FormLabel>
-                              <FormControl>
-                                <RadioGroup
-                                  value={field.value}
-                                  onValueChange={field.onChange}
-                                  className="flex space-x-6"
-                                >
-                                  <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="yes" id={`war-yes-${idx}`} />
-                                    <label htmlFor={`war-yes-${idx}`} className="text-sm">Yes</label>
-                                  </div>
-                                  <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="no" id={`war-no-${idx}`} />
-                                    <label htmlFor={`war-no-${idx}`} className="text-sm">No</label>
-                                  </div>
-                                </RadioGroup>
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+                        {applicants?.[idx]?.hasJob === 'yes' && (
+                          <FormField
+                            control={control}
+                            name={`applicants.${idx}.job`}
+                            render={({ field, fieldState }) => (
+                              <FormItem>
+                                <FormLabel>
+                                  {t('application.employment.jobTitle.label', { defaultValue: "What's your job?" })} <span aria-hidden="true" className="text-destructive">*</span>
+                                </FormLabel>
+                                <FormControl>
+                                  <Input
+                                    {...field}
+                                    type="text"
+                                    inputMode="text"
+                                    placeholder={t('application.employment.jobTitle.placeholder', { defaultValue: 'Enter your job title' })}
+                                    aria-required="true"
+                                    aria-invalid={!!fieldState.error}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        )}
+
 
                         {/* Address */}
                         <div className="space-y-3">
@@ -680,10 +672,10 @@ const Application = () => {
                                 render={({ field, fieldState }) => (
                                   <FormItem>
                                     <FormLabel>
-                                      {t('application.address.state.label', { defaultValue: 'State/Province' })} <span aria-hidden="true" className="text-destructive">*</span>
+                                      {t('application.address.state.label', { defaultValue: 'State/Province' })} {stateRequired && (<span aria-hidden="true" className="text-destructive">*</span>)}
                                     </FormLabel>
                                     <FormControl>
-                                      <Input {...field} type="text" aria-required="true" aria-invalid={!!fieldState.error} />
+                                      <Input {...field} type="text" aria-required={stateRequired} aria-invalid={!!fieldState.error} />
                                     </FormControl>
                                     <FormMessage />
                                   </FormItem>
@@ -742,6 +734,65 @@ const Application = () => {
                             </p>
                           )}
                         </div>
+
+                        <FormField
+                          control={control}
+                          name={`applicants.${idx}.hasCriminalConvictions`}
+                          render={({ field, fieldState }) => (
+                            <FormItem>
+                              <FormLabel>
+                                {t('application.security.criminalConvictions.label', { defaultValue: 'Have you ever had criminal convictions?' })} <span aria-hidden="true" className="text-destructive">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <RadioGroup
+                                  value={field.value}
+                                  onValueChange={field.onChange}
+                                  className="flex space-x-6"
+                                >
+                                  <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="yes" id={`criminal-yes-${idx}`} />
+                                    <label htmlFor={`criminal-yes-${idx}`} className="text-sm">{t('application.options.yes', { defaultValue: 'Yes' })}</label>
+                                  </div>
+                                  <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="no" id={`criminal-no-${idx}`} />
+                                    <label htmlFor={`criminal-no-${idx}`} className="text-sm">{t('application.options.no', { defaultValue: 'No' })}</label>
+                                  </div>
+                                </RadioGroup>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <FormField
+                          control={control}
+                          name={`applicants.${idx}.hasWarCrimesConvictions`}
+                          render={({ field, fieldState }) => (
+                            <FormItem>
+                              <FormLabel>
+                                {t('application.security.warCrimes.label', { defaultValue: 'Have you ever been suspected or convicted of war crimes, terrorism or extremism?' })} <span aria-hidden="true" className="text-destructive">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <RadioGroup
+                                  value={field.value}
+                                  onValueChange={field.onChange}
+                                  className="flex space-x-6"
+                                >
+                                  <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="yes" id={`war-yes-${idx}`} />
+                                    <label htmlFor={`war-yes-${idx}`} className="text-sm">{t('application.options.yes', { defaultValue: 'Yes' })}</label>
+                                  </div>
+                                  <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="no" id={`war-no-${idx}`} />
+                                    <label htmlFor={`war-no-${idx}`} className="text-sm">{t('application.options.no', { defaultValue: 'No' })}</label>
+                                  </div>
+                                </RadioGroup>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
                       </div>
                     );
                   })}

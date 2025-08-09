@@ -42,7 +42,32 @@
       "photo": {"title": "Foto Personale", "upload": {"title": "Carica Foto", "format": "JPG o JPEG", "button": "Scegli File"}, "camera": {"title": "Scatta Foto", "subtitle": "Usa fotocamera", "button": "Apri Fotocamera"}, "requirements": {"title": "Requisiti Foto:", "background": "Sfondo semplice e chiaro", "noObjects": "Nessuna persona o oggetto sullo sfondo", "visibility": "Testa, spalle e parte superiore del corpo completamente visibili", "lighting": "Illuminazione uniforme senza ombre o riflessi", "features": "Visibilità chiara delle caratteristiche facciali"}}
     },
     "payment": {"title": "Pagamento", "subtitle": "Completa il tuo pagamento per inviare la tua richiesta", "details": {"title": "Dettagli Pagamento", "cardholderName": {"label": "Nome Titolare Carta *", "placeholder": "Inserisci il nome del titolare della carta"}, "cardNumber": {"label": "Numero Carta *", "placeholder": "1234 5678 9012 3456"}, "expiryDate": {"label": "Data di Scadenza *", "placeholder": "MM/AA"}, "cvv": {"label": "CVV *", "placeholder": "123"}, "security": "Il tuo pagamento è protetto con crittografia SSL e processato tramite fornitori di pagamento affidabili."}, "summary": {"title": "Riepilogo Ordine", "application": "Richiesta ETA Regno Unito", "serviceFee": "Commissione di Servizio", "vat": "IVA (20%)", "total": "Totale", "sslSecured": "Pagamento Protetto SSL", "moneyBack": "Garanzia Rimborso"}, "complete": "Completa Pagamento"}
-  },
+  ,
+      "address": {
+        "title": "Indirizzo",
+        "sameAsPrimary": "Uguale al Richiedente 1",
+        "line1": { "label": "Indirizzo riga 1" },
+        "line2": { "label": "Indirizzo riga 2 (opzionale)" },
+        "city": { "label": "Città" },
+        "state": { "label": "Stato/Provincia" },
+        "postalCode": { "label": "CAP" },
+        "country": { "label": "Paese", "placeholder": "Seleziona un paese" },
+        "usingPrimary": "Utilizzo l'indirizzo del Richiedente 1"
+      },
+      "employment": {
+        "hasJob": { "label": "Ha un lavoro?" },
+        "jobTitle": { "label": "Qual è il suo lavoro?", "placeholder": "Inserisci la tua mansione" }
+      },
+      "security": {
+        "criminalConvictions": { "label": "Ha mai avuto condanne penali?" },
+        "warCrimes": { "label": "È mai stato sospettato o condannato per crimini di guerra, terrorismo o estremismo?" }
+      },
+      "email": {
+        "sameAsPrimary": "Uguale al Richiedente 1",
+        "usingPrimary": "Utilizzo l'indirizzo email del Richiedente 1"
+      },
+      "options": { "yes": "Sì", "no": "No" }
+  ,
   "tracking": {
     "title": "Traccia la tua richiesta",
     "subtitle": "Inserisci il numero di riferimento per verificare lo stato della tua richiesta",

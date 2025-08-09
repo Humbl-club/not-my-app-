@@ -56,7 +56,32 @@
       "photo": {"title": "个人照片", "upload": {"title": "上传照片", "format": "JPG或JPEG", "button": "选择文件"}, "camera": {"title": "拍摄照片", "subtitle": "使用相机", "button": "打开相机"}, "requirements": {"title": "照片要求：", "background": "纯色、明亮的背景", "noObjects": "背景中不得有人或物体", "visibility": "头部、肩膀和上半身清晰可见", "lighting": "光线均匀，无阴影或眩光", "features": "五官清晰可见"}}
     },
     "payment": {"title": "付款", "subtitle": "完成付款以提交您的申请", "details": {"title": "付款详情", "cardholderName": {"label": "持卡人姓名 *", "placeholder": "请输入持卡人姓名"}, "cardNumber": {"label": "卡号 *", "placeholder": "1234 5678 9012 3456"}, "expiryDate": {"label": "有效期 *", "placeholder": "MM/YY"}, "cvv": {"label": "CVV *", "placeholder": "123"}, "security": "您的付款通过SSL加密保护，并由可信的支付提供商处理。"}, "summary": {"title": "订单摘要", "application": "英国 ETA 申请", "serviceFee": "服务费", "vat": "增值税 (20%)", "total": "合计", "sslSecured": "SSL安全支付", "moneyBack": "退款保证"}, "complete": "完成付款"}
-  },
+   ,
+      "address": {
+        "title": "地址",
+        "sameAsPrimary": "与申请人1相同",
+        "line1": { "label": "地址第一行" },
+        "line2": { "label": "地址第二行（可选）" },
+        "city": { "label": "城市" },
+        "state": { "label": "省/州" },
+        "postalCode": { "label": "邮政编码" },
+        "country": { "label": "国家/地区", "placeholder": "选择国家/地区" },
+        "usingPrimary": "使用申请人1的地址"
+      },
+      "employment": {
+        "hasJob": { "label": "您有工作吗？" },
+        "jobTitle": { "label": "您的职业是什么？", "placeholder": "输入您的职位名称" }
+      },
+      "security": {
+        "criminalConvictions": { "label": "您是否曾有刑事定罪？" },
+        "warCrimes": { "label": "您是否曾被怀疑或因战争罪、恐怖主义或极端主义而被定罪？" }
+      },
+      "email": {
+        "sameAsPrimary": "与申请人1相同",
+        "usingPrimary": "使用申请人1的电子邮箱地址"
+      },
+      "options": { "yes": "是", "no": "否" }
+   ,
   "tracking": {
     "title": "跟踪您的申请",
     "subtitle": "输入您的参考编号以检查申请状态",

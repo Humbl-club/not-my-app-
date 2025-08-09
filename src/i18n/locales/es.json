@@ -93,7 +93,32 @@
       "summary": {"title": "Resumen del Pedido", "application": "Solicitud ETA del Reino Unido", "serviceFee": "Tarifa de Servicio", "vat": "IVA (20%)", "total": "Total", "sslSecured": "Pago Asegurado SSL", "moneyBack": "Garantía de Devolución del Dinero"},
       "complete": "Completar Pago"
     }
-  },
+   ,
+      "address": {
+        "title": "Dirección",
+        "sameAsPrimary": "Igual que el Solicitante 1",
+        "line1": { "label": "Línea de dirección 1" },
+        "line2": { "label": "Línea de dirección 2 (opcional)" },
+        "city": { "label": "Ciudad" },
+        "state": { "label": "Estado/Provincia" },
+        "postalCode": { "label": "Código postal" },
+        "country": { "label": "País", "placeholder": "Seleccione un país" },
+        "usingPrimary": "Usando la dirección del Solicitante 1"
+      },
+      "employment": {
+        "hasJob": { "label": "¿Tiene trabajo?" },
+        "jobTitle": { "label": "¿Cuál es su trabajo?", "placeholder": "Ingrese su cargo" }
+      },
+      "security": {
+        "criminalConvictions": { "label": "¿Alguna vez ha tenido condenas penales?" },
+        "warCrimes": { "label": "¿Alguna vez ha sido sospechoso o condenado por crímenes de guerra, terrorismo o extremismo?" }
+      },
+      "email": {
+        "sameAsPrimary": "Igual que el Solicitante 1",
+        "usingPrimary": "Usando el correo del Solicitante 1"
+      },
+      "options": { "yes": "Sí", "no": "No" }
+   ,
   "tracking": {
     "title": "Rastrea tu solicitud",
     "subtitle": "Ingresa tu número de referencia para verificar el estado de tu solicitud",

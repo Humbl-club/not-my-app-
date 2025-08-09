@@ -158,6 +158,31 @@
         "moneyBack": "Money Back Guarantee"
       },
       "complete": "Complete Payment"
+    ,
+      "address": {
+        "title": "Address",
+        "sameAsPrimary": "Same as Applicant 1",
+        "line1": { "label": "Address line 1" },
+        "line2": { "label": "Address line 2 (optional)" },
+        "city": { "label": "City" },
+        "state": { "label": "State/Province" },
+        "postalCode": { "label": "Postal code" },
+        "country": { "label": "Country", "placeholder": "Select a country" },
+        "usingPrimary": "Using Applicant 1's address"
+      },
+      "employment": {
+        "hasJob": { "label": "Do you have a job?" },
+        "jobTitle": { "label": "What's your job?", "placeholder": "Enter your job title" }
+      },
+      "security": {
+        "criminalConvictions": { "label": "Have you ever had criminal convictions?" },
+        "warCrimes": { "label": "Have you ever been suspected or convicted of war crimes, terrorism or extremism?" }
+      },
+      "email": {
+        "sameAsPrimary": "Same as Applicant 1",
+        "usingPrimary": "Using Applicant 1's email address"
+      },
+      "options": { "yes": "Yes", "no": "No" }
     }
   },
   "tracking": {
