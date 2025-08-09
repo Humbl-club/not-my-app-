@@ -82,13 +82,24 @@ const Documents = () => {
                 </div>
                 <div className="text-sm text-muted-foreground">
                   <h4 className="font-medium mb-2">{t('application.documents.photo.requirements.title')}</h4>
-                  <ul className="list-disc list-inside space-y-1">
-                    <li>{t('application.documents.photo.requirements.background')}</li>
-                    <li>{t('application.documents.photo.requirements.noObjects')}</li>
-                    <li>{t('application.documents.photo.requirements.visibility')}</li>
-                    <li>{t('application.documents.photo.requirements.lighting')}</li>
-                    <li>{t('application.documents.photo.requirements.features')}</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="font-medium text-foreground mb-1">The photo must be:</p>
+                      <ul className="list-disc list-inside space-y-1">
+                        <li>different to the one in your passport</li>
+                        <li>recently taken (no more than 3 months old)</li>
+                        <li>vertical (portrait)</li>
+                        <li>a jpg or jpeg file</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-medium text-foreground mb-1">You must not:</p>
+                      <ul className="list-disc list-inside space-y-1">
+                        <li>upload a photo of another photo</li>
+                        <li>use any effects or filters</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
