@@ -117,6 +117,9 @@ const Application = () => {
   const { control, handleSubmit, formState } = form;
   const { fields, append, remove } = useFieldArray({ control, name: 'applicants' });
   const { isValid, isSubmitting } = formState;
+  
+  // Watch all applicants to avoid hooks issues
+  const applicants = useWatch({ control, name: 'applicants' });
 
   const onSubmit = () => {
     navigate('/application/documents');
@@ -150,7 +153,7 @@ const Application = () => {
               <Form {...form}>
                 <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
                   {fields.map((field, idx) => {
-                    const useSame = useWatch({ control, name: `applicants.${idx}.useSameAddressAsPrimary` });
+                    const useSame = applicants?.[idx]?.useSameAddressAsPrimary;
                     return (
                       <div key={field.id} className="rounded-lg border p-4 space-y-4">
                         <div className="flex items-center justify-between">
