@@ -413,6 +413,10 @@ const Application = () => {
   }, [formState.errors]);
 
   const onSubmit = () => {
+    const primary = form.getValues('applicants.0');
+    try {
+      sessionStorage.setItem('application.primaryApplicant', JSON.stringify(primary));
+    } catch {}
     navigate('/application/documents');
   };
   return (
@@ -807,15 +811,9 @@ const Application = () => {
                   })}
 
                   <div className="flex justify-between">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={() => append(defaultApplicant(fields.length > 0, fields.length > 0))}
-                      className="flex items-center gap-2"
-                    >
-                      <UserPlus className="h-4 w-4" />
-                      {t('application.applicant.add', { defaultValue: 'Add another person' })}
-                    </Button>
+                    <div className="text-sm text-muted-foreground">
+                      {t('application.applicant.addLater', { defaultValue: 'You can add another applicant just before payment.' })}
+                    </div>
                   </div>
 
                   {/* Navigation */}
