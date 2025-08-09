@@ -37,22 +37,26 @@ const Application = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    {t('application.personalInfo.firstName')} {t('application.personalInfo.required')}
+                    {t('application.personalInfo.firstName.label')} <span aria-hidden="true" className="text-destructive">*</span>
                   </label>
                   <input
                     type="text"
+                    required
+                    aria-required="true"
                     className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder={t('application.personalInfo.firstNamePlaceholder')}
+                    placeholder={t('application.personalInfo.firstName.placeholder')}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    {t('application.personalInfo.lastName')} {t('application.personalInfo.required')}
+                    {t('application.personalInfo.lastName.label')} <span aria-hidden="true" className="text-destructive">*</span>
                   </label>
                   <input
                     type="text"
+                    required
+                    aria-required="true"
                     className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder={t('application.personalInfo.lastNamePlaceholder')}
+                    placeholder={t('application.personalInfo.lastName.placeholder')}
                   />
                 </div>
               </div>
@@ -60,19 +64,21 @@ const Application = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    {t('application.personalInfo.dateOfBirth')} {t('application.personalInfo.required')}
+                    {t('application.personalInfo.dateOfBirth.label')} <span aria-hidden="true" className="text-destructive">*</span>
                   </label>
                   <input
                     type="date"
+                    required
+                    aria-required="true"
                     className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    {t('application.personalInfo.nationality')} {t('application.personalInfo.required')}
+                    {t('application.personalInfo.nationality.label')} <span aria-hidden="true" className="text-destructive">*</span>
                   </label>
-                  <select className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
-                    <option value="">{t('application.personalInfo.nationalityPlaceholder')}</option>
+                  <select className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required aria-required="true">
+                    <option value="">{t('application.personalInfo.nationality.placeholder')}</option>
                     <option value="US">United States</option>
                     <option value="CA">Canada</option>
                     <option value="AU">Australia</option>
@@ -84,23 +90,27 @@ const Application = () => {
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  {t('application.personalInfo.email')} {t('application.personalInfo.required')}
+                  {t('application.personalInfo.email.label')} <span aria-hidden="true" className="text-destructive">*</span>
                 </label>
                 <input
                   type="email"
+                  required
+                  aria-required="true"
                   className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder={t('application.personalInfo.emailPlaceholder')}
+                  placeholder={t('application.personalInfo.email.placeholder')}
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  {t('application.personalInfo.passportNumber')} {t('application.personalInfo.required')}
+                  {t('application.personalInfo.passportNumber.label')} <span aria-hidden="true" className="text-destructive">*</span>
                 </label>
                 <input
                   type="text"
+                  required
+                  aria-required="true"
                   className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder={t('application.personalInfo.passportNumberPlaceholder')}
+                  placeholder={t('application.personalInfo.passportNumber.placeholder')}
                 />
               </div>
             </CardContent>
