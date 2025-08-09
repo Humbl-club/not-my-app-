@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { ArrowLeft, ArrowRight, CreditCard, Shield, Lock } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CreditCard, Shield, Lock, Plus, Minus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 import { useEffect, useState } from 'react';
@@ -49,12 +49,24 @@ const Payment = () => {
     lastName: z.string().min(1, 'Last name is required').regex(nameRegex).max(50),
     dateOfBirth: z.string().min(1, 'Date of birth is required').regex(dateRegex, 'Use format YYYY-MM-DD'),
     nationality: z.string().regex(nationalityRegex, 'Please select a nationality'),
+    hasAdditionalNationalities: z.boolean().optional().default(false),
+    additionalNationalities: z.array(z.string().regex(nationalityRegex, 'Please select a nationality')).optional().default([]),
     email: z.string().min(1, 'Email is required').regex(emailRegex, 'Please enter a valid email address'),
     passportNumber: z.string().min(1, 'Passport number is required').regex(passportRegex, 'Use 6-9 characters (letters and numbers)'),
     useSameAddressAsPrimary: z.boolean().optional().default(false),
     useSameEmailAsPrimary: z.boolean().optional().default(false),
     address: addressShape,
   }).superRefine((val, ctx) => {
+    if (val.hasAdditionalNationalities && (!val.additionalNationalities || val.additionalNationalities.length === 0)) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Please select at least one additional nationality', path: ['additionalNationalities'] });
+    }
+    if (val.additionalNationalities && val.additionalNationalities.length > 0) {
+      val.additionalNationalities.forEach((nat, index) => {
+        if (!nat || !nationalityRegex.test(nat)) {
+          ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Please select a nationality', path: ['additionalNationalities', index] });
+        }
+      });
+    }
     if (!val.useSameAddressAsPrimary) {
       if (!val.address?.line1 || val.address.line1.trim().length < 3) {
         ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Address line 1 is required', path: ['address','line1'] });
@@ -84,6 +96,8 @@ const Payment = () => {
       lastName: '',
       dateOfBirth: '',
       nationality: '',
+      hasAdditionalNationalities: false,
+      additionalNationalities: [],
       email: '',
       passportNumber: '',
       useSameAddressAsPrimary: false,
@@ -107,6 +121,20 @@ const Payment = () => {
         const order = ['firstName','lastName','dateOfBirth','nationality','email','passportNumber'];
         for (const k of order) {
           if (e?.[k]) { secondForm.setFocus(k as any); return; }
+        }
+        // Check additional nationalities
+        if (e?.additionalNationalities) {
+          if (Array.isArray(e.additionalNationalities)) {
+            for (let i = 0; i < e.additionalNationalities.length; i++) {
+              if (e.additionalNationalities[i]) {
+                secondForm.setFocus(`additionalNationalities.${i}` as any);
+                return;
+              }
+            }
+          } else {
+            secondForm.setFocus('hasAdditionalNationalities' as any);
+            return;
+          }
         }
         const addrOrder = ['line1','city','state','postalCode','country'];
         for (const k of addrOrder) {
@@ -201,6 +229,94 @@ const Payment = () => {
                           <FormMessage />
                         </FormItem>
                       )} />
+                    </div>
+
+                    <div className="space-y-4">
+                      <FormField control={secondForm.control} name="hasAdditionalNationalities" render={({ field }) => (
+                        <FormItem>
+                          <div className="flex items-center gap-2">
+                            <Checkbox 
+                              id="hasAdditionalNationalities2" 
+                              checked={!!field.value} 
+                              onCheckedChange={(checked) => {
+                                field.onChange(checked);
+                                if (!checked) {
+                                  secondForm.setValue('additionalNationalities', []);
+                                } else if (secondForm.getValues('additionalNationalities').length === 0) {
+                                  secondForm.setValue('additionalNationalities', ['']);
+                                }
+                              }} 
+                            />
+                            <label htmlFor="hasAdditionalNationalities2" className="text-sm font-medium">
+                              {t('application.personalInfo.additionalNationality.question', { defaultValue: 'Do you hold another nationality?' })}
+                            </label>
+                          </div>
+                        </FormItem>
+                      )} />
+
+                      {secondForm.watch('hasAdditionalNationalities') && (
+                        <div className="space-y-3">
+                          {secondForm.watch('additionalNationalities').map((_, index) => (
+                            <div key={index} className="flex items-end gap-3">
+                              <FormField 
+                                control={secondForm.control} 
+                                name={`additionalNationalities.${index}`} 
+                                render={({ field, fieldState }) => (
+                                  <FormItem className="flex-1">
+                                    {index === 0 && (
+                                      <FormLabel>{t('application.personalInfo.additionalNationality.label', { defaultValue: 'Additional nationality' })} <span className="text-destructive">*</span></FormLabel>
+                                    )}
+                                    <FormControl>
+                                      <select
+                                        {...field}
+                                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-destructive/5 aria-[invalid=true]:focus-visible:ring-destructive disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                                        aria-invalid={!!fieldState.error}
+                                      >
+                                        <option value="">{t('application.personalInfo.nationality.placeholder')}</option>
+                                        {nationalities.map((n) => (
+                                          <option key={n.code} value={n.code}>{n.name}</option>
+                                        ))}
+                                      </select>
+                                    </FormControl>
+                                    <FormMessage />
+                                  </FormItem>
+                                )}
+                              />
+                              <div className="flex gap-2">
+                                {secondForm.watch('additionalNationalities').length > 1 && (
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="icon"
+                                    onClick={() => {
+                                      const current = secondForm.getValues('additionalNationalities');
+                                      const updated = current.filter((_, i) => i !== index);
+                                      secondForm.setValue('additionalNationalities', updated);
+                                    }}
+                                    className="h-10 w-10"
+                                  >
+                                    <Minus className="h-4 w-4" />
+                                  </Button>
+                                )}
+                                {index === secondForm.watch('additionalNationalities').length - 1 && (
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="icon"
+                                    onClick={() => {
+                                      const current = secondForm.getValues('additionalNationalities');
+                                      secondForm.setValue('additionalNationalities', [...current, '']);
+                                    }}
+                                    className="h-10 w-10"
+                                  >
+                                    <Plus className="h-4 w-4" />
+                                  </Button>
+                                )}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
 
                     <div className="space-y-3">
