@@ -17,6 +17,9 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
+import { useEffect, useMemo } from 'react';
 
 // Regex patterns
 const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,50}$/;
@@ -375,10 +378,43 @@ const Application = () => {
   // Watch all applicants to avoid hooks issues
   const applicants = useWatch({ control, name: 'applicants' });
 
+  const primaryEmail = applicants?.[0]?.email ?? '';
+
+  useEffect(() => {
+    if (!applicants) return;
+    applicants.forEach((a, i) => {
+      if (i === 0) return;
+      if (a?.useSameEmailAsPrimary) {
+        form.setValue(`applicants.${i}.email`, primaryEmail, { shouldValidate: true });
+      }
+    });
+  }, [primaryEmail, applicants?.length, JSON.stringify(applicants?.map(a => a?.useSameEmailAsPrimary))]);
+
+  const applicantsWithErrors = useMemo(() => {
+    const errs = (formState.errors?.applicants as any[]) || [];
+    const list: number[] = [];
+    errs.forEach((e, i) => { if (e) list.push(i); });
+    return list;
+  }, [formState.errors]);
+
+  const firstErrorPath = useMemo(() => {
+    const errs: any[] = (formState.errors?.applicants as any[]) || [];
+    for (let i = 0; i < errs.length; i++) {
+      const e = errs[i];
+      if (!e) continue;
+      const order = ['firstName','lastName','dateOfBirth','nationality','email','passportNumber'];
+      for (const k of order) { if (e?.[k]) return `applicants.${i}.${k}` as const; }
+      if (e?.address) {
+        const addrOrder = ['line1','city','state','postalCode','country'];
+        for (const k of addrOrder) { if (e.address?.[k]) return `applicants.${i}.address.${k}` as const; }
+      }
+    }
+    return null;
+  }, [formState.errors]);
+
   const onSubmit = () => {
     navigate('/application/documents');
   };
-
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
@@ -406,19 +442,46 @@ const Application = () => {
             <CardContent className="space-y-6">
               <Form {...form}>
                 <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
+                  {formState.submitCount > 0 && !isValid && (
+                    <div role="alert" aria-live="polite" className="rounded-md border border-destructive/50 bg-destructive/5 p-4">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <p className="font-medium text-destructive">Some required fields are missing or invalid.</p>
+                          {applicantsWithErrors.length > 0 && (
+                            <p className="text-sm text-muted-foreground">
+                              Applicants needing attention: {applicantsWithErrors.map((i) => i + 1).join(', ')}
+                            </p>
+                          )}
+                        </div>
+                        {firstErrorPath && (
+                          <Button type="button" variant="destructive" size="sm" onClick={() => form.setFocus(firstErrorPath as any)}>
+                            Review missing fields
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                  )}
                   {fields.map((field, idx) => {
                     const useSame = applicants?.[idx]?.useSameAddressAsPrimary;
+                    const hasApplicantError = !!formState.errors?.applicants?.[idx];
                     return (
-                      <div key={field.id} className="rounded-lg border p-4 space-y-4">
+                      <div key={field.id} className={cn("rounded-lg border p-4 space-y-4", hasApplicantError && "border-destructive/50 ring-1 ring-destructive/30 bg-destructive/5")}>
                         <div className="flex items-center justify-between">
                           <h3 className="text-lg font-semibold">
                             {t('application.applicant.title', { defaultValue: 'Applicant {{num}}', num: idx + 1 })}
                           </h3>
-                          {idx > 0 && (
-                            <Button type="button" variant="outline" onClick={() => remove(idx)} className="flex items-center gap-2">
-                              <Trash2 className="h-4 w-4" /> {t('application.applicant.remove', { defaultValue: 'Remove' })}
-                            </Button>
-                          )}
+                          <div className="flex items-center gap-2">
+                            {hasApplicantError && (
+                              <Badge variant="destructive">
+                                {t('application.errors.needsAttention', { defaultValue: 'Needs attention' })}
+                              </Badge>
+                            )}
+                            {idx > 0 && (
+                              <Button type="button" variant="outline" onClick={() => remove(idx)} className="flex items-center gap-2">
+                                <Trash2 className="h-4 w-4" /> {t('application.applicant.remove', { defaultValue: 'Remove' })}
+                              </Button>
+                            )}
+                          </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -503,7 +566,7 @@ const Application = () => {
                                 <FormControl>
                                    <select
                                      {...field}
-                                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-destructive/5 aria-[invalid=true]:focus-visible:ring-destructive disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                                      aria-required="true"
                                      aria-invalid={!!fieldState.error}
                                    >
@@ -714,7 +777,7 @@ const Application = () => {
                                     <FormControl>
                                        <select
                                          {...field}
-                                         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                                         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-destructive/5 aria-[invalid=true]:focus-visible:ring-destructive disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                                          aria-required="true"
                                          aria-invalid={!!fieldState.error}
                                        >
