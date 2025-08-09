@@ -118,7 +118,7 @@
         "usingPrimary": "Usando el correo del Solicitante 1"
       },
       "options": { "yes": "Sí", "no": "No" }
-   ,
+    },
   "tracking": {
     "title": "Rastrea tu solicitud",
     "subtitle": "Ingresa tu número de referencia para verificar el estado de tu solicitud",

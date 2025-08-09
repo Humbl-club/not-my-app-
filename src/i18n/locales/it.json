@@ -67,7 +67,7 @@
         "usingPrimary": "Utilizzo l'indirizzo email del Richiedente 1"
       },
       "options": { "yes": "Sì", "no": "No" }
-  ,
+    },
   "tracking": {
     "title": "Traccia la tua richiesta",
     "subtitle": "Inserisci il numero di riferimento per verificare lo stato della tua richiesta",

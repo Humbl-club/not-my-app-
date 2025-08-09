@@ -81,7 +81,7 @@
         "usingPrimary": "使用申请人1的电子邮箱地址"
       },
       "options": { "yes": "是", "no": "否" }
-   ,
+    },
   "tracking": {
     "title": "跟踪您的申请",
     "subtitle": "输入您的参考编号以检查申请状态",

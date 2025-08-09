@@ -68,7 +68,7 @@
         "usingPrimary": "신청자 1의 이메일 주소 사용"
       },
       "options": { "yes": "예", "no": "아니오" }
-   ,
+    },
   "tracking": {
     "title": "신청 추적",
     "subtitle": "참조 번호를 입력하여 신청 상태를 확인하세요",

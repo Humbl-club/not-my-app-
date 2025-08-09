@@ -214,7 +214,7 @@
         "usingPrimary": "Utilisation de l'adresse e-mail du demandeur 1"
       },
       "options": { "yes": "Oui", "no": "Non" }
-    ,
+    },
   "tracking": {
     "title": "Suivre votre demande",
     "subtitle": "Entrez votre numéro de référence pour vérifier le statut de votre demande",
