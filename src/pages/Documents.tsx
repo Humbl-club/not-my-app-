@@ -33,24 +33,24 @@ const Documents = () => {
             {/* Passport Upload */}
             <Card>
               <CardHeader>
-                <CardTitle>Passport Information Page</CardTitle>
+                <CardTitle>{t('application.documents.passport.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-8 text-center">
                   <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                  <p className="text-lg font-medium mb-2">Upload Passport Photo</p>
-                  <p className="text-muted-foreground mb-4">JPG or JPEG format only</p>
+                  <p className="text-lg font-medium mb-2">{t('application.documents.passport.uploadTitle')}</p>
+                  <p className="text-muted-foreground mb-4">{t('application.documents.passport.format')}</p>
                   <Button variant="outline">
-                    Choose File
+                    {t('application.documents.passport.chooseFile')}
                   </Button>
                 </div>
                 <div className="mt-4 text-sm text-muted-foreground">
-                  <h4 className="font-medium mb-2">Requirements:</h4>
+                  <h4 className="font-medium mb-2">{t('application.documents.passport.requirements.title')}</h4>
                   <ul className="list-disc list-inside space-y-1">
-                    <li>Clear, readable image of passport personal details page</li>
-                    <li>All text must be visible and legible</li>
-                    <li>No glare or shadows</li>
-                    <li>JPG or JPEG format only</li>
+                    <li>{t('application.documents.passport.requirements.readable')}</li>
+                    <li>{t('application.documents.passport.requirements.visible')}</li>
+                    <li>{t('application.documents.passport.requirements.noGlare')}</li>
+                    <li>{t('application.documents.passport.requirements.format')}</li>
                   </ul>
                 </div>
               </CardContent>
@@ -59,35 +59,35 @@ const Documents = () => {
             {/* Photo Upload */}
             <Card>
               <CardHeader>
-                <CardTitle>Personal Photo</CardTitle>
+                <CardTitle>{t('application.documents.photo.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
                     <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                    <p className="font-medium mb-1">Upload Photo</p>
-                    <p className="text-sm text-muted-foreground mb-3">JPG or JPEG</p>
+                    <p className="font-medium mb-1">{t('application.documents.photo.upload.title')}</p>
+                    <p className="text-sm text-muted-foreground mb-3">{t('application.documents.photo.upload.format')}</p>
                     <Button variant="outline" size="sm">
-                      Choose File
+                      {t('application.documents.photo.upload.button')}
                     </Button>
                   </div>
                   <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
                     <Camera className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                    <p className="font-medium mb-1">Take Photo</p>
-                    <p className="text-sm text-muted-foreground mb-3">Use camera</p>
+                    <p className="font-medium mb-1">{t('application.documents.photo.camera.title')}</p>
+                    <p className="text-sm text-muted-foreground mb-3">{t('application.documents.photo.camera.subtitle')}</p>
                     <Button variant="outline" size="sm">
-                      Open Camera
+                      {t('application.documents.photo.camera.button')}
                     </Button>
                   </div>
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  <h4 className="font-medium mb-2">Photo Requirements:</h4>
+                  <h4 className="font-medium mb-2">{t('application.documents.photo.requirements.title')}</h4>
                   <ul className="list-disc list-inside space-y-1">
-                    <li>Plain, light background</li>
-                    <li>No people or objects in background</li>
-                    <li>Full head, shoulders, and upper body visible</li>
-                    <li>Even lighting with no shadows or glare</li>
-                    <li>Clear visibility of facial features</li>
+                    <li>{t('application.documents.photo.requirements.background')}</li>
+                    <li>{t('application.documents.photo.requirements.noObjects')}</li>
+                    <li>{t('application.documents.photo.requirements.visibility')}</li>
+                    <li>{t('application.documents.photo.requirements.lighting')}</li>
+                    <li>{t('application.documents.photo.requirements.features')}</li>
                   </ul>
                 </div>
               </CardContent>

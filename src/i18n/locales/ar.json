@@ -108,6 +108,58 @@
       "passportNumber": "رقم جواز السفر",
       "passportNumberPlaceholder": "أدخل رقم جواز سفرك",
       "required": "*"
+    },
+    "documents": {
+      "title": "تحميل المستندات",
+      "subtitle": "يرجى تحميل جواز السفر والصورة",
+      "passport": {
+        "title": "صفحة معلومات جواز السفر",
+        "uploadTitle": "تحميل صورة جواز السفر",
+        "format": "صيغة JPG أو JPEG فقط",
+        "chooseFile": "اختيار ملف",
+        "requirements": {
+          "title": "المتطلبات:",
+          "readable": "صورة واضحة ومقروءة لصفحة البيانات الشخصية في الجواز",
+          "visible": "يجب أن يكون كل النص مرئيًا ومقروءًا",
+          "noGlare": "بدون وهج أو ظلال",
+          "format": "صيغة JPG أو JPEG فقط"
+        }
+      },
+      "photo": {
+        "title": "صورة شخصية",
+        "upload": {"title": "تحميل صورة", "format": "JPG أو JPEG", "button": "اختيار ملف"},
+        "camera": {"title": "التقاط صورة", "subtitle": "استخدام الكاميرا", "button": "فتح الكاميرا"},
+        "requirements": {
+          "title": "متطلبات الصورة:",
+          "background": "خلفية بسيطة وفاتحة",
+          "noObjects": "لا أشخاص أو أشياء في الخلفية",
+          "visibility": "ظهور كامل للرأس والكتفين وأعلى الجسم",
+          "lighting": "إضاءة متساوية بدون ظلال أو وهج",
+          "features": "وضوح ملامح الوجه"
+        }
+      }
+    },
+    "payment": {
+      "title": "الدفع",
+      "subtitle": "أكمل الدفع لإرسال طلبك",
+      "details": {
+        "title": "تفاصيل الدفع",
+        "cardholderName": {"label": "اسم صاحب البطاقة *", "placeholder": "أدخل اسم صاحب البطاقة"},
+        "cardNumber": {"label": "رقم البطاقة *", "placeholder": "1234 5678 9012 3456"},
+        "expiryDate": {"label": "تاريخ الانتهاء *", "placeholder": "MM/YY"},
+        "cvv": {"label": "CVV *", "placeholder": "123"},
+        "security": "يتم تأمين دفعتك بتشفير SSL ومعالجتها من خلال مزودي دفع موثوقين."
+      },
+      "summary": {
+        "title": "ملخص الطلب",
+        "application": "طلب ETA المملكة المتحدة",
+        "serviceFee": "رسوم الخدمة",
+        "vat": "ضريبة القيمة المضافة (20%)",
+        "total": "الإجمالي",
+        "sslSecured": "دفعة آمنة SSL",
+        "moneyBack": "ضمان استرداد المال"
+      },
+      "complete": "إكمال الدفع"
     }
   }
 }

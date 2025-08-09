@@ -122,26 +122,70 @@
     },
     "documents": {
       "title": "Télécharger les documents",
-      "subtitle": "Veuillez télécharger les documents requis",
+      "subtitle": "Veuillez télécharger votre passeport et votre photo",
       "passport": {
         "title": "Page d'information du passeport",
-        "description": "Téléchargez une photo claire de la page d'information de votre passeport",
-        "requirements": "JPEG, PNG ou PDF • Max 10MB • Claire et lisible",
+        "uploadTitle": "Télécharger la photo du passeport",
+        "format": "Format JPG ou JPEG uniquement",
         "chooseFile": "Choisir un fichier",
+        "requirements": {
+          "title": "Exigences :",
+          "readable": "Image claire et lisible de la page des informations personnelles du passeport",
+          "visible": "Tout le texte doit être visible et lisible",
+          "noGlare": "Pas d'éblouissement ni d'ombres",
+          "format": "Format JPG ou JPEG uniquement"
+        },
+        "description": "Téléchargez une photo claire de la page d'information de votre passeport",
         "dragDrop": "Glissez et déposez votre fichier ici"
       },
       "photo": {
         "title": "Photo personnelle",
+        "upload": {
+          "title": "Télécharger la photo",
+          "format": "JPG ou JPEG",
+          "button": "Choisir un fichier"
+        },
+        "camera": {
+          "title": "Prendre une photo",
+          "subtitle": "Utiliser la caméra",
+          "button": "Ouvrir la caméra"
+        },
+        "requirements": {
+          "title": "Exigences pour la photo :",
+          "background": "Fond uni et clair",
+          "noObjects": "Pas de personnes ou d'objets en arrière-plan",
+          "visibility": "Tête, épaules et haut du corps entièrement visibles",
+          "lighting": "Éclairage uniforme sans ombres ni reflets",
+          "features": "Visibilité claire des traits du visage"
+        },
         "description": "Téléchargez une photo récente de vous-même de style passeport",
-        "requirements": "JPEG ou PNG • Max 5MB • Photo de style passeport",
+        "dragDrop": "Glissez et déposez votre fichier ici",
         "chooseFile": "Choisir un fichier",
-        "takePhoto": "Prendre une photo",
-        "dragDrop": "Glissez et déposez votre fichier ici"
+        "takePhoto": "Prendre une photo"
       }
     },
     "payment": {
-      "title": "Détails de paiement",
+      "title": "Paiement",
       "subtitle": "Complétez votre paiement pour soumettre votre demande",
+      "details": {
+        "title": "Détails de paiement",
+        "cardholderName": {"label": "Nom du titulaire de la carte *", "placeholder": "Entrez le nom du titulaire"},
+        "cardNumber": {"label": "Numéro de carte *", "placeholder": "1234 5678 9012 3456"},
+        "expiryDate": {"label": "Date d'expiration *", "placeholder": "MM/AA"},
+        "cvv": {"label": "CVV *", "placeholder": "123"},
+        "security": "Vos informations de paiement sont sécurisées et cryptées"
+      },
+      "summary": {
+        "title": "Résumé de la commande",
+        "application": "Demande ETA Royaume-Uni",
+        "serviceFee": "Frais de service",
+        "vat": "TVA (20%)",
+        "total": "Total",
+        "sslSecured": "Paiement sécurisé SSL",
+        "moneyBack": "Garantie de remboursement"
+      },
+      "complete": "Finaliser le paiement",
+
       "cardholderName": "Nom du titulaire de la carte",
       "cardholderNamePlaceholder": "Entrez le nom du titulaire",
       "cardNumber": "Numéro de carte",

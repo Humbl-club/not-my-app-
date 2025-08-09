@@ -35,59 +35,59 @@ const Payment = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <CreditCard className="h-5 w-5" />
-                    Payment Details
+                    {t('application.payment.details.title')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div>
                     <label className="block text-sm font-medium mb-2">
-                      Cardholder Name *
+                      {t('application.payment.details.cardholderName.label')}
                     </label>
                     <input
                       type="text"
                       className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="Enter cardholder name"
+                      placeholder={t('application.payment.details.cardholderName.placeholder')}
                     />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium mb-2">
-                      Card Number *
+                      {t('application.payment.details.cardNumber.label')}
                     </label>
                     <input
                       type="text"
                       className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="1234 5678 9012 3456"
+                      placeholder={t('application.payment.details.cardNumber.placeholder')}
                     />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium mb-2">
-                        Expiry Date *
-                      </label>
-                      <input
-                        type="text"
-                        className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                        placeholder="MM/YY"
-                      />
+                        <label className="block text-sm font-medium mb-2">
+                          {t('application.payment.details.expiryDate.label')}
+                        </label>
+                        <input
+                          type="text"
+                          className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                          placeholder={t('application.payment.details.expiryDate.placeholder')}
+                        />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">
-                        CVV *
-                      </label>
-                      <input
-                        type="text"
-                        className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                        placeholder="123"
-                      />
+                        <label className="block text-sm font-medium mb-2">
+                          {t('application.payment.details.cvv.label')}
+                        </label>
+                        <input
+                          type="text"
+                          className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                          placeholder={t('application.payment.details.cvv.placeholder')}
+                        />
                     </div>
                   </div>
 
                   <div className="flex items-center gap-2 p-4 bg-secondary/50 rounded-lg">
                     <Shield className="h-5 w-5 text-primary" />
                     <p className="text-sm">
-                      Your payment is secured with SSL encryption and processed through trusted payment providers.
+                      {t('application.payment.details.security')}
                     </p>
                   </div>
                 </CardContent>
@@ -98,35 +98,35 @@ const Payment = () => {
             <div>
               <Card>
                 <CardHeader>
-                  <CardTitle>Order Summary</CardTitle>
+                  <CardTitle>{t('application.payment.summary.title')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex justify-between">
-                    <span>UK ETA Application</span>
+                    <span>{t('application.payment.summary.application')}</span>
                     <span>£89.00</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Service Fee</span>
+                    <span>{t('application.payment.summary.serviceFee')}</span>
                     <span>£15.00</span>
                   </div>
                   <div className="flex justify-between text-sm text-muted-foreground">
-                    <span>VAT (20%)</span>
+                    <span>{t('application.payment.summary.vat')}</span>
                     <span>£20.80</span>
                   </div>
                   <hr />
                   <div className="flex justify-between font-bold text-lg">
-                    <span>Total</span>
+                    <span>{t('application.payment.summary.total')}</span>
                     <span>£124.80</span>
                   </div>
                   
                   <div className="mt-6 space-y-2">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Lock className="h-4 w-4" />
-                      <span>SSL Secured Payment</span>
+                      <span>{t('application.payment.summary.sslSecured')}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Shield className="h-4 w-4" />
-                      <span>Money Back Guarantee</span>
+                      <span>{t('application.payment.summary.moneyBack')}</span>
                     </div>
                   </div>
                 </CardContent>
@@ -149,7 +149,7 @@ const Payment = () => {
               className="flex items-center gap-2"
               size="lg"
             >
-              Complete Payment
+              {t('application.payment.complete')}
               <ArrowRight className="h-4 w-4" />
             </Button>
           </div>
