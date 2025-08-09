@@ -18,6 +18,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { cn } from '@/lib/utils';
 import { useEffect, useMemo } from 'react';
 import { nationalities } from '@/constants/nationalities';
@@ -68,6 +69,9 @@ const applicantBase = z
       .string()
       .min(1, 'Passport number is required')
       .regex(passportRegex, 'Use 6-9 characters (letters and numbers)'),
+    job: z.string().min(1, 'Job title is required'),
+    hasCriminalConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer this question' }),
+    hasWarCrimesConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer this question' }),
     useSameAddressAsPrimary: z.boolean().optional().default(false),
     useSameEmailAsPrimary: z.boolean().optional().default(false),
     address: addressShape,
@@ -120,6 +124,9 @@ const defaultApplicant = (shareAddress = false, shareEmail = false): z.infer<typ
   additionalNationalities: [],
   email: '',
   passportNumber: '',
+  job: '',
+  hasCriminalConvictions: undefined as any,
+  hasWarCrimesConvictions: undefined as any,
   useSameAddressAsPrimary: shareAddress,
   useSameEmailAsPrimary: shareEmail,
   address: { line1: '', line2: '', city: '', state: '', postalCode: '', country: '' },
@@ -164,11 +171,11 @@ const Application = () => {
   }, [formState.errors]);
 
   const firstErrorPath = useMemo(() => {
-    const errs: any[] = (formState.errors?.applicants as any[]) || [];
+      const errs: any[] = (formState.errors?.applicants as any[]) || [];
     for (let i = 0; i < errs.length; i++) {
       const e = errs[i];
       if (!e) continue;
-      const order = ['firstName','lastName','dateOfBirth','nationality','email','passportNumber'];
+      const order = ['firstName','lastName','dateOfBirth','nationality','email','passportNumber','job','hasCriminalConvictions','hasWarCrimesConvictions'];
       for (const k of order) { if (e?.[k]) return `applicants.${i}.${k}` as const; }
       if (e?.additionalNationalities && Array.isArray(e.additionalNationalities)) {
         for (let j = 0; j < e.additionalNationalities.length; j++) {
@@ -507,6 +514,87 @@ const Application = () => {
                                   aria-required="true"
                                   aria-invalid={!!fieldState.error}
                                 />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <FormField
+                          control={control}
+                          name={`applicants.${idx}.job`}
+                          render={({ field, fieldState }) => (
+                            <FormItem>
+                              <FormLabel>
+                                What's your job? <span aria-hidden="true" className="text-destructive">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  {...field}
+                                  type="text"
+                                  inputMode="text"
+                                  placeholder="Enter your job title"
+                                  aria-required="true"
+                                  aria-invalid={!!fieldState.error}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <FormField
+                          control={control}
+                          name={`applicants.${idx}.hasCriminalConvictions`}
+                          render={({ field, fieldState }) => (
+                            <FormItem>
+                              <FormLabel>
+                                Have you ever had criminal convictions? <span aria-hidden="true" className="text-destructive">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <RadioGroup
+                                  value={field.value}
+                                  onValueChange={field.onChange}
+                                  className="flex space-x-6"
+                                >
+                                  <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="yes" id={`criminal-yes-${idx}`} />
+                                    <label htmlFor={`criminal-yes-${idx}`} className="text-sm">Yes</label>
+                                  </div>
+                                  <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="no" id={`criminal-no-${idx}`} />
+                                    <label htmlFor={`criminal-no-${idx}`} className="text-sm">No</label>
+                                  </div>
+                                </RadioGroup>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <FormField
+                          control={control}
+                          name={`applicants.${idx}.hasWarCrimesConvictions`}
+                          render={({ field, fieldState }) => (
+                            <FormItem>
+                              <FormLabel>
+                                Have you ever been suspected or convicted of war crimes, terrorism or extremism? <span aria-hidden="true" className="text-destructive">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <RadioGroup
+                                  value={field.value}
+                                  onValueChange={field.onChange}
+                                  className="flex space-x-6"
+                                >
+                                  <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="yes" id={`war-yes-${idx}`} />
+                                    <label htmlFor={`war-yes-${idx}`} className="text-sm">Yes</label>
+                                  </div>
+                                  <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="no" id={`war-no-${idx}`} />
+                                    <label htmlFor={`war-no-${idx}`} className="text-sm">No</label>
+                                  </div>
+                                </RadioGroup>
                               </FormControl>
                               <FormMessage />
                             </FormItem>

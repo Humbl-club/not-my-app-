@@ -47,10 +47,15 @@ const Documents = () => {
                 <div className="mt-4 text-sm text-muted-foreground">
                   <h4 className="font-medium mb-2">{t('application.documents.passport.requirements.title')}</h4>
                   <ul className="list-disc list-inside space-y-1">
+                    <li>The photo must be unaltered by effects or filters</li>
+                    <li>Original, not a screenshot or photocopy</li>
+                    <li>Of a physical passport, not a digital passport</li>
+                    <li>In colour</li>
+                    <li>Horizontal (landscape)</li>
+                    <li>A jpg or jpeg file</li>
                     <li>{t('application.documents.passport.requirements.readable')}</li>
                     <li>{t('application.documents.passport.requirements.visible')}</li>
                     <li>{t('application.documents.passport.requirements.noGlare')}</li>
-                    <li>{t('application.documents.passport.requirements.format')}</li>
                   </ul>
                 </div>
               </CardContent>
