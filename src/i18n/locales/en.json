@@ -40,68 +40,24 @@
   "steps": {
     "title": "Simple 4-Step Process",
     "subtitle": "Complete your UK ETA application in minutes with our guided process.",
-    "step1": {
-      "title": "Complete Application",
-      "description": "Fill out the secure online form with your personal and travel details.",
-      "time": "5-10 minutes"
-    },
-    "step2": {
-      "title": "Upload Documents",
-      "description": "Securely upload your passport and photo to our encrypted platform.",
-      "time": "2-3 minutes"
-    },
-    "step3": {
-      "title": "Make Payment",
-      "description": "Secure payment processing with multiple payment options available.",
-      "time": "1-2 minutes"
-    },
-    "step4": {
-      "title": "Receive ETA",
-      "description": "Get your approved ETA delivered directly to your email inbox.",
-      "time": "24-72 hours"
-    }
+    "step1": {"title": "Complete Application", "description": "Fill out the secure online form with your personal and travel details.", "time": "5-10 minutes"},
+    "step2": {"title": "Upload Documents", "description": "Securely upload your passport and photo to our encrypted platform.", "time": "2-3 minutes"},
+    "step3": {"title": "Make Payment", "description": "Secure payment processing with multiple payment options available.", "time": "1-2 minutes"},
+    "step4": {"title": "Receive ETA", "description": "Get your approved ETA delivered directly to your email inbox.", "time": "24-72 hours"}
   },
   "trustIndicators": {
-    "secure": {
-      "title": "Secure & Encrypted",
-      "description": "SSL encrypted data protection"
-    },
-    "gdpr": {
-      "title": "GDPR Compliant",
-      "description": "Full data protection compliance"
-    },
-    "support": {
-      "title": "24/7 Support",
-      "description": "Round-the-clock assistance"
-    },
-    "trusted": {
-      "title": "Trusted Service",
-      "description": "Over 10,000 successful applications"
-    }
+    "secure": {"title": "Secure & Encrypted", "description": "SSL encrypted data protection"},
+    "gdpr": {"title": "GDPR Compliant", "description": "Full data protection compliance"},
+    "support": {"title": "24/7 Support", "description": "Round-the-clock assistance"},
+    "trusted": {"title": "Trusted Service", "description": "Over 10,000 successful applications"}
   },
   "applicationSteps": {
     "title": "Simple 4-Step Process",
     "subtitle": "Our streamlined application process makes getting your UK ETA fast and easy",
-    "step1": {
-      "title": "Complete Application",
-      "description": "Fill out the secure online form with your personal and travel details.",
-      "time": "5-10 minutes"
-    },
-    "step2": {
-      "title": "Upload Documents", 
-      "description": "Submit your passport copy and photo. Our system validates all requirements automatically.",
-      "time": "2-3 minutes"
-    },
-    "step3": {
-      "title": "Secure Payment",
-      "description": "Pay securely with credit card, debit card, or PayPal. All transactions are encrypted.",
-      "time": "1-2 minutes"
-    },
-    "step4": {
-      "title": "Receive Authorization",
-      "description": "Get your UK ETA via email within 72 hours. Track your application status online.",
-      "time": "Up to 72 hours"
-    }
+    "step1": {"title": "Complete Application", "description": "Fill out the secure online form with your personal and travel details.", "time": "5-10 minutes"},
+    "step2": {"title": "Upload Documents", "description": "Submit your passport copy and photo. Our system validates all requirements automatically.", "time": "2-3 minutes"},
+    "step3": {"title": "Secure Payment", "description": "Pay securely with credit card, debit card, or PayPal. All transactions are encrypted.", "time": "1-2 minutes"},
+    "step4": {"title": "Receive Authorization", "description": "Get your UK ETA via email within 72 hours. Track your application status online.", "time": "Up to 72 hours"}
   },
   "footer": {
     "disclaimer": "This website is operated by an independent third-party and is not affiliated with the UK Government or UK Visas and Immigration (UKVI).",
@@ -132,11 +88,7 @@
       "email": "support@uketaapplication.com",
       "contactButton": "Contact Support"
     },
-    "security": {
-      "ssl": "SSL Secure",
-      "gdpr": "GDPR Compliant",
-      "pci": "PCI DSS Certified"
-    },
+    "security": {"ssl": "SSL Secure", "gdpr": "GDPR Compliant", "pci": "PCI DSS Certified"},
     "copyright": "© 2024 UK ETA Application Service. All rights reserved."
   },
   "application": {
@@ -145,36 +97,15 @@
     "continue": "Continue",
     "back": "Back",
     "submit": "Submit Application",
-    "progress": {
-      "step": "Step {{current}} of {{total}}",
-      "complete": "{{percent}}% Complete"
-    },
+    "progress": {"step": "Step {{current}} of {{total}}", "complete": "{{percent}}% Complete"},
     "personalInfo": {
       "title": "Personal Information",
-      "firstName": {
-        "label": "First Name",
-        "placeholder": "Enter your first name"
-      },
-      "lastName": {
-        "label": "Last Name", 
-        "placeholder": "Enter your last name"
-      },
-      "dateOfBirth": {
-        "label": "Date of Birth",
-        "placeholder": "Select your date of birth"
-      },
-      "nationality": {
-        "label": "Nationality",
-        "placeholder": "Select your nationality"
-      },
-      "email": {
-        "label": "Email Address",
-        "placeholder": "Enter your email address"
-      },
-      "passportNumber": {
-        "label": "Passport Number",
-        "placeholder": "Enter your passport number"
-      }
+      "firstName": {"label": "First Name", "placeholder": "Enter your first name"},
+      "lastName": {"label": "Last Name", "placeholder": "Enter your last name"},
+      "dateOfBirth": {"label": "Date of Birth", "placeholder": "Select your date of birth"},
+      "nationality": {"label": "Nationality", "placeholder": "Select your nationality"},
+      "email": {"label": "Email Address", "placeholder": "Enter your email address"},
+      "passportNumber": {"label": "Passport Number", "placeholder": "Enter your passport number"}
     },
     "documents": {
       "title": "Upload Documents",
@@ -194,16 +125,8 @@
       },
       "photo": {
         "title": "Personal Photo",
-        "upload": {
-          "title": "Upload Photo",
-          "format": "JPG or JPEG",
-          "button": "Choose File"
-        },
-        "camera": {
-          "title": "Take Photo",
-          "subtitle": "Use camera",
-          "button": "Open Camera"
-        },
+        "upload": {"title": "Upload Photo", "format": "JPG or JPEG", "button": "Choose File"},
+        "camera": {"title": "Take Photo", "subtitle": "Use camera", "button": "Open Camera"},
         "requirements": {
           "title": "Photo Requirements:",
           "background": "Plain, light background",
@@ -219,22 +142,10 @@
       "subtitle": "Complete your payment to submit your application",
       "details": {
         "title": "Payment Details",
-        "cardholderName": {
-          "label": "Cardholder Name *",
-          "placeholder": "Enter cardholder name"
-        },
-        "cardNumber": {
-          "label": "Card Number *",
-          "placeholder": "1234 5678 9012 3456"
-        },
-        "expiryDate": {
-          "label": "Expiry Date *",
-          "placeholder": "MM/YY"
-        },
-        "cvv": {
-          "label": "CVV *",
-          "placeholder": "123"
-        },
+        "cardholderName": {"label": "Cardholder Name *", "placeholder": "Enter cardholder name"},
+        "cardNumber": {"label": "Card Number *", "placeholder": "1234 5678 9012 3456"},
+        "expiryDate": {"label": "Expiry Date *", "placeholder": "MM/YY"},
+        "cvv": {"label": "CVV *", "placeholder": "123"},
         "security": "Your payment is secured with SSL encryption and processed through trusted payment providers."
       },
       "summary": {
@@ -252,20 +163,71 @@
   "tracking": {
     "title": "Track Your Application",
     "subtitle": "Enter your reference number to check your application status",
+    "lookupTitle": "Application Lookup",
     "referenceNumber": "Reference Number",
-    "referencePlaceholder": "Enter your reference number",
+    "referencePlaceholder": "Enter your reference number (e.g., ETA-2024-001234)",
     "trackButton": "Track Application",
-    "status": {
-      "received": "Application Received",
-      "processing": "Under Review",
-      "approved": "Approved",
-      "rejected": "Rejected"
+    "hint": "Your reference number was provided in your confirmation email.",
+    "applicationStatus": "Application Status: {{ref}}",
+    "labels": {
+      "applicantName": "Applicant Name",
+      "submissionDate": "Submission Date",
+      "currentStatus": "Current Status"
+    },
+    "status": {"received": "Application Received", "processing": "Under Review", "approved": "Approved", "rejected": "Rejected"},
+    "timeline": {
+      "title": "Application Timeline",
+      "submitted": "Application Submitted",
+      "documentsVerified": "Documents Verified",
+      "underReview": "Under Review",
+      "etaIssued": "ETA Issued",
+      "current": "Current",
+      "pending": "Pending",
+      "descriptions": {
+        "submitted": "Your application was successfully received and payment confirmed.",
+        "documentsVerified": "All submitted documents have been verified and accepted.",
+        "underReview": "Your application is currently being reviewed by UK authorities.",
+        "etaIssued": "Your ETA will be issued and sent to your email once approved."
+      }
+    },
+    "estimated": {
+      "title": "Estimated Completion",
+      "description": "Based on current processing times, your ETA is expected to be issued within the next 24-48 hours. You will receive an email notification once your ETA is ready."
     },
     "support": {
-      "title": "Need Help?",
+      "title": "Need Assistance?",
+      "contactTitle": "Contact Support",
       "description": "If you have any questions about your application, please contact our support team.",
+      "emailLabel": "Email",
+      "phoneLabel": "Phone",
+      "hoursLabel": "Hours",
       "phone": "+44 20 7946 0958",
       "email": "support@uketaservice.com"
+    },
+    "processingTimes": {
+      "title": "Processing Times",
+      "description": "Current average processing times for UK ETA applications.",
+      "standard": "Standard Processing: 24-72 hours",
+      "peak": "Peak Season: Up to 5 days",
+      "complex": "Complex Cases: Up to 10 days"
     }
+  },
+  "confirmation": {
+    "title": "Application Submitted Successfully!",
+    "subtitle": "Your UK ETA application has been received and is now being processed.",
+    "applicationDetails": "Application Details",
+    "referenceNumber": "Application Reference",
+    "submissionDate": "Submission Date",
+    "processingTime": "Expected Processing Time",
+    "amountPaid": "Total Amount Paid",
+    "nextSteps": {
+      "title": "What Happens Next?",
+      "step1": {"title": "Email Confirmation", "description": "You'll receive an email confirmation with your application reference number."},
+      "step2": {"title": "Application Processing", "description": "Our team will review your application and submit it to UK authorities."},
+      "step3": {"title": "ETA Delivery", "description": "Your approved ETA will be sent directly to your email address."}
+    },
+    "actions": {"downloadReceipt": "Download Receipt", "emailReceipt": "Email Receipt", "trackApplication": "Track Application"},
+    "support": {"title": "Need Help?", "email": "Email Support", "phone": "Phone Support", "hours": "Available 24/7"},
+    "returnHome": "Return to Home"
   }
 }

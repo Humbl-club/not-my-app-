@@ -9,73 +9,71 @@ const Track = () => {
   const { t } = useTranslation();
   const [referenceNumber, setReferenceNumber] = useState('');
 
+  const sampleRef = referenceNumber || 'ETA-2024-001234';
+
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-2">Track Your Application</h1>
-            <p className="text-muted-foreground">
-              Enter your application reference number to check the status of your UK ETA application.
-            </p>
+            <h1 className="text-3xl font-bold mb-2">{t('tracking.title')}</h1>
+            <p className="text-muted-foreground">{t('tracking.subtitle')}</p>
           </div>
 
           {/* Search Form */}
           <Card className="mb-8">
             <CardHeader>
-              <CardTitle>Application Lookup</CardTitle>
+              <CardTitle>{t('tracking.lookupTitle')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex gap-4">
                 <div className="flex-1">
                   <Input
-                    placeholder="Enter your reference number (e.g., ETA-2024-001234)"
+                    placeholder={t('tracking.referencePlaceholder')}
                     value={referenceNumber}
                     onChange={(e) => setReferenceNumber(e.target.value)}
                   />
                 </div>
                 <Button className="flex items-center gap-2">
                   <Search className="h-4 w-4" />
-                  Search
+                  {t('tracking.trackButton')}
                 </Button>
               </div>
-              <p className="text-sm text-muted-foreground mt-2">
-                Your reference number was provided in your confirmation email.
-              </p>
+              <p className="text-sm text-muted-foreground mt-2">{t('tracking.hint')}</p>
             </CardContent>
           </Card>
 
           {/* Sample Application Status */}
           <Card className="mb-8">
             <CardHeader>
-              <CardTitle>Application Status: ETA-2024-001234</CardTitle>
+              <CardTitle>{t('tracking.applicationStatus', { ref: sampleRef })}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
                 {/* Application Details */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-secondary/20 rounded-lg">
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Applicant Name</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('tracking.labels.applicantName')}</label>
                     <p className="font-medium">John Smith</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Submission Date</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('tracking.labels.submissionDate')}</label>
                     <p>{new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toLocaleDateString()}</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Current Status</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('tracking.labels.currentStatus')}</label>
                     <div className="flex items-center gap-2">
                       <Clock className="h-4 w-4 text-yellow-500" />
-                      <span className="font-medium text-yellow-600">Under Review</span>
+                      <span className="font-medium text-yellow-600">{t('tracking.status.processing')}</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Status Timeline */}
                 <div className="space-y-4">
-                  <h3 className="font-semibold">Application Timeline</h3>
-                  
+                  <h3 className="font-semibold">{t('tracking.timeline.title')}</h3>
+
                   <div className="space-y-4">
                     <div className="flex items-start gap-4">
                       <div className="mt-1">
@@ -83,14 +81,12 @@ const Track = () => {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between">
-                          <h4 className="font-medium">Application Submitted</h4>
+                          <h4 className="font-medium">{t('tracking.timeline.submitted')}</h4>
                           <span className="text-sm text-muted-foreground">
                             {new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toLocaleDateString()}
                           </span>
                         </div>
-                        <p className="text-sm text-muted-foreground">
-                          Your application was successfully received and payment confirmed.
-                        </p>
+                        <p className="text-sm text-muted-foreground">{t('tracking.timeline.descriptions.submitted')}</p>
                       </div>
                     </div>
 
@@ -100,14 +96,12 @@ const Track = () => {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between">
-                          <h4 className="font-medium">Documents Verified</h4>
+                          <h4 className="font-medium">{t('tracking.timeline.documentsVerified')}</h4>
                           <span className="text-sm text-muted-foreground">
                             {new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toLocaleDateString()}
                           </span>
                         </div>
-                        <p className="text-sm text-muted-foreground">
-                          All submitted documents have been verified and accepted.
-                        </p>
+                        <p className="text-sm text-muted-foreground">{t('tracking.timeline.descriptions.documentsVerified')}</p>
                       </div>
                     </div>
 
@@ -117,12 +111,10 @@ const Track = () => {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between">
-                          <h4 className="font-medium">Under Review</h4>
-                          <span className="text-sm text-muted-foreground">Current</span>
+                          <h4 className="font-medium">{t('tracking.timeline.underReview')}</h4>
+                          <span className="text-sm text-muted-foreground">{t('tracking.timeline.current')}</span>
                         </div>
-                        <p className="text-sm text-muted-foreground">
-                          Your application is currently being reviewed by UK authorities.
-                        </p>
+                        <p className="text-sm text-muted-foreground">{t('tracking.timeline.descriptions.underReview')}</p>
                       </div>
                     </div>
 
@@ -132,12 +124,10 @@ const Track = () => {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between">
-                          <h4 className="font-medium text-muted-foreground">ETA Issued</h4>
-                          <span className="text-sm text-muted-foreground">Pending</span>
+                          <h4 className="font-medium text-muted-foreground">{t('tracking.timeline.etaIssued')}</h4>
+                          <span className="text-sm text-muted-foreground">{t('tracking.timeline.pending')}</span>
                         </div>
-                        <p className="text-sm text-muted-foreground">
-                          Your ETA will be issued and sent to your email once approved.
-                        </p>
+                        <p className="text-sm text-muted-foreground">{t('tracking.timeline.descriptions.etaIssued')}</p>
                       </div>
                     </div>
                   </div>
@@ -147,12 +137,9 @@ const Track = () => {
                 <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
                   <div className="flex items-center gap-2 mb-2">
                     <AlertCircle className="h-5 w-5 text-blue-600" />
-                    <h4 className="font-medium text-blue-900">Estimated Completion</h4>
+                    <h4 className="font-medium text-blue-900">{t('tracking.estimated.title')}</h4>
                   </div>
-                  <p className="text-blue-800 text-sm">
-                    Based on current processing times, your ETA is expected to be issued within the next 24-48 hours.
-                    You will receive an email notification once your ETA is ready.
-                  </p>
+                  <p className="text-blue-800 text-sm">{t('tracking.estimated.description')}</p>
                 </div>
               </div>
             </CardContent>
@@ -161,30 +148,26 @@ const Track = () => {
           {/* Help Section */}
           <Card>
             <CardHeader>
-              <CardTitle>Need Assistance?</CardTitle>
+              <CardTitle>{t('tracking.support.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-medium mb-2">Contact Support</h4>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    If you have questions about your application status, our support team is here to help.
-                  </p>
+                  <h4 className="font-medium mb-2">{t('tracking.support.contactTitle')}</h4>
+                  <p className="text-sm text-muted-foreground mb-3">{t('tracking.support.description')}</p>
                   <div className="space-y-2 text-sm">
-                    <p><strong>Email:</strong> support@uketaservice.com</p>
-                    <p><strong>Phone:</strong> +44 20 7946 0958</p>
-                    <p><strong>Hours:</strong> Available 24/7</p>
+                    <p><strong>{t('tracking.support.emailLabel')}:</strong> {t('tracking.support.email')}</p>
+                    <p><strong>{t('tracking.support.phoneLabel')}:</strong> {t('tracking.support.phone')}</p>
+                    <p><strong>{t('tracking.support.hoursLabel')}:</strong> {t('header.available247', { defaultValue: 'Available 24/7' })}</p>
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-medium mb-2">Processing Times</h4>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    Current average processing times for UK ETA applications.
-                  </p>
+                  <h4 className="font-medium mb-2">{t('tracking.processingTimes.title')}</h4>
+                  <p className="text-sm text-muted-foreground mb-3">{t('tracking.processingTimes.description')}</p>
                   <div className="space-y-2 text-sm">
-                    <p><strong>Standard Processing:</strong> 24-72 hours</p>
-                    <p><strong>Peak Season:</strong> Up to 5 days</p>
-                    <p><strong>Complex Cases:</strong> Up to 10 days</p>
+                    <p>{t('tracking.processingTimes.standard')}</p>
+                    <p>{t('tracking.processingTimes.peak')}</p>
+                    <p>{t('tracking.processingTimes.complex')}</p>
                   </div>
                 </div>
               </div>

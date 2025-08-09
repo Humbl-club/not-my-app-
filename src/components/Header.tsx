@@ -18,11 +18,11 @@ export const Header = () => {
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
                 <Phone className="h-3 w-3" />
-                <span>+44 20 7946 0958</span>
+                <span>{t('header.phone')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-3 w-3" />
-                <span>support@uketaapplication.com</span>
+                <span>{t('header.email')}</span>
               </div>
             </div>
             <div className="flex items-center gap-4">

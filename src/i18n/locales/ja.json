@@ -18,191 +18,52 @@
     "feature4": "返金保証",
     "startApplication": "申請開始",
     "learnMore": "詳細を見る",
-    "stats": {
-      "title": "処理統計",
-      "processingTime": "72時間",
-      "processingLabel": "平均処理時間",
-      "applicationsCount": "10,000+",
-      "applicationsLabel": "処理済み申請"
-    },
-    "notice": {
-      "title": "重要なお知らせ：",
-      "text": "これは独立した第三者サービスであり、英国政府やUKVIとは関係ありません。"
-    }
+    "stats": {"title": "処理統計", "processingTime": "72時間", "processingLabel": "平均処理時間", "applicationsCount": "10,000+", "applicationsLabel": "処理済み申請"},
+    "notice": {"title": "重要なお知らせ：", "text": "これは独立した第三者サービスであり、英国政府やUKVIとは関係ありません。"}
   },
-  "trust": {
-    "processing": "平均処理時間",
-    "processingTime": "72時間",
-    "applications": "処理済み申請",
-    "applicationsCount": "10,000+",
-    "notice": "このサービスは独立した第三者によって提供されており、英国政府とは関係ありません。"
-  },
-  "steps": {
-    "title": "シンプルな4ステッププロセス",
-    "subtitle": "ガイド付きプロセスで、わずか数分で英国ETA申請を完了できます。",
-    "step1": {
-      "title": "申請書記入",
-      "description": "個人および旅行の詳細を使用して、安全なオンラインフォームを完成させます。",
-      "time": "5-10分"
-    },
-    "step2": {
-      "title": "書類アップロード",
-      "description": "暗号化されたプラットフォームにパスポートと写真を安全にアップロードします。",
-      "time": "2-3分"
-    },
-    "step3": {
-      "title": "支払い",
-      "description": "複数の支払いオプションを利用した安全な支払い処理。",
-      "time": "1-2分"
-    },
-    "step4": {
-      "title": "ETA受領",
-      "description": "承認されたETAをメールの受信箱に直接お届けします。",
-      "time": "24-72時間"
-    }
-  },
-  "footer": {
-    "disclaimer": "このウェブサイトは独立した第三者によって運営されており、英国政府や英国ビザ・移民局（UKVI）とは関係ありません。",
-    "brand": {
-      "title": "ブランド",
-      "about": "私たちについて",
-      "contact": "お問い合わせ",
-      "careers": "採用情報"
-    },
-    "quickLinks": {
-      "title": "クイックリンク",
-      "howItWorks": "仕組み",
-      "requirements": "要件",
-      "faq": "FAQ",
-      "support": "サポート"
-    },
-    "legal": {
-      "title": "法的事項",
-      "privacy": "プライバシーポリシー",
-      "terms": "利用規約",
-      "refund": "返金ポリシー",
-      "cookies": "クッキーポリシー"
-    },
-    "support": {
-      "title": "サポート",
-      "email": "support@uketaservice.com",
-      "phone": "+44 20 7946 0958",
-      "hours": "24時間365日対応"
-    },
-    "security": {
-      "secure": "SSL保護",
-      "gdpr": "GDPR準拠",
-      "encrypted": "データ暗号化"
-    }
-  },
+  "trust": {"processing": "平均処理時間", "processingTime": "72時間", "applications": "処理済み申請", "applicationsCount": "10,000+", "notice": "このサービスは独立した第三者によって提供されており、英国政府とは関係ありません。"},
+  "steps": {"title": "シンプルな4ステッププロセス", "subtitle": "ガイド付きプロセスで、わずか数分で英国ETA申請を完了できます。", "step1": {"title": "申請書記入", "description": "個人および旅行の詳細を使用して、安全なオンラインフォームを完成させます。", "time": "5-10分"}, "step2": {"title": "書類アップロード", "description": "暗号化されたプラットフォームにパスポートと写真を安全にアップロードします。", "time": "2-3分"}, "step3": {"title": "支払い", "description": "複数の支払いオプションを利用した安全な支払い処理。", "time": "1-2分"}, "step4": {"title": "ETA受領", "description": "承認されたETAをメールの受信箱に直接お届けします。", "time": "24-72時間"}},
+  "trustIndicators": {"secure": {"title": "安全な暗号化", "description": "SSL暗号化によるデータ保護"}, "gdpr": {"title": "GDPR準拠", "description": "完全なデータ保護準拠"}, "support": {"title": "24/7サポート", "description": "年中無休のサポート"}, "trusted": {"title": "信頼できるサービス", "description": "10,000件以上の成功申請"}},
+  "applicationSteps": {"title": "シンプルな4ステッププロセス", "subtitle": "簡素化された申請プロセスで英国ETAを迅速かつ簡単に取得", "step1": {"title": "申請の完了", "description": "個人情報と旅行情報を入力して、安全なオンラインフォームに記入します。", "time": "5-10分"}, "step2": {"title": "書類のアップロード", "description": "パスポートのコピーと写真を提出。システムがすべての要件を自動で検証します。", "time": "2-3分"}, "step3": {"title": "安全な支払い", "description": "クレジットカード、デビットカード、またはPayPalで安全に支払います。すべての取引は暗号化されます。", "time": "1-2分"}, "step4": {"title": "認証の受領", "description": "72時間以内にメールで英国ETAを受け取ります。オンラインで申請状況を追跡できます。", "time": "最大72時間"}},
+  "footer": {"disclaimer": "このウェブサイトは独立した第三者によって運営されており、英国政府や英国ビザ・移民局（UKVI）とは関係ありません。", "brand": {"title": "英国ETA申請", "subtitle": "第三者サービス提供者", "description": "専門サポートと安全な処理によるプロフェッショナルな英国ETA申請支援。"}, "quickLinks": {"title": "クイックリンク", "startApplication": "申請開始", "trackApplication": "申請追跡", "requirements": "ETA要件", "processingTimes": "処理時間"}, "legal": {"title": "法的事項", "privacy": "プライバシーポリシー", "terms": "利用規約", "refund": "返金ポリシー", "cookies": "クッキーポリシー"}, "support": {"title": "サポート", "phoneLabel": "電話サポート", "phone": "+44 20 7946 0958", "emailLabel": "メールサポート", "email": "support@uketaapplication.com", "contactButton": "サポートに連絡"}, "security": {"ssl": "SSL保護", "gdpr": "GDPR準拠", "pci": "PCI DSS認定"}},
   "application": {
     "title": "英国ETA申請フォーム",
     "subtitle": "すべての必須フィールドを正確に記入してください",
     "continue": "続行",
     "back": "戻る",
     "submit": "申請を提出",
-    "progress": {
-      "step": "ステップ{{current}} / {{total}}",
-      "complete": "{{percent}}%完了"
-    },
-    "personalInfo": {
-      "title": "個人情報",
-      "firstName": {
-        "label": "名",
-        "placeholder": "名前を入力してください"
-      },
-      "lastName": {
-        "label": "姓",
-        "placeholder": "姓を入力してください"
-      },
-      "dateOfBirth": {
-        "label": "生年月日",
-        "placeholder": "生年月日を選択してください"
-      },
-      "nationality": {
-        "label": "国籍",
-        "placeholder": "国籍を選択してください"
-      },
-      "email": {
-        "label": "メールアドレス",
-        "placeholder": "メールアドレスを入力してください"
-      },
-      "passportNumber": {
-        "label": "パスポート番号",
-        "placeholder": "パスポート番号を入力してください"
-      }
-    },
-    "documents": {
-      "title": "書類のアップロード",
-      "subtitle": "パスポートと写真をアップロードしてください",
-      "passport": {
-        "title": "パスポート情報ページ",
-        "uploadTitle": "パスポート写真をアップロード",
-        "format": "JPGまたはJPEG形式のみ",
-        "chooseFile": "ファイルを選択",
-        "requirements": {
-          "title": "要件：",
-          "readable": "パスポートの個人情報ページの鮮明で読みやすい画像",
-          "visible": "すべてのテキストが見やすく読みやすいこと",
-          "noGlare": "反射や影がないこと",
-          "format": "JPGまたはJPEG形式のみ"
-        }
-      },
-      "photo": {
-        "title": "個人写真",
-        "upload": {
-          "title": "写真をアップロード",
-          "format": "JPGまたはJPEG",
-          "button": "ファイルを選択"
-        },
-        "camera": {
-          "title": "写真を撮る",
-          "subtitle": "カメラを使用",
-          "button": "カメラを開く"
-        },
-        "requirements": {
-          "title": "写真の要件：",
-          "background": "無地で明るい背景",
-          "noObjects": "背景に人や物がないこと",
-          "visibility": "頭、肩、上半身が完全に見えること",
-          "lighting": "影や反射のない均一な照明",
-          "features": "顔の特徴がはっきりと見えること"
-        }
-      }
-    },
-    "payment": {
-      "title": "支払い",
-      "subtitle": "申請を提出するには支払いを完了してください",
-      "details": {
-        "title": "支払い詳細",
-        "cardholderName": {
-          "label": "カード名義人 *",
-          "placeholder": "カード名義人の名前を入力してください"
-        },
-        "cardNumber": {
-          "label": "カード番号 *",
-          "placeholder": "1234 5678 9012 3456"
-        },
-        "expiryDate": {
-          "label": "有効期限 *",
-          "placeholder": "MM/YY"
-        },
-        "cvv": {
-          "label": "CVV *",
-          "placeholder": "123"
-        },
-        "security": "お支払いはSSL暗号化で保護され、信頼できる決済プロバイダーを通じて処理されます。"
-      },
-      "summary": {
-        "title": "注文概要",
-        "application": "英国ETA申請",
-        "serviceFee": "サービス料",
-        "vat": "VAT（20%）",
-        "total": "合計",
-        "sslSecured": "SSL保護された支払い",
-        "moneyBack": "返金保証"
-      },
-      "complete": "支払いを完了"
-    }
+    "progress": {"step": "ステップ{{current}} / {{total}}", "complete": "{{percent}}%完了"},
+    "personalInfo": {"title": "個人情報", "firstName": {"label": "名", "placeholder": "名前を入力してください"}, "lastName": {"label": "姓", "placeholder": "姓を入力してください"}, "dateOfBirth": {"label": "生年月日", "placeholder": "生年月日を選択してください"}, "nationality": {"label": "国籍", "placeholder": "国籍を選択してください"}, "email": {"label": "メールアドレス", "placeholder": "メールアドレスを入力してください"}, "passportNumber": {"label": "パスポート番号", "placeholder": "パスポート番号を入力してください"}},
+    "documents": {"title": "書類のアップロード", "subtitle": "パスポートと写真をアップロードしてください", "passport": {"title": "パスポート情報ページ", "uploadTitle": "パスポート写真をアップロード", "format": "JPGまたはJPEG形式のみ", "chooseFile": "ファイルを選択", "requirements": {"title": "要件：", "readable": "パスポートの個人情報ページの鮮明で読みやすい画像", "visible": "すべてのテキストが見やすく読みやすいこと", "noGlare": "反射や影がないこと", "format": "JPGまたはJPEG形式のみ"}}, "photo": {"title": "個人写真", "upload": {"title": "写真をアップロード", "format": "JPGまたはJPEG", "button": "ファイルを選択"}, "camera": {"title": "写真を撮る", "subtitle": "カメラを使用", "button": "カメラを開く"}, "requirements": {"title": "写真の要件：", "background": "無地で明るい背景", "noObjects": "背景に人や物がないこと", "visibility": "頭、肩、上半身が完全に見えること", "lighting": "影や反射のない均一な照明", "features": "顔の特徴がはっきりと見えること"}}},
+    "payment": {"title": "支払い", "subtitle": "申請を提出するには支払いを完了してください", "details": {"title": "支払い詳細", "cardholderName": {"label": "カード名義人 *", "placeholder": "カード名義人の名前を入力してください"}, "cardNumber": {"label": "カード番号 *", "placeholder": "1234 5678 9012 3456"}, "expiryDate": {"label": "有効期限 *", "placeholder": "MM/YY"}, "cvv": {"label": "CVV *", "placeholder": "123"}, "security": "お支払いはSSL暗号化で保護され、信頼できる決済プロバイダーを通じて処理されます。"}, "summary": {"title": "注文概要", "application": "英国ETA申請", "serviceFee": "サービス料", "vat": "VAT（20%）", "total": "合計", "sslSecured": "SSL保護された支払い", "moneyBack": "返金保証"}, "complete": "支払いを完了"}
+  },
+  "tracking": {
+    "title": "申請を追跡",
+    "subtitle": "参照番号を入力して申請状況を確認してください",
+    "lookupTitle": "申請検索",
+    "referenceNumber": "参照番号",
+    "referencePlaceholder": "参照番号を入力（例：ETA-2024-001234）",
+    "trackButton": "申請追跡",
+    "hint": "参照番号は確認メールで提供されています。",
+    "applicationStatus": "申請状況：{{ref}}",
+    "labels": {"applicantName": "申請者名", "submissionDate": "提出日", "currentStatus": "現在の状況"},
+    "status": {"received": "申請を受領", "processing": "審査中", "approved": "承認済み", "rejected": "却下"},
+    "timeline": {"title": "申請タイムライン", "submitted": "申請を提出", "documentsVerified": "書類確認済み", "underReview": "審査中", "etaIssued": "ETA発行", "current": "現在", "pending": "保留", "descriptions": {"submitted": "申請は正常に受け付けられ、支払いが確認されました。", "documentsVerified": "提出された書類はすべて確認され、承認されました。", "underReview": "申請は現在、英国当局によって審査されています。", "etaIssued": "承認後、ETAは発行され、メールで送信されます。"}},
+    "estimated": {"title": "予想完了", "description": "現在の処理時間に基づき、今後24〜48時間以内にETAが発行される見込みです。準備ができ次第、メールで通知されます。"},
+    "support": {"title": "サポートが必要ですか？", "contactTitle": "サポートに連絡", "description": "申請に関するご質問がある場合は、サポートチームまでお問い合わせください。", "emailLabel": "メール", "phoneLabel": "電話", "hoursLabel": "営業時間", "phone": "+44 20 7946 0958", "email": "support@uketaservice.com"},
+    "processingTimes": {"title": "処理時間", "description": "英国ETA申請の現在の平均処理時間です。", "standard": "標準処理：24〜72時間", "peak": "繁忙期：最大5日", "complex": "複雑なケース：最大10日"}
+  },
+  "confirmation": {
+    "title": "申請が正常に送信されました！",
+    "subtitle": "英国ETA申請を受け付け、現在処理中です。",
+    "applicationDetails": "申請詳細",
+    "referenceNumber": "申請参照",
+    "submissionDate": "提出日",
+    "processingTime": "予想処理時間",
+    "amountPaid": "支払総額",
+    "nextSteps": {"title": "次に行うこと", "step1": {"title": "メール確認", "description": "申請参照番号が記載された確認メールが送信されます。"}, "step2": {"title": "申請処理", "description": "当チームが申請を審査し、英国当局に提出します。"}, "step3": {"title": "ETAの送付", "description": "承認されたETAはメールで直接送信されます。"}},
+    "actions": {"downloadReceipt": "領収書をダウンロード", "emailReceipt": "領収書をメールで送信", "trackApplication": "申請追跡"},
+    "support": {"title": "サポートが必要ですか？", "email": "メールサポート", "phone": "電話サポート", "hours": "24時間365日対応"},
+    "returnHome": "ホームに戻る"
   }
 }

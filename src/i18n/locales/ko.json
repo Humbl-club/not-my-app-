@@ -18,82 +18,20 @@
     "feature4": "환불 보장",
     "startApplication": "신청 시작",
     "learnMore": "더 알아보기",
-    "stats": {
-      "title": "처리 통계",
-      "processingTime": "72시간",
-      "processingLabel": "평균 처리 시간",
-      "applicationsCount": "10,000+",
-      "applicationsLabel": "처리된 신청"
-    },
-    "notice": {
-      "title": "중요 공지:",
-      "text": "이는 독립적인 제3자 서비스이며 영국 정부나 UKVI와 관련이 없습니다."
-    }
+    "stats": {"title": "처리 통계", "processingTime": "72시간", "processingLabel": "평균 처리 시간", "applicationsCount": "10,000+", "applicationsLabel": "처리된 신청"},
+    "notice": {"title": "중요 공지:", "text": "이는 독립적인 제3자 서비스이며 영국 정부나 UKVI와 관련이 없습니다."}
   },
-  "trust": {
-    "processing": "평균 처리 시간",
-    "processingTime": "72시간",
-    "applications": "처리된 신청",
-    "applicationsCount": "10,000+",
-    "notice": "이 서비스는 독립적인 제3자에 의해 제공되며 영국 정부와 관련이 없습니다."
-  },
-  "steps": {
-    "title": "간단한 4단계 과정",
-    "subtitle": "가이드된 과정을 통해 몇 분 만에 영국 ETA 신청을 완료하세요.",
-    "step1": {
-      "title": "신청서 작성",
-      "description": "개인 및 여행 세부 정보로 안전한 온라인 양식을 완성하세요.",
-      "time": "5-10분"
-    },
-    "step2": {
-      "title": "문서 업로드",
-      "description": "암호화된 플랫폼에 여권과 사진을 안전하게 업로드하세요.",
-      "time": "2-3분"
-    },
-    "step3": {
-      "title": "결제하기",
-      "description": "여러 결제 옵션을 사용한 안전한 결제 처리.",
-      "time": "1-2분"
-    },
-    "step4": {
-      "title": "ETA 수령",
-      "description": "승인된 ETA를 이메일 받은편지함으로 직접 받으세요.",
-      "time": "24-72시간"
-    }
-  },
+  "trust": {"processing": "평균 처리 시간", "processingTime": "72시간", "applications": "처리된 신청", "applicationsCount": "10,000+", "notice": "이 서비스는 독립적인 제3자에 의해 제공되며 영국 정부와 관련이 없습니다."},
+  "steps": {"title": "간단한 4단계 과정", "subtitle": "가이드된 과정을 통해 몇 분 만에 영국 ETA 신청을 완료하세요.", "step1": {"title": "신청서 작성", "description": "개인 및 여행 세부 정보로 안전한 온라인 양식을 완성하세요.", "time": "5-10분"}, "step2": {"title": "문서 업로드", "description": "암호화된 플랫폼에 여권과 사진을 안전하게 업로드하세요.", "time": "2-3분"}, "step3": {"title": "결제하기", "description": "여러 결제 옵션을 사용한 안전한 결제 처리.", "time": "1-2분"}, "step4": {"title": "ETA 수령", "description": "승인된 ETA를 이메일 받은편지함으로 직접 받으세요.", "time": "24-72시간"}},
+  "trustIndicators": {"secure": {"title": "SSL 보안 암호화", "description": "SSL 암호화 데이터 보호"}, "gdpr": {"title": "GDPR 준수", "description": "완전한 데이터 보호 준수"}, "support": {"title": "24/7 지원", "description": "연중무휴 지원"}, "trusted": {"title": "신뢰받는 서비스", "description": "10,000개 이상 성공 사례"}},
+  "applicationSteps": {"title": "간단한 4단계 과정", "subtitle": "간소화된 신청 절차로 빠르고 쉽게 영국 ETA를 받으세요", "step1": {"title": "신청서 완료", "description": "개인 및 여행 정보를 입력하여 안전한 온라인 양식을 작성하세요.", "time": "5-10분"}, "step2": {"title": "서류 업로드", "description": "여권 사본과 사진을 제출하세요. 시스템이 모든 요건을 자동으로 확인합니다.", "time": "2-3분"}, "step3": {"title": "안전한 결제", "description": "신용카드, 체크카드 또는 PayPal로 안전하게 결제하세요. 모든 거래는 암호화됩니다.", "time": "1-2분"}, "step4": {"title": "승인 수령", "description": "72시간 이내 이메일로 영국 ETA를 받으세요. 온라인으로 신청 상태를 추적하세요.", "time": "최대 72시간"}},
   "footer": {
     "disclaimer": "이 웹사이트는 독립적인 제3자에 의해 운영되며 영국 정부나 영국 비자 및 이민청(UKVI)과 관련이 없습니다.",
-    "brand": {
-      "title": "브랜드",
-      "about": "회사 소개",
-      "contact": "문의하기",
-      "careers": "채용"
-    },
-    "quickLinks": {
-      "title": "빠른 링크",
-      "howItWorks": "작동 방식",
-      "requirements": "요구사항",
-      "faq": "FAQ",
-      "support": "지원"
-    },
-    "legal": {
-      "title": "법적 고지",
-      "privacy": "개인정보 처리방침",
-      "terms": "서비스 약관",
-      "refund": "환불 정책",
-      "cookies": "쿠키 정책"
-    },
-    "support": {
-      "title": "지원",
-      "email": "support@uketaservice.com",
-      "phone": "+44 20 7946 0958",
-      "hours": "연중무휴 24시간"
-    },
-    "security": {
-      "secure": "SSL 보안",
-      "gdpr": "GDPR 준수",
-      "encrypted": "데이터 암호화"
-    }
+    "brand": {"title": "영국 ETA 신청", "subtitle": "제3자 서비스 제공업체", "description": "전문가 지원과 안전한 처리로 영국 ETA 신청을 전문적으로 도와드립니다."},
+    "quickLinks": {"title": "빠른 링크", "startApplication": "신청 시작", "trackApplication": "신청 추적", "requirements": "ETA 요구사항", "processingTimes": "처리 시간"},
+    "legal": {"title": "법적 고지", "privacy": "개인정보 처리방침", "terms": "서비스 약관", "refund": "환불 정책", "cookies": "쿠키 정책"},
+    "support": {"title": "지원", "phoneLabel": "전화 지원", "phone": "+44 20 7946 0958", "emailLabel": "이메일 지원", "email": "support@uketaapplication.com", "contactButton": "지원 문의"},
+    "security": {"ssl": "SSL 보안", "gdpr": "GDPR 준수", "pci": "PCI DSS 인증"}
   },
   "application": {
     "title": "영국 ETA 신청 양식",
@@ -101,108 +39,47 @@
     "continue": "계속",
     "back": "뒤로",
     "submit": "신청 제출",
-    "progress": {
-      "step": "{{current}}단계 / {{total}}단계",
-      "complete": "{{percent}}% 완료"
+    "progress": {"step": "{{current}}단계 / {{total}}단계", "complete": "{{percent}}% 완료"},
+    "personalInfo": {"title": "개인정보", "firstName": {"label": "이름", "placeholder": "이름을 입력하세요"}, "lastName": {"label": "성", "placeholder": "성을 입력하세요"}, "dateOfBirth": {"label": "생년월일", "placeholder": "생년월일을 선택하세요"}, "nationality": {"label": "국적", "placeholder": "국적을 선택하세요"}, "email": {"label": "이메일 주소", "placeholder": "이메일 주소를 입력하세요"}, "passportNumber": {"label": "여권번호", "placeholder": "여권번호를 입력하세요"}},
+    "documents": {"title": "문서 업로드", "subtitle": "여권과 사진을 업로드해주세요", "passport": {"title": "여권 정보 페이지", "uploadTitle": "여권 사진 업로드", "format": "JPG 또는 JPEG 형식만 가능", "chooseFile": "파일 선택", "requirements": {"title": "요구사항:", "readable": "여권 개인정보 페이지의 선명하고 읽기 쉬운 이미지", "visible": "모든 텍스트가 보이고 읽을 수 있어야 함", "noGlare": "반사나 그림자 없음", "format": "JPG 또는 JPEG 형식만 가능"}}, "photo": {"title": "개인 사진", "upload": {"title": "사진 업로드", "format": "JPG 또는 JPEG", "button": "파일 선택"}, "camera": {"title": "사진 촬영", "subtitle": "카메라 사용", "button": "카메라 열기"}, "requirements": {"title": "사진 요구사항:", "background": "단순하고 밝은 배경", "noObjects": "배경에 사람이나 물체 없음", "visibility": "머리, 어깨, 상체가 완전히 보여야 함", "lighting": "그림자나 반사 없는 균일한 조명", "features": "얼굴 특징이 명확히 보여야 함"}}},
+    "payment": {"title": "결제", "subtitle": "신청을 제출하려면 결제를 완료하세요", "details": {"title": "결제 정보", "cardholderName": {"label": "카드 소유자 이름 *", "placeholder": "카드 소유자 이름을 입력하세요"}, "cardNumber": {"label": "카드 번호 *", "placeholder": "1234 5678 9012 3456"}, "expiryDate": {"label": "만료일 *", "placeholder": "MM/YY"}, "cvv": {"label": "CVV *", "placeholder": "123"}, "security": "귀하의 결제는 SSL 암호화로 보호되며 신뢰할 수 있는 결제 제공업체를 통해 처리됩니다."}, "summary": {"title": "주문 요약", "application": "영국 ETA 신청", "serviceFee": "서비스 수수료", "vat": "부가세 (20%)", "total": "총액", "sslSecured": "SSL 보안 결제", "moneyBack": "환불 보장"}, "complete": "결제 완료"}
+  },
+  "tracking": {
+    "title": "신청 추적",
+    "subtitle": "참조 번호를 입력하여 신청 상태를 확인하세요",
+    "lookupTitle": "신청 조회",
+    "referenceNumber": "참조 번호",
+    "referencePlaceholder": "참조 번호 입력 (예: ETA-2024-001234)",
+    "trackButton": "신청 추적",
+    "hint": "참조 번호는 확인 이메일에 제공되었습니다.",
+    "applicationStatus": "신청 상태: {{ref}}",
+    "labels": {"applicantName": "신청자 이름", "submissionDate": "제출 날짜", "currentStatus": "현재 상태"},
+    "status": {"received": "신청 접수", "processing": "검토 중", "approved": "승인", "rejected": "거절"},
+    "timeline": {
+      "title": "신청 타임라인",
+      "submitted": "신청서 제출",
+      "documentsVerified": "문서 검증 완료",
+      "underReview": "검토 중",
+      "etaIssued": "ETA 발급",
+      "current": "현재",
+      "pending": "대기 중",
+      "descriptions": {"submitted": "신청이 접수되었고 결제가 확인되었습니다.", "documentsVerified": "제출된 모든 문서가 검토 및 승인되었습니다.", "underReview": "신청이 영국 당국에 의해 검토 중입니다.", "etaIssued": "승인되면 ETA가 발급되어 이메일로 전송됩니다."}
     },
-    "personalInfo": {
-      "title": "개인정보",
-      "firstName": {
-        "label": "이름",
-        "placeholder": "이름을 입력하세요"
-      },
-      "lastName": {
-        "label": "성",
-        "placeholder": "성을 입력하세요"
-      },
-      "dateOfBirth": {
-        "label": "생년월일",
-        "placeholder": "생년월일을 선택하세요"
-      },
-      "nationality": {
-        "label": "국적",
-        "placeholder": "국적을 선택하세요"
-      },
-      "email": {
-        "label": "이메일 주소",
-        "placeholder": "이메일 주소를 입력하세요"
-      },
-      "passportNumber": {
-        "label": "여권번호",
-        "placeholder": "여권번호를 입력하세요"
-      }
-    },
-    "documents": {
-      "title": "문서 업로드",
-      "subtitle": "여권과 사진을 업로드해주세요",
-      "passport": {
-        "title": "여권 정보 페이지",
-        "uploadTitle": "여권 사진 업로드",
-        "format": "JPG 또는 JPEG 형식만 가능",
-        "chooseFile": "파일 선택",
-        "requirements": {
-          "title": "요구사항:",
-          "readable": "여권 개인정보 페이지의 선명하고 읽기 쉬운 이미지",
-          "visible": "모든 텍스트가 보이고 읽을 수 있어야 함",
-          "noGlare": "반사나 그림자 없음",
-          "format": "JPG 또는 JPEG 형식만 가능"
-        }
-      },
-      "photo": {
-        "title": "개인 사진",
-        "upload": {
-          "title": "사진 업로드",
-          "format": "JPG 또는 JPEG",
-          "button": "파일 선택"
-        },
-        "camera": {
-          "title": "사진 촬영",
-          "subtitle": "카메라 사용",
-          "button": "카메라 열기"
-        },
-        "requirements": {
-          "title": "사진 요구사항:",
-          "background": "단순하고 밝은 배경",
-          "noObjects": "배경에 사람이나 물체 없음",
-          "visibility": "머리, 어깨, 상체가 완전히 보여야 함",
-          "lighting": "그림자나 반사 없는 균일한 조명",
-          "features": "얼굴 특징이 명확히 보여야 함"
-        }
-      }
-    },
-    "payment": {
-      "title": "결제",
-      "subtitle": "신청을 제출하려면 결제를 완료하세요",
-      "details": {
-        "title": "결제 정보",
-        "cardholderName": {
-          "label": "카드 소유자 이름 *",
-          "placeholder": "카드 소유자 이름을 입력하세요"
-        },
-        "cardNumber": {
-          "label": "카드 번호 *",
-          "placeholder": "1234 5678 9012 3456"
-        },
-        "expiryDate": {
-          "label": "만료일 *",
-          "placeholder": "MM/YY"
-        },
-        "cvv": {
-          "label": "CVV *",
-          "placeholder": "123"
-        },
-        "security": "귀하의 결제는 SSL 암호화로 보호되며 신뢰할 수 있는 결제 제공업체를 통해 처리됩니다."
-      },
-      "summary": {
-        "title": "주문 요약",
-        "application": "영국 ETA 신청",
-        "serviceFee": "서비스 수수료",
-        "vat": "부가세 (20%)",
-        "total": "총액",
-        "sslSecured": "SSL 보안 결제",
-        "moneyBack": "환불 보장"
-      },
-      "complete": "결제 완료"
-    }
+    "estimated": {"title": "예상 완료", "description": "현재 처리 시간을 기준으로 24-48시간 내 ETA 발급이 예상됩니다. 준비되면 이메일 알림을 받게 됩니다."},
+    "support": {"title": "도움이 필요하신가요?", "contactTitle": "지원팀 연락", "description": "신청과 관련된 문의는 지원팀으로 연락해 주세요.", "emailLabel": "이메일", "phoneLabel": "전화", "hoursLabel": "운영 시간", "phone": "+44 20 7946 0958", "email": "support@uketaservice.com"},
+    "processingTimes": {"title": "처리 시간", "description": "영국 ETA 신청의 현재 평균 처리 시간입니다.", "standard": "표준 처리: 24-72시간", "peak": "성수기: 최대 5일", "complex": "복잡한 사례: 최대 10일"}
+  },
+  "confirmation": {
+    "title": "신청이 성공적으로 제출되었습니다!",
+    "subtitle": "영국 ETA 신청이 접수되어 처리 중입니다.",
+    "applicationDetails": "신청 세부 정보",
+    "referenceNumber": "신청 참조",
+    "submissionDate": "제출 날짜",
+    "processingTime": "예상 처리 시간",
+    "amountPaid": "총 결제 금액",
+    "nextSteps": {"title": "다음 단계", "step1": {"title": "이메일 확인", "description": "신청 참조 번호가 포함된 확인 이메일을 받게 됩니다."}, "step2": {"title": "신청 처리", "description": "지원팀이 신청을 검토하여 영국 당국에 제출합니다."}, "step3": {"title": "ETA 발송", "description": "승인된 ETA는 이메일로 직접 전송됩니다."}},
+    "actions": {"downloadReceipt": "영수증 다운로드", "emailReceipt": "이메일로 영수증 보내기", "trackApplication": "신청 추적"},
+    "support": {"title": "도움이 필요하신가요?", "email": "이메일 지원", "phone": "전화 지원", "hours": "연중무휴 24시간"},
+    "returnHome": "홈으로 돌아가기"
   }
 }

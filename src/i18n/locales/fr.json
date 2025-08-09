@@ -25,10 +25,7 @@
       "applicationsCount": "10 000+",
       "applicationsLabel": "Demandes Traitées"
     },
-    "notice": {
-      "title": "Avis Important:",
-      "text": "Il s'agit d'un service tiers indépendant qui n'est pas affilié au gouvernement britannique ou à l'UKVI."
-    }
+    "notice": {"title": "Avis Important:", "text": "Il s'agit d'un service tiers indépendant qui n'est pas affilié au gouvernement britannique ou à l'UKVI."}
   },
   "trust": {
     "processing": "Traitement moyen",
@@ -40,60 +37,49 @@
   "steps": {
     "title": "Processus simple en 4 étapes",
     "subtitle": "Complétez votre demande ETA Royaume-Uni en quelques minutes avec notre processus guidé.",
-    "step1": {
-      "title": "Remplir la demande",
-      "description": "Complétez le formulaire en ligne sécurisé avec vos détails personnels et de voyage.",
-      "time": "5-10 minutes"
-    },
-    "step2": {
-      "title": "Télécharger les documents",
-      "description": "Téléchargez votre passeport et photo en toute sécurité sur notre plateforme cryptée.",
-      "time": "2-3 minutes"
-    },
-    "step3": {
-      "title": "Effectuer le paiement",
-      "description": "Traitement de paiement sécurisé avec plusieurs options de paiement disponibles.",
-      "time": "1-2 minutes"
-    },
-    "step4": {
-      "title": "Recevoir l'ETA",
-      "description": "Recevez votre ETA approuvée directement dans votre boîte e-mail.",
-      "time": "24-72 heures"
-    }
+    "step1": {"title": "Remplir la demande", "description": "Complétez le formulaire en ligne sécurisé avec vos détails personnels et de voyage.", "time": "5-10 minutes"},
+    "step2": {"title": "Télécharger les documents", "description": "Téléchargez votre passeport et photo en toute sécurité sur notre plateforme cryptée.", "time": "2-3 minutes"},
+    "step3": {"title": "Effectuer le paiement", "description": "Traitement de paiement sécurisé avec plusieurs options de paiement disponibles.", "time": "1-2 minutes"},
+    "step4": {"title": "Recevoir l'ETA", "description": "Recevez votre ETA approuvée directement dans votre boîte e-mail.", "time": "24-72 heures"}
+  },
+  "trustIndicators": {
+    "secure": {"title": "Sécurisé et chiffré", "description": "Protection des données chiffrée SSL"},
+    "gdpr": {"title": "Conforme RGPD", "description": "Conformité complète à la protection des données"},
+    "support": {"title": "Support 24/7", "description": "Assistance en continu"},
+    "trusted": {"title": "Service de confiance", "description": "Plus de 10 000 demandes réussies"}
+  },
+  "applicationSteps": {
+    "title": "Processus simple en 4 étapes",
+    "subtitle": "Notre processus simplifié rend l'obtention de votre ETA Royaume-Uni rapide et facile",
+    "step1": {"title": "Remplir la demande", "description": "Complétez le formulaire en ligne sécurisé avec vos détails personnels et de voyage.", "time": "5-10 minutes"},
+    "step2": {"title": "Télécharger les documents", "description": "Soumettez la copie de votre passeport et votre photo. Notre système valide automatiquement toutes les exigences.", "time": "2-3 minutes"},
+    "step3": {"title": "Paiement sécurisé", "description": "Payez en toute sécurité par carte de crédit, de débit ou PayPal. Toutes les transactions sont chiffrées.", "time": "1-2 minutes"},
+    "step4": {"title": "Recevoir l'autorisation", "description": "Recevez votre ETA Royaume-Uni par e-mail sous 72 heures. Suivez le statut de votre demande en ligne.", "time": "Jusqu'à 72 heures"}
   },
   "footer": {
     "disclaimer": "Ce site web est exploité par un tiers indépendant et n'est pas affilié au gouvernement britannique ou à UK Visas and Immigration (UKVI).",
     "brand": {
-      "title": "Marque",
-      "about": "À propos de nous",
-      "contact": "Nous contacter",
-      "careers": "Carrières"
+      "title": "Demande d'ETA Royaume-Uni",
+      "subtitle": "Fournisseur de services tiers",
+      "description": "Assistance professionnelle pour la demande d'ETA Royaume-Uni avec support expert et traitement sécurisé."
     },
     "quickLinks": {
       "title": "Liens rapides",
-      "howItWorks": "Comment ça marche",
-      "requirements": "Exigences",
-      "faq": "FAQ",
-      "support": "Support"
+      "startApplication": "Commencer la Demande",
+      "trackApplication": "Suivre la Demande",
+      "requirements": "Exigences ETA",
+      "processingTimes": "Délais de traitement"
     },
-    "legal": {
-      "title": "Légal",
-      "privacy": "Politique de confidentialité",
-      "terms": "Conditions de service",
-      "refund": "Politique de remboursement",
-      "cookies": "Politique de cookies"
-    },
+    "legal": {"title": "Légal", "privacy": "Politique de confidentialité", "terms": "Conditions de service", "refund": "Politique de remboursement", "cookies": "Politique de cookies"},
     "support": {
       "title": "Support",
-      "email": "support@uketaservice.com",
+      "phoneLabel": "Assistance téléphonique",
       "phone": "+44 20 7946 0958",
-      "hours": "Disponible 24h/24 et 7j/7"
+      "emailLabel": "Assistance e-mail",
+      "email": "support@uketaapplication.com",
+      "contactButton": "Contacter le support"
     },
-    "security": {
-      "secure": "SSL Sécurisé",
-      "gdpr": "Conforme RGPD",
-      "encrypted": "Données cryptées"
-    }
+    "security": {"ssl": "SSL Sécurisé", "gdpr": "Conforme RGPD", "pci": "Certifié PCI DSS"}
   },
   "application": {
     "title": "Demande d'ETA pour le Royaume-Uni",
@@ -101,24 +87,15 @@
     "continue": "Continuer",
     "back": "Retour",
     "submit": "Soumettre la demande",
-    "progress": {
-      "step": "Étape {{current}} sur {{total}}",
-      "complete": "{{percent}}% Terminé"
-    },
+    "progress": {"step": "Étape {{current}} sur {{total}}", "complete": "{{percent}}% Terminé"},
     "personalInfo": {
       "title": "Informations personnelles",
-      "firstName": "Prénom",
-      "firstNamePlaceholder": "Entrez votre prénom",
-      "lastName": "Nom de famille",
-      "lastNamePlaceholder": "Entrez votre nom de famille",
-      "dateOfBirth": "Date de naissance",
-      "nationality": "Nationalité",
-      "nationalityPlaceholder": "Sélectionnez la nationalité",
-      "email": "Adresse e-mail",
-      "emailPlaceholder": "Entrez votre adresse e-mail",
-      "passportNumber": "Numéro de passeport",
-      "passportNumberPlaceholder": "Entrez votre numéro de passeport",
-      "required": "*"
+      "firstName": {"label": "Prénom", "placeholder": "Entrez votre prénom"},
+      "lastName": {"label": "Nom de famille", "placeholder": "Entrez votre nom de famille"},
+      "dateOfBirth": {"label": "Date de naissance", "placeholder": "Sélectionnez votre date de naissance"},
+      "nationality": {"label": "Nationalité", "placeholder": "Sélectionnez la nationalité"},
+      "email": {"label": "Adresse e-mail", "placeholder": "Entrez votre adresse e-mail"},
+      "passportNumber": {"label": "Numéro de passeport", "placeholder": "Entrez votre numéro de passeport"}
     },
     "documents": {
       "title": "Télécharger les documents",
@@ -134,22 +111,12 @@
           "visible": "Tout le texte doit être visible et lisible",
           "noGlare": "Pas d'éblouissement ni d'ombres",
           "format": "Format JPG ou JPEG uniquement"
-        },
-        "description": "Téléchargez une photo claire de la page d'information de votre passeport",
-        "dragDrop": "Glissez et déposez votre fichier ici"
+        }
       },
       "photo": {
         "title": "Photo personnelle",
-        "upload": {
-          "title": "Télécharger la photo",
-          "format": "JPG ou JPEG",
-          "button": "Choisir un fichier"
-        },
-        "camera": {
-          "title": "Prendre une photo",
-          "subtitle": "Utiliser la caméra",
-          "button": "Ouvrir la caméra"
-        },
+        "upload": {"title": "Télécharger la photo", "format": "JPG ou JPEG", "button": "Choisir un fichier"},
+        "camera": {"title": "Prendre une photo", "subtitle": "Utiliser la caméra", "button": "Ouvrir la caméra"},
         "requirements": {
           "title": "Exigences pour la photo :",
           "background": "Fond uni et clair",
@@ -157,11 +124,7 @@
           "visibility": "Tête, épaules et haut du corps entièrement visibles",
           "lighting": "Éclairage uniforme sans ombres ni reflets",
           "features": "Visibilité claire des traits du visage"
-        },
-        "description": "Téléchargez une photo récente de vous-même de style passeport",
-        "dragDrop": "Glissez et déposez votre fichier ici",
-        "chooseFile": "Choisir un fichier",
-        "takePhoto": "Prendre une photo"
+        }
       }
     },
     "payment": {
@@ -173,7 +136,7 @@
         "cardNumber": {"label": "Numéro de carte *", "placeholder": "1234 5678 9012 3456"},
         "expiryDate": {"label": "Date d'expiration *", "placeholder": "MM/AA"},
         "cvv": {"label": "CVV *", "placeholder": "123"},
-        "security": "Vos informations de paiement sont sécurisées et cryptées"
+        "security": "Vos informations de paiement sont sécurisées et chiffrées"
       },
       "summary": {
         "title": "Résumé de la commande",
@@ -184,23 +147,7 @@
         "sslSecured": "Paiement sécurisé SSL",
         "moneyBack": "Garantie de remboursement"
       },
-      "complete": "Finaliser le paiement",
-
-      "cardholderName": "Nom du titulaire de la carte",
-      "cardholderNamePlaceholder": "Entrez le nom du titulaire",
-      "cardNumber": "Numéro de carte",
-      "cardNumberPlaceholder": "1234 5678 9012 3456",
-      "expiryDate": "Date d'expiration",
-      "expiryDatePlaceholder": "MM/AA",
-      "cvv": "CVV",
-      "cvvPlaceholder": "123",
-      "orderSummary": "Résumé de la commande",
-      "applicationFee": "Frais de demande ETA Royaume-Uni",
-      "serviceFee": "Frais de service",
-      "total": "Total",
-      "securePayment": "Vos informations de paiement sont sécurisées et cryptées",
-      "completePayment": "Finaliser le paiement",
-      "currency": "£"
+      "complete": "Finaliser le paiement"
     },
     "confirmation": {
       "title": "Demande soumise avec succès !",
@@ -212,30 +159,12 @@
       "amountPaid": "Montant payé",
       "nextSteps": {
         "title": "Que se passe-t-il ensuite ?",
-        "step1": {
-          "title": "Confirmation par e-mail",
-          "description": "Vous recevrez un e-mail de confirmation avec votre numéro de référence"
-        },
-        "step2": {
-          "title": "Traitement",
-          "description": "Nous examinerons votre demande et vos documents"
-        },
-        "step3": {
-          "title": "Livraison de l'ETA",
-          "description": "Votre ETA approuvé sera envoyé à votre adresse e-mail"
-        }
+        "step1": {"title": "Confirmation par e-mail", "description": "Vous recevrez un e-mail de confirmation avec votre numéro de référence"},
+        "step2": {"title": "Traitement", "description": "Nous examinerons votre demande et vos documents"},
+        "step3": {"title": "Livraison de l'ETA", "description": "Votre ETA approuvé sera envoyé à votre adresse e-mail"}
       },
-      "actions": {
-        "downloadReceipt": "Télécharger le reçu",
-        "emailReceipt": "Envoyer le reçu par e-mail",
-        "trackApplication": "Suivre la demande"
-      },
-      "support": {
-        "title": "Besoin d'aide ?",
-        "email": "Support par e-mail",
-        "phone": "Support téléphonique",
-        "hours": "Disponible 24h/24 et 7j/7"
-      },
+      "actions": {"downloadReceipt": "Télécharger le reçu", "emailReceipt": "Envoyer le reçu par e-mail", "trackApplication": "Suivre la demande"},
+      "support": {"title": "Besoin d'aide ?", "email": "Support par e-mail", "phone": "Support téléphonique", "hours": "Disponible 24h/24 et 7j/7"},
       "returnHome": "Retour à l'accueil"
     },
     "track": {
@@ -250,25 +179,78 @@
       "currentStatus": "Statut actuel",
       "estimatedCompletion": "Achèvement estimé",
       "emailNotifications": "Vous recevrez des notifications par e-mail à chaque étape du traitement",
-      "timeline": {
-        "submitted": "Soumise",
-        "documentsVerified": "Documents vérifiés",
-        "underReview": "En cours d'examen",
-        "etaIssued": "ETA délivré"
-      },
+      "timeline": {"submitted": "Soumise", "documentsVerified": "Documents vérifiés", "underReview": "En cours d'examen", "etaIssued": "ETA délivré"},
       "help": {
         "title": "Besoin d'aide ?",
         "contactUs": "Contactez-nous",
         "email": "support@uketaapplication.com",
         "phone": "+44 20 7946 0958",
         "hours": "Lundi - Vendredi, 9h00 - 18h00 GMT",
-        "processingTimes": {
-          "title": "Temps de traitement",
-          "standard": "Standard : 3-5 jours ouvrables",
-          "peak": "Haute saison : 5-7 jours ouvrables",
-          "complex": "Cas complexes : 7-10 jours ouvrables"
-        }
+        "processingTimes": {"title": "Temps de traitement", "standard": "Standard : 3-5 jours ouvrables", "peak": "Haute saison : 5-7 jours ouvrables", "complex": "Cas complexes : 7-10 jours ouvrables"}
       }
     }
+  },
+  "tracking": {
+    "title": "Suivre votre demande",
+    "subtitle": "Entrez votre numéro de référence pour vérifier le statut de votre demande",
+    "lookupTitle": "Recherche de demande",
+    "referenceNumber": "Numéro de référence",
+    "referencePlaceholder": "Entrez votre numéro de référence (ex. ETA-2024-001234)",
+    "trackButton": "Suivre la Demande",
+    "hint": "Votre numéro de référence a été fourni dans votre e-mail de confirmation.",
+    "applicationStatus": "Statut de la demande : {{ref}}",
+    "labels": {"applicantName": "Nom du demandeur", "submissionDate": "Date de soumission", "currentStatus": "Statut actuel"},
+    "status": {"received": "Demande reçue", "processing": "En cours d'examen", "approved": "Approuvée", "rejected": "Refusée"},
+    "timeline": {
+      "title": "Chronologie de la demande",
+      "submitted": "Demande soumise",
+      "documentsVerified": "Documents vérifiés",
+      "underReview": "En cours d'examen",
+      "etaIssued": "ETA délivré",
+      "current": "En cours",
+      "pending": "En attente",
+      "descriptions": {
+        "submitted": "Votre demande a été reçue avec succès et le paiement confirmé.",
+        "documentsVerified": "Tous les documents soumis ont été vérifiés et acceptés.",
+        "underReview": "Votre demande est actuellement en cours d'examen par les autorités britanniques.",
+        "etaIssued": "Votre ETA sera délivré et envoyé par e-mail une fois approuvé."
+      }
+    },
+    "estimated": {"title": "Achèvement estimé", "description": "Selon les délais actuels, votre ETA devrait être délivré dans les 24 à 48 heures. Vous recevrez une notification par e-mail dès qu'il sera prêt."},
+    "support": {
+      "title": "Besoin d'assistance ?",
+      "contactTitle": "Contacter le support",
+      "description": "Si vous avez des questions concernant votre demande, veuillez contacter notre équipe d'assistance.",
+      "emailLabel": "E-mail",
+      "phoneLabel": "Téléphone",
+      "hoursLabel": "Horaires",
+      "phone": "+44 20 7946 0958",
+      "email": "support@uketaservice.com"
+    },
+    "processingTimes": {
+      "title": "Délais de traitement",
+      "description": "Délais moyens actuels de traitement des demandes d'ETA Royaume-Uni.",
+      "standard": "Traitement standard : 24-72 heures",
+      "peak": "Haute saison : jusqu'à 5 jours",
+      "complex": "Cas complexes : jusqu'à 10 jours"
+    }
+  },
+  "confirmation": {
+    "title": "Demande soumise avec succès !",
+    "subtitle": "Votre demande d'ETA pour le Royaume-Uni a été reçue et est en cours de traitement.",
+    "applicationDetails": "Détails de la demande",
+    "referenceNumber": "Référence de la demande",
+    "submissionDate": "Date de soumission",
+    "processingTime": "Temps de traitement estimé",
+    "amountPaid": "Montant total payé",
+    "nextSteps": {
+      "title": "Que se passe-t-il ensuite ?",
+      "step1": {"title": "Confirmation par e-mail", "description": "Vous recevrez un e-mail de confirmation avec votre numéro de référence."},
+      "step2": {"title": "Traitement de la demande", "description": "Notre équipe examinera votre demande et la soumettra aux autorités britanniques."},
+      "step3": {"title": "Livraison de l'ETA", "description": "Votre ETA approuvé sera envoyé directement à votre adresse e-mail."}
+    },
+    "actions": {"downloadReceipt": "Télécharger le reçu", "emailReceipt": "Envoyer le reçu par e-mail", "trackApplication": "Suivre la demande"},
+    "support": {"title": "Besoin d'aide ?", "email": "Support par e-mail", "phone": "Support téléphonique", "hours": "Disponible 24h/24 et 7j/7"},
+    "returnHome": "Retour à l'accueil"
   }
 }

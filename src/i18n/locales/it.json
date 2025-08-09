@@ -2,7 +2,7 @@
   "header": {
     "phone": "+44 20 7946 0958",
     "email": "support@uketaservice.com",
-    "available": "Disponibile 24/7",
+    "available247": "Disponibile 24/7",
     "title": "Richiesta ETA Regno Unito",
     "trackApplication": "Traccia richiesta",
     "startApplication": "Inizia richiesta"
@@ -10,232 +10,94 @@
   "hero": {
     "title": "Richiedi il tuo ETA per il Regno Unito",
     "subtitle": "Servizio ETA veloce, sicuro e professionale. Gestiamo la tua richiesta con cura esperta e guida.",
-    "features": {
-      "processing": "Tempo medio di elaborazione di 72 ore",
-      "secure": "Gestione sicura dei documenti e protezione dei dati",
-      "support": "Supporto esperto durante tutto il processo",
-      "submission": "Invio professionale della richiesta"
-    },
+    "features": {"processing": "Tempo medio di elaborazione di 72 ore", "secure": "Gestione sicura dei documenti e protezione dei dati", "support": "Supporto esperto durante tutto il processo", "submission": "Invio professionale della richiesta"},
     "startButton": "Inizia richiesta",
     "learnMore": "Scopri di più"
   },
-  "trust": {
-    "processing": "Elaborazione media",
-    "processingTime": "72h",
-    "applications": "Richieste elaborate",
-    "applicationsCount": "10.000+",
-    "notice": "Questo servizio è fornito da un terzo indipendente e non è affiliato al governo britannico."
-  },
-  "steps": {
-    "title": "Processo semplice in 4 passaggi",
-    "subtitle": "Completa la tua richiesta ETA per il Regno Unito in pochi minuti con il nostro processo guidato.",
-    "step1": {
-      "title": "Compila richiesta",
-      "description": "Completa il modulo online sicuro con i tuoi dettagli personali e di viaggio.",
-      "time": "5-10 minuti"
-    },
-    "step2": {
-      "title": "Carica documenti",
-      "description": "Carica il tuo passaporto e foto in sicurezza sulla nostra piattaforma crittografata.",
-      "time": "2-3 minuti"
-    },
-    "step3": {
-      "title": "Effettua pagamento",
-      "description": "Elaborazione pagamento sicura con multiple opzioni di pagamento disponibili.",
-      "time": "1-2 minuti"
-    },
-    "step4": {
-      "title": "Ricevi ETA",
-      "description": "Ricevi il tuo ETA approvato direttamente nella tua casella email.",
-      "time": "24-72 ore"
-    }
-  },
-  "trustIndicators": {
-    "secure": {
-      "title": "Sicuro e Crittografato",
-      "description": "Protezione dati SSL crittografata"
-    },
-    "gdpr": {
-      "title": "Conforme GDPR",
-      "description": "Piena conformità alla protezione dati"
-    },
-    "support": {
-      "title": "Supporto 24/7",
-      "description": "Assistenza 24 ore su 24"
-    },
-    "trusted": {
-      "title": "Servizio Affidabile",
-      "description": "Oltre 10.000 richieste di successo"
-    }
-  },
-  "applicationSteps": {
-    "title": "Processo Semplice in 4 Passaggi",
-    "subtitle": "Il nostro processo di richiesta semplificato rende ottenere il tuo ETA del Regno Unito veloce e facile",
-    "step1": {
-      "title": "Completare Richiesta",
-      "description": "Compila il modulo online sicuro con i tuoi dettagli personali e di viaggio.",
-      "time": "5-10 minuti"
-    },
-    "step2": {
-      "title": "Caricare Documenti",
-      "description": "Invia la copia del passaporto e la foto. Il nostro sistema convalida automaticamente tutti i requisiti.",
-      "time": "2-3 minuti"
-    },
-    "step3": {
-      "title": "Pagamento Sicuro",
-      "description": "Paga in modo sicuro con carta di credito, debito o PayPal. Tutte le transazioni sono crittografate.",
-      "time": "1-2 minuti"
-    },
-    "step4": {
-      "title": "Ricevere Autorizzazione",
-      "description": "Ottieni il tuo ETA del Regno Unito via email entro 72 ore. Traccia lo stato della tua richiesta online.",
-      "time": "Fino a 72 ore"
-    }
-  },
-  "footer": {
-    "disclaimer": "Questo sito web è gestito da un terzo indipendente e non è affiliato al Governo del Regno Unito o UK Visas and Immigration (UKVI).",
-    "brand": {
-      "title": "Richiesta ETA Regno Unito",
-      "subtitle": "Fornitore di servizi terzo",
-      "description": "Assistenza professionale per richiesta ETA Regno Unito con supporto esperto e elaborazione sicura."
-    },
-    "quickLinks": {
-      "title": "Link Rapidi",
-      "startApplication": "Iniziare Richiesta",
-      "trackApplication": "Tracciare Richiesta",
-      "requirements": "Requisiti ETA",
-      "processingTimes": "Tempi di Elaborazione"
-    },
-    "legal": {
-      "title": "Legale",
-      "privacy": "Politica Privacy",
-      "terms": "Termini e Condizioni",
-      "refund": "Politica Rimborsi",
-      "cookies": "Politica Cookie"
-    },
-    "support": {
-      "title": "Supporto",
-      "phoneLabel": "Supporto Telefonico",
-      "phone": "+44 20 7946 0958",
-      "emailLabel": "Supporto Email",
-      "email": "support@uketaapplication.com",
-      "contactButton": "Contattare Supporto"
-    },
-    "security": {
-      "ssl": "SSL Sicuro",
-      "gdpr": "Conforme GDPR",
-      "pci": "Certificato PCI DSS"
-    },
-    "copyright": "© 2024 Servizio Richiesta ETA Regno Unito. Tutti i diritti riservati."
-  },
+  "trust": {"processing": "Elaborazione media", "processingTime": "72h", "applications": "Richieste elaborate", "applicationsCount": "10.000+", "notice": "Questo servizio è fornito da un terzo indipendente e non è affiliato al governo britannico."},
+  "steps": {"title": "Processo semplice in 4 passaggi", "subtitle": "Completa la tua richiesta ETA per il Regno Unito in pochi minuti con il nostro processo guidato.", "step1": {"title": "Compila richiesta", "description": "Completa il modulo online sicuro con i tuoi dettagli personali e di viaggio.", "time": "5-10 minuti"}, "step2": {"title": "Carica documenti", "description": "Carica il tuo passaporto e foto in sicurezza sulla nostra piattaforma crittografata.", "time": "2-3 minuti"}, "step3": {"title": "Effettua pagamento", "description": "Elaborazione pagamento sicura con multiple opzioni di pagamento disponibili.", "time": "1-2 minuti"}, "step4": {"title": "Ricevi ETA", "description": "Ricevi il tuo ETA approvato direttamente nella tua casella email.", "time": "24-72 ore"}},
+  "trustIndicators": {"secure": {"title": "Sicuro e Crittografato", "description": "Protezione dati SSL crittografata"}, "gdpr": {"title": "Conforme GDPR", "description": "Piena conformità alla protezione dati"}, "support": {"title": "Supporto 24/7", "description": "Assistenza 24 ore su 24"}, "trusted": {"title": "Servizio Affidabile", "description": "Oltre 10.000 richieste di successo"}},
+  "applicationSteps": {"title": "Processo Semplice in 4 Passaggi", "subtitle": "Il nostro processo di richiesta semplificato rende ottenere il tuo ETA del Regno Unito veloce e facile", "step1": {"title": "Completare Richiesta", "description": "Compila il modulo online sicuro con i tuoi dettagli personali e di viaggio.", "time": "5-10 minuti"}, "step2": {"title": "Caricare Documenti", "description": "Invia la copia del passaporto e la foto. Il nostro sistema convalida automaticamente tutti i requisiti.", "time": "2-3 minuti"}, "step3": {"title": "Pagamento Sicuro", "description": "Paga in modo sicuro con carta di credito, debito o PayPal. Tutte le transazioni sono crittografate.", "time": "1-2 minuti"}, "step4": {"title": "Ricevere Autorizzazione", "description": "Ottieni il tuo ETA del Regno Unito via email entro 72 ore. Traccia lo stato della tua richiesta online.", "time": "Fino a 72 ore"}},
+  "footer": {"disclaimer": "Questo sito web è gestito da un terzo indipendente e non è affiliato al Governo del Regno Unito o UK Visas and Immigration (UKVI).", "brand": {"title": "Richiesta ETA Regno Unito", "subtitle": "Fornitore di servizi terzo", "description": "Assistenza professionale per richiesta ETA Regno Unito con supporto esperto e elaborazione sicura."}, "quickLinks": {"title": "Link Rapidi", "startApplication": "Iniziare Richiesta", "trackApplication": "Tracciare Richiesta", "requirements": "Requisiti ETA", "processingTimes": "Tempi di Elaborazione"}, "legal": {"title": "Legale", "privacy": "Politica Privacy", "terms": "Termini e Condizioni", "refund": "Politica Rimborsi", "cookies": "Politica Cookie"}, "support": {"title": "Supporto", "phoneLabel": "Supporto Telefonico", "phone": "+44 20 7946 0958", "emailLabel": "Supporto Email", "email": "support@uketaapplication.com", "contactButton": "Contattare Supporto"}, "security": {"ssl": "SSL Sicuro", "gdpr": "Conforme GDPR", "pci": "Certificato PCI DSS"}, "copyright": "© 2024 Servizio Richiesta ETA Regno Unito. Tutti i diritti riservati."},
   "application": {
     "title": "Modulo richiesta ETA Regno Unito",
     "subtitle": "Si prega di compilare tutti i campi richiesti con precisione",
     "continue": "Continua",
     "back": "Indietro",
     "submit": "Invia richiesta",
-    "progress": {
-      "step": "Passo {{current}} di {{total}}",
-      "complete": "{{percent}}% Completato"
-    },
+    "progress": {"step": "Passo {{current}} di {{total}}", "complete": "{{percent}}% Completato"},
     "personalInfo": {
       "title": "Informazioni Personali",
-      "firstName": {
-        "label": "Nome",
-        "placeholder": "Inserisci il tuo nome"
-      },
-      "lastName": {
-        "label": "Cognome",
-        "placeholder": "Inserisci il tuo cognome"
-      },
-      "dateOfBirth": {
-        "label": "Data di Nascita",
-        "placeholder": "Seleziona la tua data di nascita"
-      },
-      "nationality": {
-        "label": "Nazionalità",
-        "placeholder": "Seleziona la tua nazionalità"
-      },
-      "email": {
-        "label": "Indirizzo Email",
-        "placeholder": "Inserisci il tuo indirizzo email"
-      },
-      "passportNumber": {
-        "label": "Numero di Passaporto",
-        "placeholder": "Inserisci il tuo numero di passaporto"
-      }
+      "firstName": {"label": "Nome", "placeholder": "Inserisci il tuo nome"},
+      "lastName": {"label": "Cognome", "placeholder": "Inserisci il tuo cognome"},
+      "dateOfBirth": {"label": "Data di Nascita", "placeholder": "Seleziona la tua data di nascita"},
+      "nationality": {"label": "Nazionalità", "placeholder": "Seleziona la tua nazionalità"},
+      "email": {"label": "Indirizzo Email", "placeholder": "Inserisci il tuo indirizzo email"},
+      "passportNumber": {"label": "Numero di Passaporto", "placeholder": "Inserisci il tuo numero di passaporto"}
     },
     "documents": {
       "title": "Carica Documenti",
       "subtitle": "Per favore carica il tuo passaporto e la foto",
-      "passport": {
-        "title": "Pagina Informazioni Passaporto",
-        "uploadTitle": "Carica Foto del Passaporto",
-        "format": "Solo formato JPG o JPEG",
-        "chooseFile": "Scegli File",
-        "requirements": {
-          "title": "Requisiti:",
-          "readable": "Immagine chiara e leggibile della pagina dei dettagli personali del passaporto",
-          "visible": "Tutto il testo deve essere visibile e leggibile",
-          "noGlare": "Nessun riflesso o ombra",
-          "format": "Solo formato JPG o JPEG"
-        }
-      },
-      "photo": {
-        "title": "Foto Personale",
-        "upload": {
-          "title": "Carica Foto",
-          "format": "JPG o JPEG",
-          "button": "Scegli File"
-        },
-        "camera": {
-          "title": "Scatta Foto",
-          "subtitle": "Usa fotocamera",
-          "button": "Apri Fotocamera"
-        },
-        "requirements": {
-          "title": "Requisiti Foto:",
-          "background": "Sfondo semplice e chiaro",
-          "noObjects": "Nessuna persona o oggetto sullo sfondo",
-          "visibility": "Testa, spalle e parte superiore del corpo completamente visibili",
-          "lighting": "Illuminazione uniforme senza ombre o riflessi",
-          "features": "Visibilità chiara delle caratteristiche facciali"
-        }
+      "passport": {"title": "Pagina Informazioni Passaporto", "uploadTitle": "Carica Foto del Passaporto", "format": "Solo formato JPG o JPEG", "chooseFile": "Scegli File", "requirements": {"title": "Requisiti:", "readable": "Immagine chiara e leggibile della pagina dei dettagli personali del passaporto", "visible": "Tutto il testo deve essere visibile e leggibile", "noGlare": "Nessun riflesso o ombra", "format": "Solo formato JPG o JPEG"}},
+      "photo": {"title": "Foto Personale", "upload": {"title": "Carica Foto", "format": "JPG o JPEG", "button": "Scegli File"}, "camera": {"title": "Scatta Foto", "subtitle": "Usa fotocamera", "button": "Apri Fotocamera"}, "requirements": {"title": "Requisiti Foto:", "background": "Sfondo semplice e chiaro", "noObjects": "Nessuna persona o oggetto sullo sfondo", "visibility": "Testa, spalle e parte superiore del corpo completamente visibili", "lighting": "Illuminazione uniforme senza ombre o riflessi", "features": "Visibilità chiara delle caratteristiche facciali"}}
+    },
+    "payment": {"title": "Pagamento", "subtitle": "Completa il tuo pagamento per inviare la tua richiesta", "details": {"title": "Dettagli Pagamento", "cardholderName": {"label": "Nome Titolare Carta *", "placeholder": "Inserisci il nome del titolare della carta"}, "cardNumber": {"label": "Numero Carta *", "placeholder": "1234 5678 9012 3456"}, "expiryDate": {"label": "Data di Scadenza *", "placeholder": "MM/AA"}, "cvv": {"label": "CVV *", "placeholder": "123"}, "security": "Il tuo pagamento è protetto con crittografia SSL e processato tramite fornitori di pagamento affidabili."}, "summary": {"title": "Riepilogo Ordine", "application": "Richiesta ETA Regno Unito", "serviceFee": "Commissione di Servizio", "vat": "IVA (20%)", "total": "Totale", "sslSecured": "Pagamento Protetto SSL", "moneyBack": "Garanzia Rimborso"}, "complete": "Completa Pagamento"}
+  },
+  "tracking": {
+    "title": "Traccia la tua richiesta",
+    "subtitle": "Inserisci il numero di riferimento per verificare lo stato della tua richiesta",
+    "lookupTitle": "Ricerca richiesta",
+    "referenceNumber": "Numero di riferimento",
+    "referencePlaceholder": "Inserisci il numero di riferimento (es. ETA-2024-001234)",
+    "trackButton": "Traccia richiesta",
+    "hint": "Il numero di riferimento è stato fornito nell'e-mail di conferma.",
+    "applicationStatus": "Stato della richiesta: {{ref}}",
+    "labels": {"applicantName": "Nome richiedente", "submissionDate": "Data di invio", "currentStatus": "Stato attuale"},
+    "status": {"received": "Richiesta ricevuta", "processing": "In revisione", "approved": "Approvata", "rejected": "Rifiutata"},
+    "timeline": {
+      "title": "Cronologia richiesta",
+      "submitted": "Richiesta inviata",
+      "documentsVerified": "Documenti verificati",
+      "underReview": "In revisione",
+      "etaIssued": "ETA emesso",
+      "current": "In corso",
+      "pending": "In attesa",
+      "descriptions": {
+        "submitted": "La tua richiesta è stata ricevuta e il pagamento confermato.",
+        "documentsVerified": "Tutti i documenti inviati sono stati verificati e accettati.",
+        "underReview": "La tua richiesta è attualmente in revisione da parte delle autorità britanniche.",
+        "etaIssued": "Il tuo ETA sarà emesso e inviato via email una volta approvato."
       }
     },
-    "payment": {
-      "title": "Pagamento",
-      "subtitle": "Completa il tuo pagamento per inviare la tua richiesta",
-      "details": {
-        "title": "Dettagli Pagamento",
-        "cardholderName": {
-          "label": "Nome Titolare Carta *",
-          "placeholder": "Inserisci il nome del titolare della carta"
-        },
-        "cardNumber": {
-          "label": "Numero Carta *",
-          "placeholder": "1234 5678 9012 3456"
-        },
-        "expiryDate": {
-          "label": "Data di Scadenza *",
-          "placeholder": "MM/AA"
-        },
-        "cvv": {
-          "label": "CVV *",
-          "placeholder": "123"
-        },
-        "security": "Il tuo pagamento è protetto con crittografia SSL e processato tramite fornitori di pagamento affidabili."
-      },
-      "summary": {
-        "title": "Riepilogo Ordine",
-        "application": "Richiesta ETA Regno Unito",
-        "serviceFee": "Commissione di Servizio",
-        "vat": "IVA (20%)",
-        "total": "Totale",
-        "sslSecured": "Pagamento Protetto SSL",
-        "moneyBack": "Garanzia Rimborso"
-      },
-      "complete": "Completa Pagamento"
-    }
+    "estimated": {"title": "Completamento stimato", "description": "In base ai tempi attuali, l'ETA è previsto entro 24-48 ore. Riceverai una notifica email quando sarà pronto."},
+    "support": {
+      "title": "Hai bisogno di assistenza?",
+      "contactTitle": "Contatta il supporto",
+      "description": "Per qualsiasi domanda sulla tua richiesta, contatta il nostro team di supporto.",
+      "emailLabel": "Email",
+      "phoneLabel": "Telefono",
+      "hoursLabel": "Orari",
+      "phone": "+44 20 7946 0958",
+      "email": "support@uketaservice.com"
+    },
+    "processingTimes": {"title": "Tempi di elaborazione", "description": "Tempi medi attuali per le richieste ETA.", "standard": "Elaborazione standard: 24-72 ore", "peak": "Alta stagione: fino a 5 giorni", "complex": "Casi complessi: fino a 10 giorni"}
+  },
+  "confirmation": {
+    "title": "Richiesta inviata con successo!",
+    "subtitle": "La tua richiesta ETA per il Regno Unito è stata ricevuta ed è in elaborazione.",
+    "applicationDetails": "Dettagli della richiesta",
+    "referenceNumber": "Riferimento richiesta",
+    "submissionDate": "Data di invio",
+    "processingTime": "Tempo di elaborazione previsto",
+    "amountPaid": "Importo totale pagato",
+    "nextSteps": {
+      "title": "Cosa succede dopo?",
+      "step1": {"title": "Conferma e-mail", "description": "Riceverai un'e-mail di conferma con il numero di riferimento della tua richiesta."},
+      "step2": {"title": "Elaborazione della richiesta", "description": "Il nostro team esaminerà la tua richiesta e la invierà alle autorità britanniche."},
+      "step3": {"title": "Consegna ETA", "description": "Il tuo ETA approvato sarà inviato direttamente al tuo indirizzo e-mail."}
+    },
+    "actions": {"downloadReceipt": "Scarica ricevuta", "emailReceipt": "Invia ricevuta via email", "trackApplication": "Traccia richiesta"},
+    "support": {"title": "Hai bisogno di aiuto?", "email": "Supporto email", "phone": "Supporto telefonico", "hours": "Disponibile 24/7"},
+    "returnHome": "Torna alla home"
   }
 }
