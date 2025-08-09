@@ -146,6 +146,37 @@ const Payment = () => {
     navigate('/application/confirmation');
   };
 
+  const handleReviewExport = async () => {
+    // Validate and persist second applicant (if any) then navigate to review
+    if (addSecond) {
+      const valid = await secondForm.trigger();
+      if (!valid) {
+        const e = secondForm.formState.errors as any;
+        const order = ['firstName','lastName','dateOfBirth','nationality','email','passportNumber'];
+        for (const k of order) { if (e?.[k]) { secondForm.setFocus(k as any); return; } }
+        if (e?.additionalNationalities) {
+          if (Array.isArray(e.additionalNationalities)) {
+            for (let i = 0; i < e.additionalNationalities.length; i++) {
+              if (e.additionalNationalities[i]) { secondForm.setFocus(`additionalNationalities.${i}` as any); return; }
+            }
+          } else { secondForm.setFocus('hasAdditionalNationalities' as any); return; }
+        }
+        const addrOrder = ['line1','city','state','postalCode','country'];
+        for (const k of addrOrder) { if (e?.address?.[k]) { secondForm.setFocus(('address.'+k) as any); return; } }
+        return;
+      }
+    }
+    try {
+      if (addSecond) {
+        const values = secondForm.getValues();
+        sessionStorage.setItem('application.secondApplicant', JSON.stringify(values));
+      } else {
+        sessionStorage.removeItem('application.secondApplicant');
+      }
+    } catch {}
+    navigate('/application/review');
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
@@ -549,14 +580,23 @@ const Payment = () => {
               <ArrowLeft className="h-4 w-4" />
               {t('application.back')}
             </Button>
-            <Button 
-              onClick={handleComplete}
-              className="flex items-center gap-2"
-              size="lg"
-            >
-              {t('application.payment.complete')}
-              <ArrowRight className="h-4 w-4" />
-            </Button>
+            <div className="flex items-center gap-3">
+              <Button 
+                variant="outline"
+                onClick={handleReviewExport}
+                className="flex items-center gap-2"
+              >
+                Review & Export
+              </Button>
+              <Button 
+                onClick={handleComplete}
+                className="flex items-center gap-2"
+                size="lg"
+              >
+                {t('application.payment.complete')}
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>
