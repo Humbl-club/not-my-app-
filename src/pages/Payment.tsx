@@ -2,209 +2,80 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { ArrowLeft, ArrowRight, CreditCard, Shield, Lock, Plus, Minus, Upload, Camera } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CreditCard, Shield, Lock, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
-import { useEffect, useState } from 'react';
-import { useForm, useWatch } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
-import { nationalities } from '@/constants/nationalities';
+import { useEffect, useState } from 'react';
 
 const Payment = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  // Load primary applicant from session storage
-  const [primaryApplicant, setPrimaryApplicant] = useState<any | null>(null);
+  // Check if there's a second applicant
+  const [hasSecondApplicant, setHasSecondApplicant] = useState(false);
+  const [secondApplicant, setSecondApplicant] = useState<any | null>(null);
+
   useEffect(() => {
     try {
-      const raw = sessionStorage.getItem('application.primaryApplicant');
-      if (raw) setPrimaryApplicant(JSON.parse(raw));
+      const raw = sessionStorage.getItem('application.secondApplicant');
+      if (raw) {
+        setSecondApplicant(JSON.parse(raw));
+        setHasSecondApplicant(true);
+      }
     } catch {}
   }, []);
 
-  // Second applicant form and state
-  const [addSecond, setAddSecond] = useState(false);
-
-  const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,50}$/;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-  const passportRegex = /^[A-Z0-9]{6,9}$/i;
-  const nationalityRegex = /^(AF|AL|DZ|AS|AD|AO|AI|AQ|AG|AR|AM|AW|AU|AT|AZ|BS|BH|BD|BB|BY|BE|BZ|BJ|BM|BT|BO|BQ|BA|BW|BV|BR|IO|BN|BG|BF|BI|CV|KH|CM|CA|KY|CF|TD|CL|CN|CX|CC|CO|KM|CG|CD|CK|CR|CI|HR|CU|CW|CY|CZ|DK|DJ|DM|DO|EC|EG|SV|GQ|ER|EE|SZ|ET|FK|FO|FJ|FI|FR|GF|PF|TF|GA|GM|GE|DE|GH|GI|GR|GL|GD|GP|GU|GT|GG|GN|GW|GY|HT|HM|VA|HN|HK|HU|IS|IN|ID|IR|IQ|IE|IM|IL|IT|JM|JP|JE|JO|KZ|KE|KI|KP|KR|KW|KG|LA|LV|LB|LS|LR|LY|LI|LT|LU|MO|MK|MG|MW|MY|MV|ML|MT|MH|MQ|MR|MU|YT|MX|FM|MD|MC|MN|ME|MS|MA|MZ|MM|NA|NR|NP|NL|NC|NZ|NI|NE|NG|NU|NF|MP|NO|OM|PK|PW|PS|PA|PG|PY|PE|PH|PN|PL|PT|PR|QA|RE|RO|RU|RW|BL|SH|KN|LC|MF|PM|VC|WS|SM|ST|SA|SN|RS|SC|SL|SG|SX|SK|SI|SB|SO|ZA|GS|SS|ES|LK|SD|SR|SJ|SE|CH|SY|TW|TJ|TZ|TH|TL|TG|TK|TO|TT|TN|TR|TM|TC|TV|UG|UA|AE|GB|US|UM|UY|UZ|VU|VE|VN|VG|VI|WF|EH|YE|ZM|ZW)$/;
-
-  const addressShape = z.object({
-    line1: z.string().optional(),
-    line2: z.string().optional(),
-    city: z.string().optional(),
-    state: z.string().optional(),
-    postalCode: z.string().optional(),
-    country: z.string().optional(),
+  const paymentSchema = z.object({
+    cardholderName: z.string().min(1, 'Cardholder name is required'),
+    cardNumber: z.string().min(16, 'Card number must be at least 16 digits').max(19, 'Card number is too long'),
+    expiryDate: z.string().min(5, 'Expiry date is required (MM/YY)').regex(/^\d{2}\/\d{2}$/, 'Use MM/YY format'),
+    cvv: z.string().min(3, 'CVV must be at least 3 digits').max(4, 'CVV is too long'),
+    acceptTerms: z.boolean().refine((val) => val === true, 'You must accept the terms and conditions'),
   });
 
-  const secondApplicantSchema = z.object({
-    firstName: z.string().min(1, 'First name is required').regex(nameRegex).max(50),
-    lastName: z.string().min(1, 'Last name is required').regex(nameRegex).max(50),
-    dateOfBirth: z.string().min(1, 'Date of birth is required').regex(dateRegex, 'Use format YYYY-MM-DD'),
-    nationality: z.string().regex(nationalityRegex, 'Please select a nationality'),
-    hasAdditionalNationalities: z.boolean().optional().default(false),
-    additionalNationalities: z.array(z.string().regex(nationalityRegex, 'Please select a nationality')).optional().default([]),
-    email: z.string().min(1, 'Email is required').regex(emailRegex, 'Please enter a valid email address'),
-    passportNumber: z.string().min(1, 'Passport number is required').regex(passportRegex, 'Use 6-9 characters (letters and numbers)'),
-    useSameAddressAsPrimary: z.boolean().optional().default(false),
-    useSameEmailAsPrimary: z.boolean().optional().default(false),
-    address: addressShape,
-    hasJob: z.enum(['yes', 'no'], { required_error: 'Please answer if you have a job' }),
-    job: z.string().optional(),
-    hasCriminalConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer about criminal convictions' }),
-    hasWarCrimesConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer about war crimes convictions' }),
-    passportPhoto: z.string().optional(),
-    personalPhoto: z.string().optional(),
-  }).superRefine((val, ctx) => {
-    if (val.hasAdditionalNationalities && (!val.additionalNationalities || val.additionalNationalities.length === 0)) {
-      ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Please select at least one additional nationality', path: ['additionalNationalities'] });
-    }
-    if (val.additionalNationalities && val.additionalNationalities.length > 0) {
-      val.additionalNationalities.forEach((nat, index) => {
-        if (!nat || !nationalityRegex.test(nat)) {
-          ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Please select a nationality', path: ['additionalNationalities', index] });
-        }
-      });
-    }
-    if (!val.useSameAddressAsPrimary) {
-      if (!val.address?.line1 || val.address.line1.trim().length < 3) {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Address line 1 is required', path: ['address','line1'] });
-      }
-      if (!val.address?.city || !/^[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,50}$/.test(val.address.city)) {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Enter a valid city', path: ['address','city'] });
-      }
-      if (!val.address?.state || !/^[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,50}$/.test(val.address.state)) {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Enter a valid state/province', path: ['address','state'] });
-      }
-      if (!val.address?.postalCode || !/^[A-Za-z0-9 -]{3,10}$/.test(val.address.postalCode)) {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Enter a valid postal code', path: ['address','postalCode'] });
-      }
-      if (!val.address?.country || !nationalityRegex.test(val.address.country)) {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Please select a country', path: ['address','country'] });
-      }
-    }
-    
-    // Employment validation
-    if (val.hasJob === 'yes' && (!val.job || val.job.trim().length < 2)) {
-      ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Please enter your job title', path: ['job'] });
-    }
-  });
+  type PaymentValues = z.infer<typeof paymentSchema>;
 
-  type SecondApplicantValues = z.infer<typeof secondApplicantSchema>;
-
-  const secondForm = useForm<SecondApplicantValues>({
-    resolver: zodResolver(secondApplicantSchema),
+  const form = useForm<PaymentValues>({
+    resolver: zodResolver(paymentSchema),
     mode: 'onChange',
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      dateOfBirth: '',
-      nationality: '',
-      hasAdditionalNationalities: false,
-      additionalNationalities: [],
-      email: '',
-      passportNumber: '',
-      useSameAddressAsPrimary: false,
-      useSameEmailAsPrimary: !!primaryApplicant?.email,
-      address: { line1: '', line2: '', city: '', state: '', postalCode: '', country: '' },
-      hasJob: undefined,
-      job: '',
-      hasCriminalConvictions: undefined,
-      hasWarCrimesConvictions: undefined,
-      passportPhoto: '',
-      personalPhoto: '',
+      cardholderName: '',
+      cardNumber: '',
+      expiryDate: '',
+      cvv: '',
+      acceptTerms: false,
     },
   });
 
-  const useSameEmail = useWatch({ control: secondForm.control, name: 'useSameEmailAsPrimary' });
-  useEffect(() => {
-    if (addSecond && useSameEmail && primaryApplicant?.email) {
-      secondForm.setValue('email', primaryApplicant.email, { shouldValidate: true });
-    }
-  }, [addSecond, useSameEmail, primaryApplicant?.email]);
+  const handleAddSecondApplicant = () => {
+    navigate('/application/second-applicant');
+  };
 
-  const handleComplete = async () => {
-    if (addSecond) {
-      const valid = await secondForm.trigger();
-      if (!valid) {
-        const e = secondForm.formState.errors as any;
-        const order = ['firstName','lastName','dateOfBirth','nationality','email','passportNumber','hasJob','job','hasCriminalConvictions','hasWarCrimesConvictions'];
-        for (const k of order) {
-          if (e?.[k]) { secondForm.setFocus(k as any); return; }
-        }
-        // Check additional nationalities
-        if (e?.additionalNationalities) {
-          if (Array.isArray(e.additionalNationalities)) {
-            for (let i = 0; i < e.additionalNationalities.length; i++) {
-              if (e.additionalNationalities[i]) {
-                secondForm.setFocus(`additionalNationalities.${i}` as any);
-                return;
-              }
-            }
-          } else {
-            secondForm.setFocus('hasAdditionalNationalities' as any);
-            return;
-          }
-        }
-        const addrOrder = ['line1','city','state','postalCode','country'];
-        for (const k of addrOrder) {
-          if (e?.address?.[k]) { secondForm.setFocus(('address.'+k) as any); return; }
-        }
-        return;
-      }
-    }
+  const handleSubmit = async (values: PaymentValues) => {
+    // Process payment here
     navigate('/application/confirmation');
   };
 
-  const handleReviewExport = async () => {
-    // Validate and persist second applicant (if any) then navigate to review
-    if (addSecond) {
-      const valid = await secondForm.trigger();
-      if (!valid) {
-        const e = secondForm.formState.errors as any;
-        const order = ['firstName','lastName','dateOfBirth','nationality','email','passportNumber','hasJob','job','hasCriminalConvictions','hasWarCrimesConvictions'];
-        for (const k of order) { if (e?.[k]) { secondForm.setFocus(k as any); return; } }
-        if (e?.additionalNationalities) {
-          if (Array.isArray(e.additionalNationalities)) {
-            for (let i = 0; i < e.additionalNationalities.length; i++) {
-              if (e.additionalNationalities[i]) { secondForm.setFocus(`additionalNationalities.${i}` as any); return; }
-            }
-          } else { secondForm.setFocus('hasAdditionalNationalities' as any); return; }
-        }
-        const addrOrder = ['line1','city','state','postalCode','country'];
-        for (const k of addrOrder) { if (e?.address?.[k]) { secondForm.setFocus(('address.'+k) as any); return; } }
-        return;
-      }
-    }
-    try {
-      if (addSecond) {
-        const values = secondForm.getValues();
-        sessionStorage.setItem('application.secondApplicant', JSON.stringify(values));
-      } else {
-        sessionStorage.removeItem('application.secondApplicant');
-      }
-    } catch {}
-    navigate('/application/review');
-  };
+  const serviceFee = 79.99;
+  const vat = serviceFee * 0.2;
+  const total = serviceFee + vat;
 
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Progress Bar */}
           <div className="mb-8">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium">{t('application.progress.step', { current: 3, total: 4 })}</span>
-              <span className="text-sm text-muted-foreground">{t('application.progress.complete', { percent: 75 })}</span>
+              <span className="text-sm font-medium">{t('application.progress.step', { current: 4, total: 4 })}</span>
+              <span className="text-sm text-muted-foreground">{t('application.progress.complete', { percent: 100 })}</span>
             </div>
-            <Progress value={75} className="h-2" />
+            <Progress value={100} className="h-2" />
           </div>
 
           {/* Header */}
@@ -213,526 +84,171 @@ const Payment = () => {
             <p className="text-muted-foreground">{t('application.payment.subtitle')}</p>
           </div>
 
-          {/* Additional Applicant (optional) */}
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle className="flex items-center justify-between">
-                <span>{t('application.payment.additionalApplicant.title', { defaultValue: 'Additional applicant (optional)' })}</span>
-                <div className="flex items-center gap-3">
-                  <Checkbox id="add-second" checked={addSecond} onCheckedChange={(v) => setAddSecond(Boolean(v))} />
-                  <label htmlFor="add-second" className="text-sm text-muted-foreground">{t('application.payment.additionalApplicant.toggle', { defaultValue: 'Add a second applicant' })}</label>
-                </div>
-              </CardTitle>
-            </CardHeader>
-            {addSecond && (
-              <CardContent>
-                <Form {...secondForm}>
-                  <form className="space-y-6" onSubmit={(e) => e.preventDefault()} noValidate>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <FormField control={secondForm.control} name="firstName" render={({ field, fieldState }) => (
-                        <FormItem>
-                          <FormLabel>{t('application.personalInfo.firstName.label')} <span className="text-destructive">*</span></FormLabel>
-                          <FormControl>
-                            <Input {...field} aria-invalid={!!fieldState.error} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                      <FormField control={secondForm.control} name="lastName" render={({ field, fieldState }) => (
-                        <FormItem>
-                          <FormLabel>{t('application.personalInfo.lastName.label')} <span className="text-destructive">*</span></FormLabel>
-                          <FormControl>
-                            <Input {...field} aria-invalid={!!fieldState.error} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <FormField control={secondForm.control} name="dateOfBirth" render={({ field, fieldState }) => (
-                        <FormItem>
-                          <FormLabel>{t('application.personalInfo.dateOfBirth.label')} <span className="text-destructive">*</span></FormLabel>
-                          <FormControl>
-                            <Input {...field} type="date" placeholder="YYYY-MM-DD" aria-invalid={!!fieldState.error} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                      <FormField control={secondForm.control} name="nationality" render={({ field, fieldState }) => (
-                        <FormItem>
-                          <FormLabel>{t('application.personalInfo.nationality.label')} <span className="text-destructive">*</span></FormLabel>
-                          <FormControl>
-                            <select
-                              {...field}
-                              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-destructive/5 aria-[invalid=true]:focus-visible:ring-destructive disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                              aria-invalid={!!fieldState.error}
-                            >
-                              <option value="">{t('application.personalInfo.nationality.placeholder')}</option>
-                              {nationalities.map((n) => (
-                                <option key={n.code} value={n.code}>{n.name}</option>
-                              ))}
-                            </select>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                    </div>
-
-                    <div className="space-y-4">
-                      <FormField control={secondForm.control} name="hasAdditionalNationalities" render={({ field }) => (
-                        <FormItem>
-                          <div className="flex items-center gap-2">
-                            <Checkbox 
-                              id="hasAdditionalNationalities2" 
-                              checked={!!field.value} 
-                              onCheckedChange={(checked) => {
-                                field.onChange(checked);
-                                if (!checked) {
-                                  secondForm.setValue('additionalNationalities', []);
-                                } else if (secondForm.getValues('additionalNationalities').length === 0) {
-                                  secondForm.setValue('additionalNationalities', ['']);
-                                }
-                              }} 
-                            />
-                            <label htmlFor="hasAdditionalNationalities2" className="text-sm font-medium">
-                              {t('application.personalInfo.additionalNationality.question', { defaultValue: 'Do you hold another nationality?' })}
-                            </label>
-                          </div>
-                        </FormItem>
-                      )} />
-
-                      {secondForm.watch('hasAdditionalNationalities') && (
-                        <div className="space-y-3">
-                          {secondForm.watch('additionalNationalities').map((_, index) => (
-                            <div key={index} className="flex items-end gap-3">
-                              <FormField 
-                                control={secondForm.control} 
-                                name={`additionalNationalities.${index}`} 
-                                render={({ field, fieldState }) => (
-                                  <FormItem className="flex-1">
-                                    {index === 0 && (
-                                      <FormLabel>{t('application.personalInfo.additionalNationality.label', { defaultValue: 'Additional nationality' })} <span className="text-destructive">*</span></FormLabel>
-                                    )}
-                                    <FormControl>
-                                      <select
-                                        {...field}
-                                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-destructive/5 aria-[invalid=true]:focus-visible:ring-destructive disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                                        aria-invalid={!!fieldState.error}
-                                      >
-                                        <option value="">{t('application.personalInfo.nationality.placeholder')}</option>
-                                        {nationalities.map((n) => (
-                                          <option key={n.code} value={n.code}>{n.name}</option>
-                                        ))}
-                                      </select>
-                                    </FormControl>
-                                    <FormMessage />
-                                  </FormItem>
-                                )}
-                              />
-                              <div className="flex gap-2">
-                                {secondForm.watch('additionalNationalities').length > 1 && (
-                                  <Button
-                                    type="button"
-                                    variant="outline"
-                                    size="icon"
-                                    onClick={() => {
-                                      const current = secondForm.getValues('additionalNationalities');
-                                      const updated = current.filter((_, i) => i !== index);
-                                      secondForm.setValue('additionalNationalities', updated);
-                                    }}
-                                    className="h-10 w-10"
-                                  >
-                                    <Minus className="h-4 w-4" />
-                                  </Button>
-                                )}
-                                {index === secondForm.watch('additionalNationalities').length - 1 && (
-                                  <Button
-                                    type="button"
-                                    variant="outline"
-                                    size="icon"
-                                    onClick={() => {
-                                      const current = secondForm.getValues('additionalNationalities');
-                                      secondForm.setValue('additionalNationalities', [...current, '']);
-                                    }}
-                                    className="h-10 w-10"
-                                  >
-                                    <Plus className="h-4 w-4" />
-                                  </Button>
-                                )}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                     </div>
-
-                     <FormField control={secondForm.control} name="passportNumber" render={({ field, fieldState }) => (
-                       <FormItem>
-                         <FormLabel>{t('application.personalInfo.passportNumber.label')} <span className="text-destructive">*</span></FormLabel>
-                         <FormControl>
-                           <Input {...field} placeholder={t('application.personalInfo.passportNumber.placeholder')} aria-invalid={!!fieldState.error} />
-                         </FormControl>
-                         <FormMessage />
-                       </FormItem>
-                     )} />
-
-                     <div className="space-y-3">
-                       <div className="flex items-center justify-between">
-                         <FormLabel>{t('application.personalInfo.email.label')} <span className="text-destructive">*</span></FormLabel>
-                        {primaryApplicant?.email && (
-                          <FormField control={secondForm.control} name="useSameEmailAsPrimary" render={({ field }) => (
-                            <div className="flex items-center gap-2">
-                              <Checkbox id="sameEmail2" checked={!!field.value} onCheckedChange={field.onChange} />
-                              <label htmlFor="sameEmail2" className="text-sm text-muted-foreground">{t('application.email.sameAsPrimary', { defaultValue: 'Same as Applicant 1' })}</label>
-                            </div>
-                          )} />
-                        )}
-                      </div>
-                      {(!useSameEmail || !primaryApplicant?.email) && (
-                        <FormField control={secondForm.control} name="email" render={({ field, fieldState }) => (
-                          <FormItem>
-                            <FormControl>
-                              <Input {...field} type="email" inputMode="email" aria-invalid={!!fieldState.error} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )} />
-                      )}
-                      {useSameEmail && primaryApplicant?.email && (
-                        <p className="text-sm text-muted-foreground">{t('application.email.usingPrimary', { defaultValue: "Using Applicant 1's email address" })}</p>
-                      )}
-                    </div>
-
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <h4 className="text-base font-medium">{t('application.address.title', { defaultValue: 'Address' })}</h4>
-                        <FormField control={secondForm.control} name="useSameAddressAsPrimary" render={({ field }) => (
-                          <div className="flex items-center gap-2">
-                            <Checkbox id="sameAddress2" checked={!!field.value} onCheckedChange={field.onChange} />
-                            <label htmlFor="sameAddress2" className="text-sm text-muted-foreground">{t('application.address.sameAsPrimary', { defaultValue: 'Same as Applicant 1' })}</label>
-                          </div>
-                        )} />
-                      </div>
-
-                      {!secondForm.watch('useSameAddressAsPrimary') && (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <FormField control={secondForm.control} name="address.line1" render={({ field, fieldState }) => (
-                            <FormItem className="md:col-span-2">
-                              <FormLabel>{t('application.address.line1.label', { defaultValue: 'Address line 1' })} <span className="text-destructive">*</span></FormLabel>
-                              <FormControl>
-                                <Input {...field} aria-invalid={!!fieldState.error} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )} />
-                          <FormField control={secondForm.control} name="address.line2" render={({ field }) => (
-                            <FormItem className="md:col-span-2">
-                              <FormLabel>{t('application.address.line2.label', { defaultValue: 'Address line 2 (optional)' })}</FormLabel>
-                              <FormControl>
-                                <Input {...field} />
-                              </FormControl>
-                            </FormItem>
-                          )} />
-                          <FormField control={secondForm.control} name="address.city" render={({ field, fieldState }) => (
-                            <FormItem>
-                              <FormLabel>{t('application.address.city.label', { defaultValue: 'City' })} <span className="text-destructive">*</span></FormLabel>
-                              <FormControl>
-                                <Input {...field} aria-invalid={!!fieldState.error} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )} />
-                          <FormField control={secondForm.control} name="address.state" render={({ field, fieldState }) => (
-                            <FormItem>
-                              <FormLabel>{t('application.address.state.label', { defaultValue: 'State/Province' })} <span className="text-destructive">*</span></FormLabel>
-                              <FormControl>
-                                <Input {...field} aria-invalid={!!fieldState.error} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )} />
-                          <FormField control={secondForm.control} name="address.postalCode" render={({ field, fieldState }) => (
-                            <FormItem>
-                              <FormLabel>{t('application.address.postalCode.label', { defaultValue: 'Postal code' })} <span className="text-destructive">*</span></FormLabel>
-                              <FormControl>
-                                <Input {...field} aria-invalid={!!fieldState.error} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )} />
-                          <FormField control={secondForm.control} name="address.country" render={({ field, fieldState }) => (
-                            <FormItem>
-                              <FormLabel>{t('application.address.country.label', { defaultValue: 'Country' })} <span className="text-destructive">*</span></FormLabel>
-                              <FormControl>
-                                <select
-                                  {...field}
-                                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-destructive/5 aria-[invalid=true]:focus-visible:ring-destructive disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                                  aria-invalid={!!fieldState.error}
-                                >
-                                  <option value="">{t('application.address.country.placeholder', { defaultValue: 'Select a country' })}</option>
-                                  {nationalities.map((n) => (
-                                    <option key={n.code} value={n.code}>{n.name}</option>
-                                  ))}
-                                </select>
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )} />
-                        </div>
-                      )}
-                       {secondForm.watch('useSameAddressAsPrimary') && (
-                         <p className="text-sm text-muted-foreground">{t('application.address.usingPrimary', { defaultValue: "Using Applicant 1's address" })}</p>
-                       )}
-                     </div>
-
-                     {/* Employment Questions */}
-                     <div className="space-y-4">
-                       <h4 className="text-base font-medium">{t('application.employment.title')}</h4>
-                       <FormField control={secondForm.control} name="hasJob" render={({ field, fieldState }) => (
-                         <FormItem>
-                           <FormLabel>{t('application.employment.hasJob.question')} <span className="text-destructive">*</span></FormLabel>
-                           <FormControl>
-                             <div className="flex gap-6">
-                               <label className="flex items-center gap-2 cursor-pointer">
-                                 <input
-                                   type="radio"
-                                   value="yes"
-                                   checked={field.value === 'yes'}
-                                   onChange={(e) => field.onChange(e.target.value)}
-                                   className="h-4 w-4 text-primary border-gray-300 focus:ring-primary"
-                                   aria-invalid={!!fieldState.error}
-                                 />
-                                 <span className="text-sm">{t('application.options.yes')}</span>
-                               </label>
-                               <label className="flex items-center gap-2 cursor-pointer">
-                                 <input
-                                   type="radio"
-                                   value="no"
-                                   checked={field.value === 'no'}
-                                   onChange={(e) => field.onChange(e.target.value)}
-                                   className="h-4 w-4 text-primary border-gray-300 focus:ring-primary"
-                                   aria-invalid={!!fieldState.error}
-                                 />
-                                 <span className="text-sm">{t('application.options.no')}</span>
-                               </label>
-                             </div>
-                           </FormControl>
-                           <FormMessage />
-                         </FormItem>
-                       )} />
-
-                       {secondForm.watch('hasJob') === 'yes' && (
-                         <FormField control={secondForm.control} name="job" render={({ field, fieldState }) => (
-                           <FormItem>
-                             <FormLabel>{t('application.employment.job.label')} <span className="text-destructive">*</span></FormLabel>
-                             <FormControl>
-                               <Input {...field} placeholder={t('application.employment.job.placeholder')} aria-invalid={!!fieldState.error} />
-                             </FormControl>
-                             <FormMessage />
-                           </FormItem>
-                         )} />
-                       )}
-                     </div>
-
-                     {/* Security Questions */}
-                     <div className="space-y-4">
-                       <h4 className="text-base font-medium">{t('application.security.title')}</h4>
-                       <FormField control={secondForm.control} name="hasCriminalConvictions" render={({ field, fieldState }) => (
-                         <FormItem>
-                           <FormLabel>{t('application.security.criminalConvictions.question')} <span className="text-destructive">*</span></FormLabel>
-                           <FormControl>
-                             <div className="flex gap-6">
-                               <label className="flex items-center gap-2 cursor-pointer">
-                                 <input
-                                   type="radio"
-                                   value="yes"
-                                   checked={field.value === 'yes'}
-                                   onChange={(e) => field.onChange(e.target.value)}
-                                   className="h-4 w-4 text-primary border-gray-300 focus:ring-primary"
-                                   aria-invalid={!!fieldState.error}
-                                 />
-                                 <span className="text-sm">{t('application.options.yes')}</span>
-                               </label>
-                               <label className="flex items-center gap-2 cursor-pointer">
-                                 <input
-                                   type="radio"
-                                   value="no"
-                                   checked={field.value === 'no'}
-                                   onChange={(e) => field.onChange(e.target.value)}
-                                   className="h-4 w-4 text-primary border-gray-300 focus:ring-primary"
-                                   aria-invalid={!!fieldState.error}
-                                 />
-                                 <span className="text-sm">{t('application.options.no')}</span>
-                               </label>
-                             </div>
-                           </FormControl>
-                           <FormMessage />
-                         </FormItem>
-                       )} />
-
-                       <FormField control={secondForm.control} name="hasWarCrimesConvictions" render={({ field, fieldState }) => (
-                         <FormItem>
-                           <FormLabel>{t('application.security.warCrimes.question')} <span className="text-destructive">*</span></FormLabel>
-                           <FormControl>
-                             <div className="flex gap-6">
-                               <label className="flex items-center gap-2 cursor-pointer">
-                                 <input
-                                   type="radio"
-                                   value="yes"
-                                   checked={field.value === 'yes'}
-                                   onChange={(e) => field.onChange(e.target.value)}
-                                   className="h-4 w-4 text-primary border-gray-300 focus:ring-primary"
-                                   aria-invalid={!!fieldState.error}
-                                 />
-                                 <span className="text-sm">{t('application.options.yes')}</span>
-                               </label>
-                               <label className="flex items-center gap-2 cursor-pointer">
-                                 <input
-                                   type="radio"
-                                   value="no"
-                                   checked={field.value === 'no'}
-                                   onChange={(e) => field.onChange(e.target.value)}
-                                   className="h-4 w-4 text-primary border-gray-300 focus:ring-primary"
-                                   aria-invalid={!!fieldState.error}
-                                 />
-                                 <span className="text-sm">{t('application.options.no')}</span>
-                               </label>
-                             </div>
-                           </FormControl>
-                           <FormMessage />
-                         </FormItem>
-                       )} />
-                     </div>
-
-                     {/* Document Uploads */}
-                     <div className="space-y-6">
-                       <h4 className="text-base font-medium">{t('application.documents.title')}</h4>
-                       
-                       {/* Passport Photo */}
-                       <div className="space-y-3">
-                         <FormLabel>{t('application.documents.passport.uploadTitle')} <span className="text-destructive">*</span></FormLabel>
-                         <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
-                           <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                           <div className="space-y-2">
-                             <p className="text-sm font-medium">{t('application.documents.passport.dragDrop')}</p>
-                             <p className="text-xs text-muted-foreground">{t('application.documents.passport.fileTypes')}</p>
-                           </div>
-                           <Button type="button" variant="outline" className="mt-4">
-                             <Upload className="h-4 w-4 mr-2" />
-                             {t('application.documents.passport.browse')}
-                           </Button>
-                         </div>
-                       </div>
-
-                       {/* Personal Photo */}
-                       <div className="space-y-3">
-                         <FormLabel>{t('application.documents.photo.uploadTitle')} <span className="text-destructive">*</span></FormLabel>
-                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                           <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
-                             <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                             <div className="space-y-2">
-                               <p className="text-sm font-medium">{t('application.documents.photo.upload')}</p>
-                               <p className="text-xs text-muted-foreground">{t('application.documents.photo.fileTypes')}</p>
-                             </div>
-                             <Button type="button" variant="outline" className="mt-4">
-                               <Upload className="h-4 w-4 mr-2" />
-                               {t('application.documents.photo.browse')}
-                             </Button>
-                           </div>
-                           <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
-                             <Camera className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                             <div className="space-y-2">
-                               <p className="text-sm font-medium">{t('application.documents.photo.camera')}</p>
-                               <p className="text-xs text-muted-foreground">{t('application.documents.photo.cameraDesc')}</p>
-                             </div>
-                             <Button type="button" variant="outline" className="mt-4">
-                               <Camera className="h-4 w-4 mr-2" />
-                               {t('application.documents.photo.takePhoto')}
-                             </Button>
-                           </div>
-                         </div>
-                         <div className="bg-secondary/50 p-4 rounded-lg">
-                           <p className="text-sm text-muted-foreground">
-                             {t('application.documents.photo.requirements')}
-                           </p>
-                         </div>
-                       </div>
-                     </div>
-                   </form>
-                 </Form>
-              </CardContent>
-            )}
-          </Card>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Payment Form */}
-            <div className="lg:col-span-2">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <CreditCard className="h-5 w-5" />
-                    {t('application.payment.details.title')}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">
-                      {t('application.payment.details.cardholderName.label')}
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder={t('application.payment.details.cardholderName.placeholder')}
-                    />
-                  </div>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <CreditCard className="h-5 w-5" />
+                  {t('application.payment.details.title')}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6" noValidate>
+                    <FormField control={form.control} name="cardholderName" render={({ field, fieldState }) => (
+                      <FormItem>
+                        <FormLabel>{t('application.payment.details.cardholderName.label')}</FormLabel>
+                        <FormControl>
+                          <Input 
+                            {...field} 
+                            placeholder={t('application.payment.details.cardholderName.placeholder')} 
+                            aria-invalid={!!fieldState.error} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )} />
 
-                  <div>
-                    <label className="block text-sm font-medium mb-2">
-                      {t('application.payment.details.cardNumber.label')}
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder={t('application.payment.details.cardNumber.placeholder')}
-                    />
-                  </div>
+                    <FormField control={form.control} name="cardNumber" render={({ field, fieldState }) => (
+                      <FormItem>
+                        <FormLabel>{t('application.payment.details.cardNumber.label')}</FormLabel>
+                        <FormControl>
+                          <Input 
+                            {...field} 
+                            placeholder={t('application.payment.details.cardNumber.placeholder')} 
+                            maxLength={19}
+                            onChange={(e) => {
+                              // Format card number with spaces
+                              let value = e.target.value.replace(/\s/g, '').replace(/\D/g, '');
+                              value = value.replace(/(\d{4})/g, '$1 ').trim();
+                              field.onChange(value);
+                            }}
+                            aria-invalid={!!fieldState.error} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )} />
 
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                        <label className="block text-sm font-medium mb-2">
-                          {t('application.payment.details.expiryDate.label')}
-                        </label>
-                        <input
-                          type="text"
-                          className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                          placeholder={t('application.payment.details.expiryDate.placeholder')}
-                        />
+                    <div className="grid grid-cols-2 gap-4">
+                      <FormField control={form.control} name="expiryDate" render={({ field, fieldState }) => (
+                        <FormItem>
+                          <FormLabel>{t('application.payment.details.expiryDate.label')}</FormLabel>
+                          <FormControl>
+                            <Input 
+                              {...field} 
+                              placeholder={t('application.payment.details.expiryDate.placeholder')} 
+                              maxLength={5}
+                              onChange={(e) => {
+                                let value = e.target.value.replace(/\D/g, '');
+                                if (value.length >= 2) {
+                                  value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                                }
+                                field.onChange(value);
+                              }}
+                              aria-invalid={!!fieldState.error} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )} />
+
+                      <FormField control={form.control} name="cvv" render={({ field, fieldState }) => (
+                        <FormItem>
+                          <FormLabel>{t('application.payment.details.cvv.label')}</FormLabel>
+                          <FormControl>
+                            <Input 
+                              {...field} 
+                              placeholder={t('application.payment.details.cvv.placeholder')} 
+                              maxLength={4}
+                              onChange={(e) => {
+                                const value = e.target.value.replace(/\D/g, '');
+                                field.onChange(value);
+                              }}
+                              aria-invalid={!!fieldState.error} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )} />
                     </div>
-                    <div>
-                        <label className="block text-sm font-medium mb-2">
-                          {t('application.payment.details.cvv.label')}
-                        </label>
-                        <input
-                          type="text"
-                          className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                          placeholder={t('application.payment.details.cvv.placeholder')}
-                        />
-                    </div>
-                  </div>
 
-                  <div className="flex items-center gap-2 p-4 bg-secondary/50 rounded-lg">
-                    <Shield className="h-5 w-5 text-primary" />
-                    <p className="text-sm">
-                      {t('application.payment.details.security')}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                    <FormField control={form.control} name="acceptTerms" render={({ field }) => (
+                      <FormItem>
+                        <div className="flex items-center gap-2">
+                          <Checkbox 
+                            id="acceptTerms" 
+                            checked={!!field.value} 
+                            onCheckedChange={field.onChange}
+                          />
+                          <label htmlFor="acceptTerms" className="text-sm">
+                            I accept the <a href="/terms" className="text-primary underline">terms and conditions</a> and <a href="/privacy" className="text-primary underline">privacy policy</a>
+                          </label>
+                        </div>
+                        <FormMessage />
+                      </FormItem>
+                    )} />
+
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Shield className="h-4 w-4" />
+                      <span>{t('application.payment.details.security')}</span>
+                    </div>
+
+                    <Button type="submit" className="w-full" size="lg">
+                      <Lock className="h-4 w-4 mr-2" />
+                      {t('application.payment.complete')}
+                    </Button>
+                  </form>
+                </Form>
+              </CardContent>
+            </Card>
 
             {/* Order Summary */}
-            <div>
+            <div className="space-y-6">
+              {/* Additional Applicant Option */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Additional Applicant</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {hasSecondApplicant && secondApplicant ? (
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="font-medium">Second Applicant Added</p>
+                          <p className="text-sm text-muted-foreground">
+                            {secondApplicant.firstName} {secondApplicant.lastName}
+                          </p>
+                        </div>
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => navigate('/application/second-applicant')}
+                        >
+                          Edit
+                        </Button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="text-center py-4">
+                      <p className="text-muted-foreground mb-4">
+                        Add a second applicant to this application
+                      </p>
+                      <Button 
+                        variant="outline" 
+                        onClick={handleAddSecondApplicant}
+                        className="flex items-center gap-2"
+                      >
+                        <Plus className="h-4 w-4" />
+                        Add Second Applicant
+                      </Button>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+
+              {/* Order Summary */}
               <Card>
                 <CardHeader>
                   <CardTitle>{t('application.payment.summary.title')}</CardTitle>
@@ -740,28 +256,34 @@ const Payment = () => {
                 <CardContent className="space-y-4">
                   <div className="flex justify-between">
                     <span>{t('application.payment.summary.application')}</span>
-                    <span>£89.00</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>{t('application.payment.summary.serviceFee')}</span>
-                    <span>£15.00</span>
-                  </div>
-                  <div className="flex justify-between text-sm text-muted-foreground">
-                    <span>{t('application.payment.summary.vat')}</span>
-                    <span>£20.80</span>
-                  </div>
-                  <hr />
-                  <div className="flex justify-between font-bold text-lg">
-                    <span>{t('application.payment.summary.total')}</span>
-                    <span>£124.80</span>
+                    <span>£{serviceFee.toFixed(2)}</span>
                   </div>
                   
-                  <div className="mt-6 space-y-2">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Lock className="h-4 w-4" />
+                  {hasSecondApplicant && (
+                    <div className="flex justify-between">
+                      <span>Second Applicant</span>
+                      <span>£{serviceFee.toFixed(2)}</span>
+                    </div>
+                  )}
+                  
+                  <div className="flex justify-between text-sm text-muted-foreground">
+                    <span>{t('application.payment.summary.vat')}</span>
+                    <span>£{(vat * (hasSecondApplicant ? 2 : 1)).toFixed(2)}</span>
+                  </div>
+                  
+                  <div className="border-t pt-4">
+                    <div className="flex justify-between font-bold text-lg">
+                      <span>{t('application.payment.summary.total')}</span>
+                      <span>£{(total * (hasSecondApplicant ? 2 : 1)).toFixed(2)}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <Shield className="h-4 w-4" />
                       <span>{t('application.payment.summary.sslSecured')}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
                       <Shield className="h-4 w-4" />
                       <span>{t('application.payment.summary.moneyBack')}</span>
                     </div>
@@ -781,23 +303,13 @@ const Payment = () => {
               <ArrowLeft className="h-4 w-4" />
               {t('application.back')}
             </Button>
-            <div className="flex items-center gap-3">
-              <Button 
-                variant="outline"
-                onClick={handleReviewExport}
-                className="flex items-center gap-2"
-              >
-                Review & Export
-              </Button>
-              <Button 
-                onClick={handleComplete}
-                className="flex items-center gap-2"
-                size="lg"
-              >
-                {t('application.payment.complete')}
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </div>
+            <Button 
+              onClick={() => navigate('/application/review')}
+              className="flex items-center gap-2"
+            >
+              Review Application
+              <ArrowRight className="h-4 w-4" />
+            </Button>
           </div>
         </div>
       </div>

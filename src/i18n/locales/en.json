@@ -171,12 +171,18 @@
         "usingPrimary": "Using Applicant 1's address"
       },
       "employment": {
+        "title": "Employment",
         "hasJob": { "label": "Do you have a job?" },
         "jobTitle": { "label": "What's your job?", "placeholder": "Enter your job title" }
       },
       "security": {
+        "title": "Security Questions",
         "criminalConvictions": { "label": "Have you ever had criminal convictions?" },
         "warCrimes": { "label": "Have you ever been suspected or convicted of war crimes, terrorism or extremism?" }
+      },
+      "documents": {
+        "passportPhoto": { "title": "Passport Photo", "upload": "Upload passport photo", "requirements": "Clear image of passport information page" },
+        "personalPhoto": { "title": "Personal Photo", "upload": "Upload personal photo", "camera": "Take photo with camera", "requirements": "Recent photo with plain background" }
       },
       "email": {
         "sameAsPrimary": "Same as Applicant 1",
