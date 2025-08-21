@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { ArrowLeft, ArrowRight, CreditCard, Shield, Lock, Plus, Minus } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CreditCard, Shield, Lock, Plus, Minus, Upload, Camera } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 import { useEffect, useState } from 'react';
@@ -56,6 +56,12 @@ const Payment = () => {
     useSameAddressAsPrimary: z.boolean().optional().default(false),
     useSameEmailAsPrimary: z.boolean().optional().default(false),
     address: addressShape,
+    hasJob: z.enum(['yes', 'no'], { required_error: 'Please answer if you have a job' }),
+    job: z.string().optional(),
+    hasCriminalConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer about criminal convictions' }),
+    hasWarCrimesConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer about war crimes convictions' }),
+    passportPhoto: z.string().optional(),
+    personalPhoto: z.string().optional(),
   }).superRefine((val, ctx) => {
     if (val.hasAdditionalNationalities && (!val.additionalNationalities || val.additionalNationalities.length === 0)) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Please select at least one additional nationality', path: ['additionalNationalities'] });
@@ -84,6 +90,11 @@ const Payment = () => {
         ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Please select a country', path: ['address','country'] });
       }
     }
+    
+    // Employment validation
+    if (val.hasJob === 'yes' && (!val.job || val.job.trim().length < 2)) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Please enter your job title', path: ['job'] });
+    }
   });
 
   type SecondApplicantValues = z.infer<typeof secondApplicantSchema>;
@@ -103,6 +114,12 @@ const Payment = () => {
       useSameAddressAsPrimary: false,
       useSameEmailAsPrimary: !!primaryApplicant?.email,
       address: { line1: '', line2: '', city: '', state: '', postalCode: '', country: '' },
+      hasJob: undefined,
+      job: '',
+      hasCriminalConvictions: undefined,
+      hasWarCrimesConvictions: undefined,
+      passportPhoto: '',
+      personalPhoto: '',
     },
   });
 
@@ -118,7 +135,7 @@ const Payment = () => {
       const valid = await secondForm.trigger();
       if (!valid) {
         const e = secondForm.formState.errors as any;
-        const order = ['firstName','lastName','dateOfBirth','nationality','email','passportNumber'];
+        const order = ['firstName','lastName','dateOfBirth','nationality','email','passportNumber','hasJob','job','hasCriminalConvictions','hasWarCrimesConvictions'];
         for (const k of order) {
           if (e?.[k]) { secondForm.setFocus(k as any); return; }
         }
@@ -152,7 +169,7 @@ const Payment = () => {
       const valid = await secondForm.trigger();
       if (!valid) {
         const e = secondForm.formState.errors as any;
-        const order = ['firstName','lastName','dateOfBirth','nationality','email','passportNumber'];
+        const order = ['firstName','lastName','dateOfBirth','nationality','email','passportNumber','hasJob','job','hasCriminalConvictions','hasWarCrimesConvictions'];
         for (const k of order) { if (e?.[k]) { secondForm.setFocus(k as any); return; } }
         if (e?.additionalNationalities) {
           if (Array.isArray(e.additionalNationalities)) {
@@ -348,11 +365,21 @@ const Payment = () => {
                           ))}
                         </div>
                       )}
-                    </div>
+                     </div>
 
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <FormLabel>{t('application.personalInfo.email.label')} <span className="text-destructive">*</span></FormLabel>
+                     <FormField control={secondForm.control} name="passportNumber" render={({ field, fieldState }) => (
+                       <FormItem>
+                         <FormLabel>{t('application.personalInfo.passportNumber.label')} <span className="text-destructive">*</span></FormLabel>
+                         <FormControl>
+                           <Input {...field} placeholder={t('application.personalInfo.passportNumber.placeholder')} aria-invalid={!!fieldState.error} />
+                         </FormControl>
+                         <FormMessage />
+                       </FormItem>
+                     )} />
+
+                     <div className="space-y-3">
+                       <div className="flex items-center justify-between">
+                         <FormLabel>{t('application.personalInfo.email.label')} <span className="text-destructive">*</span></FormLabel>
                         {primaryApplicant?.email && (
                           <FormField control={secondForm.control} name="useSameEmailAsPrimary" render={({ field }) => (
                             <div className="flex items-center gap-2">
@@ -454,12 +481,186 @@ const Payment = () => {
                           )} />
                         </div>
                       )}
-                      {secondForm.watch('useSameAddressAsPrimary') && (
-                        <p className="text-sm text-muted-foreground">{t('application.address.usingPrimary', { defaultValue: "Using Applicant 1's address" })}</p>
-                      )}
-                    </div>
-                  </form>
-                </Form>
+                       {secondForm.watch('useSameAddressAsPrimary') && (
+                         <p className="text-sm text-muted-foreground">{t('application.address.usingPrimary', { defaultValue: "Using Applicant 1's address" })}</p>
+                       )}
+                     </div>
+
+                     {/* Employment Questions */}
+                     <div className="space-y-4">
+                       <h4 className="text-base font-medium">{t('application.employment.title')}</h4>
+                       <FormField control={secondForm.control} name="hasJob" render={({ field, fieldState }) => (
+                         <FormItem>
+                           <FormLabel>{t('application.employment.hasJob.question')} <span className="text-destructive">*</span></FormLabel>
+                           <FormControl>
+                             <div className="flex gap-6">
+                               <label className="flex items-center gap-2 cursor-pointer">
+                                 <input
+                                   type="radio"
+                                   value="yes"
+                                   checked={field.value === 'yes'}
+                                   onChange={(e) => field.onChange(e.target.value)}
+                                   className="h-4 w-4 text-primary border-gray-300 focus:ring-primary"
+                                   aria-invalid={!!fieldState.error}
+                                 />
+                                 <span className="text-sm">{t('application.options.yes')}</span>
+                               </label>
+                               <label className="flex items-center gap-2 cursor-pointer">
+                                 <input
+                                   type="radio"
+                                   value="no"
+                                   checked={field.value === 'no'}
+                                   onChange={(e) => field.onChange(e.target.value)}
+                                   className="h-4 w-4 text-primary border-gray-300 focus:ring-primary"
+                                   aria-invalid={!!fieldState.error}
+                                 />
+                                 <span className="text-sm">{t('application.options.no')}</span>
+                               </label>
+                             </div>
+                           </FormControl>
+                           <FormMessage />
+                         </FormItem>
+                       )} />
+
+                       {secondForm.watch('hasJob') === 'yes' && (
+                         <FormField control={secondForm.control} name="job" render={({ field, fieldState }) => (
+                           <FormItem>
+                             <FormLabel>{t('application.employment.job.label')} <span className="text-destructive">*</span></FormLabel>
+                             <FormControl>
+                               <Input {...field} placeholder={t('application.employment.job.placeholder')} aria-invalid={!!fieldState.error} />
+                             </FormControl>
+                             <FormMessage />
+                           </FormItem>
+                         )} />
+                       )}
+                     </div>
+
+                     {/* Security Questions */}
+                     <div className="space-y-4">
+                       <h4 className="text-base font-medium">{t('application.security.title')}</h4>
+                       <FormField control={secondForm.control} name="hasCriminalConvictions" render={({ field, fieldState }) => (
+                         <FormItem>
+                           <FormLabel>{t('application.security.criminalConvictions.question')} <span className="text-destructive">*</span></FormLabel>
+                           <FormControl>
+                             <div className="flex gap-6">
+                               <label className="flex items-center gap-2 cursor-pointer">
+                                 <input
+                                   type="radio"
+                                   value="yes"
+                                   checked={field.value === 'yes'}
+                                   onChange={(e) => field.onChange(e.target.value)}
+                                   className="h-4 w-4 text-primary border-gray-300 focus:ring-primary"
+                                   aria-invalid={!!fieldState.error}
+                                 />
+                                 <span className="text-sm">{t('application.options.yes')}</span>
+                               </label>
+                               <label className="flex items-center gap-2 cursor-pointer">
+                                 <input
+                                   type="radio"
+                                   value="no"
+                                   checked={field.value === 'no'}
+                                   onChange={(e) => field.onChange(e.target.value)}
+                                   className="h-4 w-4 text-primary border-gray-300 focus:ring-primary"
+                                   aria-invalid={!!fieldState.error}
+                                 />
+                                 <span className="text-sm">{t('application.options.no')}</span>
+                               </label>
+                             </div>
+                           </FormControl>
+                           <FormMessage />
+                         </FormItem>
+                       )} />
+
+                       <FormField control={secondForm.control} name="hasWarCrimesConvictions" render={({ field, fieldState }) => (
+                         <FormItem>
+                           <FormLabel>{t('application.security.warCrimes.question')} <span className="text-destructive">*</span></FormLabel>
+                           <FormControl>
+                             <div className="flex gap-6">
+                               <label className="flex items-center gap-2 cursor-pointer">
+                                 <input
+                                   type="radio"
+                                   value="yes"
+                                   checked={field.value === 'yes'}
+                                   onChange={(e) => field.onChange(e.target.value)}
+                                   className="h-4 w-4 text-primary border-gray-300 focus:ring-primary"
+                                   aria-invalid={!!fieldState.error}
+                                 />
+                                 <span className="text-sm">{t('application.options.yes')}</span>
+                               </label>
+                               <label className="flex items-center gap-2 cursor-pointer">
+                                 <input
+                                   type="radio"
+                                   value="no"
+                                   checked={field.value === 'no'}
+                                   onChange={(e) => field.onChange(e.target.value)}
+                                   className="h-4 w-4 text-primary border-gray-300 focus:ring-primary"
+                                   aria-invalid={!!fieldState.error}
+                                 />
+                                 <span className="text-sm">{t('application.options.no')}</span>
+                               </label>
+                             </div>
+                           </FormControl>
+                           <FormMessage />
+                         </FormItem>
+                       )} />
+                     </div>
+
+                     {/* Document Uploads */}
+                     <div className="space-y-6">
+                       <h4 className="text-base font-medium">{t('application.documents.title')}</h4>
+                       
+                       {/* Passport Photo */}
+                       <div className="space-y-3">
+                         <FormLabel>{t('application.documents.passport.uploadTitle')} <span className="text-destructive">*</span></FormLabel>
+                         <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
+                           <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+                           <div className="space-y-2">
+                             <p className="text-sm font-medium">{t('application.documents.passport.dragDrop')}</p>
+                             <p className="text-xs text-muted-foreground">{t('application.documents.passport.fileTypes')}</p>
+                           </div>
+                           <Button type="button" variant="outline" className="mt-4">
+                             <Upload className="h-4 w-4 mr-2" />
+                             {t('application.documents.passport.browse')}
+                           </Button>
+                         </div>
+                       </div>
+
+                       {/* Personal Photo */}
+                       <div className="space-y-3">
+                         <FormLabel>{t('application.documents.photo.uploadTitle')} <span className="text-destructive">*</span></FormLabel>
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                           <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
+                             <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+                             <div className="space-y-2">
+                               <p className="text-sm font-medium">{t('application.documents.photo.upload')}</p>
+                               <p className="text-xs text-muted-foreground">{t('application.documents.photo.fileTypes')}</p>
+                             </div>
+                             <Button type="button" variant="outline" className="mt-4">
+                               <Upload className="h-4 w-4 mr-2" />
+                               {t('application.documents.photo.browse')}
+                             </Button>
+                           </div>
+                           <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
+                             <Camera className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+                             <div className="space-y-2">
+                               <p className="text-sm font-medium">{t('application.documents.photo.camera')}</p>
+                               <p className="text-xs text-muted-foreground">{t('application.documents.photo.cameraDesc')}</p>
+                             </div>
+                             <Button type="button" variant="outline" className="mt-4">
+                               <Camera className="h-4 w-4 mr-2" />
+                               {t('application.documents.photo.takePhoto')}
+                             </Button>
+                           </div>
+                         </div>
+                         <div className="bg-secondary/50 p-4 rounded-lg">
+                           <p className="text-sm text-muted-foreground">
+                             {t('application.documents.photo.requirements')}
+                           </p>
+                         </div>
+                       </div>
+                     </div>
+                   </form>
+                 </Form>
               </CardContent>
             )}
           </Card>
