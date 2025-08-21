@@ -149,72 +149,35 @@
       },
       "complete": "Finaliser le paiement"
     },
-    "confirmation": {
-      "title": "Demande soumise avec succès !",
-      "subtitle": "Votre demande d'ETA pour le Royaume-Uni a été reçue et est en cours de traitement",
-      "applicationDetails": "Détails de la demande",
-      "referenceNumber": "Numéro de référence",
-      "submissionDate": "Date de soumission",
-      "processingTime": "Temps de traitement estimé",
-      "amountPaid": "Montant payé",
-      "nextSteps": {
-        "title": "Que se passe-t-il ensuite ?",
-        "step1": {"title": "Confirmation par e-mail", "description": "Vous recevrez un e-mail de confirmation avec votre numéro de référence"},
-        "step2": {"title": "Traitement", "description": "Nous examinerons votre demande et vos documents"},
-        "step3": {"title": "Livraison de l'ETA", "description": "Votre ETA approuvé sera envoyé à votre adresse e-mail"}
-      },
-      "actions": {"downloadReceipt": "Télécharger le reçu", "emailReceipt": "Envoyer le reçu par e-mail", "trackApplication": "Suivre la demande"},
-      "support": {"title": "Besoin d'aide ?", "email": "Support par e-mail", "phone": "Support téléphonique", "hours": "Disponible 24h/24 et 7j/7"},
-      "returnHome": "Retour à l'accueil"
+    "address": {
+      "title": "Adresse",
+      "sameAsPrimary": "Identique au demandeur 1",
+      "line1": { "label": "Ligne d'adresse 1" },
+      "line2": { "label": "Ligne d'adresse 2 (optionnel)" },
+      "city": { "label": "Ville" },
+      "state": { "label": "État/Province" },
+      "postalCode": { "label": "Code postal" },
+      "country": { "label": "Pays", "placeholder": "Sélectionner un pays" },
+      "usingPrimary": "Utilise l'adresse du demandeur 1"
     },
-    "track": {
-      "title": "Suivre votre demande",
-      "subtitle": "Entrez votre numéro de référence pour vérifier le statut de votre demande d'ETA pour le Royaume-Uni",
-      "referenceNumber": "Numéro de référence",
-      "referenceNumberPlaceholder": "Entrez votre numéro de référence",
-      "search": "Rechercher",
-      "applicationStatus": "Statut de la demande",
-      "applicantName": "Nom du demandeur",
-      "submissionDate": "Date de soumission",
-      "currentStatus": "Statut actuel",
-      "estimatedCompletion": "Achèvement estimé",
-      "emailNotifications": "Vous recevrez des notifications par e-mail à chaque étape du traitement",
-      "timeline": {"submitted": "Soumise", "documentsVerified": "Documents vérifiés", "underReview": "En cours d'examen", "etaIssued": "ETA délivré"},
-      "help": {
-        "title": "Besoin d'aide ?",
-        "contactUs": "Contactez-nous",
-        "email": "support@uketaapplication.com",
-        "phone": "+44 20 7946 0958",
-        "hours": "Lundi - Vendredi, 9h00 - 18h00 GMT",
-        "processingTimes": {"title": "Temps de traitement", "standard": "Standard : 3-5 jours ouvrables", "peak": "Haute saison : 5-7 jours ouvrables", "complex": "Cas complexes : 7-10 jours ouvrables"}
-      }
-    }
-  ,
-      "address": {
-        "title": "Adresse",
-        "sameAsPrimary": "Identique au demandeur 1",
-        "line1": { "label": "Ligne d'adresse 1" },
-        "line2": { "label": "Ligne d'adresse 2 (optionnel)" },
-        "city": { "label": "Ville" },
-        "state": { "label": "État/Province" },
-        "postalCode": { "label": "Code postal" },
-        "country": { "label": "Pays", "placeholder": "Sélectionner un pays" },
-        "usingPrimary": "Utilisation de l'adresse du demandeur 1"
-      },
-      "employment": {
-        "hasJob": { "label": "Avez-vous un emploi ?" },
-        "jobTitle": { "label": "Quel est votre emploi ?", "placeholder": "Saisissez votre intitulé de poste" }
-      },
-      "security": {
-        "criminalConvictions": { "label": "Avez-vous déjà eu des condamnations pénales ?" },
-        "warCrimes": { "label": "Avez-vous déjà été soupçonné ou condamné pour crimes de guerre, terrorisme ou extrémisme ?" }
-      },
-      "email": {
-        "sameAsPrimary": "Identique au demandeur 1",
-        "usingPrimary": "Utilisation de l'adresse e-mail du demandeur 1"
-      },
-      "options": { "yes": "Oui", "no": "Non" }
+    "employment": {
+      "hasJob": { "label": "Avez-vous un emploi?" },
+      "jobTitle": { "label": "Quel est votre emploi?", "placeholder": "Entrez votre titre de poste" }
     },
+    "security": {
+      "criminalConvictions": { "label": "Avez-vous déjà eu des condamnations pénales?" },
+      "warCrimes": { "label": "Avez-vous déjà été soupçonné ou condamné pour crimes de guerre, terrorisme ou extrémisme?" }
+    },
+    "email": {
+      "sameAsPrimary": "Identique au demandeur 1",
+      "usingPrimary": "Utilise l'adresse e-mail du demandeur 1"
+    },
+    "additionalNationalities": {
+      "label": "Avez-vous des nationalités supplémentaires?",
+      "description": "Sélectionnez ceci si vous avez plusieurs citoyennetés"
+    },
+    "options": { "yes": "Oui", "no": "Non" }
+  },
   "tracking": {
     "title": "Suivre votre demande",
     "subtitle": "Entrez votre numéro de référence pour vérifier le statut de votre demande",

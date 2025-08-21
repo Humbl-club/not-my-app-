@@ -52,9 +52,12 @@ const ApplicantForm = () => {
       state: z.string().optional(),
       postalCode: z.string().optional(),
       country: z.string().optional(),
+    }).refine((data) => {
+      // Address is required if not using primary applicant's address
+      return true; // We'll handle validation in the form
     }),
     hasJob: z.enum(['yes', 'no'], { required_error: 'Please answer if you have a job' }),
-    job: z.string().optional(),
+    jobTitle: z.string().optional(),
     hasCriminalConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer about criminal convictions' }),
     hasWarCrimesConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer about war crimes convictions' }),
   });
@@ -91,14 +94,43 @@ const ApplicantForm = () => {
       email: '',
       passportNumber: '',
       useSameAddressAsPrimary: false,
-      useSameEmailAsPrimary: !!primaryApplicant?.email,
+      useSameEmailAsPrimary: false,
       address: { line1: '', line2: '', city: '', state: '', postalCode: '', country: '' },
       hasJob: undefined,
-      job: '',
+      jobTitle: '',
       hasCriminalConvictions: undefined,
       hasWarCrimesConvictions: undefined,
     },
   });
+
+  // Watch checkbox values for reactive updates
+  const useSameEmail = useWatch({ control: form.control, name: 'useSameEmailAsPrimary' });
+  const useSameAddress = useWatch({ control: form.control, name: 'useSameAddressAsPrimary' });
+
+  // Load existing data when editing
+  useEffect(() => {
+    if (existingData) {
+      form.reset(existingData);
+    }
+  }, [existingData, form]);
+
+  // Handle email checkbox change
+  useEffect(() => {
+    if (useSameEmail && primaryApplicant?.email) {
+      form.setValue('email', primaryApplicant.email);
+    } else if (!useSameEmail) {
+      form.setValue('email', '');
+    }
+  }, [useSameEmail, primaryApplicant?.email, form]);
+
+  // Handle address checkbox change
+  useEffect(() => {
+    if (useSameAddress && primaryApplicant?.address) {
+      form.setValue('address', primaryApplicant.address);
+    } else if (!useSameAddress) {
+      form.setValue('address', { line1: '', line2: '', city: '', state: '', postalCode: '', country: '' });
+    }
+  }, [useSameAddress, primaryApplicant?.address, form]);
 
   const handleSubmit = async (values: ApplicantValues) => {
     if (!id) return;
@@ -213,17 +245,17 @@ const ApplicantForm = () => {
                           onCheckedChange={field.onChange}
                         />
                       </FormControl>
-                      <div className="space-y-0.5">
-                        <FormLabel className="text-base font-semibold">{t('application.personalInfo.hasAdditionalNationalities.label')}</FormLabel>
-                        <p className="text-sm text-muted-foreground">{t('application.personalInfo.hasAdditionalNationalities.description')}</p>
-                      </div>
+                         <div className="space-y-0.5">
+                           <FormLabel className="text-base font-semibold">{t('application.additionalNationalities.label')}</FormLabel>
+                           <p className="text-sm text-muted-foreground">{t('application.additionalNationalities.description')}</p>
+                         </div>
                     </FormItem>
                   )} />
 
                   {form.getValues('hasAdditionalNationalities') && (
-                    <FormField control={form.control} name="additionalNationalities" render={({ field, fieldState }) => (
-                      <FormItem>
-                        <FormLabel>{t('application.personalInfo.additionalNationalities.label')} <span className="text-destructive">*</span></FormLabel>
+                     <FormField control={form.control} name="additionalNationalities" render={({ field, fieldState }) => (
+                       <FormItem>
+                         <FormLabel>{t('application.additionalNationalities.label')} <span className="text-destructive">*</span></FormLabel>
                         <FormControl>
                           <div className="space-y-3">
                             {field.value?.map((nationality, index) => (
@@ -297,8 +329,8 @@ const ApplicantForm = () => {
                           />
                         </FormControl>
                         <div className="space-y-0.5">
-                          <FormLabel className="text-base font-semibold">{t('application.personalInfo.useSameEmailAsPrimary.label')}</FormLabel>
-                          <p className="text-sm text-muted-foreground">{t('application.personalInfo.useSameEmailAsPrimary.description', { email: primaryApplicant.email })}</p>
+                           <FormLabel className="text-base font-semibold">{t('application.email.sameAsPrimary')}</FormLabel>
+                           <p className="text-sm text-muted-foreground">{t('application.email.usingPrimary')}: {primaryApplicant.email}</p>
                         </div>
                       </FormItem>
                     )} />
@@ -323,8 +355,8 @@ const ApplicantForm = () => {
                         />
                       </FormControl>
                       <div className="space-y-0.5">
-                        <FormLabel className="text-base font-semibold">{t('application.personalInfo.useSameAddressAsPrimary.label')}</FormLabel>
-                        <p className="text-sm text-muted-foreground">{t('application.personalInfo.useSameAddressAsPrimary.description')}</p>
+                         <FormLabel className="text-base font-semibold">{t('application.address.sameAsPrimary')}</FormLabel>
+                         <p className="text-sm text-muted-foreground">{t('application.address.usingPrimary')}</p>
                       </div>
                     </FormItem>
                   )} />
@@ -407,77 +439,77 @@ const ApplicantForm = () => {
                   <FormField control={form.control} name="hasJob" render={({ field, fieldState }) => (
                     <FormItem>
                       <FormLabel>{t('application.employment.hasJob.label')} <span className="text-destructive">*</span></FormLabel>
-                      <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col space-y-1">
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                          <FormControl>
-                            <RadioGroupItem value="yes" />
-                          </FormControl>
-                          <FormLabel>{t('application.employment.hasJob.yes')}</FormLabel>
-                        </FormItem>
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                          <FormControl>
-                            <RadioGroupItem value="no" />
-                          </FormControl>
-                          <FormLabel>{t('application.employment.hasJob.no')}</FormLabel>
-                        </FormItem>
-                      </RadioGroup>
+                       <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col space-y-1">
+                         <FormItem className="flex items-center space-x-3 space-y-0">
+                           <FormControl>
+                             <RadioGroupItem value="yes" />
+                           </FormControl>
+                           <FormLabel>{t('application.options.yes')}</FormLabel>
+                         </FormItem>
+                         <FormItem className="flex items-center space-x-3 space-y-0">
+                           <FormControl>
+                             <RadioGroupItem value="no" />
+                           </FormControl>
+                           <FormLabel>{t('application.options.no')}</FormLabel>
+                         </FormItem>
+                       </RadioGroup>
                       <FormMessage />
                     </FormItem>
                   )} />
 
-                  {form.getValues('hasJob') === 'yes' && (
-                    <FormField control={form.control} name="job" render={({ field, fieldState }) => (
-                      <FormItem>
-                        <FormLabel>{t('application.employment.job.label')} <span className="text-destructive">*</span></FormLabel>
-                        <FormControl>
-                          <Input {...field} aria-invalid={!!fieldState.error} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )} />
-                  )}
+                   {form.getValues('hasJob') === 'yes' && (
+                     <FormField control={form.control} name="jobTitle" render={({ field, fieldState }) => (
+                       <FormItem>
+                         <FormLabel>{t('application.employment.jobTitle.label')} <span className="text-destructive">*</span></FormLabel>
+                         <FormControl>
+                           <Input {...field} placeholder={t('application.employment.jobTitle.placeholder')} aria-invalid={!!fieldState.error} />
+                         </FormControl>
+                         <FormMessage />
+                       </FormItem>
+                     )} />
+                   )}
 
-                  <FormField control={form.control} name="hasCriminalConvictions" render={({ field, fieldState }) => (
-                    <FormItem>
-                      <FormLabel>{t('application.criminalConvictions.hasCriminalConvictions.label')} <span className="text-destructive">*</span></FormLabel>
-                      <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col space-y-1">
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                          <FormControl>
-                            <RadioGroupItem value="yes" />
-                          </FormControl>
-                          <FormLabel>{t('application.criminalConvictions.hasCriminalConvictions.yes')}</FormLabel>
-                        </FormItem>
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                          <FormControl>
-                            <RadioGroupItem value="no" />
-                          </FormControl>
-                          <FormLabel>{t('application.criminalConvictions.hasCriminalConvictions.no')}</FormLabel>
-                        </FormItem>
-                      </RadioGroup>
-                      <FormMessage />
-                    </FormItem>
-                  )} />
+                   <FormField control={form.control} name="hasCriminalConvictions" render={({ field, fieldState }) => (
+                     <FormItem>
+                       <FormLabel>{t('application.security.criminalConvictions.label')} <span className="text-destructive">*</span></FormLabel>
+                       <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col space-y-1">
+                         <FormItem className="flex items-center space-x-3 space-y-0">
+                           <FormControl>
+                             <RadioGroupItem value="yes" />
+                           </FormControl>
+                           <FormLabel>{t('application.options.yes')}</FormLabel>
+                         </FormItem>
+                         <FormItem className="flex items-center space-x-3 space-y-0">
+                           <FormControl>
+                             <RadioGroupItem value="no" />
+                           </FormControl>
+                           <FormLabel>{t('application.options.no')}</FormLabel>
+                         </FormItem>
+                       </RadioGroup>
+                       <FormMessage />
+                     </FormItem>
+                   )} />
 
-                  <FormField control={form.control} name="hasWarCrimesConvictions" render={({ field, fieldState }) => (
-                    <FormItem>
-                      <FormLabel>{t('application.warCrimesConvictions.hasWarCrimesConvictions.label')} <span className="text-destructive">*</span></FormLabel>
-                      <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col space-y-1">
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                          <FormControl>
-                            <RadioGroupItem value="yes" />
-                          </FormControl>
-                          <FormLabel>{t('application.warCrimesConvictions.hasWarCrimesConvictions.yes')}</FormLabel>
-                        </FormItem>
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                          <FormControl>
-                            <RadioGroupItem value="no" />
-                          </FormControl>
-                          <FormLabel>{t('application.warCrimesConvictions.hasWarCrimesConvictions.no')}</FormLabel>
-                        </FormItem>
-                      </RadioGroup>
-                      <FormMessage />
-                    </FormItem>
-                  )} />
+                   <FormField control={form.control} name="hasWarCrimesConvictions" render={({ field, fieldState }) => (
+                     <FormItem>
+                       <FormLabel>{t('application.security.warCrimes.label')} <span className="text-destructive">*</span></FormLabel>
+                       <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col space-y-1">
+                         <FormItem className="flex items-center space-x-3 space-y-0">
+                           <FormControl>
+                             <RadioGroupItem value="yes" />
+                           </FormControl>
+                           <FormLabel>{t('application.options.yes')}</FormLabel>
+                         </FormItem>
+                         <FormItem className="flex items-center space-x-3 space-y-0">
+                           <FormControl>
+                             <RadioGroupItem value="no" />
+                           </FormControl>
+                           <FormLabel>{t('application.options.no')}</FormLabel>
+                         </FormItem>
+                       </RadioGroup>
+                       <FormMessage />
+                     </FormItem>
+                   )} />
                   
                   {/* Navigation */}
                   <div className="flex justify-between pt-6">

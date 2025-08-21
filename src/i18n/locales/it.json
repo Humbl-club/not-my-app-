@@ -64,7 +64,11 @@
       },
       "email": {
         "sameAsPrimary": "Uguale al Richiedente 1",
-        "usingPrimary": "Utilizzo l'indirizzo email del Richiedente 1"
+        "usingPrimary": "Utilizzando l'indirizzo email del Richiedente 1"
+      },
+      "additionalNationalities": {
+        "label": "Hai nazionalità aggiuntive?",
+        "description": "Seleziona questo se hai multiple cittadinanze"
       },
       "options": { "yes": "Sì", "no": "No" }
     },

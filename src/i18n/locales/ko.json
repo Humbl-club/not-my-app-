@@ -67,6 +67,10 @@
         "sameAsPrimary": "신청자 1과 동일",
         "usingPrimary": "신청자 1의 이메일 주소 사용"
       },
+      "additionalNationalities": {
+        "label": "추가 국적이 있습니까?",
+        "description": "복수 국적을 가지고 있다면 선택하세요"
+      },
       "options": { "yes": "예", "no": "아니오" }
     },
   "tracking": {

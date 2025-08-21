@@ -60,6 +60,10 @@
         "sameAsPrimary": "申請者1と同じ",
         "usingPrimary": "申請者1のメールアドレスを使用"
       },
+      "additionalNationalities": {
+        "label": "追加の国籍をお持ちですか？",
+        "description": "複数の市民権をお持ちの場合は選択してください"
+      },
       "options": { "yes": "はい", "no": "いいえ" }
     },
   "tracking": {

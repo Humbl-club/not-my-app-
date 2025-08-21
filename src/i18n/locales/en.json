@@ -188,6 +188,10 @@
         "sameAsPrimary": "Same as Applicant 1",
         "usingPrimary": "Using Applicant 1's email address"
       },
+      "additionalNationalities": {
+        "label": "Do you have additional nationalities?",
+        "description": "Select this if you hold multiple citizenships"
+      },
       "options": { "yes": "Yes", "no": "No" }
     }
   },
