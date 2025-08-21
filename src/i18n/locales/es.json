@@ -92,38 +92,36 @@
       "details": {"title": "Detalles del Pago", "cardholderName": {"label": "Nombre del Titular de la Tarjeta *", "placeholder": "Ingrese el nombre del titular de la tarjeta"}, "cardNumber": {"label": "Número de Tarjeta *", "placeholder": "1234 5678 9012 3456"}, "expiryDate": {"label": "Fecha de Vencimiento *", "placeholder": "MM/AA"}, "cvv": {"label": "CVV *", "placeholder": "123"}, "security": "Su pago está asegurado con cifrado SSL y procesado a través de proveedores de pago confiables."},
       "summary": {"title": "Resumen del Pedido", "application": "Solicitud ETA del Reino Unido", "serviceFee": "Tarifa de Servicio", "vat": "IVA (20%)", "total": "Total", "sslSecured": "Pago Asegurado SSL", "moneyBack": "Garantía de Devolución del Dinero"},
       "complete": "Completar Pago"
-    }
-   ,
-      "address": {
-        "title": "Dirección",
-        "sameAsPrimary": "Igual que el Solicitante Principal",
-        "line1": { "label": "Línea de dirección 1" },
-        "line2": { "label": "Línea de dirección 2 (opcional)" },
-        "city": { "label": "Ciudad" },
-        "state": { "label": "Estado/Provincia" },
-        "postalCode": { "label": "Código postal" },
-        "country": { "label": "País", "placeholder": "Seleccione un país" },
-        "usingPrimary": "Usando la dirección del Solicitante Principal"
-      },
-      "employment": {
-        "hasJob": { "label": "¿Tiene trabajo?" },
-        "jobTitle": { "label": "¿Cuál es su trabajo?", "placeholder": "Ingrese su cargo" }
-      },
-      "security": {
-        "criminalConvictions": { "label": "¿Alguna vez ha tenido condenas penales?" },
-        "warCrimes": { "label": "¿Alguna vez ha sido sospechoso o condenado por crímenes de guerra, terrorismo o extremismo?" }
-      },
-      "email": {
-        "sameAsPrimary": "Igual que el Solicitante Principal",
-        "usingPrimary": "Usando el correo del Solicitante Principal"
-      },
-      "additionalNationalities": {
-        "label": "¿Tienes nacionalidades adicionales?",
-        "description": "Selecciona esto si tienes múltiples ciudadanías",
-        "addButton": "Agregar Nacionalidad"
-      },
-      "options": { "yes": "Sí", "no": "No" }
-    }
+    },
+    "address": {
+      "title": "Dirección",
+      "sameAsPrimary": "Igual que el Solicitante Principal",
+      "line1": { "label": "Línea de dirección 1" },
+      "line2": { "label": "Línea de dirección 2 (opcional)" },
+      "city": { "label": "Ciudad" },
+      "state": { "label": "Estado/Provincia" },
+      "postalCode": { "label": "Código postal" },
+      "country": { "label": "País", "placeholder": "Seleccione un país" },
+      "usingPrimary": "Usando la dirección del Solicitante Principal"
+    },
+    "employment": {
+      "hasJob": { "label": "¿Tiene trabajo?" },
+      "jobTitle": { "label": "¿Cuál es su trabajo?", "placeholder": "Ingrese su cargo" }
+    },
+    "security": {
+      "criminalConvictions": { "label": "¿Alguna vez ha tenido condenas penales?" },
+      "warCrimes": { "label": "¿Alguna vez ha sido sospechoso o condenado por crímenes de guerra, terrorismo o extremismo?" }
+    },
+    "email": {
+      "sameAsPrimary": "Igual que el Solicitante Principal",
+      "usingPrimary": "Usando el correo del Solicitante Principal"
+    },
+    "additionalNationalities": {
+      "label": "¿Tienes nacionalidades adicionales?",
+      "description": "Selecciona esto si tienes múltiples ciudadanías",
+      "addButton": "Agregar Nacionalidad"
+    },
+    "options": { "yes": "Sí", "no": "No" }
   },
   "tracking": {
     "title": "Rastrea tu solicitud",
