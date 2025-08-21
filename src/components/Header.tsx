@@ -37,11 +37,11 @@ export const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="h-12 w-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg">
+            <div className="h-12 w-12 bg-gradient-to-br from-primary to-turquoise rounded-xl flex items-center justify-center shadow-lg">
               <Globe className="h-7 w-7 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <h1 className="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-turquoise bg-clip-text text-transparent">
                 ETAsHub
               </h1>
               <p className="text-sm text-muted-foreground font-medium">{t('header.subtitle')}</p>
@@ -52,10 +52,10 @@ export const Header = () => {
           <Button variant="outline" size="sm" onClick={() => navigate('/track')} className="border-primary/20 text-primary hover:bg-primary/5">
             {t('header.trackApplication')}
           </Button>
-          <Button size="sm" onClick={() => navigate('/dashboard')} className="bg-gradient-to-r from-primary to-accent text-white hover:shadow-lg transition-all duration-200 mr-2">
+          <Button size="sm" onClick={() => navigate('/dashboard')} className="bg-gradient-to-r from-primary to-turquoise text-white hover:shadow-lg transition-all duration-200 mr-2">
             Dashboard
           </Button>
-          <Button size="sm" onClick={() => navigate('/application')} className="bg-gradient-to-r from-primary to-accent text-white hover:shadow-lg transition-all duration-200">
+          <Button size="sm" onClick={() => navigate('/application')} className="bg-gradient-to-r from-primary to-turquoise text-white hover:shadow-lg transition-all duration-200">
             {t('header.startApplication')}
           </Button>
           </div>

@@ -63,7 +63,7 @@ const Dashboard = () => {
       case 'approved':
         return <CheckCircle className="h-4 w-4 text-status-approved" />;
       case 'processing':
-        return <Clock className="h-4 w-4 text-status-processing" />;
+        return <Clock className="h-4 w-4 text-turquoise" />;
       case 'rejected':
         return <AlertTriangle className="h-4 w-4 text-status-rejected" />;
       case 'coming-soon':
@@ -76,7 +76,7 @@ const Dashboard = () => {
   const getStatusBadge = (status: string) => {
     const variants = {
       approved: 'bg-success/10 text-success border-success/20',
-      processing: 'bg-info/10 text-info border-info/20',
+      processing: 'bg-turquoise/10 text-turquoise border-turquoise/20',
       rejected: 'bg-destructive/10 text-destructive border-destructive/20',
       'coming-soon': 'bg-warning/10 text-warning border-warning/20'
     };
@@ -105,7 +105,7 @@ const Dashboard = () => {
                 <Bell className="h-4 w-4" />
                 {t('dashboard.notifications', 'Notifications')}
               </Button>
-              <Button className="flex items-center gap-2 bg-gradient-to-r from-primary to-accent text-white">
+              <Button className="flex items-center gap-2 bg-gradient-to-r from-primary to-turquoise text-white">
                 <Plus className="h-4 w-4" />
                 {t('dashboard.newApplication', 'New Application')}
               </Button>
@@ -148,10 +148,10 @@ const Dashboard = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Processing</p>
-                  <p className="text-2xl font-bold text-info">1</p>
+                  <p className="text-2xl font-bold text-turquoise">1</p>
                 </div>
-                <div className="h-12 w-12 bg-info/10 rounded-full flex items-center justify-center">
-                  <Clock className="h-6 w-6 text-info" />
+                <div className="h-12 w-12 bg-turquoise/10 rounded-full flex items-center justify-center">
+                  <Clock className="h-6 w-6 text-turquoise" />
                 </div>
               </div>
             </CardContent>
@@ -284,13 +284,13 @@ const Dashboard = () => {
                 <Badge className="bg-warning/10 text-warning border-warning/20">Coming 2025</Badge>
               </div>
 
-              <div className="text-center p-6 bg-info/5 rounded-lg border border-info/20">
-                <div className="h-16 w-16 bg-info/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Plus className="h-8 w-8 text-info" />
+              <div className="text-center p-6 bg-turquoise/5 rounded-lg border border-turquoise/20">
+                <div className="h-16 w-16 bg-turquoise/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Plus className="h-8 w-8 text-turquoise" />
                 </div>
                 <h3 className="font-semibold mb-2">More Services</h3>
                 <p className="text-sm text-muted-foreground mb-4">Additional eVisa services coming soon</p>
-                <Badge className="bg-info/10 text-info border-info/20">In Development</Badge>
+                <Badge className="bg-turquoise/10 text-turquoise border-turquoise/20">In Development</Badge>
               </div>
             </div>
           </CardContent>
@@ -314,9 +314,9 @@ const Dashboard = () => {
                 <span className="text-sm text-muted-foreground">2 days ago</span>
               </div>
 
-              <div className="flex items-center gap-4 p-4 bg-info/5 rounded-lg border border-info/20">
-                <div className="h-8 w-8 bg-info/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <RefreshCw className="h-4 w-4 text-info" />
+              <div className="flex items-center gap-4 p-4 bg-turquoise/5 rounded-lg border border-turquoise/20">
+                <div className="h-8 w-8 bg-turquoise/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <RefreshCw className="h-4 w-4 text-turquoise" />
                 </div>
                 <div className="flex-1">
                   <p className="font-medium">Document Verification</p>
