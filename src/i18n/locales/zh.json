@@ -84,8 +84,7 @@
         "label": "您是否拥有其他国籍？",
         "description": "如果您拥有多重国籍，请选择此项",
         "addButton": "添加国籍"
-       },
-    }
+      }
   },
   "tracking": {
     "title": "跟踪您的申请",
