@@ -53,7 +53,7 @@ const Payment = () => {
   });
 
   const handleAddSecondApplicant = () => {
-    navigate('/application/second-applicant');
+    navigate('/application/manage');
   };
 
   const handleSubmit = async (values: PaymentValues) => {

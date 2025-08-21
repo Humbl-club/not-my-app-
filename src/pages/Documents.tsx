@@ -121,7 +121,7 @@ const Documents = () => {
               {t('application.back')}
             </Button>
             <Button 
-              onClick={() => navigate('/application/payment')}
+              onClick={() => navigate('/application/manage')}
               className="flex items-center gap-2"
             >
               {t('application.continue')}
