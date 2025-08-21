@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Phone, Mail } from 'lucide-react';
+import { Globe, Phone, Mail } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +12,7 @@ export const Header = () => {
   return (
     <header className="bg-white shadow-sm border-b border-border">
       {/* Top bar with contact info */}
-      <div className="bg-primary-dark text-primary-foreground py-2">
+      <div className="bg-primary text-primary-foreground py-2">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center gap-6">
@@ -37,20 +37,22 @@ export const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 bg-primary rounded-lg flex items-center justify-center">
-              <Shield className="h-6 w-6 text-primary-foreground" />
+            <div className="h-12 w-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg">
+              <Globe className="h-7 w-7 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-primary">{t('header.title')}</h1>
-              <p className="text-xs text-muted-foreground">{t('header.subtitle')}</p>
+              <h1 className="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                ETAsHub
+              </h1>
+              <p className="text-sm text-muted-foreground font-medium">{t('header.subtitle')}</p>
             </div>
           </div>
           
           <div className="flex items-center gap-4">
-            <Button variant="outline" size="sm" onClick={() => navigate('/track')}>
+            <Button variant="outline" size="sm" onClick={() => navigate('/track')} className="border-primary/20 text-primary hover:bg-primary/5">
               {t('header.trackApplication')}
             </Button>
-            <Button variant="default" size="sm" onClick={() => navigate('/application')}>
+            <Button size="sm" onClick={() => navigate('/application')} className="bg-gradient-to-r from-primary to-accent text-white hover:shadow-lg transition-all duration-200">
               {t('header.startApplication')}
             </Button>
           </div>

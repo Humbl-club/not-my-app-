@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Lock, Clock, CheckCircle } from 'lucide-react';
+import { Shield, Lock, Clock, Globe } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export const TrustIndicators = () => {
@@ -12,7 +12,7 @@ export const TrustIndicators = () => {
       description: t('trustIndicators.secure.description')
     },
     {
-      icon: CheckCircle,
+      icon: Globe,
       title: t('trustIndicators.gdpr.title'),
       description: t('trustIndicators.gdpr.description')
     },

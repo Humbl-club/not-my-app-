@@ -2,128 +2,123 @@
 @tailwind components;
 @tailwind utilities;
 
-/* UK ETA Visa Portal Design System - Professional, trustworthy government-inspired colors */
+/* ETAsHub Design System */
+/* Modern, travel-focused color palette for global electronic travel authorization platform */
 
 @layer base {
   :root {
-    /* Base colors */
-    --background: 0 0% 98%;
-    --foreground: 210 24% 16%;
+    /* Base Colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
     
-    /* Professional navy blue primary - government inspired */
-    --primary: 215 100% 25%;
-    --primary-light: 215 100% 35%;
-    --primary-dark: 215 100% 15%;
-    --primary-foreground: 0 0% 98%;
+    /* Primary Colors - Deep Ocean Blue Theme */
+    --primary: 219 100% 40%;        /* Deep Ocean Blue #1E40AF */
+    --primary-light: 219 95% 68%;   /* Lighter Ocean Blue */
+    --primary-dark: 219 100% 25%;   /* Darker Ocean Blue */
+    --primary-foreground: 210 40% 98%;
     
-    /* Trustworthy green for success states */
-    --success: 142 76% 36%;
-    --success-light: 142 76% 45%;
-    --success-foreground: 0 0% 98%;
+    /* Secondary Colors - Sunset Orange */
+    --secondary: 38 100% 50%;       /* Sunset Orange #F59E0B */
+    --secondary-foreground: 39 100% 97%;
     
-    /* Professional grays and whites */
-    --card: 0 0% 100%;
-    --card-foreground: 210 24% 16%;
+    /* Accent Colors - Sky Blue */
+    --accent: 199 95% 74%;          /* Sky Blue #0EA5E9 */
+    --accent-foreground: 199 100% 6%;
     
-    --popover: 0 0% 100%;
-    --popover-foreground: 210 24% 16%;
+    /* Success Colors - Emerald Green */
+    --success: 158 64% 52%;         /* Emerald Green #10B981 */
+    --success-light: 158 58% 75%;
+    --success-foreground: 355 20% 98%;
     
-    --secondary: 210 20% 94%;
-    --secondary-foreground: 210 24% 16%;
-    
-    --muted: 210 20% 94%;
-    --muted-foreground: 210 16% 46%;
-    
-    --accent: 210 20% 94%;
-    --accent-foreground: 210 24% 16%;
-    
-    /* Warning and error states */
+    /* Warning Colors */
     --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 98%;
+    --warning-foreground: 48 96% 89%;
     
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    /* Destructive Colors */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
     
-    /* Form elements */
-    --border: 210 16% 86%;
-    --input: 210 16% 86%;
-    --ring: 215 100% 25%;
+    /* Muted Colors - Cool Grays */
+    --muted: 215 25% 97%;           /* Soft Gray */
+    --muted-foreground: 215 16% 47%; /* Cool Gray #64748B */
     
-    --radius: 0.5rem;
+    /* UI Elements */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --border: 214.3 31% 91%;
+    --input: 214.3 31% 91%;
+    --ring: 219 100% 40%;
     
-    /* Gradients for professional appeal */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary)));
-    --gradient-card: linear-gradient(180deg, hsl(var(--card)), hsl(var(--secondary)));
+    /* Border Radius */
+    --radius: 0.75rem;
     
-    /* Shadows for depth */
-    --shadow-card: 0 4px 6px -1px hsl(var(--primary) / 0.1);
-    --shadow-form: 0 10px 25px -3px hsl(var(--primary) / 0.1);
+    /* Travel-Inspired Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
+    --gradient-travel: linear-gradient(90deg, hsl(var(--secondary)), hsl(var(--accent)));
     
+    /* Professional Shadows */
+    --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-form: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-travel: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
+
     /* Sidebar colors */
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 210 24% 16%;
-    --sidebar-primary: 215 100% 25%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 210 20% 94%;
-    --sidebar-accent-foreground: 210 24% 16%;
-    --sidebar-border: 210 16% 86%;
-    --sidebar-ring: 215 100% 25%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 32.6% 17.5%;
   }
 
   .dark {
-    --background: 215 32% 8%;
+    --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-    
-    --primary: 215 100% 50%;
-    --primary-light: 215 100% 60%;
-    --primary-dark: 215 100% 40%;
-    --primary-foreground: 215 32% 8%;
-    
-    --success: 142 76% 45%;
-    --success-light: 142 76% 55%;
-    --success-foreground: 215 32% 8%;
-    
-    --card: 215 28% 12%;
-    --card-foreground: 210 40% 98%;
-    
-    --popover: 215 28% 12%;
-    --popover-foreground: 210 40% 98%;
-    
-    --secondary: 215 24% 18%;
-    --secondary-foreground: 210 40% 98%;
-    
-    --muted: 215 24% 18%;
-    --muted-foreground: 210 20% 65%;
-    
-    --accent: 215 24% 18%;
-    --accent-foreground: 210 40% 98%;
-    
+    --primary: 219 100% 40%;
+    --primary-light: 219 95% 68%;
+    --primary-dark: 219 100% 25%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 38 100% 50%;
+    --secondary-foreground: 39 100% 97%;
+    --accent: 199 95% 74%;
+    --accent-foreground: 199 100% 6%;
+    --success: 158 64% 52%;
+    --success-light: 158 58% 75%;
+    --success-foreground: 355 20% 98%;
     --warning: 38 92% 50%;
-    --warning-foreground: 215 32% 8%;
-    
-    --destructive: 0 84% 60%;
+    --warning-foreground: 48 96% 89%;
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 219 100% 40%;
     
-    --border: 215 24% 18%;
-    --input: 215 24% 18%;
-    --ring: 215 100% 50%;
-    
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary)));
-    --gradient-card: linear-gradient(180deg, hsl(var(--card)), hsl(var(--secondary)));
-    
-    --shadow-card: 0 4px 6px -1px hsl(var(--primary) / 0.2);
-    --shadow-form: 0 10px 25px -3px hsl(var(--primary) / 0.2);
-    
-    --sidebar-background: 215 32% 8%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 215 100% 50%;
-    --sidebar-primary-foreground: 215 32% 8%;
-    --sidebar-accent: 215 24% 18%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 215 24% 18%;
-    --sidebar-ring: 215 100% 50%;
+    /* Dark theme gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--background)), hsl(var(--secondary)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--secondary)));
+    --gradient-travel: linear-gradient(90deg, hsl(var(--secondary)), hsl(var(--accent)));
+
+    /* Sidebar colors */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 94.1%;
+    --sidebar-primary-foreground: 240 5.9% 10%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 32.6% 17.5%;
   }
 }
 
@@ -133,11 +128,16 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    line-height: 1.6;
   }
   
   h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
     @apply font-semibold;
+    line-height: 1.2;
   }
   
   .gradient-primary {
@@ -152,12 +152,20 @@
     background: var(--gradient-card);
   }
   
+  .gradient-travel {
+    background: var(--gradient-travel);
+  }
+  
   .shadow-card {
     box-shadow: var(--shadow-card);
   }
   
   .shadow-form {
     box-shadow: var(--shadow-form);
+  }
+  
+  .shadow-travel {
+    box-shadow: var(--shadow-travel);
   }
 }
 
