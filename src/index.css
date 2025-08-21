@@ -4,56 +4,67 @@
 
 @layer base {
   :root {
-    /* Enhanced ETAsHub Brand System */
+    /* Modern ETAsHub Brand System - Blue + Turquoise */
     /* Core Brand Colors */
-    --background: 210 40% 98%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 96%;
+    --foreground: 0 0% 20%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 20%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 20%;
     
-    /* Primary: Deep Ocean Blue - Trust & Reliability */
-    --primary: 221 83% 53%;
-    --primary-foreground: 210 40% 98%;
-    --primary-hover: 221 83% 48%;
-    --primary-light: 221 83% 65%;
-    --primary-dark: 221 83% 40%;
+    /* Primary: Modern Blue - Trust & Security */
+    --primary: 204 100% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 204 100% 40%;
+    --primary-light: 204 100% 55%;
+    --primary-dark: 204 100% 35%;
     
-    /* Secondary: Cool Ocean Depths */
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --secondary-hover: 210 40% 92%;
+    /* Secondary: Light Grey for backgrounds */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 20%;
+    --secondary-hover: 0 0% 92%;
     
-    /* Accent: Sunset Orange - Energy & Travel */
-    --accent: 25 95% 53%;
-    --accent-foreground: 210 40% 98%;
-    --accent-hover: 25 95% 48%;
-    --accent-light: 25 95% 65%;
+    /* Turquoise: Secondary accent for highlights */
+    --turquoise: 180 62% 50%;
+    --turquoise-foreground: 0 0% 100%;
+    --turquoise-hover: 180 62% 45%;
+    --turquoise-light: 180 62% 60%;
+    --turquoise-dark: 180 62% 40%;
+    
+    /* Accent: Orange for pending states */
+    --accent: 39 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 39 100% 45%;
+    --accent-light: 39 100% 60%;
     
     /* Functional Colors */
-    --success: 142 76% 36%;
-    --success-light: 142 76% 90%;
-    --warning: 38 92% 50%;
-    --warning-light: 38 92% 90%;
+    --success: 134 61% 41%;
+    --success-light: 134 61% 90%;
+    --success-foreground: 0 0% 100%;
+    --warning: 39 100% 50%;
+    --warning-light: 39 100% 90%;
+    --warning-foreground: 0 0% 100%;
     --destructive: 0 72% 51%;
     --destructive-light: 0 72% 90%;
-    --info: 199 89% 48%;
-    --info-light: 199 89% 90%;
+    --destructive-foreground: 0 0% 100%;
+    --info: 180 62% 50%;
+    --info-light: 180 62% 90%;
+    --info-foreground: 0 0% 100%;
     
     /* Status Colors for Visa Applications */
-    --status-pending: 43 96% 56%;
-    --status-processing: 199 89% 48%;
-    --status-approved: 142 76% 36%;
+    --status-pending: 39 100% 50%;
+    --status-processing: 180 62% 50%;
+    --status-approved: 134 61% 41%;
     --status-rejected: 0 72% 51%;
-    --status-expired: 38 92% 50%;
+    --status-expired: 39 100% 50%;
     
     /* Neutral Palette */
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221 83% 53%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 204 100% 45%;
     
     /* Elevation & Shadows */
     --shadow-sm: 0 1px 2px 0 hsl(var(--primary) / 0.05);
@@ -63,8 +74,9 @@
     
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
-    --gradient-travel: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
-    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(142 76% 45%));
+    --gradient-travel: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--turquoise)));
+    --gradient-turquoise: linear-gradient(135deg, hsl(var(--turquoise)), hsl(var(--turquoise-light)));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(134 61% 50%));
     --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
     
     /* Border Radius */
@@ -92,51 +104,62 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
     
     /* Primary: Lighter in dark mode for better contrast */
-    --primary: 217 91% 60%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --primary-hover: 217 91% 65%;
-    --primary-light: 217 91% 70%;
-    --primary-dark: 217 91% 50%;
+    --primary: 204 100% 55%;
+    --primary-foreground: 0 0% 8%;
+    --primary-hover: 204 100% 50%;
+    --primary-light: 204 100% 65%;
+    --primary-dark: 204 100% 45%;
     
-    --secondary: 217 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --secondary-hover: 217 32.6% 22%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
+    --secondary-hover: 0 0% 20%;
     
-    --accent: 25 95% 60%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --accent-hover: 25 95% 55%;
-    --accent-light: 25 95% 70%;
+    /* Turquoise in dark mode */
+    --turquoise: 180 62% 60%;
+    --turquoise-foreground: 0 0% 8%;
+    --turquoise-hover: 180 62% 55%;
+    --turquoise-light: 180 62% 70%;
+    --turquoise-dark: 180 62% 50%;
+    
+    --accent: 39 100% 60%;
+    --accent-foreground: 0 0% 8%;
+    --accent-hover: 39 100% 55%;
+    --accent-light: 39 100% 70%;
     
     /* Functional Colors - Adjusted for dark mode */
-    --success: 142 76% 45%;
-    --success-light: 142 76% 15%;
-    --warning: 38 92% 55%;
-    --warning-light: 38 92% 15%;
+    --success: 134 61% 50%;
+    --success-light: 134 61% 15%;
+    --success-foreground: 0 0% 95%;
+    --warning: 39 100% 60%;
+    --warning-light: 39 100% 15%;
+    --warning-foreground: 0 0% 95%;
     --destructive: 0 72% 60%;
     --destructive-light: 0 72% 15%;
-    --info: 199 89% 55%;
-    --info-light: 199 89% 15%;
+    --destructive-foreground: 0 0% 95%;
+    --info: 180 62% 60%;
+    --info-light: 180 62% 15%;
+    --info-foreground: 0 0% 95%;
     
     /* Status Colors - Dark mode variants */
-    --status-pending: 43 96% 60%;
-    --status-processing: 199 89% 55%;
-    --status-approved: 142 76% 45%;
+    --status-pending: 39 100% 60%;
+    --status-processing: 180 62% 60%;
+    --status-approved: 134 61% 50%;
     --status-rejected: 0 72% 60%;
-    --status-expired: 38 92% 55%;
+    --status-expired: 39 100% 60%;
     
-    --muted: 217 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --border: 217 32.6% 17.5%;
-    --input: 217 32.6% 17.5%;
-    --ring: 224 71.4% 4.1%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 204 100% 55%;
     
     /* Dark mode shadows */
     --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.1);
@@ -146,16 +169,17 @@
     
     /* Dark mode gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
-    --gradient-travel: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
-    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(142 76% 55%));
+    --gradient-travel: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--turquoise)));
+    --gradient-turquoise: linear-gradient(135deg, hsl(var(--turquoise)), hsl(var(--turquoise-light)));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(134 61% 60%));
     --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
     
     /* Chart Colors - Dark mode */
-    --chart-1: 217 91% 60%;
-    --chart-2: 142 76% 45%;
-    --chart-3: 25 95% 60%;
-    --chart-4: 199 89% 55%;
-    --chart-5: 38 92% 55%;
+    --chart-1: 204 100% 55%;
+    --chart-2: 134 61% 50%;
+    --chart-3: 180 62% 60%;
+    --chart-4: 39 100% 60%;
+    --chart-5: 0 72% 60%;
 
     /* Sidebar colors */
     --sidebar-background: 240 5.9% 10%;
@@ -217,6 +241,10 @@
   
   .gradient-travel {
     background: var(--gradient-travel);
+  }
+  
+  .gradient-turquoise {
+    background: var(--gradient-turquoise);
   }
   
   .gradient-success {

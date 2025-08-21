@@ -38,6 +38,12 @@ export default {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
 				},
+				turquoise: {
+					DEFAULT: 'hsl(var(--turquoise))',
+					light: 'hsl(var(--turquoise-light))',
+					dark: 'hsl(var(--turquoise-dark))',
+					foreground: 'hsl(var(--turquoise-foreground))'
+				},
 				success: {
 					DEFAULT: 'hsl(var(--success))',
 					light: 'hsl(var(--success-light))',
@@ -45,6 +51,7 @@ export default {
 				},
 				warning: {
 					DEFAULT: 'hsl(var(--warning))',
+					light: 'hsl(var(--warning-light))',
 					foreground: 'hsl(var(--warning-foreground))'
 				},
 				destructive: {
