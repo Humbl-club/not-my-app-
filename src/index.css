@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer base {
   :root {
     /* Enhanced ETAsHub Brand System */
@@ -171,10 +167,7 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 32.6% 17.5%;
   }
-}
-}
 
-@layer base {
   * {
     @apply border-border;
   }
@@ -245,7 +238,6 @@
   .shadow-modal {
     box-shadow: var(--shadow-modal);
   }
-}
 }
 
 /* Enhanced Animation System */
