@@ -49,12 +49,15 @@ export const Header = () => {
           </div>
           
           <div className="flex items-center gap-4">
-            <Button variant="outline" size="sm" onClick={() => navigate('/track')} className="border-primary/20 text-primary hover:bg-primary/5">
-              {t('header.trackApplication')}
-            </Button>
-            <Button size="sm" onClick={() => navigate('/application')} className="bg-gradient-to-r from-primary to-accent text-white hover:shadow-lg transition-all duration-200">
-              {t('header.startApplication')}
-            </Button>
+          <Button variant="outline" size="sm" onClick={() => navigate('/track')} className="border-primary/20 text-primary hover:bg-primary/5">
+            {t('header.trackApplication')}
+          </Button>
+          <Button size="sm" onClick={() => navigate('/dashboard')} className="bg-gradient-to-r from-primary to-accent text-white hover:shadow-lg transition-all duration-200 mr-2">
+            Dashboard
+          </Button>
+          <Button size="sm" onClick={() => navigate('/application')} className="bg-gradient-to-r from-primary to-accent text-white hover:shadow-lg transition-all duration-200">
+            {t('header.startApplication')}
+          </Button>
           </div>
         </div>
       </div>

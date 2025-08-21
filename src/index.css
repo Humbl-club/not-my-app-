@@ -2,68 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ETAsHub Design System */
-/* Modern, travel-focused color palette for global electronic travel authorization platform */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   :root {
-    /* Base Colors */
-    --background: 0 0% 100%;
+    /* Enhanced ETAsHub Brand System */
+    /* Core Brand Colors */
+    --background: 210 40% 98%;
     --foreground: 222.2 84% 4.9%;
-    
-    /* Primary Colors - Deep Ocean Blue Theme */
-    --primary: 219 100% 40%;        /* Deep Ocean Blue #1E40AF */
-    --primary-light: 219 95% 68%;   /* Lighter Ocean Blue */
-    --primary-dark: 219 100% 25%;   /* Darker Ocean Blue */
-    --primary-foreground: 210 40% 98%;
-    
-    /* Secondary Colors - Sunset Orange */
-    --secondary: 38 100% 50%;       /* Sunset Orange #F59E0B */
-    --secondary-foreground: 39 100% 97%;
-    
-    /* Accent Colors - Sky Blue */
-    --accent: 199 95% 74%;          /* Sky Blue #0EA5E9 */
-    --accent-foreground: 199 100% 6%;
-    
-    /* Success Colors - Emerald Green */
-    --success: 158 64% 52%;         /* Emerald Green #10B981 */
-    --success-light: 158 58% 75%;
-    --success-foreground: 355 20% 98%;
-    
-    /* Warning Colors */
-    --warning: 38 92% 50%;
-    --warning-foreground: 48 96% 89%;
-    
-    /* Destructive Colors */
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 210 40% 98%;
-    
-    /* Muted Colors - Cool Grays */
-    --muted: 215 25% 97%;           /* Soft Gray */
-    --muted-foreground: 215 16% 47%; /* Cool Gray #64748B */
-    
-    /* UI Elements */
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --border: 214.3 31% 91%;
-    --input: 214.3 31% 91%;
-    --ring: 219 100% 40%;
+    
+    /* Primary: Deep Ocean Blue - Trust & Reliability */
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --primary-hover: 221 83% 48%;
+    --primary-light: 221 83% 65%;
+    --primary-dark: 221 83% 40%;
+    
+    /* Secondary: Cool Ocean Depths */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-hover: 210 40% 92%;
+    
+    /* Accent: Sunset Orange - Energy & Travel */
+    --accent: 25 95% 53%;
+    --accent-foreground: 210 40% 98%;
+    --accent-hover: 25 95% 48%;
+    --accent-light: 25 95% 65%;
+    
+    /* Functional Colors */
+    --success: 142 76% 36%;
+    --success-light: 142 76% 90%;
+    --warning: 38 92% 50%;
+    --warning-light: 38 92% 90%;
+    --destructive: 0 72% 51%;
+    --destructive-light: 0 72% 90%;
+    --info: 199 89% 48%;
+    --info-light: 199 89% 90%;
+    
+    /* Status Colors for Visa Applications */
+    --status-pending: 43 96% 56%;
+    --status-processing: 199 89% 48%;
+    --status-approved: 142 76% 36%;
+    --status-rejected: 0 72% 51%;
+    --status-expired: 38 92% 50%;
+    
+    /* Neutral Palette */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+    
+    /* Elevation & Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(var(--primary) / 0.05);
+    --shadow-card: 0 4px 12px -2px hsl(var(--primary) / 0.08);
+    --shadow-form: 0 8px 24px -4px hsl(var(--primary) / 0.12);
+    --shadow-modal: 0 20px 40px -8px hsl(var(--primary) / 0.15);
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-travel: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(142 76% 45%));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
     
     /* Border Radius */
     --radius: 0.75rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
     
-    /* Travel-Inspired Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary)), hsl(var(--accent)));
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
-    --gradient-travel: linear-gradient(90deg, hsl(var(--secondary)), hsl(var(--accent)));
-    
-    /* Professional Shadows */
-    --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-form: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    --shadow-travel: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
+    /* Chart Colors */
+    --chart-1: 221 83% 53%;
+    --chart-2: 142 76% 36%;
+    --chart-3: 25 95% 53%;
+    --chart-4: 199 89% 48%;
+    --chart-5: 38 92% 50%;
 
     /* Sidebar colors */
     --sidebar-background: 0 0% 98%;
@@ -79,36 +98,68 @@
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-    --primary: 219 100% 40%;
-    --primary-light: 219 95% 68%;
-    --primary-dark: 219 100% 25%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 38 100% 50%;
-    --secondary-foreground: 39 100% 97%;
-    --accent: 199 95% 74%;
-    --accent-foreground: 199 100% 6%;
-    --success: 158 64% 52%;
-    --success-light: 158 58% 75%;
-    --success-foreground: 355 20% 98%;
-    --warning: 38 92% 50%;
-    --warning-foreground: 48 96% 89%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 219 100% 40%;
     
-    /* Dark theme gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--background)), hsl(var(--secondary)));
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--secondary)));
-    --gradient-travel: linear-gradient(90deg, hsl(var(--secondary)), hsl(var(--accent)));
+    /* Primary: Lighter in dark mode for better contrast */
+    --primary: 217 91% 60%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary-hover: 217 91% 65%;
+    --primary-light: 217 91% 70%;
+    --primary-dark: 217 91% 50%;
+    
+    --secondary: 217 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --secondary-hover: 217 32.6% 22%;
+    
+    --accent: 25 95% 60%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent-hover: 25 95% 55%;
+    --accent-light: 25 95% 70%;
+    
+    /* Functional Colors - Adjusted for dark mode */
+    --success: 142 76% 45%;
+    --success-light: 142 76% 15%;
+    --warning: 38 92% 55%;
+    --warning-light: 38 92% 15%;
+    --destructive: 0 72% 60%;
+    --destructive-light: 0 72% 15%;
+    --info: 199 89% 55%;
+    --info-light: 199 89% 15%;
+    
+    /* Status Colors - Dark mode variants */
+    --status-pending: 43 96% 60%;
+    --status-processing: 199 89% 55%;
+    --status-approved: 142 76% 45%;
+    --status-rejected: 0 72% 60%;
+    --status-expired: 38 92% 55%;
+    
+    --muted: 217 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --border: 217 32.6% 17.5%;
+    --input: 217 32.6% 17.5%;
+    --ring: 224 71.4% 4.1%;
+    
+    /* Dark mode shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.1);
+    --shadow-card: 0 4px 12px -2px hsl(0 0% 0% / 0.2);
+    --shadow-form: 0 8px 24px -4px hsl(0 0% 0% / 0.3);
+    --shadow-modal: 0 20px 40px -8px hsl(0 0% 0% / 0.4);
+    
+    /* Dark mode gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-travel: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(142 76% 55%));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+    
+    /* Chart Colors - Dark mode */
+    --chart-1: 217 91% 60%;
+    --chart-2: 142 76% 45%;
+    --chart-3: 25 95% 60%;
+    --chart-4: 199 89% 55%;
+    --chart-5: 38 92% 55%;
 
     /* Sidebar colors */
     --sidebar-background: 240 5.9% 10%;
@@ -121,39 +172,66 @@
     --sidebar-ring: 217.2 32.6% 17.5%;
   }
 }
+}
 
 @layer base {
   * {
     @apply border-border;
   }
-
+  
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     line-height: 1.6;
+    letter-spacing: -0.01em;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    @apply font-semibold;
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    font-weight: 600;
     line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  
+  /* Enhanced Typography Scale */
+  .text-display {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+  
+  .text-hero {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  
+  /* International Typography Support */
+  [lang="ar"], [lang="he"] {
+    direction: rtl;
+    text-align: right;
+  }
+  
+  [lang="zh"], [lang="ja"], [lang="ko"] {
+    line-height: 1.8;
   }
   
   .gradient-primary {
     background: var(--gradient-primary);
   }
   
-  .gradient-hero {
-    background: var(--gradient-hero);
-  }
-  
-  .gradient-card {
-    background: var(--gradient-card);
-  }
-  
   .gradient-travel {
     background: var(--gradient-travel);
+  }
+  
+  .gradient-success {
+    background: var(--gradient-success);
+  }
+  
+  .gradient-subtle {
+    background: var(--gradient-subtle);
   }
   
   .shadow-card {
@@ -164,36 +242,47 @@
     box-shadow: var(--shadow-form);
   }
   
-  .shadow-travel {
-    box-shadow: var(--shadow-travel);
+  .shadow-modal {
+    box-shadow: var(--shadow-modal);
   }
 }
+}
 
-/* Custom animations for professional feel */
+/* Enhanced Animation System */
 @layer utilities {
   .animate-fade-in {
-    animation: fadeIn 0.6s ease-out;
+    animation: fade-in 0.6s ease-out;
   }
-  
-  .animate-slide-up {
-    animation: slideUp 0.5s ease-out;
+
+  .animate-slide-in-up {
+    animation: slide-in-up 0.5s ease-out;
   }
-  
+
   .animate-scale-in {
-    animation: scaleIn 0.3s ease-out;
+    animation: scale-in 0.3s ease-out;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Micro-interactions */
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-form);
+  }
+
+  .status-pulse {
+    animation: status-pulse 2s ease-in-out infinite;
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
+/* Keyframes */
+@keyframes fade-in {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -204,7 +293,18 @@
   }
 }
 
-@keyframes scaleIn {
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
   from {
     opacity: 0;
     transform: scale(0.95);
@@ -212,5 +312,23 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes status-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
   }
 }
