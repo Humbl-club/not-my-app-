@@ -39,14 +39,14 @@
    ,
       "address": {
         "title": "العنوان",
-        "sameAsPrimary": "نفس عنوان المتقدم 1",
+        "sameAsPrimary": "نفس المتقدم الأساسي",
         "line1": { "label": "سطر العنوان 1" },
         "line2": { "label": "سطر العنوان 2 (اختياري)" },
         "city": { "label": "المدينة" },
         "state": { "label": "الولاية/المقاطعة" },
         "postalCode": { "label": "الرمز البريدي" },
         "country": { "label": "البلد", "placeholder": "اختر دولة" },
-        "usingPrimary": "استخدام عنوان المتقدم 1"
+        "usingPrimary": "استخدام عنوان المتقدم الأساسي"
       },
       "employment": {
         "hasJob": { "label": "هل لديك وظيفة؟" },
@@ -57,12 +57,13 @@
         "warCrimes": { "label": "هل سبق أن اشتُبه بك أو أُدينت بجرائم حرب أو إرهاب أو تطرف؟" }
       },
       "email": {
-        "sameAsPrimary": "نفس المتقدم 1",
-      "usingPrimary": "استخدام عنوان البريد الإلكتروني للمتقدم 1"
+        "sameAsPrimary": "نفس المتقدم الأساسي",
+      "usingPrimary": "استخدام عنوان البريد الإلكتروني للمتقدم الأساسي"
       },
       "additionalNationalities": {
         "label": "هل لديك جنسيات إضافية؟",
-        "description": "اختر هذا إذا كان لديك جنسيات متعددة"
+        "description": "اختر هذا إذا كان لديك جنسيات متعددة",
+        "addButton": "إضافة جنسية"
       },
       "options": { "yes": "نعم", "no": "لا" }
      },

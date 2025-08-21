@@ -46,14 +46,14 @@
    ,
       "address": {
         "title": "주소",
-        "sameAsPrimary": "신청자 1과 동일",
+        "sameAsPrimary": "주 신청자와 동일",
         "line1": { "label": "주소 1" },
         "line2": { "label": "주소 2 (선택 사항)" },
         "city": { "label": "도시" },
         "state": { "label": "주/도" },
         "postalCode": { "label": "우편번호" },
         "country": { "label": "국가", "placeholder": "국가 선택" },
-        "usingPrimary": "신청자 1의 주소 사용"
+        "usingPrimary": "주 신청자의 주소 사용"
       },
       "employment": {
         "hasJob": { "label": "직업이 있으신가요?" },
@@ -64,12 +64,13 @@
         "warCrimes": { "label": "전쟁범죄, 테러, 극단주의로 의심받거나 유죄 판결을 받은 적이 있습니까?" }
       },
       "email": {
-        "sameAsPrimary": "신청자 1과 동일",
-        "usingPrimary": "신청자 1의 이메일 주소 사용"
+        "sameAsPrimary": "주 신청자와 동일",
+        "usingPrimary": "주 신청자의 이메일 주소 사용"
       },
       "additionalNationalities": {
         "label": "추가 국적이 있습니까?",
-        "description": "복수 국적을 가지고 있다면 선택하세요"
+        "description": "복수 국적을 가지고 있다면 선택하세요",
+        "addButton": "국적 추가"
       },
       "options": { "yes": "예", "no": "아니오" }
     },

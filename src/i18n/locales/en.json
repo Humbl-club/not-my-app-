@@ -161,14 +161,14 @@
     ,
       "address": {
         "title": "Address",
-        "sameAsPrimary": "Same as Applicant 1",
+        "sameAsPrimary": "Same as Primary Applicant",
         "line1": { "label": "Address line 1" },
         "line2": { "label": "Address line 2 (optional)" },
         "city": { "label": "City" },
         "state": { "label": "State/Province" },
         "postalCode": { "label": "Postal code" },
         "country": { "label": "Country", "placeholder": "Select a country" },
-        "usingPrimary": "Using Applicant 1's address"
+        "usingPrimary": "Using Primary Applicant's address"
       },
       "employment": {
         "title": "Employment",
@@ -185,12 +185,13 @@
         "personalPhoto": { "title": "Personal Photo", "upload": "Upload personal photo", "camera": "Take photo with camera", "requirements": "Recent photo with plain background" }
       },
       "email": {
-        "sameAsPrimary": "Same as Applicant 1",
-        "usingPrimary": "Using Applicant 1's email address"
+        "sameAsPrimary": "Same as Primary Applicant",
+        "usingPrimary": "Using Primary Applicant's email address"
       },
       "additionalNationalities": {
         "label": "Do you have additional nationalities?",
-        "description": "Select this if you hold multiple citizenships"
+        "description": "Select this if you hold multiple citizenships",
+        "addButton": "Add Nationality"
       },
       "options": { "yes": "Yes", "no": "No" }
     }

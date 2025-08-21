@@ -45,14 +45,14 @@
   ,
       "address": {
         "title": "Indirizzo",
-        "sameAsPrimary": "Uguale al Richiedente 1",
+        "sameAsPrimary": "Uguale al Richiedente Principale",
         "line1": { "label": "Indirizzo riga 1" },
         "line2": { "label": "Indirizzo riga 2 (opzionale)" },
         "city": { "label": "Città" },
         "state": { "label": "Stato/Provincia" },
         "postalCode": { "label": "CAP" },
         "country": { "label": "Paese", "placeholder": "Seleziona un paese" },
-        "usingPrimary": "Utilizzo l'indirizzo del Richiedente 1"
+        "usingPrimary": "Utilizzo l'indirizzo del Richiedente Principale"
       },
       "employment": {
         "hasJob": { "label": "Ha un lavoro?" },
@@ -63,12 +63,13 @@
         "warCrimes": { "label": "È mai stato sospettato o condannato per crimini di guerra, terrorismo o estremismo?" }
       },
       "email": {
-        "sameAsPrimary": "Uguale al Richiedente 1",
-        "usingPrimary": "Utilizzando l'indirizzo email del Richiedente 1"
+        "sameAsPrimary": "Uguale al Richiedente Principale",
+        "usingPrimary": "Utilizzando l'indirizzo email del Richiedente Principale"
       },
       "additionalNationalities": {
         "label": "Hai nazionalità aggiuntive?",
-        "description": "Seleziona questo se hai multiple cittadinanze"
+        "description": "Seleziona questo se hai multiple cittadinanze",
+        "addButton": "Aggiungi Nazionalità"
       },
       "options": { "yes": "Sì", "no": "No" }
     },

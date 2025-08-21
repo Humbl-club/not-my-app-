@@ -96,14 +96,14 @@
    ,
       "address": {
         "title": "Dirección",
-        "sameAsPrimary": "Igual que el Solicitante 1",
+        "sameAsPrimary": "Igual que el Solicitante Principal",
         "line1": { "label": "Línea de dirección 1" },
         "line2": { "label": "Línea de dirección 2 (opcional)" },
         "city": { "label": "Ciudad" },
         "state": { "label": "Estado/Provincia" },
         "postalCode": { "label": "Código postal" },
         "country": { "label": "País", "placeholder": "Seleccione un país" },
-        "usingPrimary": "Usando la dirección del Solicitante 1"
+        "usingPrimary": "Usando la dirección del Solicitante Principal"
       },
       "employment": {
         "hasJob": { "label": "¿Tiene trabajo?" },
@@ -114,11 +114,17 @@
         "warCrimes": { "label": "¿Alguna vez ha sido sospechoso o condenado por crímenes de guerra, terrorismo o extremismo?" }
       },
       "email": {
-        "sameAsPrimary": "Igual que el Solicitante 1",
-        "usingPrimary": "Usando el correo del Solicitante 1"
+        "sameAsPrimary": "Igual que el Solicitante Principal",
+        "usingPrimary": "Usando el correo del Solicitante Principal"
+      },
+      "additionalNationalities": {
+        "label": "¿Tienes nacionalidades adicionales?",
+        "description": "Selecciona esto si tienes múltiples ciudadanías",
+        "addButton": "Agregar Nacionalidad"
       },
       "options": { "yes": "Sí", "no": "No" }
-    },
+    }
+  },
   "tracking": {
     "title": "Rastrea tu solicitud",
     "subtitle": "Ingresa tu número de referencia para verificar el estado de tu solicitud",

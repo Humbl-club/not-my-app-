@@ -59,14 +59,14 @@
    ,
       "address": {
         "title": "地址",
-        "sameAsPrimary": "与申请人1相同",
+        "sameAsPrimary": "与主申请人相同",
         "line1": { "label": "地址第一行" },
         "line2": { "label": "地址第二行（可选）" },
         "city": { "label": "城市" },
         "state": { "label": "省/州" },
         "postalCode": { "label": "邮政编码" },
         "country": { "label": "国家/地区", "placeholder": "选择国家/地区" },
-        "usingPrimary": "使用申请人1的地址"
+        "usingPrimary": "使用主申请人的地址"
       },
       "employment": {
         "hasJob": { "label": "您有工作吗？" },
@@ -77,11 +77,16 @@
         "warCrimes": { "label": "您是否曾被怀疑或因战争罪、恐怖主义或极端主义而被定罪？" }
       },
       "email": {
-        "sameAsPrimary": "与申请人1相同",
-        "usingPrimary": "使用申请人1的电子邮箱地址"
+        "sameAsPrimary": "与主申请人相同",
+        "usingPrimary": "使用主申请人的电子邮箱地址"
       },
-      "options": { "yes": "是", "no": "否" }
-    },
+      "additionalNationalities": {
+        "label": "您是否拥有其他国籍？",
+        "description": "如果您拥有多重国籍，请选择此项",
+        "addButton": "添加国籍"
+       },
+    }
+  },
   "tracking": {
     "title": "跟踪您的申请",
     "subtitle": "输入您的参考编号以检查申请状态",

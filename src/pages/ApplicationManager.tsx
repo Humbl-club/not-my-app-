@@ -104,7 +104,7 @@ const ApplicationManager = () => {
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
               <h3 className="font-medium">
-                {isPrimary ? 'Primary Applicant' : `Applicant ${applicant.id.replace('applicant-', '')}`}
+                {isPrimary ? 'Primary Applicant' : `Applicant ${parseInt(applicant.id.replace('applicant-', '')) + 1}`}
               </h3>
               {applicant.personalInfoComplete && applicant.documentsComplete && (
                 <CheckCircle className="h-5 w-5 text-green-600" />

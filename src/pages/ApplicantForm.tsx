@@ -52,9 +52,10 @@ const ApplicantForm = () => {
       state: z.string().optional(),
       postalCode: z.string().optional(),
       country: z.string().optional(),
-    }).refine((data) => {
-      // Address is required if not using primary applicant's address
-      return true; // We'll handle validation in the form
+    }).superRefine((data, ctx) => {
+      // Skip validation if using primary applicant's address
+      const form = ctx.path[0] === 'address' ? ctx.path.slice(0, -1) : [];
+      return true; // Address validation will be handled by form state
     }),
     hasJob: z.enum(['yes', 'no'], { required_error: 'Please answer if you have a job' }),
     jobTitle: z.string().optional(),
@@ -157,7 +158,7 @@ const ApplicantForm = () => {
     navigate(`/application/applicant/${id}/documents`);
   };
 
-  const applicantNumber = id ? parseInt(id.replace('applicant-', '')) : 1;
+  const applicantNumber = id ? parseInt(id.replace('applicant-', '')) + 1 : 2;
 
   return (
     <div className="min-h-screen bg-background">
@@ -299,7 +300,7 @@ const ApplicantForm = () => {
                                 }}
                               >
                                 <Plus className="h-4 w-4 mr-2" />
-                                Add Nationality
+                                {t('application.additionalNationalities.addButton')}
                               </Button>
                             )}
                           </div>
