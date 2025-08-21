@@ -8,7 +8,7 @@ export const HeroSection = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-dark to-accent text-primary-foreground py-20 md:py-28">
+    <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-dark to-turquoise text-primary-foreground py-20 md:py-28">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 rotate-12">

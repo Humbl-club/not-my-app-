@@ -32,11 +32,11 @@
     --turquoise-light: 180 62% 60%;
     --turquoise-dark: 180 62% 40%;
     
-    /* Accent: Orange for pending states */
-    --accent: 39 100% 50%;
+    /* Accent: Turquoise for secondary highlights */
+    --accent: 180 62% 50%;
     --accent-foreground: 0 0% 100%;
-    --accent-hover: 39 100% 45%;
-    --accent-light: 39 100% 60%;
+    --accent-hover: 180 62% 45%;
+    --accent-light: 180 62% 60%;
     
     /* Functional Colors */
     --success: 134 61% 41%;
@@ -129,10 +129,10 @@
     --turquoise-light: 180 62% 70%;
     --turquoise-dark: 180 62% 50%;
     
-    --accent: 39 100% 60%;
+    --accent: 180 62% 60%;
     --accent-foreground: 0 0% 8%;
-    --accent-hover: 39 100% 55%;
-    --accent-light: 39 100% 70%;
+    --accent-hover: 180 62% 55%;
+    --accent-light: 180 62% 70%;
     
     /* Functional Colors - Adjusted for dark mode */
     --success: 134 61% 50%;
