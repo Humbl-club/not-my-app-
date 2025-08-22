@@ -12,6 +12,7 @@ import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { EmailInput, EMAIL_PATTERN } from '@/components/ui/email-input';
 import { PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
+import { DateOfBirthInput, validateDateOfBirth } from '@/components/ui/date-of-birth-input';
 import { PassportNumberInput } from '@/components/ui/passport-number-input';
 import { NameFieldsSection } from '@/components/NameFieldsSection';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -42,7 +43,11 @@ const ApplicantForm = () => {
     firstName: z.string().min(1, 'validation.passportName.required').regex(nameRegex, 'validation.passportName.format').max(50, 'validation.passportName.tooLong'),
     secondNames: z.string().regex(nameRegex, 'validation.passportName.format').max(50, 'validation.passportName.tooLong').optional(),
     lastName: z.string().min(1, 'validation.passportName.required').regex(nameRegex, 'validation.passportName.format').max(50, 'validation.passportName.tooLong'),
-    dateOfBirth: z.string().min(1, 'Date of birth is required').regex(dateRegex, 'Use format YYYY-MM-DD'),
+    dateOfBirth: z
+      .string()
+      .refine((val) => validateDateOfBirth(val) === null, (val) => ({
+        message: validateDateOfBirth(val) || 'Invalid date'
+      })),
     nationality: z.string().regex(nationalityRegex, 'Please select a nationality'),
     hasAdditionalNationalities: z.boolean().optional().default(false),
     additionalNationalities: z.array(z.string().regex(nationalityRegex, 'Please select a nationality')).optional().default([]),
@@ -209,7 +214,7 @@ const ApplicantForm = () => {
                       <FormItem>
                         <FormLabel>{t('application.personalInfo.dateOfBirth.label')} <span className="text-destructive">*</span></FormLabel>
                         <FormControl>
-                          <Input {...field} type="date" placeholder="YYYY-MM-DD" aria-invalid={!!fieldState.error} />
+                          <DateOfBirthInput {...field} placeholder="YYYY-MM-DD" aria-invalid={!!fieldState.error} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

@@ -18,6 +18,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { EmailInput, EMAIL_PATTERN } from '@/components/ui/email-input';
 import { PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
+import { DateOfBirthInput, validateDateOfBirth } from '@/components/ui/date-of-birth-input';
 import { PassportNumberInput } from '@/components/ui/passport-number-input';
 import { NameFieldsSection } from '@/components/NameFieldsSection';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -68,8 +69,9 @@ const applicantBase = z
       .max(50, 'validation.passportName.tooLong'),
     dateOfBirth: z
       .string()
-      .min(1, 'Date of birth is required')
-      .regex(dateRegex, 'Use format YYYY-MM-DD'),
+      .refine((val) => validateDateOfBirth(val) === null, (val) => ({
+        message: validateDateOfBirth(val) || 'Invalid date'
+      })),
     nationality: z.string().regex(nationalityRegex, 'Please select a nationality'),
     hasAdditionalNationalities: z.boolean().optional().default(false),
     additionalNationalities: z.array(z.string().regex(nationalityRegex, 'Please select a nationality')).optional().default([]),
@@ -314,11 +316,9 @@ const Application = () => {
                                   {t('application.personalInfo.dateOfBirth.label')} <span aria-hidden="true" className="text-destructive">*</span>
                                 </FormLabel>
                                 <FormControl>
-                                  <Input
+                                  <DateOfBirthInput
                                     {...field}
-                                    type="date"
                                     placeholder="YYYY-MM-DD"
-                                    aria-required="true"
                                     aria-invalid={!!fieldState.error}
                                   />
                                 </FormControl>
