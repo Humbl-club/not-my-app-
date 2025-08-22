@@ -59,30 +59,6 @@
     "feeBreakdown": "完全な料金内訳を提供",
     "noHidden": "隠れた料金はありません"
   },
-  "trustIndicators": {
-    "title": "ETAShubを選ぶ理由",
-    "subtitle": "何千人もの方々が旅行書類処理で私たちを信頼する5つの理由",
-    "convenience": {
-      "title": "利便性",
-      "description": "わずか数分で迅速かつ簡単な申請"
-    },
-    "security": {
-      "title": "セキュリティ",
-      "description": "SSL暗号化とGDPR準拠による安全な処理"
-    },
-    "tracking": {
-      "title": "追跡",
-      "description": "メール更新によるリアルタイム申請追跡"
-    },
-    "storage": {
-      "title": "保存",
-      "description": "将来の参照のための安全な文書保存"
-    },
-    "reminders": {
-      "title": "リマインダー",
-      "description": "更新とアップデートの自動通知"
-    }
-  },
   "footer": {
     "links": {"terms": "利用規約", "privacy": "プライバシーポリシー", "cookies": "クッキーポリシー", "refund": "返金ポリシー"},
     "contact": "連絡先: support@uketaservice.com | 会社登録: [詳細]",
