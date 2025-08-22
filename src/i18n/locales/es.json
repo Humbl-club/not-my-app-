@@ -7,8 +7,7 @@
     "subtitle": "Autorización Electrónica de Viaje Oficial",
     "trackApplication": "Rastrear Solicitud",
     "startApplication": "Iniciar Solicitud",
-    "disclaimer": "Servicio independiente - no afiliado al gobierno británico",
-    "valueProposition": "Simplifica tu viaje — Enfócate en tu aventura, nosotros nos encargamos de lo administrativo"
+    "disclaimer": "Servicio independiente - no afiliado al gobierno británico"
   },
   "hero": {
     "title": "Solicita tu ETA del Reino Unido",
@@ -21,7 +20,8 @@
     "startApplication": "Iniciar Solicitud",
     "learnMore": "Saber Más",
     "stats": {"title": "Estadísticas de Procesamiento", "processingTime": "72 horas", "processingLabel": "Tiempo promedio de procesamiento", "applicationsCount": "10,000+", "applicationsLabel": "Solicitudes procesadas"},
-    "notice": {"title": "Aviso Importante:", "text": "Este es un servicio independiente de terceros y no está afiliado con el Gobierno del Reino Unido o UKVI."}
+    "notice": {"title": "Aviso Importante:", "text": "Este es un servicio independiente de terceros y no está afiliado con el Gobierno del Reino Unido o UKVI."},
+    "valueProposition": "Simplifica tu viaje — Enfócate en tu aventura, nosotros nos encargamos de lo administrativo"
   },
   "trust": {"processing": "Tiempo promedio de procesamiento", "processingTime": "72 horas", "applications": "Solicitudes procesadas", "applicationsCount": "10,000+", "notice": "Este servicio es proporcionado por un tercero independiente y no está afiliado con el Gobierno del Reino Unido."},
   "steps": {

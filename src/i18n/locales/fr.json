@@ -7,8 +7,7 @@
     "subtitle": "Autorisation Électronique de Voyage Officielle",
     "trackApplication": "Suivre la Demande",
     "startApplication": "Commencer la Demande",
-    "disclaimer": "Service indépendant - non affilié au gouvernement britannique",
-    "valueProposition": "Simplifiez vos voyages — Concentrez-vous sur votre voyage, nous nous occupons de l'administratif"
+    "disclaimer": "Service indépendant - non affilié au gouvernement britannique"
   },
   "hero": {
     "title": "Demandez votre ETA pour le Royaume-Uni",
@@ -27,7 +26,8 @@
       "applicationsCount": "10 000+",
       "applicationsLabel": "Demandes Traitées"
     },
-    "notice": {"title": "Avis Important:", "text": "Il s'agit d'un service tiers indépendant qui n'est pas affilié au gouvernement britannique ou à l'UKVI."}
+    "notice": {"title": "Avis Important:", "text": "Il s'agit d'un service tiers indépendant qui n'est pas affilié au gouvernement britannique ou à l'UKVI."},
+    "valueProposition": "Simplifiez vos voyages — Concentrez-vous sur votre voyage, nous nous occupons de l'administratif"
   },
   "trust": {
     "processing": "Traitement moyen",

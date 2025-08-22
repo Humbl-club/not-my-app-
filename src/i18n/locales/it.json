@@ -6,15 +6,15 @@
     "title": "Richiesta ETA Regno Unito",
     "trackApplication": "Traccia richiesta",
     "startApplication": "Inizia richiesta",
-    "disclaimer": "Servizio indipendente - non affiliato al governo britannico",
-    "valueProposition": "Semplifica il tuo viaggio — Concentrati sulla tua avventura, noi ci occupiamo della burocrazia"
+    "disclaimer": "Servizio indipendente - non affiliato al governo britannico"
   },
   "hero": {
     "title": "Richiedi il tuo ETA per il Regno Unito",
     "subtitle": "Servizio ETA veloce, sicuro e professionale. Gestiamo la tua richiesta con cura esperta e guida.",
     "features": {"processing": "Tempo medio di elaborazione di 72 ore", "secure": "Gestione sicura dei documenti e protezione dei dati", "support": "Supporto esperto durante tutto il processo", "submission": "Invio professionale della richiesta"},
     "startButton": "Inizia richiesta",
-    "learnMore": "Scopri di più"
+    "learnMore": "Scopri di più",
+    "valueProposition": "Semplifica il tuo viaggio — Concentrati sulla tua avventura, noi ci occupiamo della burocrazia"
   },
   "trust": {"processing": "Elaborazione media", "processingTime": "72h", "applications": "Richieste elaborate", "applicationsCount": "10.000+", "notice": "Questo servizio è fornito da un terzo indipendente e non è affiliato al governo britannico."},
   "steps": {"title": "Processo semplice in 4 passaggi", "subtitle": "Un processo bellamente semplice che richiede meno di 15 minuti", "step1": {"title": "Compila richiesta", "description": "Completa il modulo online sicuro con i tuoi dettagli personali e di viaggio.", "time": "5-10 minuti"}, "step2": {"title": "Carica documenti", "description": "Carica il tuo passaporto e foto in sicurezza sulla nostra piattaforma crittografata.", "time": "2-3 minuti"}, "step3": {"title": "Effettua pagamento", "description": "Elaborazione pagamento sicura con multiple opzioni di pagamento disponibili.", "time": "1-2 minuti"}, "step4": {"title": "Ricevi ETA", "description": "Ricevi il tuo ETA approvato direttamente nella tua casella email.", "time": "24-72 ore"}},
