@@ -14,6 +14,8 @@ import {
   popularJobs, 
   searchJobs, 
   getJobByCode,
+  getSubCategories,
+  getCategories,
   type JobClassification 
 } from "@/constants/job-classifications";
 
@@ -149,15 +151,18 @@ const JobSelector = React.forwardRef<HTMLButtonElement, JobSelectorProps>(
       });
     }, [searchValue, currentLanguage]);
 
-    // Group jobs by major group
+    // Group jobs by category and then by subcategory
     const groupedJobs = React.useMemo(() => {
-      const groups: Record<string, JobClassification[]> = {};
+      const groups: Record<string, Record<string, JobClassification[]>> = {};
       
       filteredJobs.forEach(job => {
-        if (!groups[job.majorGroup]) {
-          groups[job.majorGroup] = [];
+        if (!groups[job.category]) {
+          groups[job.category] = {};
         }
-        groups[job.majorGroup].push(job);
+        if (!groups[job.category][job.subCategory]) {
+          groups[job.category][job.subCategory] = [];
+        }
+        groups[job.category][job.subCategory].push(job);
       });
       
       return groups;
@@ -302,12 +307,12 @@ const JobSelector = React.forwardRef<HTMLButtonElement, JobSelectorProps>(
                               onSelect={() => handleJobSelect(job)}
                               className="flex items-center justify-between"
                             >
-                              <div className="flex flex-col">
-                                <span>{title}</span>
-                                <span className="text-xs text-muted-foreground">
-                                  {job.category}
-                                </span>
-                              </div>
+                               <div className="flex flex-col">
+                                 <span>{title}</span>
+                                 <span className="text-xs text-muted-foreground">
+                                   {job.subCategory}
+                                 </span>
+                               </div>
                               {value?.jobCode === job.code && (
                                 <Check className="h-4 w-4" />
                               )}
@@ -317,32 +322,42 @@ const JobSelector = React.forwardRef<HTMLButtonElement, JobSelectorProps>(
                     </CommandGroup>
                   )}
                   
-                  {/* Job Groups */}
-                  {Object.entries(groupedJobs).map(([groupName, jobs]) => (
-                    <CommandGroup key={groupName} heading={groupName}>
-                      {jobs.map((job) => {
-                        const title = job.titles[currentLanguage] || job.titleEn;
-                        return (
-                          <CommandItem
-                            key={job.code}
-                            value={`${job.code}-${title}`}
-                            onSelect={() => handleJobSelect(job)}
-                            className="flex items-center justify-between"
-                          >
-                            <div className="flex flex-col">
-                              <span>{title}</span>
-                              <span className="text-xs text-muted-foreground">
-                                {job.category}
-                              </span>
-                            </div>
-                            {value?.jobCode === job.code && (
-                              <Check className="h-4 w-4" />
-                            )}
-                          </CommandItem>
-                        );
-                      })}
-                    </CommandGroup>
-                  ))}
+                   {/* Job Categories and Subcategories */}
+                   {Object.entries(groupedJobs).map(([categoryName, subCategories]) => (
+                     <div key={categoryName}>
+                       {/* Category Header */}
+                       <div className="px-2 py-1.5 text-xs font-semibold text-muted-foreground border-b">
+                         {categoryName}
+                       </div>
+                       
+                       {/* Subcategories */}
+                       {Object.entries(subCategories).map(([subCategoryName, jobs]) => (
+                         <CommandGroup key={`${categoryName}-${subCategoryName}`} heading={subCategoryName}>
+                           {jobs.map((job) => {
+                             const title = job.titles[currentLanguage] || job.titleEn;
+                             return (
+                               <CommandItem
+                                 key={job.code}
+                                 value={`${job.code}-${title}`}
+                                 onSelect={() => handleJobSelect(job)}
+                                 className="flex items-center justify-between"
+                               >
+                                 <div className="flex flex-col">
+                                   <span>{title}</span>
+                                   <span className="text-xs text-muted-foreground">
+                                     {job.subCategory}
+                                   </span>
+                                 </div>
+                                 {value?.jobCode === job.code && (
+                                   <Check className="h-4 w-4" />
+                                 )}
+                               </CommandItem>
+                             );
+                           })}
+                         </CommandGroup>
+                       ))}
+                     </div>
+                   ))}
                   
                   {/* Other Option */}
                   <Separator />
