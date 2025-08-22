@@ -16,7 +16,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { JobTitleInput } from '@/components/ui/job-title-input';
+import { JobSelector } from '@/components/ui/job-selector';
 import { EmailInput, EMAIL_PATTERN } from '@/components/ui/email-input';
 import { PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
 import { DateOfBirthInput, validateDateOfBirth } from '@/components/ui/date-of-birth-input';
@@ -85,7 +85,13 @@ const applicantBase = z
         message: "Passport number must contain only letters and numbers" 
       }),
     hasJob: z.enum(['yes', 'no'], { required_error: 'Please answer this question' }),
-    job: z.string().optional(),
+    job: z.object({
+      isStandardized: z.boolean().optional().default(false),
+      jobCode: z.string().optional(),
+      titleOriginal: z.string().optional().default(''),
+      titleEnglish: z.string().optional().default(''),
+      category: z.string().optional(),
+    }).optional(),
     hasCriminalConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer this question' }),
     hasWarCrimesConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer this question' }),
     useSameAddressAsPrimary: z.boolean().optional().default(false),
@@ -122,7 +128,7 @@ const applicantBase = z
 
     // Employment validation
     if (val.hasJob === 'yes') {
-      if (!val.job || val.job.trim().length < 2) {
+      if (!val.job?.titleOriginal || val.job.titleOriginal.trim().length < 2) {
         ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Job title is required', path: ['job'] });
       }
     }
@@ -157,7 +163,7 @@ const defaultApplicant = (shareAddress = false, shareEmail = false): z.infer<typ
   email: '',
   passportNumber: '',
   hasJob: undefined as any,
-  job: '',
+  job: undefined,
   hasCriminalConvictions: undefined as any,
   hasWarCrimesConvictions: undefined as any,
   useSameAddressAsPrimary: shareAddress,
@@ -547,11 +553,11 @@ const Application = () => {
                                   {t('application.employment.jobTitle.label', { defaultValue: "What's your job?" })} <span aria-hidden="true" className="text-destructive">*</span>
                                 </FormLabel>
                                  <FormControl>
-                                   <JobTitleInput
-                                     {...field}
+                                   <JobSelector
+                                     value={field.value}
+                                     onChange={field.onChange}
                                      placeholder={t('application.employment.jobTitle.placeholder', { defaultValue: 'Enter your job title' })}
-                                     aria-required="true"
-                                     aria-invalid={!!fieldState.error}
+                                     required
                                    />
                                  </FormControl>
                                 <FormMessage />
