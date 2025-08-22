@@ -47,6 +47,7 @@ const SecondApplicant = () => {
 
   const secondApplicantSchema = z.object({
     firstName: z.string().min(1, 'validation.passportName.required').regex(nameRegex, 'validation.passportName.format').max(50, 'validation.passportName.tooLong'),
+    secondNames: z.string().regex(nameRegex, 'validation.passportName.format').max(50, 'validation.passportName.tooLong').optional(),
     lastName: z.string().min(1, 'validation.passportName.required').regex(nameRegex, 'validation.passportName.format').max(50, 'validation.passportName.tooLong'),
     dateOfBirth: z.string().min(1, 'Date of birth is required').regex(dateRegex, 'Use format YYYY-MM-DD'),
     nationality: z.string().regex(nationalityRegex, 'Please select a nationality'),
@@ -109,6 +110,7 @@ const SecondApplicant = () => {
     mode: 'onChange',
     defaultValues: {
       firstName: '',
+      secondNames: '',
       lastName: '',
       dateOfBirth: '',
       nationality: '',
@@ -176,7 +178,7 @@ const SecondApplicant = () => {
             <CardContent>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6" noValidate>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <FormField control={form.control} name="firstName" render={({ field, fieldState }) => (
                       <FormItem>
                         <FormLabel>{t('application.personalInfo.firstName.label')} <span className="text-destructive">*</span></FormLabel>
@@ -184,6 +186,19 @@ const SecondApplicant = () => {
                           <PassportNameInput
                             {...field}
                             placeholder={t('application.personalInfo.firstName.placeholder')}
+                            error={fieldState.error?.message}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )} />
+                    <FormField control={form.control} name="secondNames" render={({ field, fieldState }) => (
+                      <FormItem>
+                        <FormLabel>{t('application.personalInfo.secondNames.label')}</FormLabel>
+                        <FormControl>
+                          <PassportNameInput
+                            {...field}
+                            placeholder={t('application.personalInfo.secondNames.placeholder')}
                             error={fieldState.error?.message}
                           />
                         </FormControl>

@@ -55,6 +55,11 @@ const applicantBase = z
       .min(1, 'validation.passportName.required')
       .regex(nameRegex, 'validation.passportName.format')
       .max(50, 'validation.passportName.tooLong'),
+    secondNames: z
+      .string()
+      .regex(nameRegex, 'validation.passportName.format')
+      .max(50, 'validation.passportName.tooLong')
+      .optional(),
     lastName: z
       .string()
       .min(1, 'validation.passportName.required')
@@ -139,6 +144,7 @@ type FormValues = z.infer<typeof schema>;
 
 const defaultApplicant = (shareAddress = false, shareEmail = false): z.infer<typeof applicantBase> => ({
   firstName: '',
+  secondNames: '',
   lastName: '',
   dateOfBirth: '',
   nationality: '',
@@ -198,7 +204,7 @@ const Application = () => {
     for (let i = 0; i < errs.length; i++) {
       const e = errs[i];
       if (!e) continue;
-      const order = ['firstName','lastName','dateOfBirth','nationality','email','passportNumber','hasJob','job','hasCriminalConvictions','hasWarCrimesConvictions'];
+      const order = ['firstName','secondNames','lastName','dateOfBirth','nationality','email','passportNumber','hasJob','job','hasCriminalConvictions','hasWarCrimesConvictions'];
       for (const k of order) { if (e?.[k]) return `applicants.${i}.${k}` as const; }
       if (e?.additionalNationalities && Array.isArray(e.additionalNationalities)) {
         for (let j = 0; j < e.additionalNationalities.length; j++) {
@@ -292,7 +298,7 @@ const Application = () => {
                           </div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                           <FormField
                             control={control}
                             name={`applicants.${idx}.firstName`}
@@ -306,6 +312,26 @@ const Application = () => {
                                     {...field}
                                     placeholder={t('application.personalInfo.firstName.placeholder')}
                                     aria-required="true"
+                                    error={fieldState.error?.message}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+
+                          <FormField
+                            control={control}
+                            name={`applicants.${idx}.secondNames`}
+                            render={({ field, fieldState }) => (
+                              <FormItem>
+                                <FormLabel>
+                                  {t('application.personalInfo.secondNames.label')}
+                                </FormLabel>
+                                <FormControl>
+                                  <PassportNameInput
+                                    {...field}
+                                    placeholder={t('application.personalInfo.secondNames.placeholder')}
                                     error={fieldState.error?.message}
                                   />
                                 </FormControl>

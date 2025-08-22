@@ -74,6 +74,7 @@
     "personalInfo": {
       "title": "Personal Information",
       "firstName": {"label": "First Name (as shown on passport)", "placeholder": "Enter your first name"},
+      "secondNames": {"label": "Second Names (as shown on passport)", "placeholder": "Enter additional names if any"},
       "lastName": {"label": "Last Name (as shown on passport)", "placeholder": "Enter your last name"},
       "dateOfBirth": {"label": "Date of Birth", "placeholder": "Select your date of birth"},
       "nationality": {"label": "Nationality", "placeholder": "Select your nationality"},
