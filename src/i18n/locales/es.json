@@ -98,7 +98,7 @@
       },
       "optional": "(Opcional)",
       "firstName": {"label": "Nombre (como aparece en el pasaporte)", "placeholder": "Ingrese su nombre"},
-      "secondNames": {"label": "Segundos nombres (como aparece en el pasaporte)", "placeholder": "Ingrese nombres adicionales si los hay"},
+      "secondNames": {"label": "Nombres adicionales (como aparece en el pasaporte)", "placeholder": "Ingrese nombres adicionales si los hay"},
       "lastName": {"label": "Apellido (como aparece en el pasaporte)", "placeholder": "Ingrese su apellido"},
       "dateOfBirth": {"label": "Fecha de Nacimiento", "placeholder": "Seleccione su fecha de nacimiento"},
       "nationality": {"label": "Nacionalidad", "placeholder": "Seleccione su nacionalidad"},

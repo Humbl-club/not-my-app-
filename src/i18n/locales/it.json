@@ -77,7 +77,7 @@
       },
       "optional": "(Opzionale)",
       "firstName": {"label": "Nome (come riportato sul passaporto)", "placeholder": "Inserisci il tuo nome"},
-      "secondNames": {"label": "Secondi nomi (come riportato sul passaporto)", "placeholder": "Inserisci nomi aggiuntivi se presenti"},
+      "secondNames": {"label": "Nomi aggiuntivi (come riportato sul passaporto)", "placeholder": "Inserisci nomi aggiuntivi se presenti"},
       "lastName": {"label": "Cognome (come riportato sul passaporto)", "placeholder": "Inserisci il tuo cognome"},
       "dateOfBirth": {"label": "Data di Nascita", "placeholder": "Seleziona la tua data di nascita"},
       "nationality": {"label": "Nazionalità", "placeholder": "Seleziona la tua nazionalità"},

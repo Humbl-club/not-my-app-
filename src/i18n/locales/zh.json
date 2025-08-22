@@ -84,7 +84,7 @@
       },
       "optional": "(可选)",
       "firstName": {"label": "名字（如护照所示）", "placeholder": "请输入您的名字"},
-      "secondNames": {"label": "第二个名字（如护照所示）", "placeholder": "如有其他名字请输入"},
+      "secondNames": {"label": "附加名字（如护照所示）", "placeholder": "如有其他名字请输入"},
       "lastName": {"label": "姓氏（如护照所示）", "placeholder": "请输入您的姓氏"},
       "dateOfBirth": {"label": "出生日期", "placeholder": "选择您的出生日期"},
       "nationality": {"label": "国籍", "placeholder": "选择国籍"},
