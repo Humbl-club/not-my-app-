@@ -18,10 +18,10 @@ import {
 } from "@/constants/job-classifications";
 
 interface JobData {
-  isStandardized: boolean;
+  isStandardized?: boolean;
   jobCode?: string;
-  titleOriginal: string;
-  titleEnglish: string;
+  titleOriginal?: string;
+  titleEnglish?: string;
   category?: string;
 }
 
