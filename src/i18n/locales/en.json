@@ -32,6 +32,7 @@
   },
   "trustIndicators": {
     "title": "Why Choose ETAsHub?",
+    "subtitle": "Five reasons why thousands trust us with their travel documentation",
     "convenience": {"title": "Convenience", "description": "no confusing forms or mistakes; we handle it for you"},
     "security": {"title": "Security", "description": "bank-level data protection, GDPR-compliant"},
     "tracking": {"title": "Application Tracking", "description": "see the status of your application anytime"},
