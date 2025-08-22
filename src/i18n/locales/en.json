@@ -24,6 +24,7 @@
   },
   "steps": {
     "title": "How It Works — A Simple 4-Step Process",
+    "subtitle": "A beautifully simple process that takes less than 15 minutes",
     "step1": {"title": "Complete Application Form", "description": "Provide your details through our secure online form.", "time": "5–10 minutes"},
     "step2": {"title": "Upload Required Documents", "description": "Attach your passport scan and any required files.", "time": "a few minutes"},
     "step3": {"title": "Secure Payment", "description": "Pay the government fee + our service fee for admin support.", "time": "instant"},
