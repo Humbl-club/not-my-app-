@@ -244,10 +244,10 @@ const Application = () => {
               <Form {...form}>
                 <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
                   {formState.submitCount > 0 && !isValid && (
-                    <div role="alert" aria-live="polite" className="rounded-md border border-destructive/50 bg-destructive/5 p-4">
+                    <div role="alert" aria-live="polite" className="rounded-md border-l-4 border-l-error-gentle border border-error-gentle/30 bg-error-gentle-light p-4">
                       <div className="flex items-start justify-between gap-4">
                         <div>
-                          <p className="font-medium text-destructive">Some required fields are missing or invalid.</p>
+                          <p className="font-medium text-error-gentle">Please check the highlighted fields below.</p>
                           {applicantsWithErrors.length > 0 && (
                             <p className="text-sm text-muted-foreground">
                               Applicants needing attention: {applicantsWithErrors.map((i) => i + 1).join(', ')}
@@ -255,7 +255,7 @@ const Application = () => {
                           )}
                         </div>
                         {firstErrorPath && (
-                          <Button type="button" variant="destructive" size="sm" onClick={() => form.setFocus(firstErrorPath as any)}>
+                          <Button type="button" variant="outline" size="sm" className="border-error-gentle text-error-gentle hover:bg-error-gentle/10" onClick={() => form.setFocus(firstErrorPath as any)}>
                             Review missing fields
                           </Button>
                         )}
@@ -267,17 +267,17 @@ const Application = () => {
                     const hasApplicantError = !!formState.errors?.applicants?.[idx];
                     const stateRequired = ['US','CA'].includes((applicants?.[idx]?.address?.country as string) || '');
                     return (
-                      <div key={field.id} className={cn("rounded-lg border p-4 space-y-4", hasApplicantError && "border-destructive/50 ring-1 ring-destructive/30 bg-destructive/5")}>
+                      <div key={field.id} className={cn("rounded-lg border p-4 space-y-4", hasApplicantError && "border-l-4 border-l-error-gentle border-error-gentle/30 bg-error-gentle-light")}>
                         <div className="flex items-center justify-between">
                           <h3 className="text-lg font-semibold">
                             {t('application.applicant.title', { defaultValue: 'Applicant {{num}}', num: idx + 1 })}
                           </h3>
                           <div className="flex items-center gap-2">
-                            {hasApplicantError && (
-                              <Badge variant="destructive">
-                                {t('application.errors.needsAttention', { defaultValue: 'Needs attention' })}
-                              </Badge>
-                            )}
+                             {hasApplicantError && (
+                               <Badge variant="outline" className="border-error-gentle text-error-gentle bg-error-gentle-light">
+                                 {t('application.errors.needsAttention', { defaultValue: 'Needs attention' })}
+                               </Badge>
+                             )}
                             {idx > 0 && (
                               <Button type="button" variant="outline" onClick={() => remove(idx)} className="flex items-center gap-2">
                                 <Trash2 className="h-4 w-4" /> {t('application.applicant.remove', { defaultValue: 'Remove' })}

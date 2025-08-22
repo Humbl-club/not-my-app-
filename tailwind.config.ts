@@ -58,6 +58,11 @@ export default {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
 				},
+				'error-gentle': {
+					DEFAULT: 'hsl(var(--error-gentle))',
+					light: 'hsl(var(--error-gentle-light))',
+					foreground: 'hsl(var(--error-gentle-foreground))'
+				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
 					foreground: 'hsl(var(--muted-foreground))'

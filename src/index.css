@@ -48,6 +48,11 @@
     --destructive: 0 72% 51%;
     --destructive-light: 0 72% 95%;
     --destructive-foreground: 0 0% 100%;
+    
+    /* Gentle Error Colors - Less Intimidating */
+    --error-gentle: 25 95% 53%;     /* Warm orange for gentle errors */
+    --error-gentle-light: 25 95% 97%;
+    --error-gentle-foreground: 0 0% 100%;
     --info: 180 62% 50%;           /* Turquoise for processing */
     --info-light: 180 62% 95%;
     --info-foreground: 0 0% 100%;
@@ -144,6 +149,11 @@
     --destructive: 0 72% 60%;
     --destructive-light: 0 72% 15%;
     --destructive-foreground: 0 0% 95%;
+    
+    /* Gentle Error Colors - Dark mode */
+    --error-gentle: 25 95% 60%;
+    --error-gentle-light: 25 95% 15%;
+    --error-gentle-foreground: 0 0% 95%;
     --info: 180 62% 60%;
     --info-light: 180 62% 15%;
     --info-foreground: 0 0% 95%;
