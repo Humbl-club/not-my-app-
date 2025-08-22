@@ -10,7 +10,7 @@ import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { JobTitleInput } from '@/components/ui/job-title-input';
+import { JobSelector } from "@/components/ui/job-selector";
 import { EmailInput, EMAIL_PATTERN } from '@/components/ui/email-input';
 import { PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
 import { PassportNumberInput } from '@/components/ui/passport-number-input';
@@ -67,7 +67,13 @@ const SecondApplicant = () => {
     useSameEmailAsPrimary: z.boolean().optional().default(false),
     address: addressShape,
     hasJob: z.enum(['yes', 'no'], { required_error: 'Please answer if you have a job' }),
-    job: z.string().optional(),
+    job: z.object({
+      isStandardized: z.boolean().default(false),
+      jobCode: z.string().optional(),
+      titleOriginal: z.string().default(""),
+      titleEnglish: z.string().default(""),
+      category: z.string().optional(),
+    }).optional(),
     hasCriminalConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer about criminal convictions' }),
     hasWarCrimesConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer about war crimes convictions' }),
   }).superRefine((val, ctx) => {
@@ -100,7 +106,7 @@ const SecondApplicant = () => {
     }
     
     // Employment validation
-    if (val.hasJob === 'yes' && (!val.job || val.job.trim().length < 2)) {
+    if (val.hasJob === 'yes' && (!val.job || !val.job.titleOriginal || val.job.titleOriginal.trim().length < 2)) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Please enter your job title', path: ['job'] });
     }
   });
@@ -124,7 +130,11 @@ const SecondApplicant = () => {
       useSameEmailAsPrimary: !!primaryApplicant?.email,
       address: { line1: '', line2: '', city: '', state: '', postalCode: '', country: '' },
       hasJob: undefined,
-      job: '',
+      job: {
+        isStandardized: false,
+        titleOriginal: "",
+        titleEnglish: "",
+      },
       hasCriminalConvictions: undefined,
       hasWarCrimesConvictions: undefined,
     },
@@ -485,7 +495,12 @@ const SecondApplicant = () => {
                         <FormItem>
                           <FormLabel>{t('application.employment.jobTitle.label')} <span className="text-destructive">*</span></FormLabel>
                            <FormControl>
-                             <JobTitleInput {...field} placeholder={t('application.employment.jobTitle.placeholder')} aria-invalid={!!fieldState.error} />
+                              <JobSelector 
+                                value={field.value}
+                                onChange={field.onChange}
+                                placeholder={t('application.employment.jobTitle.placeholder')}
+                                required
+                              />
                            </FormControl>
                           <FormMessage />
                         </FormItem>

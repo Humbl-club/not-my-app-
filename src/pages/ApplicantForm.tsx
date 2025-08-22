@@ -10,7 +10,7 @@ import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { JobTitleInput } from '@/components/ui/job-title-input';
+import { JobSelector } from "@/components/ui/job-selector";
 import { EmailInput, EMAIL_PATTERN } from '@/components/ui/email-input';
 import { PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
 import { DateOfBirthInput, validateDateOfBirth } from '@/components/ui/date-of-birth-input';
@@ -75,7 +75,13 @@ const ApplicantForm = () => {
       return true; // Address validation will be handled by form state
     }),
     hasJob: z.enum(['yes', 'no'], { required_error: 'Please answer if you have a job' }),
-    jobTitle: z.string().optional(),
+    jobTitle: z.object({
+      isStandardized: z.boolean().default(false),
+      jobCode: z.string().optional(),
+      titleOriginal: z.string().default(""),
+      titleEnglish: z.string().default(""),
+      category: z.string().optional(),
+    }),
     hasCriminalConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer about criminal convictions' }),
     hasWarCrimesConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer about war crimes convictions' }),
   });
@@ -116,7 +122,11 @@ const ApplicantForm = () => {
       useSameEmailAsPrimary: false,
       address: { line1: '', line2: '', city: '', state: '', postalCode: '', country: '' },
       hasJob: undefined,
-      jobTitle: '',
+      jobTitle: {
+        isStandardized: false,
+        titleOriginal: "",
+        titleEnglish: "",
+      },
       hasCriminalConvictions: undefined,
       hasWarCrimesConvictions: undefined,
     },
@@ -477,7 +487,12 @@ const ApplicantForm = () => {
                        <FormItem>
                          <FormLabel>{t('application.employment.jobTitle.label')} <span className="text-destructive">*</span></FormLabel>
                           <FormControl>
-                            <JobTitleInput {...field} placeholder={t('application.employment.jobTitle.placeholder')} aria-invalid={!!fieldState.error} />
+                             <JobSelector 
+                               value={field.value}
+                               onChange={field.onChange}
+                               placeholder={t('application.employment.jobTitle.placeholder')}
+                               required
+                             />
                           </FormControl>
                          <FormMessage />
                        </FormItem>
