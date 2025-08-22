@@ -145,12 +145,25 @@
       "sameAsPrimary": "Igual que el Solicitante Principal",
       "usingPrimary": "Usando el correo del Solicitante Principal"
     },
-    "additionalNationalities": {
-      "label": "¿Tienes nacionalidades adicionales?",
-      "description": "Selecciona esto si tienes múltiples ciudadanías",
-      "addButton": "Agregar Nacionalidad"
+      "additionalNationalities": {
+        "label": "¿Tienes nacionalidades adicionales?",
+        "description": "Selecciona esto si tienes múltiples ciudadanías",
+        "addButton": "Agregar Nacionalidad"
+      },
+      "options": { "yes": "Sí", "no": "No" }
     },
-    "options": { "yes": "Sí", "no": "No" }
+  "validation": {
+    "email": {
+      "required": "La dirección de correo electrónico es requerida",
+      "invalidFormat": "Por favor ingresa una dirección de correo electrónico válida",
+      "noSpaces": "La dirección de correo electrónico no puede contener espacios",
+      "missingAt": "La dirección de correo electrónico debe contener el símbolo @",
+      "multipleAt": "La dirección de correo electrónico debe contener exactamente un símbolo @",
+      "consecutiveDots": "La dirección de correo electrónico no puede contener puntos consecutivos",
+      "invalidStartEnd": "La dirección de correo electrónico no puede empezar o terminar con caracteres especiales",
+      "missingParts": "La dirección de correo electrónico debe tener tanto parte local como dominio",
+      "invalidTLD": "La dirección de correo electrónico debe tener una extensión de dominio válida (al menos 2 letras)"
+    }
   },
   "tracking": {
     "title": "Rastrea tu solicitud",

@@ -83,38 +83,50 @@
       "passport": {"title": "Pagina Informazioni Passaporto", "uploadTitle": "Carica Foto del Passaporto", "format": "Solo formato JPG o JPEG", "chooseFile": "Scegli File", "requirements": {"title": "Requisiti:", "readable": "Immagine chiara e leggibile della pagina dei dettagli personali del passaporto", "visible": "Tutto il testo deve essere visibile e leggibile", "noGlare": "Nessun riflesso o ombra", "format": "Solo formato JPG o JPEG"}},
       "photo": {"title": "Foto Personale", "upload": {"title": "Carica Foto", "format": "JPG o JPEG", "button": "Scegli File"}, "camera": {"title": "Scatta Foto", "subtitle": "Usa fotocamera", "button": "Apri Fotocamera"}, "requirements": {"title": "Requisiti Foto:", "background": "Sfondo semplice e chiaro", "noObjects": "Nessuna persona o oggetto sullo sfondo", "visibility": "Testa, spalle e parte superiore del corpo completamente visibili", "lighting": "Illuminazione uniforme senza ombre o riflessi", "features": "Visibilità chiara delle caratteristiche facciali"}}
     },
-    "payment": {"title": "Pagamento", "subtitle": "Completa il tuo pagamento per inviare la tua richiesta", "details": {"title": "Dettagli Pagamento", "cardholderName": {"label": "Nome Titolare Carta *", "placeholder": "Inserisci il nome del titolare della carta"}, "cardNumber": {"label": "Numero Carta *", "placeholder": "1234 5678 9012 3456"}, "expiryDate": {"label": "Data di Scadenza *", "placeholder": "MM/AA"}, "cvv": {"label": "CVV *", "placeholder": "123"}, "security": "Il tuo pagamento è protetto con crittografia SSL e processato tramite fornitori di pagamento affidabili."}, "summary": {"title": "Riepilogo Ordine", "application": "Richiesta ETA Regno Unito", "serviceFee": "Commissione di Servizio", "vat": "IVA (20%)", "total": "Totale", "sslSecured": "Pagamento Protetto SSL", "moneyBack": "Garanzia Rimborso"}, "complete": "Completa Pagamento"}
-  ,
-      "address": {
-        "title": "Indirizzo",
-        "sameAsPrimary": "Uguale al Richiedente Principale",
-        "line1": { "label": "Indirizzo riga 1" },
-        "line2": { "label": "Indirizzo riga 2 (opzionale)" },
-        "city": { "label": "Città" },
-        "state": { "label": "Stato/Provincia" },
-        "postalCode": { "label": "CAP" },
-        "country": { "label": "Paese", "placeholder": "Seleziona un paese" },
-        "usingPrimary": "Utilizzo l'indirizzo del Richiedente Principale"
-      },
-      "employment": {
-        "hasJob": { "label": "Ha un lavoro?" },
-        "jobTitle": { "label": "Qual è il suo lavoro?", "placeholder": "Inserisci la tua mansione" }
-      },
-      "security": {
-        "criminalConvictions": { "label": "Ha mai avuto condanne penali?" },
-        "warCrimes": { "label": "È mai stato sospettato o condannato per crimini di guerra, terrorismo o estremismo?" }
-      },
-      "email": {
-        "sameAsPrimary": "Uguale al Richiedente Principale",
-        "usingPrimary": "Utilizzando l'indirizzo email del Richiedente Principale"
-      },
-      "additionalNationalities": {
-        "label": "Hai nazionalità aggiuntive?",
-        "description": "Seleziona questo se hai multiple cittadinanze",
-        "addButton": "Aggiungi Nazionalità"
-      },
-      "options": { "yes": "Sì", "no": "No" }
+    "payment": {"title": "Pagamento", "subtitle": "Completa il tuo pagamento per inviare la tua richiesta", "details": {"title": "Dettagli Pagamento", "cardholderName": {"label": "Nome Titolare Carta *", "placeholder": "Inserisci il nome del titolare della carta"}, "cardNumber": {"label": "Numero Carta *", "placeholder": "1234 5678 9012 3456"}, "expiryDate": {"label": "Data di Scadenza *", "placeholder": "MM/AA"}, "cvv": {"label": "CVV *", "placeholder": "123"}, "security": "Il tuo pagamento è protetto con crittografia SSL e processato tramite fornitori di pagamento affidabili."}, "summary": {"title": "Riepilogo Ordine", "application": "Richiesta ETA Regno Unito", "serviceFee": "Commissione di Servizio", "vat": "IVA (20%)", "total": "Totale", "sslSecured": "Pagamento Protetto SSL", "moneyBack": "Garanzia Rimborso"}, "complete": "Completa Pagamento"},
+    "address": {
+      "title": "Indirizzo",
+      "sameAsPrimary": "Uguale al Richiedente Principale",
+      "line1": { "label": "Indirizzo riga 1" },
+      "line2": { "label": "Indirizzo riga 2 (opzionale)" },
+      "city": { "label": "Città" },
+      "state": { "label": "Stato/Provincia" },
+      "postalCode": { "label": "CAP" },
+      "country": { "label": "Paese", "placeholder": "Seleziona un paese" },
+      "usingPrimary": "Utilizzo l'indirizzo del Richiedente Principale"
     },
+    "employment": {
+      "hasJob": { "label": "Ha un lavoro?" },
+      "jobTitle": { "label": "Qual è il suo lavoro?", "placeholder": "Inserisci la tua mansione" }
+    },
+    "security": {
+      "criminalConvictions": { "label": "Ha mai avuto condanne penali?" },
+      "warCrimes": { "label": "È mai stato sospettato o condannato per crimini di guerra, terrorismo o estremismo?" }
+    },
+    "email": {
+      "sameAsPrimary": "Uguale al Richiedente Principale",
+      "usingPrimary": "Utilizzando l'indirizzo email del Richiedente Principale"
+    },
+    "additionalNationalities": {
+      "label": "Hai nazionalità aggiuntive?",
+      "description": "Seleziona questo se hai multiple cittadinanze",
+      "addButton": "Aggiungi Nazionalità"
+    },
+    "options": { "yes": "Sì", "no": "No" }
+  },
+  "validation": {
+    "email": {
+      "required": "L'indirizzo email è richiesto",
+      "invalidFormat": "Inserisci un indirizzo email valido",
+      "noSpaces": "L'indirizzo email non può contenere spazi",
+      "missingAt": "L'indirizzo email deve contenere il simbolo @",
+      "multipleAt": "L'indirizzo email deve contenere esattamente un simbolo @",
+      "consecutiveDots": "L'indirizzo email non può contenere punti consecutivi",
+      "invalidStartEnd": "L'indirizzo email non può iniziare o finire con caratteri speciali",
+      "missingParts": "L'indirizzo email deve avere sia la parte locale che il dominio",
+      "invalidTLD": "L'indirizzo email deve avere un'estensione di dominio valida (almeno 2 lettere)"
+    }
+  },
   "tracking": {
     "title": "Traccia la tua richiesta",
     "subtitle": "Inserisci il numero di riferimento per verificare lo stato della tua richiesta",

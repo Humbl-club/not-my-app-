@@ -206,12 +206,25 @@
       "sameAsPrimary": "Identique au demandeur principal",
       "usingPrimary": "Utilise l'adresse e-mail du demandeur principal"
     },
-    "additionalNationalities": {
-      "label": "Avez-vous des nationalités supplémentaires?",
-      "description": "Sélectionnez ceci si vous avez plusieurs citoyennetés",
-      "addButton": "Ajouter une nationalité"
+      "additionalNationalities": {
+        "label": "Avez-vous des nationalités supplémentaires?",
+        "description": "Sélectionnez ceci si vous avez plusieurs citoyennetés",
+        "addButton": "Ajouter une nationalité"
+      },
+      "options": { "yes": "Oui", "no": "Non" }
     },
-    "options": { "yes": "Oui", "no": "Non" }
+  "validation": {
+    "email": {
+      "required": "L'adresse e-mail est requise",
+      "invalidFormat": "Veuillez entrer une adresse e-mail valide",
+      "noSpaces": "L'adresse e-mail ne peut pas contenir d'espaces",
+      "missingAt": "L'adresse e-mail doit contenir le symbole @",
+      "multipleAt": "L'adresse e-mail doit contenir exactement un symbole @",
+      "consecutiveDots": "L'adresse e-mail ne peut pas contenir de points consécutifs",
+      "invalidStartEnd": "L'adresse e-mail ne peut pas commencer ou finir par des caractères spéciaux",
+      "missingParts": "L'adresse e-mail doit avoir une partie locale et un domaine",
+      "invalidTLD": "L'adresse e-mail doit avoir une extension de domaine valide (au moins 2 lettres)"
+    }
   },
   "tracking": {
     "title": "Suivre votre demande",

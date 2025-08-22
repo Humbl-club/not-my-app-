@@ -131,8 +131,8 @@
         "moneyBack": "Money Back Guarantee"
       },
       "complete": "Complete Payment"
-    ,
-      "address": {
+    },
+    "address": {
         "title": "Address",
         "sameAsPrimary": "Same as Primary Applicant",
         "line1": { "label": "Address line 1" },
@@ -167,6 +167,18 @@
         "addButton": "Add Nationality"
       },
       "options": { "yes": "Yes", "no": "No" }
+    },
+  "validation": {
+    "email": {
+      "required": "Email address is required",
+      "invalidFormat": "Please enter a valid email address",
+      "noSpaces": "Email address cannot contain spaces",
+      "missingAt": "Email address must contain @ symbol",
+      "multipleAt": "Email address must contain exactly one @ symbol",
+      "consecutiveDots": "Email address cannot contain consecutive dots",
+      "invalidStartEnd": "Email address cannot start or end with special characters",
+      "missingParts": "Email address must have both local part and domain",
+      "invalidTLD": "Email address must have a valid domain extension (at least 2 letters)"
     }
   },
   "tracking": {
