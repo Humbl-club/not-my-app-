@@ -73,6 +73,12 @@
     "progress": {"step": "Step {{current}} of {{total}}", "complete": "{{percent}}% Complete"},
     "personalInfo": {
       "title": "Personal Information",
+      "nameSection": {
+        "title": "Full Name",
+        "description": "Enter your names exactly as they appear on your passport",
+        "helperText": "Use the \"Second Names\" field for additional given names if they don't fit in the first name field. Leave it empty if not needed."
+      },
+      "optional": "(Optional)",
       "firstName": {"label": "First Name (as shown on passport)", "placeholder": "Enter your first name"},
       "secondNames": {"label": "Second Names (as shown on passport)", "placeholder": "Enter additional names if any"},
       "lastName": {"label": "Last Name (as shown on passport)", "placeholder": "Enter your last name"},

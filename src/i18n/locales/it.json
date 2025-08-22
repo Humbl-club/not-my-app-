@@ -70,6 +70,12 @@
     "progress": {"step": "Passo {{current}} di {{total}}", "complete": "{{percent}}% Completato"},
     "personalInfo": {
       "title": "Informazioni Personali",
+      "nameSection": {
+        "title": "Nome Completo",
+        "description": "Inserisci i tuoi nomi esattamente come appaiono sul tuo passaporto",
+        "helperText": "Usa il campo \"Secondi Nomi\" per nomi aggiuntivi se non entrano nel campo del primo nome. Lascia vuoto se non necessario."
+      },
+      "optional": "(Opzionale)",
       "firstName": {"label": "Nome (come riportato sul passaporto)", "placeholder": "Inserisci il tuo nome"},
       "secondNames": {"label": "Secondi nomi (come riportato sul passaporto)", "placeholder": "Inserisci nomi aggiuntivi se presenti"},
       "lastName": {"label": "Cognome (come riportato sul passaporto)", "placeholder": "Inserisci il tuo cognome"},

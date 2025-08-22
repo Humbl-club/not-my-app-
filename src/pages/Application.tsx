@@ -17,8 +17,9 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { EmailInput, EMAIL_PATTERN } from '@/components/ui/email-input';
-import { PassportNameInput, PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
+import { PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
 import { PassportNumberInput } from '@/components/ui/passport-number-input';
+import { NameFieldsSection } from '@/components/NameFieldsSection';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -298,69 +299,10 @@ const Application = () => {
                           </div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                          <FormField
-                            control={control}
-                            name={`applicants.${idx}.firstName`}
-                            render={({ field, fieldState }) => (
-                              <FormItem>
-                                <FormLabel>
-                                  {t('application.personalInfo.firstName.label')} <span aria-hidden="true" className="text-destructive">*</span>
-                                </FormLabel>
-                                <FormControl>
-                                  <PassportNameInput
-                                    {...field}
-                                    placeholder={t('application.personalInfo.firstName.placeholder')}
-                                    aria-required="true"
-                                    error={fieldState.error?.message}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-
-                          <FormField
-                            control={control}
-                            name={`applicants.${idx}.secondNames`}
-                            render={({ field, fieldState }) => (
-                              <FormItem>
-                                <FormLabel>
-                                  {t('application.personalInfo.secondNames.label')}
-                                </FormLabel>
-                                <FormControl>
-                                  <PassportNameInput
-                                    {...field}
-                                    placeholder={t('application.personalInfo.secondNames.placeholder')}
-                                    error={fieldState.error?.message}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-
-                          <FormField
-                            control={control}
-                            name={`applicants.${idx}.lastName`}
-                            render={({ field, fieldState }) => (
-                              <FormItem>
-                                <FormLabel>
-                                  {t('application.personalInfo.lastName.label')} <span aria-hidden="true" className="text-destructive">*</span>
-                                </FormLabel>
-                                <FormControl>
-                                  <PassportNameInput
-                                    {...field}
-                                    placeholder={t('application.personalInfo.lastName.placeholder')}
-                                    aria-required="true"
-                                    error={fieldState.error?.message}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
+                        <NameFieldsSection
+                          control={control}
+                          baseName={`applicants.${idx}`}
+                        />
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <FormField

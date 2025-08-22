@@ -11,8 +11,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { EmailInput, EMAIL_PATTERN } from '@/components/ui/email-input';
-import { PassportNameInput, PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
+import { PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
 import { PassportNumberInput } from '@/components/ui/passport-number-input';
+import { NameFieldsSection } from '@/components/NameFieldsSection';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { nationalities } from '@/constants/nationalities';
@@ -198,47 +199,10 @@ const ApplicantForm = () => {
             <CardContent>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6" noValidate>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <FormField control={form.control} name="firstName" render={({ field, fieldState }) => (
-                      <FormItem>
-                        <FormLabel>{t('application.personalInfo.firstName.label')} <span className="text-destructive">*</span></FormLabel>
-                        <FormControl>
-                          <PassportNameInput
-                            {...field}
-                            placeholder={t('application.personalInfo.firstName.placeholder')}
-                            error={fieldState.error?.message}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )} />
-                    <FormField control={form.control} name="secondNames" render={({ field, fieldState }) => (
-                      <FormItem>
-                        <FormLabel>{t('application.personalInfo.secondNames.label')}</FormLabel>
-                        <FormControl>
-                          <PassportNameInput
-                            {...field}
-                            placeholder={t('application.personalInfo.secondNames.placeholder')}
-                            error={fieldState.error?.message}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )} />
-                    <FormField control={form.control} name="lastName" render={({ field, fieldState }) => (
-                      <FormItem>
-                        <FormLabel>{t('application.personalInfo.lastName.label')} <span className="text-destructive">*</span></FormLabel>
-                        <FormControl>
-                          <PassportNameInput
-                            {...field}
-                            placeholder={t('application.personalInfo.lastName.placeholder')}
-                            error={fieldState.error?.message}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )} />
-                  </div>
+                  <NameFieldsSection
+                    control={form.control}
+                    baseName=""
+                  />
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <FormField control={form.control} name="dateOfBirth" render={({ field, fieldState }) => (

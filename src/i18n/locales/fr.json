@@ -124,6 +124,12 @@
     "progress": {"step": "Étape {{current}} sur {{total}}", "complete": "{{percent}}% Terminé"},
     "personalInfo": {
       "title": "Informations personnelles",
+      "nameSection": {
+        "title": "Nom Complet",
+        "description": "Saisissez vos noms exactement comme ils apparaissent sur votre passeport",
+        "helperText": "Utilisez le champ \"Deuxièmes Prénoms\" pour les prénoms supplémentaires s'ils ne rentrent pas dans le champ du prénom. Laissez vide si non nécessaire."
+      },
+      "optional": "(Optionnel)",
       "firstName": {"label": "Prénom (tel qu'indiqué sur le passeport)", "placeholder": "Entrez votre prénom"},
       "secondNames": {"label": "Deuxièmes prénoms (tel qu'indiqué sur le passeport)", "placeholder": "Entrez des noms supplémentaires si nécessaire"},
       "lastName": {"label": "Nom de famille (tel qu'indiqué sur le passeport)", "placeholder": "Entrez votre nom de famille"},

@@ -91,6 +91,12 @@
     "progress": {"step": "Paso {{current}} de {{total}}", "complete": "{{percent}}% Completado"},
     "personalInfo": {
       "title": "Información Personal",
+      "nameSection": {
+        "title": "Nombre Completo",
+        "description": "Ingrese sus nombres exactamente como aparecen en su pasaporte",
+        "helperText": "Use el campo \"Segundos Nombres\" para nombres adicionales si no caben en el campo del primer nombre. Déjelo vacío si no es necesario."
+      },
+      "optional": "(Opcional)",
       "firstName": {"label": "Nombre (como aparece en el pasaporte)", "placeholder": "Ingrese su nombre"},
       "secondNames": {"label": "Segundos nombres (como aparece en el pasaporte)", "placeholder": "Ingrese nombres adicionales si los hay"},
       "lastName": {"label": "Apellido (como aparece en el pasaporte)", "placeholder": "Ingrese su apellido"},
