@@ -25,6 +25,37 @@
   "steps": {"title": "简单的4步流程", "subtitle": "通过我们的引导流程，仅需几分钟即可完成您的英国ETA申请。", "step1": {"title": "填写申请", "description": "使用您的个人和旅行详细信息完成安全的在线表格。", "time": "5-10分钟"}, "step2": {"title": "上传文档", "description": "安全地将您的护照和照片上传到我们的加密平台。", "time": "2-3分钟"}, "step3": {"title": "付款", "description": "安全的付款处理，提供多种付款选项。", "time": "1-2分钟"}, "step4": {"title": "接收ETA", "description": "直接在您的电子邮件收件箱中获得已批准的ETA。", "time": "24-72小时"}},
   "trustIndicators": {"secure": {"title": "安全加密", "description": "SSL加密数据保护"}, "gdpr": {"title": "符合GDPR", "description": "全面的数据保护合规性"}, "support": {"title": "24/7支持", "description": "全天候协助"}, "trusted": {"title": "值得信赖的服务", "description": "超过10,000个成功申请"}},
   "applicationSteps": {"title": "简单的4步流程", "subtitle": "精简的申请流程让您快速便捷地获得英国ETA", "step1": {"title": "完成申请", "description": "使用您的个人和旅行详细信息完成安全的在线表格。", "time": "5-10分钟"}, "step2": {"title": "上传文件", "description": "提交您的护照复印件和照片。我们的系统会自动验证所有要求。", "time": "2-3分钟"}, "step3": {"title": "安全支付", "description": "使用信用卡、借记卡或PayPal安全付款。所有交易均经过加密。", "time": "1-2分钟"}, "step4": {"title": "收到授权", "description": "在72小时内通过电子邮件收到您的英国ETA。在线跟踪您的申请状态。", "time": "最长72小时"}},
+  "legal": {
+    "title": "重要法律声明",
+    "content": "ETAsHub是英国电子旅行授权(ETA)申请处理的独立服务。我们与英国政府或英国内政部无任何关联。我们的服务通过收取服务费加上强制性政府费用来协助您提交ETA申请。您可以通过英国政府官方网站免费直接提交申请，尽管我们的服务为您的便利提供了额外功能，如表格验证、客户支持和申请跟踪。"
+  },
+  "transparency": {
+    "title": "费用透明度",
+    "feeBreakdown": "提供完整费用明细",
+    "noHidden": "无隐藏费用"
+  },
+  "trustIndicators": {
+    "convenience": {
+      "title": "便利性",
+      "description": "仅需几分钟即可快速轻松申请"
+    },
+    "security": {
+      "title": "安全性",
+      "description": "SSL加密和GDPR合规的安全处理"
+    },
+    "tracking": {
+      "title": "跟踪",
+      "description": "实时跟踪您的申请并通过电子邮件更新"
+    },
+    "storage": {
+      "title": "存储",
+      "description": "安全存储您的文档以备将来参考"
+    },
+    "reminders": {
+      "title": "提醒",
+      "description": "续订和更新的自动通知"
+    }
+  },
   "footer": {
     "disclaimer": "本网站由独立第三方运营，与英国政府或英国签证和移民局(UKVI)无关联。",
     "brand": {"title": "英国ETA申请", "subtitle": "第三方服务提供商", "description": "专业的英国ETA申请协助，专家支持与安全处理。"},

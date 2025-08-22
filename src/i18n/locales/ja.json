@@ -25,6 +25,37 @@
   "steps": {"title": "シンプルな4ステッププロセス", "subtitle": "ガイド付きプロセスで、わずか数分で英国ETA申請を完了できます。", "step1": {"title": "申請書記入", "description": "個人および旅行の詳細を使用して、安全なオンラインフォームを完成させます。", "time": "5-10分"}, "step2": {"title": "書類アップロード", "description": "暗号化されたプラットフォームにパスポートと写真を安全にアップロードします。", "time": "2-3分"}, "step3": {"title": "支払い", "description": "複数の支払いオプションを利用した安全な支払い処理。", "time": "1-2分"}, "step4": {"title": "ETA受領", "description": "承認されたETAをメールの受信箱に直接お届けします。", "time": "24-72時間"}},
   "trustIndicators": {"secure": {"title": "安全な暗号化", "description": "SSL暗号化によるデータ保護"}, "gdpr": {"title": "GDPR準拠", "description": "完全なデータ保護準拠"}, "support": {"title": "24/7サポート", "description": "年中無休のサポート"}, "trusted": {"title": "信頼できるサービス", "description": "10,000件以上の成功申請"}},
   "applicationSteps": {"title": "シンプルな4ステッププロセス", "subtitle": "簡素化された申請プロセスで英国ETAを迅速かつ簡単に取得", "step1": {"title": "申請の完了", "description": "個人情報と旅行情報を入力して、安全なオンラインフォームに記入します。", "time": "5-10分"}, "step2": {"title": "書類のアップロード", "description": "パスポートのコピーと写真を提出。システムがすべての要件を自動で検証します。", "time": "2-3分"}, "step3": {"title": "安全な支払い", "description": "クレジットカード、デビットカード、またはPayPalで安全に支払います。すべての取引は暗号化されます。", "time": "1-2分"}, "step4": {"title": "認証の受領", "description": "72時間以内にメールで英国ETAを受け取ります。オンラインで申請状況を追跡できます。", "time": "最大72時間"}},
+  "legal": {
+    "title": "重要な法的告知",
+    "content": "ETAsHubは英国電子渡航認証（ETA）申請処理の独立サービスです。私たちは英国政府や英国内務省とは一切関係ありません。私たちのサービスは、必須の政府手数料に加えてサービス料金を受け取り、ETA申請の提出をお手伝いします。英国政府の公式ウェブサイトから無料で直接申請することができますが、私たちのサービスは便利さのために、フォーム検証、カスタマーサポート、申請追跡などの追加機能を提供しています。"
+  },
+  "transparency": {
+    "title": "料金の透明性",
+    "feeBreakdown": "完全な料金内訳を提供",
+    "noHidden": "隠れた料金はありません"
+  },
+  "trustIndicators": {
+    "convenience": {
+      "title": "利便性",
+      "description": "わずか数分で迅速かつ簡単な申請"
+    },
+    "security": {
+      "title": "セキュリティ",
+      "description": "SSL暗号化とGDPR準拠による安全な処理"
+    },
+    "tracking": {
+      "title": "追跡",
+      "description": "メール更新によるリアルタイム申請追跡"
+    },
+    "storage": {
+      "title": "保存",
+      "description": "将来の参照のための安全な文書保存"
+    },
+    "reminders": {
+      "title": "リマインダー",
+      "description": "更新とアップデートの自動通知"
+    }
+  },
   "footer": {"disclaimer": "このウェブサイトは独立した第三者によって運営されており、英国政府や英国ビザ・移民局（UKVI）とは関係ありません。", "brand": {"title": "英国ETA申請", "subtitle": "第三者サービス提供者", "description": "専門サポートと安全な処理によるプロフェッショナルな英国ETA申請支援。"}, "quickLinks": {"title": "クイックリンク", "startApplication": "申請開始", "trackApplication": "申請追跡", "requirements": "ETA要件", "processingTimes": "処理時間"}, "legal": {"title": "法的事項", "privacy": "プライバシーポリシー", "terms": "利用規約", "refund": "返金ポリシー", "cookies": "クッキーポリシー"}, "support": {"title": "サポート", "phoneLabel": "電話サポート", "phone": "+44 20 7946 0958", "emailLabel": "メールサポート", "email": "support@uketaapplication.com", "contactButton": "サポートに連絡"}, "security": {"ssl": "SSL保護", "gdpr": "GDPR準拠", "pci": "PCI DSS認定"}},
   "application": {
     "title": "英国ETA申請フォーム",

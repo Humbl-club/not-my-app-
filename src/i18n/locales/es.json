@@ -44,6 +44,15 @@
     "step3": {"title": "Pago Seguro", "description": "Paga de forma segura con tarjeta de crédito, débito o PayPal. Todas las transacciones están encriptadas.", "time": "1-2 minutos"},
     "step4": {"title": "Recibir Autorización", "description": "Obtén tu ETA del Reino Unido por correo electrónico en 72 horas. Rastrea el estado de tu solicitud en línea.", "time": "Hasta 72 horas"}
   },
+  "legal": {
+    "title": "Aviso Legal Importante",
+    "content": "ETAsHub es un servicio independiente de procesamiento de solicitudes de Autorización de Viaje Electrónica (ETA) del Reino Unido. No estamos afiliados al gobierno británico ni al Home Office del Reino Unido. Nuestro servicio facilita el envío de su solicitud de ETA por una tarifa de servicio además de las tarifas gubernamentales obligatorias. Puede enviar su solicitud directamente a través del sitio web oficial del gobierno británico de forma gratuita, aunque nuestro servicio ofrece características adicionales como verificación de formularios, atención al cliente y seguimiento de solicitudes para su conveniencia."
+  },
+  "transparency": {
+    "title": "Transparencia de Tarifas",
+    "feeBreakdown": "Desglose completo de tarifas proporcionado",
+    "noHidden": "Sin tarifas ocultas"
+  },
   "footer": {
     "disclaimer": "Este sitio web es operado por un tercero independiente y no está afiliado con el Gobierno del Reino Unido o UK Visas and Immigration (UKVI).",
     "brand": {"title": "Solicitud ETA Reino Unido", "subtitle": "Proveedor de servicios de terceros", "description": "Asistencia profesional para solicitud ETA del Reino Unido con soporte experto y procesamiento seguro."},

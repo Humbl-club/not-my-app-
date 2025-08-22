@@ -43,10 +43,26 @@
     "step4": {"title": "Recevoir l'ETA", "description": "Recevez votre ETA approuvée directement dans votre boîte e-mail.", "time": "24-72 heures"}
   },
   "trustIndicators": {
-    "secure": {"title": "Sécurisé et chiffré", "description": "Protection des données chiffrée SSL"},
-    "gdpr": {"title": "Conforme RGPD", "description": "Conformité complète à la protection des données"},
-    "support": {"title": "Support 24/7", "description": "Assistance en continu"},
-    "trusted": {"title": "Service de confiance", "description": "Plus de 10 000 demandes réussies"}
+    "convenience": {
+      "title": "Commodité",
+      "description": "Application rapide et sans effort en quelques minutes seulement"
+    },
+    "security": {
+      "title": "Sécurité",
+      "description": "Traitement sécurisé avec cryptage SSL et conformité RGPD"
+    },
+    "tracking": {
+      "title": "Suivi",
+      "description": "Suivi en temps réel de votre demande avec mises à jour par email"
+    },
+    "storage": {
+      "title": "Stockage",
+      "description": "Stockage sécurisé de vos documents pour référence future"
+    },
+    "reminders": {
+      "title": "Rappels",
+      "description": "Notifications automatiques pour le renouvellement et les mises à jour"
+    }
   },
   "applicationSteps": {
     "title": "Processus simple en 4 étapes",
@@ -55,6 +71,15 @@
     "step2": {"title": "Télécharger les documents", "description": "Soumettez la copie de votre passeport et votre photo. Notre système valide automatiquement toutes les exigences.", "time": "2-3 minutes"},
     "step3": {"title": "Paiement sécurisé", "description": "Payez en toute sécurité par carte de crédit, de débit ou PayPal. Toutes les transactions sont chiffrées.", "time": "1-2 minutes"},
     "step4": {"title": "Recevoir l'autorisation", "description": "Recevez votre ETA Royaume-Uni par e-mail sous 72 heures. Suivez le statut de votre demande en ligne.", "time": "Jusqu'à 72 heures"}
+  },
+  "legal": {
+    "title": "Avis Légal Important",
+    "content": "ETAsHub est un service indépendant de traitement des demandes d'autorisation de voyage électronique (ETA) pour le Royaume-Uni. Nous ne sommes pas affiliés au gouvernement britannique ou au Home Office du Royaume-Uni. Notre service facilite la soumission de votre demande d'ETA moyennant des frais de service en plus des frais gouvernementaux obligatoires. Vous pouvez soumettre votre demande directement via le site officiel du gouvernement britannique gratuitement, bien que notre service offre des fonctionnalités supplémentaires telles que la vérification des formulaires, le support client et le suivi des demandes pour votre commodité."
+  },
+  "transparency": {
+    "title": "Transparence des Frais",
+    "feeBreakdown": "Détail complet des frais fourni",
+    "noHidden": "Aucun frais caché"
   },
   "footer": {
     "disclaimer": "Ce site web est exploité par un tiers indépendant et n'est pas affilié au gouvernement britannique ou à UK Visas and Immigration (UKVI).",
