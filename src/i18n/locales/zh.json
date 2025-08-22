@@ -61,12 +61,9 @@
     }
   },
   "footer": {
-    "disclaimer": "本网站由独立第三方运营，与英国政府或英国签证和移民局(UKVI)无关联。",
-    "brand": {"title": "英国ETA申请", "subtitle": "第三方服务提供商", "description": "专业的英国ETA申请协助，专家支持与安全处理。"},
-    "quickLinks": {"title": "快速链接", "startApplication": "开始申请", "trackApplication": "跟踪申请", "requirements": "ETA要求", "processingTimes": "处理时间"},
-    "legal": {"title": "法律", "privacy": "隐私政策", "terms": "服务条款", "refund": "退款政策", "cookies": "Cookie政策"},
-    "support": {"title": "支持", "phoneLabel": "电话支持", "phone": "+44 20 7946 0958", "emailLabel": "电子邮件支持", "email": "support@uketaapplication.com", "contactButton": "联系支持"},
-    "security": {"ssl": "SSL安全", "gdpr": "GDPR合规", "pci": "PCI DSS认证"}
+    "links": {"terms": "条款与条件", "privacy": "隐私政策", "cookies": "Cookie政策", "refund": "退款政策"},
+    "contact": "联系方式: support@uketaservice.com | 公司注册: [详情]",
+    "copyright": "© 2024 英国ETA申请服务。保留所有权利。"
   },
   "application": {
     "title": "申请英国ETA",

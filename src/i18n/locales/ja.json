@@ -83,7 +83,11 @@
       "description": "更新とアップデートの自動通知"
     }
   },
-  "footer": {"disclaimer": "このウェブサイトは独立した第三者によって運営されており、英国政府や英国ビザ・移民局（UKVI）とは関係ありません。", "brand": {"title": "英国ETA申請", "subtitle": "第三者サービス提供者", "description": "専門サポートと安全な処理によるプロフェッショナルな英国ETA申請支援。"}, "quickLinks": {"title": "クイックリンク", "startApplication": "申請開始", "trackApplication": "申請追跡", "requirements": "ETA要件", "processingTimes": "処理時間"}, "legal": {"title": "法的事項", "privacy": "プライバシーポリシー", "terms": "利用規約", "refund": "返金ポリシー", "cookies": "クッキーポリシー"}, "support": {"title": "サポート", "phoneLabel": "電話サポート", "phone": "+44 20 7946 0958", "emailLabel": "メールサポート", "email": "support@uketaapplication.com", "contactButton": "サポートに連絡"}, "security": {"ssl": "SSL保護", "gdpr": "GDPR準拠", "pci": "PCI DSS認定"}},
+  "footer": {
+    "links": {"terms": "利用規約", "privacy": "プライバシーポリシー", "cookies": "クッキーポリシー", "refund": "返金ポリシー"},
+    "contact": "連絡先: support@uketaservice.com | 会社登録: [詳細]",
+    "copyright": "© 2024 英国ETA申請サービス. 全著作権所有."
+  },
   "application": {
     "title": "英国ETA申請フォーム",
     "subtitle": "すべての必須フィールドを正確に記入してください",

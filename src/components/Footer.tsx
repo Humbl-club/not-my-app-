@@ -21,9 +21,9 @@ export const Footer = () => {
             <a href="/refund" className="hover:text-turquoise transition-colors">{t('footer.links.refund')}</a>
           </div>
 
-          {/* Contact info placeholder */}
+          {/* Contact info */}
           <div className="text-sm opacity-70">
-            <p>Contact: [Email] | [Company Registration Details]</p>
+            <p>{t('footer.contact')}</p>
           </div>
 
           {/* Copyright */}

@@ -54,12 +54,9 @@
     }
   },
   "footer": {
-    "disclaimer": "يتم تشغيل هذا الموقع من قبل طرف ثالث مستقل وليس تابعًا للحكومة البريطانية أو UK Visas and Immigration (UKVI).",
-    "brand": {"title": "طلب ETA المملكة المتحدة", "subtitle": "مزود خدمة تابع لطرف ثالث", "description": "مساعدة احترافية لطلب ETA المملكة المتحدة مع دعم خبراء ومعالجة آمنة."},
-    "quickLinks": {"title": "روابط سريعة", "startApplication": "بدء الطلب", "trackApplication": "تتبع الطلب", "requirements": "متطلبات ETA", "processingTimes": "أوقات المعالجة"},
-    "legal": {"title": "قانوني", "privacy": "سياسة الخصوصية", "terms": "الشروط والأحكام", "refund": "سياسة الاسترداد", "cookies": "سياسة ملفات تعريف الارتباط"},
-    "support": {"title": "الدعم", "phoneLabel": "دعم عبر الهاتف", "phone": "+44 20 7946 0958", "emailLabel": "دعم عبر البريد الإلكتروني", "email": "support@uketaapplication.com", "contactButton": "اتصل بالدعم"},
-    "security": {"ssl": "دفع آمن SSL", "gdpr": "متوافق مع GDPR", "pci": "معتمد PCI DSS"}
+    "links": {"terms": "الشروط والأحكام", "privacy": "سياسة الخصوصية", "cookies": "سياسة ملفات تعريف الارتباط", "refund": "سياسة الاسترداد"},
+    "contact": "اتصال: support@uketaservice.com | تسجيل الشركة: [التفاصيل]",
+    "copyright": "© 2024 خدمة طلب ETA المملكة المتحدة. جميع الحقوق محفوظة."
   },
   "application": {
     "title": "طلب تصريح السفر الإلكتروني للمملكة المتحدة",

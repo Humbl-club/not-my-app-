@@ -100,7 +100,9 @@
       "requirements": "Exigences ETA",
       "processingTimes": "Délais de traitement"
     },
-    "legal": {"title": "Légal", "privacy": "Politique de confidentialité", "terms": "Conditions de service", "refund": "Politique de remboursement", "cookies": "Politique de cookies"},
+    "links": {"terms": "Conditions Générales", "privacy": "Politique de Confidentialité", "cookies": "Politique de Cookies", "refund": "Politique de Remboursement"},
+    "contact": "Contact: support@uketaservice.com | Enregistrement de l'entreprise: [Détails]",
+    "copyright": "© 2024 Service de Demande ETA Royaume-Uni. Tous droits réservés.",
     "support": {
       "title": "Support",
       "phoneLabel": "Assistance téléphonique",

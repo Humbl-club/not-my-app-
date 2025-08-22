@@ -56,6 +56,11 @@
        "description": "Notificaciones automáticas para renovación y actualizaciones"
      }
    },
+  "footer": {
+    "links": {"terms": "Términos y Condiciones", "privacy": "Política de Privacidad", "cookies": "Política de Cookies", "refund": "Política de Reembolso"},
+    "contact": "Contacto: support@uketaservice.com | Registro de Empresa: [Detalles]",
+    "copyright": "© 2024 Servicio de Solicitud ETA Reino Unido. Todos los derechos reservados."
+  },
   "legal": {
     "title": "Aviso Legal Importante",
     "content": "ETAsHub es un servicio independiente de procesamiento de solicitudes de Autorización de Viaje Electrónica (ETA) del Reino Unido. No estamos afiliados al gobierno británico ni al Home Office del Reino Unido. Nuestro servicio facilita el envío de su solicitud de ETA por una tarifa de servicio además de las tarifas gubernamentales obligatorias. Puede enviar su solicitud directamente a través del sitio web oficial del gobierno británico de forma gratuita, aunque nuestro servicio ofrece características adicionales como verificación de formularios, atención al cliente y seguimiento de solicitudes para su conveniencia."

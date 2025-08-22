@@ -53,7 +53,11 @@
       "description": "Notifiche automatiche per rinnovo e aggiornamenti"
     }
   },
-  "footer": {"disclaimer": "Questo sito web è gestito da un terzo indipendente e non è affiliato al Governo del Regno Unito o UK Visas and Immigration (UKVI).", "brand": {"title": "Richiesta ETA Regno Unito", "subtitle": "Fornitore di servizi terzo", "description": "Assistenza professionale per richiesta ETA Regno Unito con supporto esperto e elaborazione sicura."}, "quickLinks": {"title": "Link Rapidi", "startApplication": "Iniziare Richiesta", "trackApplication": "Tracciare Richiesta", "requirements": "Requisiti ETA", "processingTimes": "Tempi di Elaborazione"}, "legal": {"title": "Legale", "privacy": "Politica Privacy", "terms": "Termini e Condizioni", "refund": "Politica Rimborsi", "cookies": "Politica Cookie"}, "support": {"title": "Supporto", "phoneLabel": "Supporto Telefonico", "phone": "+44 20 7946 0958", "emailLabel": "Supporto Email", "email": "support@uketaapplication.com", "contactButton": "Contattare Supporto"}, "security": {"ssl": "SSL Sicuro", "gdpr": "Conforme GDPR", "pci": "Certificato PCI DSS"}, "copyright": "© 2024 Servizio Richiesta ETA Regno Unito. Tutti i diritti riservati."},
+  "footer": {
+    "links": {"terms": "Termini e Condizioni", "privacy": "Politica sulla Privacy", "cookies": "Politica sui Cookie", "refund": "Politica di Rimborso"},
+    "contact": "Contatto: support@uketaservice.com | Registrazione Aziendale: [Dettagli]",
+    "copyright": "© 2024 Servizio Richiesta ETA Regno Unito. Tutti i diritti riservati."
+  },
   "application": {
     "title": "Modulo richiesta ETA Regno Unito",
     "subtitle": "Si prega di compilare tutti i campi richiesti con precisione",

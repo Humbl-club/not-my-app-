@@ -60,12 +60,9 @@
     "noHidden": "숨겨진 수수료 없음"
   },
   "footer": {
-    "disclaimer": "이 웹사이트는 독립적인 제3자에 의해 운영되며 영국 정부나 영국 비자 및 이민청(UKVI)과 관련이 없습니다.",
-    "brand": {"title": "영국 ETA 신청", "subtitle": "제3자 서비스 제공업체", "description": "전문가 지원과 안전한 처리로 영국 ETA 신청을 전문적으로 도와드립니다."},
-    "quickLinks": {"title": "빠른 링크", "startApplication": "신청 시작", "trackApplication": "신청 추적", "requirements": "ETA 요구사항", "processingTimes": "처리 시간"},
-    "legal": {"title": "법적 고지", "privacy": "개인정보 처리방침", "terms": "서비스 약관", "refund": "환불 정책", "cookies": "쿠키 정책"},
-    "support": {"title": "지원", "phoneLabel": "전화 지원", "phone": "+44 20 7946 0958", "emailLabel": "이메일 지원", "email": "support@uketaapplication.com", "contactButton": "지원 문의"},
-    "security": {"ssl": "SSL 보안", "gdpr": "GDPR 준수", "pci": "PCI DSS 인증"}
+    "links": {"terms": "이용약관", "privacy": "개인정보 처리방침", "cookies": "쿠키 정책", "refund": "환불 정책"},
+    "contact": "연락처: support@uketaservice.com | 회사 등록: [세부사항]",
+    "copyright": "© 2024 영국 ETA 신청 서비스. 모든 권리 보유."
   },
   "application": {
     "title": "영국 ETA 신청 양식",
