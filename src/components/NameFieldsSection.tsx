@@ -68,6 +68,7 @@ export function NameFieldsSection<T extends FieldValues>({
             <FormControl>
               <PassportNameInput
                 {...field}
+                required={false}
                 placeholder={t('application.personalInfo.secondNames.placeholder')}
                 error={fieldState.error?.message}
                 className="transition-all duration-200 focus:shadow-sm"

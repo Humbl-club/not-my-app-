@@ -14,10 +14,11 @@ interface PassportNameInputProps extends Omit<React.ComponentProps<"input">, "on
   onChange?: (value: string) => void
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
   error?: string
+  required?: boolean
 }
 
 const PassportNameInput = React.forwardRef<HTMLInputElement, PassportNameInputProps>(
-  ({ className, value = "", onChange, onBlur, error, ...props }, ref) => {
+  ({ className, value = "", onChange, onBlur, error, required = true, ...props }, ref) => {
     const [internalValue, setInternalValue] = useState(value)
     const [validationError, setValidationError] = useState<string | null>(null)
 
@@ -26,9 +27,14 @@ const PassportNameInput = React.forwardRef<HTMLInputElement, PassportNameInputPr
     }, [value])
 
     const validateInput = (inputValue: string) => {
-      if (!inputValue) {
+      if (!inputValue && required) {
         setValidationError("Name is required")
         return false
+      }
+
+      if (!inputValue && !required) {
+        setValidationError(null)
+        return true
       }
 
       if (inputValue.length > 50) {
