@@ -184,5 +184,19 @@
       "consecutive": "不能有连续的空格或特殊字符",
       "passportFormat": "输入您护照上显示的确切姓名"
     }
+  },
+  "jobSelector": {
+    "other": "其他",
+    "customJobPrompt": "输入自定义职位名称",
+    "searchPlaceholder": "搜索工作...",
+    "popularJobs": "热门工作",
+    "enterJobTitle": "输入您的职位名称",
+    "typeJobTitle": "输入您的职位名称...",
+    "translating": "翻译中...",
+    "englishTranslation": "英文翻译：",
+    "manualTranslationPrompt": "请同时输入您的职位名称的英文版本：",
+    "englishJobTitle": "输入英文职位名称",
+    "cancel": "取消",
+    "noJobsFound": "未找到工作。"
   }
 }

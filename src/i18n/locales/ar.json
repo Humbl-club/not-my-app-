@@ -146,5 +146,19 @@
     "actions": {"downloadReceipt": "تنزيل الإيصال", "emailReceipt": "إرسال الإيصال عبر البريد", "trackApplication": "تتبع الطلب"},
     "support": {"title": "هل تحتاج مساعدة؟", "email": "دعم عبر البريد الإلكتروني", "phone": "دعم عبر الهاتف", "hours": "متاح 24/7"},
     "returnHome": "العودة إلى الصفحة الرئيسية"
+  },
+  "jobSelector": {
+    "other": "أخرى",
+    "customJobPrompt": "أدخل مسمى وظيفي مخصص",
+    "searchPlaceholder": "البحث عن وظائف...",
+    "popularJobs": "الوظائف الشائعة",
+    "enterJobTitle": "أدخل مسماك الوظيفي",
+    "typeJobTitle": "اكتب مسماك الوظيفي...",
+    "translating": "جارٍ الترجمة...",
+    "englishTranslation": "الترجمة الإنجليزية:",
+    "manualTranslationPrompt": "يرجى أيضاً إدخال مسماك الوظيفي باللغة الإنجليزية:",
+    "englishJobTitle": "أدخل المسمى الوظيفي باللغة الإنجليزية",
+    "cancel": "إلغاء",
+    "noJobsFound": "لم يتم العثور على وظائف."
   }
 }

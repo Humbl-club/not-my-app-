@@ -40,7 +40,8 @@ interface JobSelectorProps {
 const JOB_TITLE_PATTERN = /^[\p{L}\s]{2,100}$/u;
 const NUMBERS_ONLY_PATTERN = /^[0-9\s]*$/;
 const SYMBOLS_ONLY_PATTERN = /^[^\p{L}0-9\s]*$/u;
-const EMOJI_PATTERN = /[\u1F600-\u1F64F]|[\u1F300-\u1F5FF]|[\u1F680-\u1F6FF]|[\u1F1E0-\u1F1FF]|[\u2600-\u26FF]|[\u2700-\u27BF]/;
+// More precise emoji pattern - focuses on actual emoji ranges, avoiding accented characters
+const EMOJI_PATTERN = /[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F900}-\u{1F9FF}]|[\u{1FA70}-\u{1FAFF}]/u;
 
 const isGibberish = (value: string): boolean => {
   const cleanValue = value.trim().toLowerCase();
@@ -281,7 +282,7 @@ const JobSelector = React.forwardRef<HTMLButtonElement, JobSelectorProps>(
                 <div className="flex items-center border-b px-3">
                   <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
                   <CommandInput
-                    placeholder="Search for jobs..."
+                    placeholder={t('jobSelector.searchPlaceholder')}
                     value={searchValue}
                     onValueChange={setSearchValue}
                     className="flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
@@ -289,12 +290,12 @@ const JobSelector = React.forwardRef<HTMLButtonElement, JobSelectorProps>(
                 </div>
                 <CommandList className="max-h-[300px] overflow-y-auto">
                   {filteredJobs.length === 0 && searchValue && (
-                    <CommandEmpty>No jobs found.</CommandEmpty>
+                    <CommandEmpty>{t('jobSelector.noJobsFound')}</CommandEmpty>
                   )}
                   
                   {/* Popular Jobs Section */}
                   {!searchValue && (
-                    <CommandGroup heading="Popular Jobs">
+                    <CommandGroup heading={t('jobSelector.popularJobs')}>
                       {jobClassifications
                         .filter(job => popularJobs.includes(job.code))
                         .sort((a, b) => popularJobs.indexOf(a.code) - popularJobs.indexOf(b.code))
@@ -361,16 +362,16 @@ const JobSelector = React.forwardRef<HTMLButtonElement, JobSelectorProps>(
                   
                   {/* Other Option */}
                   <Separator />
-                  <CommandGroup>
-                    <CommandItem onSelect={handleCustomOptionSelect}>
-                      <div className="flex flex-col">
-                        <span>Other</span>
-                        <span className="text-xs text-muted-foreground">
-                          Enter a custom job title
-                        </span>
-                      </div>
-                    </CommandItem>
-                  </CommandGroup>
+                   <CommandGroup>
+                     <CommandItem onSelect={handleCustomOptionSelect}>
+                       <div className="flex flex-col">
+                         <span>{t('jobSelector.other')}</span>
+                         <span className="text-xs text-muted-foreground">
+                           {t('jobSelector.customJobPrompt')}
+                         </span>
+                       </div>
+                     </CommandItem>
+                   </CommandGroup>
                 </CommandList>
               </Command>
             </PopoverContent>
@@ -381,13 +382,13 @@ const JobSelector = React.forwardRef<HTMLButtonElement, JobSelectorProps>(
             <div className="space-y-3 p-4 border rounded-md bg-muted/20">
               <div className="space-y-2">
                 <Label htmlFor="custom-job-input" className="text-sm font-medium">
-                  Enter your job title
+                  {t('jobSelector.enterJobTitle')}
                 </Label>
                 <Input
                   id="custom-job-input"
                   value={customInput}
                   onChange={handleCustomInputChange}
-                  placeholder="Type your job title..."
+                  placeholder={t('jobSelector.typeJobTitle')}
                   className={cn(
                     customError && "border-destructive focus-visible:ring-destructive"
                   )}
@@ -398,25 +399,25 @@ const JobSelector = React.forwardRef<HTMLButtonElement, JobSelectorProps>(
               </div>
               
               {isTranslating && (
-                <p className="text-sm text-muted-foreground">Translating...</p>
+                <p className="text-sm text-muted-foreground">{t('jobSelector.translating')}</p>
               )}
               
               {value?.titleEnglish && !translationFailed && !isTranslating && (
                 <div className="text-sm text-muted-foreground">
-                  <span className="font-medium">English Translation:</span> {value.titleEnglish} ({value.titleOriginal})
+                  <span className="font-medium">{t('jobSelector.englishTranslation')}</span> {value.titleEnglish} ({value.titleOriginal})
                 </div>
               )}
               
               {translationFailed && customInput.length >= 2 && (
                 <div className="space-y-2">
                   <Label htmlFor="manual-translation" className="text-sm text-muted-foreground">
-                    Please also enter your job title in English:
+                    {t('jobSelector.manualTranslationPrompt')}
                   </Label>
                   <Input
                     id="manual-translation"
                     value={manualTranslation}
                     onChange={handleManualTranslationChange}
-                    placeholder="Enter job title in English"
+                    placeholder={t('jobSelector.englishJobTitle')}
                   />
                 </div>
               )}
@@ -433,7 +434,7 @@ const JobSelector = React.forwardRef<HTMLButtonElement, JobSelectorProps>(
                     setManualTranslation("");
                   }}
                 >
-                  Cancel
+                  {t('jobSelector.cancel')}
                 </Button>
               </div>
             </div>

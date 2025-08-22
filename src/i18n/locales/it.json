@@ -193,5 +193,19 @@
     "actions": {"downloadReceipt": "Scarica ricevuta", "emailReceipt": "Invia ricevuta via email", "trackApplication": "Traccia richiesta"},
     "support": {"title": "Hai bisogno di aiuto?", "email": "Supporto email", "phone": "Supporto telefonico", "hours": "Disponibile 24/7"},
     "returnHome": "Torna alla home"
+  },
+  "jobSelector": {
+    "other": "Altro",
+    "customJobPrompt": "Inserisci un titolo di lavoro personalizzato",
+    "searchPlaceholder": "Cerca lavori...",
+    "popularJobs": "Lavori popolari",
+    "enterJobTitle": "Inserisci il tuo titolo di lavoro",
+    "typeJobTitle": "Digita il tuo titolo di lavoro...",
+    "translating": "Traduzione...",
+    "englishTranslation": "Traduzione inglese:",
+    "manualTranslationPrompt": "Inserisci anche il tuo titolo di lavoro in inglese:",
+    "englishJobTitle": "Inserisci il titolo di lavoro in inglese",
+    "cancel": "Annulla",
+    "noJobsFound": "Nessun lavoro trovato."
   }
 }

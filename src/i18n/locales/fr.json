@@ -321,5 +321,19 @@
       "consecutive": "Ne peut pas avoir d'espaces ou de caractères spéciaux consécutifs",
       "passportFormat": "Saisissez votre nom exactement comme il apparaît sur votre passeport"
     }
+  },
+  "jobSelector": {
+    "other": "Autre",
+    "customJobPrompt": "Entrez un titre de poste personnalisé",
+    "searchPlaceholder": "Rechercher des emplois...",
+    "popularJobs": "Emplois populaires",
+    "enterJobTitle": "Entrez votre titre de poste",
+    "typeJobTitle": "Tapez votre titre de poste...",
+    "translating": "Traduction en cours...",
+    "englishTranslation": "Traduction anglaise:",
+    "manualTranslationPrompt": "Veuillez également entrer votre titre de poste en anglais:",
+    "englishJobTitle": "Entrez le titre de poste en anglais",
+    "cancel": "Annuler",
+    "noJobsFound": "Aucun emploi trouvé."
   }
 }

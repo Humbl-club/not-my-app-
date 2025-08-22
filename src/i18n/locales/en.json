@@ -269,5 +269,19 @@
     "actions": {"downloadReceipt": "Download Receipt", "emailReceipt": "Email Receipt", "trackApplication": "Track Application"},
     "support": {"title": "Need Help?", "email": "Email Support", "phone": "Phone Support", "hours": "Available 24/7"},
     "returnHome": "Return to Home"
+  },
+  "jobSelector": {
+    "other": "Other",
+    "customJobPrompt": "Enter a custom job title",
+    "searchPlaceholder": "Search for jobs...",
+    "popularJobs": "Popular Jobs",
+    "enterJobTitle": "Enter your job title",
+    "typeJobTitle": "Type your job title...",
+    "translating": "Translating...",
+    "englishTranslation": "English Translation:",
+    "manualTranslationPrompt": "Please also enter your job title in English:",
+    "englishJobTitle": "Enter job title in English",
+    "cancel": "Cancel",
+    "noJobsFound": "No jobs found."
   }
 }

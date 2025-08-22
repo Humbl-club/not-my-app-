@@ -155,5 +155,19 @@
       "consecutive": "連続したスペースや特殊文字を持つことはできません",
       "passportFormat": "パスポートに表示されている通りに正確に名前を入力してください"
     }
+  },
+  "jobSelector": {
+    "other": "その他",
+    "customJobPrompt": "カスタム職業タイトルを入力",
+    "searchPlaceholder": "職業を検索...",
+    "popularJobs": "人気の職業",
+    "enterJobTitle": "職業タイトルを入力してください",
+    "typeJobTitle": "職業タイトルを入力してください...",
+    "translating": "翻訳中...",
+    "englishTranslation": "英語翻訳：",
+    "manualTranslationPrompt": "職業タイトルを英語でも入力してください：",
+    "englishJobTitle": "英語で職業タイトルを入力",
+    "cancel": "キャンセル",
+    "noJobsFound": "職業が見つかりません。"
   }
 }

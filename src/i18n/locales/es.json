@@ -231,5 +231,19 @@
     "actions": {"downloadReceipt": "Descargar recibo", "emailReceipt": "Enviar recibo por correo", "trackApplication": "Rastrear solicitud"},
     "support": {"title": "¿Necesitas ayuda?", "email": "Soporte por correo", "phone": "Soporte telefónico", "hours": "Disponible 24/7"},
     "returnHome": "Volver al inicio"
+  },
+  "jobSelector": {
+    "other": "Otro",
+    "customJobPrompt": "Ingrese un título de trabajo personalizado",
+    "searchPlaceholder": "Buscar trabajos...",
+    "popularJobs": "Trabajos populares",
+    "enterJobTitle": "Ingrese su título de trabajo",
+    "typeJobTitle": "Escriba su título de trabajo...",
+    "translating": "Traduciendo...",
+    "englishTranslation": "Traducción al inglés:",
+    "manualTranslationPrompt": "También ingrese su título de trabajo en inglés:",
+    "englishJobTitle": "Ingrese el título de trabajo en inglés",
+    "cancel": "Cancelar",
+    "noJobsFound": "No se encontraron trabajos."
   }
 }
