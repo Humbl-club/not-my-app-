@@ -2,6 +2,11 @@ import * as React from "react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useTranslation } from 'react-i18next';
+import { 
+  translateJobTitle as translateJobTitleUtil, 
+  validateJobTitle as validateJobTitleUtil, 
+  capitalizeJobTitle as capitalizeJobTitleUtil
+} from '@/utils/job-translation';
 
 interface JobTitleInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   value?: string;
@@ -224,54 +229,19 @@ const JobTitleInput = React.forwardRef<HTMLInputElement, JobTitleInputProps>(
       setInternalValue(value);
     }, [value]);
 
-    const validateJobTitle = (inputValue: string): boolean => {
-      if (!inputValue.trim()) {
-        setInternalError("");
-        return true;
-      }
-
-      if (inputValue.length < 2) {
-        setInternalError("Job title must be at least 2 characters long");
-        return false;
-      }
-
-      if (inputValue.length > 100) {
-        setInternalError("Job title cannot exceed 100 characters");
-        return false;
-      }
-
-      if (!JOB_TITLE_PATTERN.test(inputValue)) {
-        setInternalError("Job title must contain only letters and spaces");
-        return false;
-      }
-
-      if (NUMBERS_ONLY_PATTERN.test(inputValue)) {
-        setInternalError("Job title cannot contain only numbers");
-        return false;
-      }
-
-      if (SYMBOLS_ONLY_PATTERN.test(inputValue)) {
-        setInternalError("Job title cannot contain only symbols");
-        return false;
-      }
-
-      if (EMOJI_PATTERN.test(inputValue)) {
-        setInternalError("Job title cannot contain emojis");
-        return false;
-      }
-
-      if (isGibberish(inputValue)) {
-        setInternalError("Please enter a valid job title");
-        return false;
-      }
-
-      setInternalError("");
-      return true;
-    };
+  const validateJobTitle = (inputValue: string): boolean => {
+    const error = validateJobTitleUtil(inputValue);
+    if (error) {
+      setInternalError(error);
+      return false;
+    }
+    setInternalError('');
+    return true;
+  };
 
     const handleInputChange = React.useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
       const rawValue = e.target.value;
-      const capitalizedValue = capitalizeJobTitle(rawValue);
+      const capitalizedValue = capitalizeJobTitleUtil(rawValue);
       
       setInternalValue(capitalizedValue);
       
@@ -281,7 +251,7 @@ const JobTitleInput = React.forwardRef<HTMLInputElement, JobTitleInputProps>(
           setIsTranslating(true);
           setTranslationFailed(false);
           
-          const translation = await translateJobTitle(capitalizedValue);
+          const translation = await translateJobTitleUtil(capitalizedValue);
           
           setIsTranslating(false);
           
@@ -305,7 +275,7 @@ const JobTitleInput = React.forwardRef<HTMLInputElement, JobTitleInputProps>(
     }, [onChange, onTranslationChange, translatedValue]);
 
     const handleManualTranslationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const manualValue = capitalizeJobTitle(e.target.value);
+      const manualValue = capitalizeJobTitleUtil(e.target.value);
       setManualTranslation(manualValue);
       
       if (manualValue.trim()) {
