@@ -124,7 +124,10 @@
       "consecutiveDots": "L'indirizzo email non può contenere punti consecutivi",
       "invalidStartEnd": "L'indirizzo email non può iniziare o finire con caratteri speciali",
       "missingParts": "L'indirizzo email deve avere sia la parte locale che il dominio",
-      "invalidTLD": "L'indirizzo email deve avere un'estensione di dominio valida (almeno 2 lettere)"
+    "passportNumberRequired": "Il numero di passaporto è richiesto",
+    "passportNumberInvalid": "Usa solo lettere e numeri (A-Z, 0-9)",
+    "passportNumberLength": "Il numero di passaporto deve essere di 6-10 caratteri",
+    "passportNumberFormat": "Inserisci il numero di passaporto esattamente come mostrato sul tuo passaporto"
     }
   },
   "tracking": {

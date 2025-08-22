@@ -185,6 +185,12 @@
       "invalidStart": "Name cannot start or end with spaces or special characters",
       "consecutive": "Cannot have consecutive spaces or special characters",
       "passportFormat": "Enter your name exactly as it appears on your passport"
+    },
+    "passportNumber": {
+      "required": "Passport number is required",
+      "invalid": "Use only letters and numbers (A-Z, 0-9)",
+      "length": "Passport number must be 6-10 characters long",
+      "format": "Enter passport number exactly as shown on your passport"
     }
   },
   "tracking": {

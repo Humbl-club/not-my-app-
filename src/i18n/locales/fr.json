@@ -223,7 +223,14 @@
       "consecutiveDots": "L'adresse e-mail ne peut pas contenir de points consécutifs",
       "invalidStartEnd": "L'adresse e-mail ne peut pas commencer ou finir par des caractères spéciaux",
       "missingParts": "L'adresse e-mail doit avoir une partie locale et un domaine",
-      "invalidTLD": "L'adresse e-mail doit avoir une extension de domaine valide (au moins 2 lettres)"
+    "passportNameRequired": "Le nom du passeport est requis",
+    "passportNameInvalid": "Utilisez uniquement des lettres majuscules A-Z, des espaces, des tirets et des apostrophes",
+    "passportNameFormat": "Le nom ne peut pas commencer ou finir par des espaces ou des caractères spéciaux",
+    "passportNameLength": "Le nom doit contenir entre 1 et 50 caractères",
+    "passportNumberRequired": "Le numéro de passeport est requis",
+    "passportNumberInvalid": "Utilisez uniquement des lettres et des chiffres (A-Z, 0-9)",
+    "passportNumberLength": "Le numéro de passeport doit contenir entre 6 et 10 caractères",
+    "passportNumberFormat": "Entrez le numéro de passeport exactement comme indiqué sur votre passeport"
     }
   },
   "tracking": {

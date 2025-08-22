@@ -18,6 +18,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { EmailInput, EMAIL_PATTERN } from '@/components/ui/email-input';
 import { PassportNameInput, PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
+import { PassportNumberInput } from '@/components/ui/passport-number-input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -69,8 +70,11 @@ const applicantBase = z
     email: z.string().min(1, 'Email is required').regex(emailRegex, 'Please enter a valid email address'),
     passportNumber: z
       .string()
-      .min(1, 'Passport number is required')
-      .regex(passportRegex, 'Use 6-9 characters (letters and numbers)'),
+      .min(6, { message: "Passport number must be at least 6 characters" })
+      .max(10, { message: "Passport number must be no more than 10 characters" })
+      .regex(/^[A-Z0-9]+$/, { 
+        message: "Passport number must contain only letters and numbers" 
+      }),
     hasJob: z.enum(['yes', 'no'], { required_error: 'Please answer this question' }),
     job: z.string().optional(),
     hasCriminalConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer this question' }),
@@ -520,13 +524,11 @@ const Application = () => {
                                 {t('application.personalInfo.passportNumber.label')} <span aria-hidden="true" className="text-destructive">*</span>
                               </FormLabel>
                               <FormControl>
-                                <Input
-                                  {...field}
-                                  type="text"
-                                  inputMode="text"
-                                  placeholder={t('application.personalInfo.passportNumber.placeholder')}
-                                  aria-required="true"
-                                  aria-invalid={!!fieldState.error}
+                                <PassportNumberInput
+                                  value={field.value}
+                                  onChange={field.onChange}
+                                  onBlur={field.onBlur}
+                                  error={fieldState.error?.message}
                                 />
                               </FormControl>
                               <FormMessage />

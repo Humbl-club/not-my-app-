@@ -12,6 +12,7 @@ import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { EmailInput, EMAIL_PATTERN } from '@/components/ui/email-input';
 import { PassportNameInput, PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
+import { PassportNumberInput } from '@/components/ui/passport-number-input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { nationalities } from '@/constants/nationalities';
@@ -44,7 +45,13 @@ const ApplicantForm = () => {
     hasAdditionalNationalities: z.boolean().optional().default(false),
     additionalNationalities: z.array(z.string().regex(nationalityRegex, 'Please select a nationality')).optional().default([]),
     email: z.string().min(1, 'Email is required').regex(emailRegex, 'Please enter a valid email address'),
-    passportNumber: z.string().min(1, 'Passport number is required').regex(passportRegex, 'Use 6-9 characters (letters and numbers)'),
+    passportNumber: z
+      .string()
+      .min(6, { message: "Passport number must be at least 6 characters" })
+      .max(10, { message: "Passport number must be no more than 10 characters" })
+      .regex(/^[A-Z0-9]+$/, { 
+        message: "Passport number must contain only letters and numbers" 
+      }),
     useSameAddressAsPrimary: z.boolean().optional().default(false),
     useSameEmailAsPrimary: z.boolean().optional().default(false),
     address: z.object({
@@ -355,7 +362,12 @@ const ApplicantForm = () => {
                     <FormItem>
                       <FormLabel>{t('application.personalInfo.passportNumber.label')} <span className="text-destructive">*</span></FormLabel>
                       <FormControl>
-                        <Input {...field} aria-invalid={!!fieldState.error} />
+                        <PassportNumberInput
+                          value={field.value}
+                          onChange={field.onChange}
+                          onBlur={field.onBlur}
+                          error={fieldState.error?.message}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
