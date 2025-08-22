@@ -1,8 +1,42 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-// Enhanced passport number validation pattern (6-10 alphanumeric characters)
-const PASSPORT_NUMBER_PATTERN = /^[A-Z0-9]{6,10}$/;
+// Enhanced passport number validation pattern (6-12 alphanumeric characters)
+const PASSPORT_NUMBER_PATTERN = /^[A-Z0-9]{6,12}$/;
+
+// Check for repeated characters (3+ consecutive identical characters)
+const hasRepeatedCharacters = (value: string): boolean => {
+  return /(.)\1{2,}/.test(value);
+};
+
+// Check for simple sequences (ascending/descending patterns)
+const hasSimpleSequence = (value: string): boolean => {
+  // Check for numeric sequences (123, 321, etc.)
+  for (let i = 0; i <= value.length - 3; i++) {
+    const substr = value.substring(i, i + 3);
+    if (/^\d+$/.test(substr)) {
+      const nums = substr.split('').map(Number);
+      if ((nums[1] === nums[0] + 1 && nums[2] === nums[1] + 1) ||
+          (nums[1] === nums[0] - 1 && nums[2] === nums[1] - 1)) {
+        return true;
+      }
+    }
+  }
+  
+  // Check for alphabetic sequences (ABC, CBA, etc.)
+  for (let i = 0; i <= value.length - 3; i++) {
+    const substr = value.substring(i, i + 3);
+    if (/^[A-Z]+$/.test(substr)) {
+      const chars = substr.split('').map(c => c.charCodeAt(0));
+      if ((chars[1] === chars[0] + 1 && chars[2] === chars[1] + 1) ||
+          (chars[1] === chars[0] - 1 && chars[2] === chars[1] - 1)) {
+        return true;
+      }
+    }
+  }
+  
+  return false;
+};
 
 interface PassportNumberInputProps {
   value?: string;
@@ -26,13 +60,23 @@ const PassportNumberInput = React.forwardRef<HTMLInputElement, PassportNumberInp
         return false;
       }
 
-      if (inputValue.length < 6 || inputValue.length > 10) {
-        setInternalError("Passport number must be 6-10 characters long");
+      if (inputValue.length < 6 || inputValue.length > 12) {
+        setInternalError("Passport number must be 6-12 characters long");
         return false;
       }
 
       if (!PASSPORT_NUMBER_PATTERN.test(inputValue)) {
-        setInternalError("Use only letters and numbers (A-Z, 0-9)");
+        setInternalError("Use only uppercase letters A-Z and numbers 0-9");
+        return false;
+      }
+
+      if (hasRepeatedCharacters(inputValue)) {
+        setInternalError("Cannot contain repeated characters (e.g., AAA, 111)");
+        return false;
+      }
+
+      if (hasSimpleSequence(inputValue)) {
+        setInternalError("Cannot be a simple sequence (e.g., 123456, ABCDEF)");
         return false;
       }
 
@@ -47,7 +91,7 @@ const PassportNumberInput = React.forwardRef<HTMLInputElement, PassportNumberInp
       const cleanedValue = rawValue
         .toUpperCase()
         .replace(/[^A-Z0-9]/g, "") // Remove all non-alphanumeric characters
-        .slice(0, 10); // Limit to 10 characters
+        .slice(0, 12); // Limit to 12 characters
 
       setDisplayValue(cleanedValue);
       
@@ -95,10 +139,10 @@ const PassportNumberInput = React.forwardRef<HTMLInputElement, PassportNumberInp
           <div className="absolute right-3 top-1/2 -translate-y-1/2">
             <span className={cn(
               "text-xs text-muted-foreground",
-              characterCount >= 10 && "text-warning-foreground",
+              characterCount >= 12 && "text-warning-foreground",
               hasError && "text-error-gentle"
             )}>
-              {characterCount}/10
+              {characterCount}/12
             </span>
           </div>
         </div>
@@ -117,7 +161,7 @@ const PassportNumberInput = React.forwardRef<HTMLInputElement, PassportNumberInp
         
         {!hasError && !displayValue && (
           <p className="mt-1 text-xs text-muted-foreground">
-            6-10 characters, letters and numbers only
+            6-12 characters, letters and numbers only
           </p>
         )}
       </div>
