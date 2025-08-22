@@ -996,6 +996,50 @@ export const jobClassifications: JobClassification[] = [
     subCategory: "General IT",
     keywords: ["technology", "tech", "professional", "general"]
   },
+  {
+    code: "2500c",
+    titleEn: "Engineering Professional",
+    titles: {
+      en: "Engineering Professional",
+      fr: "Professionnel de l'Ingénierie",
+      es: "Profesional de Ingeniería",
+      de: "Ingenieur",
+      it: "Professionista Ingegneria",
+      pt: "Profissional de Engenharia",
+      ru: "Инженер-профессионал",
+      zh: "工程专业人员",
+      ja: "エンジニアリング専門家",
+      ko: "엔지니어링 전문가",
+      ar: "مهني هندسة"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Information Technology",
+    category: "Information Technology",
+    subCategory: "General IT",
+    keywords: ["engineering", "engineer", "professional", "general", "ingénieur"]
+  },
+  {
+    code: "2500d",
+    titleEn: "Engineer",
+    titles: {
+      en: "Engineer",
+      fr: "Ingénieur",
+      es: "Ingeniero",
+      de: "Ingenieur",
+      it: "Ingegnere",
+      pt: "Engenheiro",
+      ru: "Инженер",
+      zh: "工程师",
+      ja: "エンジニア",
+      ko: "엔지니어",
+      ar: "مهندس"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Information Technology",
+    category: "Information Technology",
+    subCategory: "General IT",
+    keywords: ["engineer", "engineering", "general", "ingénieur"]
+  },
 
   // Software Development
   {
@@ -1448,6 +1492,20 @@ export const jobClassifications: JobClassification[] = [
 ];
 
 export const majorGroups = [
+  {
+    code: "0",
+    titleEn: "Self-Employed",
+    titles: {
+      en: "Self-Employed",
+      ar: "يعمل لحسابه الخاص",
+      es: "Trabajadores Independientes",
+      fr: "Travailleurs Indépendants",
+      it: "Lavoratori Autonomi",
+      ja: "自営業者",
+      ko: "자영업자",
+      zh: "个体经营者"
+    }
+  },
   {
     code: "1",
     titleEn: "Managers",
@@ -2216,10 +2274,445 @@ export const majorGroups = [
     category: "Education & Training",
     subCategory: "Training & Development",
     keywords: ["training", "coordinator", "development", "programs"]
+  },
+
+  // ============= SELF-EMPLOYED & FREELANCERS =============
+  
+  // General Self-Employed (Generic Jobs)
+  {
+    code: "1000",
+    titleEn: "Self-Employed Professional",
+    titles: {
+      en: "Self-Employed Professional",
+      fr: "Travailleur Indépendant",
+      es: "Profesional Independiente",
+      de: "Selbständiger",
+      it: "Professionista Autonomo",
+      pt: "Profissional Autônomo",
+      ru: "Самозанятый специалист",
+      zh: "自雇专业人员",
+      ja: "自営業者",
+      ko: "자영업 전문가",
+      ar: "مهني يعمل لحسابه الخاص"
+    },
+    majorGroup: "Self-Employed",
+    subMajorGroup: "Independent Workers",
+    category: "Self-Employed & Freelancers",
+    subCategory: "General Self-Employed",
+    keywords: ["self-employed", "independent", "travailleur indépendant", "professional", "general"]
+  },
+  {
+    code: "1000b",
+    titleEn: "Freelancer",
+    titles: {
+      en: "Freelancer",
+      fr: "Freelance",
+      es: "Freelancer",
+      de: "Freelancer",
+      it: "Freelancer",
+      pt: "Freelancer",
+      ru: "Фрилансер",
+      zh: "自由职业者",
+      ja: "フリーランサー",
+      ko: "프리랜서",
+      ar: "عامل حر"
+    },
+    majorGroup: "Self-Employed",
+    subMajorGroup: "Independent Workers",
+    category: "Self-Employed & Freelancers",
+    subCategory: "General Self-Employed",
+    keywords: ["freelancer", "freelance", "independent", "contractor"]
+  },
+  {
+    code: "1000c",
+    titleEn: "Consultant",
+    titles: {
+      en: "Consultant",
+      fr: "Consultant",
+      es: "Consultor",
+      de: "Berater",
+      it: "Consulente",
+      pt: "Consultor",
+      ru: "Консультант",
+      zh: "顾问",
+      ja: "コンサルタント",
+      ko: "컨설턴트",
+      ar: "مستشار"
+    },
+    majorGroup: "Self-Employed",
+    subMajorGroup: "Independent Workers",
+    category: "Self-Employed & Freelancers",
+    subCategory: "General Self-Employed",
+    keywords: ["consultant", "consulting", "advisor", "professional"]
+  },
+  {
+    code: "1000d",
+    titleEn: "Entrepreneur",
+    titles: {
+      en: "Entrepreneur",
+      fr: "Entrepreneur",
+      es: "Emprendedor",
+      de: "Unternehmer",
+      it: "Imprenditore",
+      pt: "Empreendedor",
+      ru: "Предприниматель",
+      zh: "企业家",
+      ja: "起業家",
+      ko: "기업가",
+      ar: "رائد أعمال"
+    },
+    majorGroup: "Self-Employed",
+    subMajorGroup: "Independent Workers",
+    category: "Self-Employed & Freelancers",
+    subCategory: "General Self-Employed",
+    keywords: ["entrepreneur", "business owner", "startup", "founder"]
+  },
+
+  // Consulting Services
+  {
+    code: "1001",
+    titleEn: "Independent Consultant",
+    titles: {
+      en: "Independent Consultant",
+      fr: "Consultant Indépendant",
+      es: "Consultor Independiente",
+      de: "Unabhängiger Berater",
+      it: "Consulente Indipendente",
+      pt: "Consultor Independente",
+      ru: "Независимый консультант",
+      zh: "独立顾问",
+      ja: "独立コンサルタント",
+      ko: "독립 컨설턴트",
+      ar: "مستشار مستقل"
+    },
+    majorGroup: "Self-Employed",
+    subMajorGroup: "Independent Workers",
+    category: "Self-Employed & Freelancers",
+    subCategory: "Consulting Services",
+    keywords: ["independent", "consultant", "consulting", "advisory"]
+  },
+  {
+    code: "1001b",
+    titleEn: "Business Consultant",
+    titles: {
+      en: "Business Consultant",
+      fr: "Consultant en Affaires",
+      es: "Consultor de Negocios",
+      de: "Unternehmensberater",
+      it: "Consulente Aziendale",
+      pt: "Consultor de Negócios",
+      ru: "Бизнес-консультант",
+      zh: "商业顾问",
+      ja: "ビジネスコンサルタント",
+      ko: "비즈니스 컨설턴트",
+      ar: "مستشار أعمال"
+    },
+    majorGroup: "Self-Employed",
+    subMajorGroup: "Independent Workers",
+    category: "Self-Employed & Freelancers",
+    subCategory: "Consulting Services",
+    keywords: ["business", "consultant", "strategy", "management"]
+  },
+  {
+    code: "1001c",
+    titleEn: "Management Consultant",
+    titles: {
+      en: "Management Consultant",
+      fr: "Consultant en Management",
+      es: "Consultor de Gestión",
+      de: "Management-Berater",
+      it: "Consulente di Gestione",
+      pt: "Consultor de Gestão",
+      ru: "Консультант по управлению",
+      zh: "管理顾问",
+      ja: "経営コンサルタント",
+      ko: "경영 컨설턴트",
+      ar: "مستشار إدارة"
+    },
+    majorGroup: "Self-Employed",
+    subMajorGroup: "Independent Workers",
+    category: "Self-Employed & Freelancers",
+    subCategory: "Consulting Services",
+    keywords: ["management", "consultant", "strategy", "operations"]
+  },
+
+  // Creative Freelancers
+  {
+    code: "1002",
+    titleEn: "Freelance Writer",
+    titles: {
+      en: "Freelance Writer",
+      fr: "Rédacteur Freelance",
+      es: "Escritor Freelance",
+      de: "Freiberuflicher Autor",
+      it: "Scrittore Freelance",
+      pt: "Escritor Freelance",
+      ru: "Фриланс-писатель",
+      zh: "自由撰稿人",
+      ja: "フリーライター",
+      ko: "프리랜스 작가",
+      ar: "كاتب حر"
+    },
+    majorGroup: "Self-Employed",
+    subMajorGroup: "Independent Workers",
+    category: "Self-Employed & Freelancers",
+    subCategory: "Creative Freelancers",
+    keywords: ["freelance", "writer", "writing", "content", "copywriter"]
+  },
+  {
+    code: "1002b",
+    titleEn: "Freelance Designer",
+    titles: {
+      en: "Freelance Designer",
+      fr: "Designer Freelance",
+      es: "Diseñador Freelance",
+      de: "Freiberuflicher Designer",
+      it: "Designer Freelance",
+      pt: "Designer Freelance",
+      ru: "Фриланс-дизайнер",
+      zh: "自由设计师",
+      ja: "フリーランスデザイナー",
+      ko: "프리랜스 디자이너",
+      ar: "مصمم حر"
+    },
+    majorGroup: "Self-Employed",
+    subMajorGroup: "Independent Workers",
+    category: "Self-Employed & Freelancers",
+    subCategory: "Creative Freelancers",
+    keywords: ["freelance", "designer", "design", "graphic", "creative"]
+  },
+  {
+    code: "1002c",
+    titleEn: "Freelance Photographer",
+    titles: {
+      en: "Freelance Photographer",
+      fr: "Photographe Freelance",
+      es: "Fotógrafo Freelance",
+      de: "Freiberuflicher Fotograf",
+      it: "Fotografo Freelance",
+      pt: "Fotógrafo Freelance",
+      ru: "Фриланс-фотограф",
+      zh: "自由摄影师",
+      ja: "フリーランスフォトグラファー",
+      ko: "프리랜스 사진가",
+      ar: "مصور حر"
+    },
+    majorGroup: "Self-Employed",
+    subMajorGroup: "Independent Workers",
+    category: "Self-Employed & Freelancers",
+    subCategory: "Creative Freelancers",
+    keywords: ["freelance", "photographer", "photography", "creative", "visual"]
+  },
+
+  // Business Ownership
+  {
+    code: "1003",
+    titleEn: "Business Owner",
+    titles: {
+      en: "Business Owner",
+      fr: "Propriétaire d'Entreprise",
+      es: "Propietario de Negocio",
+      de: "Geschäftsinhaber",
+      it: "Proprietario di Azienda",
+      pt: "Proprietário de Empresa",
+      ru: "Владелец бизнеса",
+      zh: "企业主",
+      ja: "事業主",
+      ko: "사업주",
+      ar: "مالك الأعمال"
+    },
+    majorGroup: "Self-Employed",
+    subMajorGroup: "Independent Workers",
+    category: "Self-Employed & Freelancers",
+    subCategory: "Business Ownership",
+    keywords: ["business", "owner", "proprietor", "entrepreneur"]
+  },
+  {
+    code: "1003b",
+    titleEn: "Sole Proprietor",
+    titles: {
+      en: "Sole Proprietor",
+      fr: "Entrepreneur Individuel",
+      es: "Propietario Único",
+      de: "Einzelunternehmer",
+      it: "Ditta Individuale",
+      pt: "Empresário Individual",
+      ru: "Индивидуальный предприниматель",
+      zh: "个体经营者",
+      ja: "個人事業主",
+      ko: "개인사업자",
+      ar: "مالك فردي"
+    },
+    majorGroup: "Self-Employed",
+    subMajorGroup: "Independent Workers",
+    category: "Self-Employed & Freelancers",
+    subCategory: "Business Ownership",
+    keywords: ["sole", "proprietor", "individual", "business", "owner"]
+  },
+  {
+    code: "1003c",
+    titleEn: "Independent Contractor",
+    titles: {
+      en: "Independent Contractor",
+      fr: "Contractuel Indépendant",
+      es: "Contratista Independiente",
+      de: "Freiberuflicher Auftragnehmer",
+      it: "Appaltatore Indipendente",
+      pt: "Contratado Independente",
+      ru: "Независимый подрядчик",
+      zh: "独立承包商",
+      ja: "独立請負業者",
+      ko: "독립 계약자",
+      ar: "مقاول مستقل"
+    },
+    majorGroup: "Self-Employed",
+    subMajorGroup: "Independent Workers",
+    category: "Self-Employed & Freelancers",
+    subCategory: "Business Ownership",
+    keywords: ["independent", "contractor", "freelance", "self-employed"]
+  },
+
+  // Startup Founders
+  {
+    code: "1004",
+    titleEn: "Startup Founder",
+    titles: {
+      en: "Startup Founder",
+      fr: "Fondateur de Startup",
+      es: "Fundador de Startup",
+      de: "Startup-Gründer",
+      it: "Fondatore Startup",
+      pt: "Fundador de Startup",
+      ru: "Основатель стартапа",
+      zh: "创业公司创始人",
+      ja: "スタートアップ創設者",
+      ko: "스타트업 창업자",
+      ar: "مؤسس شركة ناشئة"
+    },
+    majorGroup: "Self-Employed",
+    subMajorGroup: "Independent Workers",
+    category: "Self-Employed & Freelancers",
+    subCategory: "Business Ownership",
+    keywords: ["startup", "founder", "entrepreneur", "innovation", "technology"]
+  },
+  {
+    code: "1004b",
+    titleEn: "Tech Entrepreneur",
+    titles: {
+      en: "Tech Entrepreneur",
+      fr: "Entrepreneur Tech",
+      es: "Emprendedor Tecnológico",
+      de: "Tech-Unternehmer",
+      it: "Imprenditore Tech",
+      pt: "Empreendedor de Tecnologia",
+      ru: "Технологический предприниматель",
+      zh: "科技企业家",
+      ja: "テック起業家",
+      ko: "테크 기업가",
+      ar: "رائد أعمال تقني"
+    },
+    majorGroup: "Self-Employed",
+    subMajorGroup: "Independent Workers",
+    category: "Self-Employed & Freelancers",
+    subCategory: "Business Ownership",
+    keywords: ["tech", "entrepreneur", "technology", "startup", "innovation"]
   }
 ];
 
 export const popularJobs = [
+  // Generic Popular Jobs
+  "1000", // Self-Employed Professional
+  "1000b", // Freelancer
+  "1000c", // Consultant
+  "2610", // Legal Professional
+  "2400b", // Banking Professional  
+  "2500", // IT Professional
+  "2500d", // Engineer
+  "2200", // Healthcare Professional
+  "2420", // Sales Professional
+  "2300b", // Teacher
+  
+  // Specific Popular Jobs
+  "2511", // Software Developer  
+  "2611", // Lawyer
+  "2211", // General Practitioner
+  "2221", // Registered Nurse
+  "2412", // Accountant
+  "2411", // Bank Teller
+  "5221", // Sales Representative
+  "2341", // Elementary School Teacher
+  "1113", // Operations Manager
+  "1115", // Project Manager
+  "2512", // Data Scientist
+  "2515", // UX/UI Designer
+  "2516", // IT Support Specialist
+  "2612", // Paralegal
+  "2262", // Pharmacist
+  "2261", // Dentist
+  "2264", // Physical Therapist
+  "2513", // System Administrator
+  "2514", // Cybersecurity Analyst
+  "2634", // Psychologist
+  "2635", // Social Worker
+  "2511b", // Frontend Developer
+  "2511c", // Backend Developer
+  "2511d"  // Full Stack Developer
+];
+
+// Utility functions
+export const getJobByCode = (code: string): JobClassification | undefined => {
+  return jobClassifications.find(job => job.code === code);
+};
+
+export const getJobsByCategory = (category: string): JobClassification[] => {
+  return jobClassifications.filter(job => job.category === category);
+};
+
+export const getJobsBySubCategory = (subCategory: string): JobClassification[] => {
+  return jobClassifications.filter(job => job.subCategory === subCategory);
+};
+
+export const getJobsByMajorGroup = (majorGroup: string): JobClassification[] => {
+  return jobClassifications.filter(job => job.majorGroup === majorGroup);
+};
+
+export const searchJobs = (query: string, language: string = 'en'): JobClassification[] => {
+  if (!query.trim()) return jobClassifications;
+  
+  const searchTerm = query.toLowerCase().trim();
+  
+  return jobClassifications.filter(job => {
+    // Search in current language title
+    const currentTitle = job.titles[language]?.toLowerCase() || '';
+    
+    // Search in English title (fallback)
+    const englishTitle = job.titleEn.toLowerCase();
+    
+    // Search in keywords
+    const keywords = job.keywords?.join(' ').toLowerCase() || '';
+    
+    // Search in category and subcategory
+    const category = job.category.toLowerCase();
+    const subCategory = job.subCategory.toLowerCase();
+    
+    return currentTitle.includes(searchTerm) || 
+           englishTitle.includes(searchTerm) || 
+           keywords.includes(searchTerm) ||
+           category.includes(searchTerm) ||
+           subCategory.includes(searchTerm);
+  });
+};
+
+export const getSubCategories = (category: string): string[] => {
+  const jobs = getJobsByCategory(category);
+  const subCategories = [...new Set(jobs.map(job => job.subCategory))];
+  return subCategories.sort();
+};
+
+export const getCategories = (): string[] => {
+  const categories = [...new Set(jobClassifications.map(job => job.category))];
+  return categories.sort();
+};
   // Generic Popular Jobs
   "2610", // Legal Professional
   "2400b", // Banking Professional  
@@ -2252,7 +2745,11 @@ export const popularJobs = [
   "2635", // Social Worker
   "2511b", // Frontend Developer
   "2511c", // Backend Developer
-  "2511d"  // Full Stack Developer
+  "2511d",  // Full Stack Developer
+  // Self-employed roles
+  "1000", // Self-Employed Professional
+  "1000b", // Freelancer
+  "1000c"  // Consultant
 ];
 
 // Utility functions
