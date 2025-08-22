@@ -28,7 +28,7 @@ export function NameFieldsSection<T extends FieldValues>({
   };
 
   return (
-    <div className={cn("grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6", className)}>
+    <div className={cn("grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6", className)}>
       {/* First Name - Required */}
       <FormField
         control={control}
@@ -83,7 +83,7 @@ export function NameFieldsSection<T extends FieldValues>({
         control={control}
         name={getFieldName('lastName')}
         render={({ field, fieldState }) => (
-          <FormItem className="space-y-2 sm:col-span-2 lg:col-span-1">
+          <FormItem className="space-y-2">
             <FormLabel className="text-sm font-medium flex items-center gap-1">
               {t('application.personalInfo.lastName.label')}
               <span aria-hidden="true" className="text-destructive text-lg leading-none">*</span>
