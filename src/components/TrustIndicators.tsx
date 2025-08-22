@@ -21,7 +21,7 @@ export const TrustIndicators = () => {
             {t('trustIndicators.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
-            Five reasons why thousands trust us with their travel documentation
+            {t('trustIndicators.subtitle')}
           </p>
         </div>
         

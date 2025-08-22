@@ -6,7 +6,9 @@
     "title": "英国ETA申请",
     "subtitle": "官方电子旅行授权",
     "trackApplication": "跟踪申请",
-    "startApplication": "开始申请"
+    "startApplication": "开始申请",
+    "disclaimer": "独立服务 - 与英国政府无关联",
+    "valueProposition": "简化您的旅行 — 专注于您的旅程，我们负责行政事务"
   },
   "hero": {
     "title": "申请您的英国ETA",
@@ -22,7 +24,7 @@
     "notice": {"title": "重要提示：", "text": "这是一个独立的第三方服务，与英国政府或UKVI无关联。"}
   },
   "trust": {"processing": "平均处理时间", "processingTime": "72小时", "applications": "已处理申请", "applicationsCount": "10,000+", "notice": "此服务由独立第三方提供，与英国政府无关联。"},
-  "steps": {"title": "简单的4步流程", "subtitle": "通过我们的引导流程，仅需几分钟即可完成您的英国ETA申请。", "step1": {"title": "填写申请", "description": "使用您的个人和旅行详细信息完成安全的在线表格。", "time": "5-10分钟"}, "step2": {"title": "上传文档", "description": "安全地将您的护照和照片上传到我们的加密平台。", "time": "2-3分钟"}, "step3": {"title": "付款", "description": "安全的付款处理，提供多种付款选项。", "time": "1-2分钟"}, "step4": {"title": "接收ETA", "description": "直接在您的电子邮件收件箱中获得已批准的ETA。", "time": "24-72小时"}},
+  "steps": {"title": "简单的4步流程", "subtitle": "一个美观简单的流程，只需不到15分钟", "step1": {"title": "填写申请", "description": "使用您的个人和旅行详细信息完成安全的在线表格。", "time": "5-10分钟"}, "step2": {"title": "上传文档", "description": "安全地将您的护照和照片上传到我们的加密平台。", "time": "2-3分钟"}, "step3": {"title": "付款", "description": "安全的付款处理，提供多种付款选项。", "time": "1-2分钟"}, "step4": {"title": "接收ETA", "description": "直接在您的电子邮件收件箱中获得已批准的ETA。", "time": "24-72小时"}},
   "trustIndicators": {"secure": {"title": "安全加密", "description": "SSL加密数据保护"}, "gdpr": {"title": "符合GDPR", "description": "全面的数据保护合规性"}, "support": {"title": "24/7支持", "description": "全天候协助"}, "trusted": {"title": "值得信赖的服务", "description": "超过10,000个成功申请"}},
   "applicationSteps": {"title": "简单的4步流程", "subtitle": "精简的申请流程让您快速便捷地获得英国ETA", "step1": {"title": "完成申请", "description": "使用您的个人和旅行详细信息完成安全的在线表格。", "time": "5-10分钟"}, "step2": {"title": "上传文件", "description": "提交您的护照复印件和照片。我们的系统会自动验证所有要求。", "time": "2-3分钟"}, "step3": {"title": "安全支付", "description": "使用信用卡、借记卡或PayPal安全付款。所有交易均经过加密。", "time": "1-2分钟"}, "step4": {"title": "收到授权", "description": "在72小时内通过电子邮件收到您的英国ETA。在线跟踪您的申请状态。", "time": "最长72小时"}},
   "legal": {
@@ -35,6 +37,8 @@
     "noHidden": "无隐藏费用"
   },
   "trustIndicators": {
+    "title": "为什么选择ETAShub",
+    "subtitle": "成千上万的人信任我们处理他们旅行文件的五个理由",
     "convenience": {
       "title": "便利性",
       "description": "仅需几分钟即可快速轻松申请"

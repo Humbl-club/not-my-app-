@@ -18,23 +18,16 @@
     "feature4": "환불 보장",
     "startApplication": "신청 시작",
     "learnMore": "더 알아보기",
+    "disclaimer": "독립적인 서비스 - 영국 정부와 무관",
+    "valueProposition": "여행을 간소화하세요 — 여행에 집중하시고, 관리 업무는 저희가 처리합니다",
     "stats": {"title": "처리 통계", "processingTime": "72시간", "processingLabel": "평균 처리 시간", "applicationsCount": "10,000+", "applicationsLabel": "처리된 신청"},
     "notice": {"title": "중요 공지:", "text": "이는 독립적인 제3자 서비스이며 영국 정부나 UKVI와 관련이 없습니다."}
   },
   "trust": {"processing": "평균 처리 시간", "processingTime": "72시간", "applications": "처리된 신청", "applicationsCount": "10,000+", "notice": "이 서비스는 독립적인 제3자에 의해 제공되며 영국 정부와 관련이 없습니다."},
-  "steps": {"title": "간단한 4단계 과정", "subtitle": "가이드된 과정을 통해 몇 분 만에 영국 ETA 신청을 완료하세요.", "step1": {"title": "신청서 작성", "description": "개인 및 여행 세부 정보로 안전한 온라인 양식을 완성하세요.", "time": "5-10분"}, "step2": {"title": "문서 업로드", "description": "암호화된 플랫폼에 여권과 사진을 안전하게 업로드하세요.", "time": "2-3분"}, "step3": {"title": "결제하기", "description": "여러 결제 옵션을 사용한 안전한 결제 처리.", "time": "1-2분"}, "step4": {"title": "ETA 수령", "description": "승인된 ETA를 이메일 받은편지함으로 직접 받으세요.", "time": "24-72시간"}},
-  "trustIndicators": {"secure": {"title": "SSL 보안 암호화", "description": "SSL 암호화 데이터 보호"}, "gdpr": {"title": "GDPR 준수", "description": "완전한 데이터 보호 준수"}, "support": {"title": "24/7 지원", "description": "연중무휴 지원"}, "trusted": {"title": "신뢰받는 서비스", "description": "10,000개 이상 성공 사례"}},
-  "applicationSteps": {"title": "간단한 4단계 과정", "subtitle": "간소화된 신청 절차로 빠르고 쉽게 영국 ETA를 받으세요", "step1": {"title": "신청서 완료", "description": "개인 및 여행 정보를 입력하여 안전한 온라인 양식을 작성하세요.", "time": "5-10분"}, "step2": {"title": "서류 업로드", "description": "여권 사본과 사진을 제출하세요. 시스템이 모든 요건을 자동으로 확인합니다.", "time": "2-3분"}, "step3": {"title": "안전한 결제", "description": "신용카드, 체크카드 또는 PayPal로 안전하게 결제하세요. 모든 거래는 암호화됩니다.", "time": "1-2분"}, "step4": {"title": "승인 수령", "description": "72시간 이내 이메일로 영국 ETA를 받으세요. 온라인으로 신청 상태를 추적하세요.", "time": "최대 72시간"}},
-  "legal": {
-    "title": "중요한 법적 고지사항",
-    "content": "ETAsHub는 영국 전자여행허가(ETA) 신청 처리를 위한 독립적인 서비스입니다. 저희는 영국 정부나 영국 내무부와 어떠한 제휴관계도 없습니다. 저희 서비스는 필수 정부 수수료에 추가하여 서비스 수수료를 받고 ETA 신청 제출을 도와드립니다. 영국 정부 공식 웹사이트를 통해 무료로 직접 신청할 수 있지만, 저희 서비스는 편의를 위해 양식 확인, 고객 지원, 신청 추적과 같은 추가 기능을 제공합니다."
-  },
-  "transparency": {
-    "title": "수수료 투명성",
-    "feeBreakdown": "완전한 수수료 내역 제공",
-    "noHidden": "숨겨진 수수료 없음"
-  },
+  "steps": {"title": "간단한 4단계 과정", "subtitle": "아름답게 간단한 과정으로 15분 미만 소요", "step1": {"title": "신청서 작성", "description": "개인 및 여행 세부 정보로 안전한 온라인 양식을 완성하세요.", "time": "5-10분"}, "step2": {"title": "문서 업로드", "description": "암호화된 플랫폼에 여권과 사진을 안전하게 업로드하세요.", "time": "2-3분"}, "step3": {"title": "결제하기", "description": "여러 결제 옵션을 사용한 안전한 결제 처리.", "time": "1-2분"}, "step4": {"title": "ETA 수령", "description": "승인된 ETA를 이메일 받은편지함으로 직접 받으세요.", "time": "24-72시간"}},
   "trustIndicators": {
+    "title": "왜 ETAShub를 선택하나요",
+    "subtitle": "수천 명이 우리를 여행 서류 처리에 신뢰하는 다섯 가지 이유",
     "convenience": {
       "title": "편의성",
       "description": "단 몇 분만에 빠르고 쉬운 신청"
@@ -55,6 +48,16 @@
       "title": "알림",
       "description": "갱신 및 업데이트를 위한 자동 알림"
     }
+  },
+  "applicationSteps": {"title": "간단한 4단계 과정", "subtitle": "간소화된 신청 절차로 빠르고 쉽게 영국 ETA를 받으세요", "step1": {"title": "신청서 완료", "description": "개인 및 여행 정보를 입력하여 안전한 온라인 양식을 작성하세요.", "time": "5-10분"}, "step2": {"title": "서류 업로드", "description": "여권 사본과 사진을 제출하세요. 시스템이 모든 요건을 자동으로 확인합니다.", "time": "2-3분"}, "step3": {"title": "안전한 결제", "description": "신용카드, 체크카드 또는 PayPal로 안전하게 결제하세요. 모든 거래는 암호화됩니다.", "time": "1-2분"}, "step4": {"title": "승인 수령", "description": "72시간 이내 이메일로 영국 ETA를 받으세요. 온라인으로 신청 상태를 추적하세요.", "time": "최대 72시간"}},
+  "legal": {
+    "title": "중요한 법적 고지사항",
+    "content": "ETAsHub는 영국 전자여행허가(ETA) 신청 처리를 위한 독립적인 서비스입니다. 저희는 영국 정부나 영국 내무부와 어떠한 제휴관계도 없습니다. 저희 서비스는 필수 정부 수수료에 추가하여 서비스 수수료를 받고 ETA 신청 제출을 도와드립니다. 영국 정부 공식 웹사이트를 통해 무료로 직접 신청할 수 있지만, 저희 서비스는 편의를 위해 양식 확인, 고객 지원, 신청 추적과 같은 추가 기능을 제공합니다."
+  },
+  "transparency": {
+    "title": "수수료 투명성",
+    "feeBreakdown": "완전한 수수료 내역 제공",
+    "noHidden": "숨겨진 수수료 없음"
   },
   "footer": {
     "disclaimer": "이 웹사이트는 독립적인 제3자에 의해 운영되며 영국 정부나 영국 비자 및 이민청(UKVI)과 관련이 없습니다.",

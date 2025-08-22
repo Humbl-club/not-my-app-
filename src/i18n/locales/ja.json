@@ -18,12 +18,37 @@
     "feature4": "返金保証",
     "startApplication": "申請開始",
     "learnMore": "詳細を見る",
+    "disclaimer": "独立サービス - 英国政府との関連なし",
+    "valueProposition": "旅行を簡素化 — あなたは旅路に集中、私たちが事務処理を担当",
     "stats": {"title": "処理統計", "processingTime": "72時間", "processingLabel": "平均処理時間", "applicationsCount": "10,000+", "applicationsLabel": "処理済み申請"},
     "notice": {"title": "重要なお知らせ：", "text": "これは独立した第三者サービスであり、英国政府やUKVIとは関係ありません。"}
   },
   "trust": {"processing": "平均処理時間", "processingTime": "72時間", "applications": "処理済み申請", "applicationsCount": "10,000+", "notice": "このサービスは独立した第三者によって提供されており、英国政府とは関係ありません。"},
-  "steps": {"title": "シンプルな4ステッププロセス", "subtitle": "ガイド付きプロセスで、わずか数分で英国ETA申請を完了できます。", "step1": {"title": "申請書記入", "description": "個人および旅行の詳細を使用して、安全なオンラインフォームを完成させます。", "time": "5-10分"}, "step2": {"title": "書類アップロード", "description": "暗号化されたプラットフォームにパスポートと写真を安全にアップロードします。", "time": "2-3分"}, "step3": {"title": "支払い", "description": "複数の支払いオプションを利用した安全な支払い処理。", "time": "1-2分"}, "step4": {"title": "ETA受領", "description": "承認されたETAをメールの受信箱に直接お届けします。", "time": "24-72時間"}},
-  "trustIndicators": {"secure": {"title": "安全な暗号化", "description": "SSL暗号化によるデータ保護"}, "gdpr": {"title": "GDPR準拠", "description": "完全なデータ保護準拠"}, "support": {"title": "24/7サポート", "description": "年中無休のサポート"}, "trusted": {"title": "信頼できるサービス", "description": "10,000件以上の成功申請"}},
+  "steps": {"title": "シンプルな4ステッププロセス", "subtitle": "美しくシンプルなプロセスで15分未満", "step1": {"title": "申請書記入", "description": "個人および旅行の詳細を使用して、安全なオンラインフォームを完成させます。", "time": "5-10分"}, "step2": {"title": "書類アップロード", "description": "暗号化されたプラットフォームにパスポートと写真を安全にアップロードします。", "time": "2-3分"}, "step3": {"title": "支払い", "description": "複数の支払いオプションを利用した安全な支払い処理。", "time": "1-2分"}, "step4": {"title": "ETA受領", "description": "承認されたETAをメールの受信箱に直接お届けします。", "time": "24-72時間"}},
+  "trustIndicators": {
+    "title": "ETAShubを選ぶ理由",
+    "subtitle": "何千人もの方々が旅行書類処理で私たちを信頼する5つの理由",
+    "convenience": {
+      "title": "利便性",
+      "description": "わずか数分で迅速かつ簡単な申請"
+    },
+    "security": {
+      "title": "セキュリティ",
+      "description": "SSL暗号化とGDPR準拠による安全な処理"
+    },
+    "tracking": {
+      "title": "追跡",
+      "description": "メール更新によるリアルタイム申請追跡"
+    },
+    "storage": {
+      "title": "保存",
+      "description": "将来の参照のための安全な文書保存"
+    },
+    "reminders": {
+      "title": "リマインダー",
+      "description": "更新とアップデートの自動通知"
+    }
+  },
   "applicationSteps": {"title": "シンプルな4ステッププロセス", "subtitle": "簡素化された申請プロセスで英国ETAを迅速かつ簡単に取得", "step1": {"title": "申請の完了", "description": "個人情報と旅行情報を入力して、安全なオンラインフォームに記入します。", "time": "5-10分"}, "step2": {"title": "書類のアップロード", "description": "パスポートのコピーと写真を提出。システムがすべての要件を自動で検証します。", "time": "2-3分"}, "step3": {"title": "安全な支払い", "description": "クレジットカード、デビットカード、またはPayPalで安全に支払います。すべての取引は暗号化されます。", "time": "1-2分"}, "step4": {"title": "認証の受領", "description": "72時間以内にメールで英国ETAを受け取ります。オンラインで申請状況を追跡できます。", "time": "最大72時間"}},
   "legal": {
     "title": "重要な法的告知",
@@ -35,6 +60,8 @@
     "noHidden": "隠れた料金はありません"
   },
   "trustIndicators": {
+    "title": "ETAShubを選ぶ理由",
+    "subtitle": "何千人もの方々が旅行書類処理で私たちを信頼する5つの理由",
     "convenience": {
       "title": "利便性",
       "description": "わずか数分で迅速かつ簡単な申請"

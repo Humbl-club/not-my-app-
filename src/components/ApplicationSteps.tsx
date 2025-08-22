@@ -15,7 +15,7 @@ export const ApplicationSteps = () => {
             {t('steps.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
-            A beautifully simple process that takes less than 15 minutes
+            {t('steps.subtitle')}
           </p>
         </div>
         

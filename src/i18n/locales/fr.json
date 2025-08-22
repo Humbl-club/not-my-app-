@@ -6,7 +6,9 @@
     "title": "Demande d'ETA au Royaume-Uni",
     "subtitle": "Autorisation Électronique de Voyage Officielle",
     "trackApplication": "Suivre la Demande",
-    "startApplication": "Commencer la Demande"
+    "startApplication": "Commencer la Demande",
+    "disclaimer": "Service indépendant - non affilié au gouvernement britannique",
+    "valueProposition": "Simplifiez vos voyages — Concentrez-vous sur votre voyage, nous nous occupons de l'administratif"
   },
   "hero": {
     "title": "Demandez votre ETA pour le Royaume-Uni",
@@ -36,6 +38,7 @@
   },
   "steps": {
     "title": "Processus simple en 4 étapes",
+    "subtitle": "Un processus magnifiquement simple qui prend moins de 15 minutes",
     "subtitle": "Complétez votre demande ETA Royaume-Uni en quelques minutes avec notre processus guidé.",
     "step1": {"title": "Remplir la demande", "description": "Complétez le formulaire en ligne sécurisé avec vos détails personnels et de voyage.", "time": "5-10 minutes"},
     "step2": {"title": "Télécharger les documents", "description": "Téléchargez votre passeport et photo en toute sécurité sur notre plateforme cryptée.", "time": "2-3 minutes"},
@@ -43,6 +46,8 @@
     "step4": {"title": "Recevoir l'ETA", "description": "Recevez votre ETA approuvée directement dans votre boîte e-mail.", "time": "24-72 heures"}
   },
   "trustIndicators": {
+    "title": "Pourquoi choisir ETAShub",
+    "subtitle": "Cinq raisons pour lesquelles des milliers nous font confiance avec leurs documents de voyage",
     "convenience": {
       "title": "Commodité",
       "description": "Application rapide et sans effort en quelques minutes seulement"
