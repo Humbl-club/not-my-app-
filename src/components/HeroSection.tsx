@@ -7,48 +7,48 @@ import { CheckCircle, ArrowRight, Clock, Users, Globe, Plane } from 'lucide-reac
 export const HeroSection = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  
   return (
-    <section className="relative bg-gradient-to-br from-primary to-turquoise text-white min-h-[80vh] flex items-center">
+    <section className="relative bg-gradient-to-br from-primary to-turquoise text-white min-h-[85vh] flex items-center">
       <div className="container mx-auto px-6 text-center">
-        <div className="max-w-4xl mx-auto space-y-12">
+        <div className="max-w-3xl mx-auto space-y-16">
           {/* Main headline */}
-          <div className="space-y-6">
-            <h1 className="text-4xl md:text-6xl font-light tracking-tight leading-[1.1]">
+          <div className="space-y-8">
+            <h1 className="text-5xl md:text-7xl font-light tracking-tight leading-[1.05]">
               {t('hero.title')}
             </h1>
-            <p className="text-lg md:text-xl opacity-90 font-light max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl opacity-90 font-light max-w-2xl mx-auto leading-relaxed">
               {t('hero.subtitle')}
             </p>
           </div>
 
           {/* CTA Button */}
-          <div className="pt-4">
+          <div className="pt-6">
             <Button 
-              size="lg" 
-              className="bg-white text-primary hover:bg-white/95 shadow-lg hover:shadow-xl transition-all duration-300 font-medium text-lg px-12 py-4 rounded-full"
+              size="xl" 
+              className="bg-white text-primary hover:bg-white/95 shadow-2xl hover:shadow-3xl transition-all duration-500 font-semibold text-xl px-16 py-6 rounded-full hover:scale-105"
               onClick={() => navigate('/application')}
             >
               {t('hero.startApplication')}
-              <ArrowRight className="ml-3 h-5 w-5" />
+              <ArrowRight className="ml-4 h-6 w-6" />
             </Button>
           </div>
 
-          {/* Disclaimer */}
-          <div className="text-center max-w-3xl mx-auto pt-8">
-            <p className="text-sm opacity-80 bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-              {t('hero.disclaimer')}
-            </p>
-          </div>
-
-          {/* Value proposition and key info */}
-          <div className="text-center space-y-4 pt-8">
-            <h2 className="text-xl md:text-2xl font-light opacity-95">
+          {/* Subtle value props */}
+          <div className="pt-12 space-y-6">
+            <h2 className="text-2xl md:text-3xl font-light opacity-90">
               {t('hero.valueProposition')}
             </h2>
-            <div className="flex flex-col md:flex-row justify-center items-center gap-4 text-sm opacity-80">
-              <span>{t('hero.processingTime')}</span>
-              <span className="hidden md:block">•</span>
-              <span>{t('hero.security')}</span>
+            <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-base opacity-85">
+              <div className="flex items-center gap-2">
+                <Clock className="h-5 w-5" />
+                <span>{t('hero.processingTime')}</span>
+              </div>
+              <span className="hidden md:block text-white/40">•</span>
+              <div className="flex items-center gap-2">
+                <Globe className="h-5 w-5" />
+                <span>{t('hero.security')}</span>
+              </div>
             </div>
           </div>
         </div>
