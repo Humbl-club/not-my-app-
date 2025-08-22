@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils"
 // - Only uppercase Latin letters A-Z
 // - Allows spaces, hyphens (-), and apostrophes (')
 // - 1-50 characters length
-// - Cannot start or end with spaces or special characters
-export const PASSPORT_NAME_PATTERN = /^[A-Z]([A-Z\s'-]*[A-Z])?$/
+// - Cannot start with spaces or special characters
+export const PASSPORT_NAME_PATTERN = /^[A-Z]([A-Z\s'-]*)?$/
 
 interface PassportNameInputProps extends Omit<React.ComponentProps<"input">, "onChange"> {
   value?: string
@@ -48,15 +48,15 @@ const PassportNameInput = React.forwardRef<HTMLInputElement, PassportNameInputPr
         return false
       }
 
-      // Check if starts or ends with spaces or special characters
-      if (/^[\s'-]|[\s'-]$/.test(inputValue)) {
-        setValidationError("Name cannot start or end with spaces or special characters")
+      // Check if starts with spaces or special characters
+      if (/^[\s'-]/.test(inputValue)) {
+        setValidationError("Name cannot start with spaces or special characters")
         return false
       }
 
       // Full pattern validation
       if (!PASSPORT_NAME_PATTERN.test(inputValue)) {
-        setValidationError("Enter your name exactly as it appears on your passport")
+        setValidationError("Enter your passport name exactly as shown on your passport")
         return false
       }
 
@@ -114,7 +114,7 @@ const PassportNameInput = React.forwardRef<HTMLInputElement, PassportNameInputPr
           value={internalValue}
           onChange={handleInputChange}
           onBlur={handleBlur}
-          placeholder={props.placeholder || "Enter your passport name"}
+          placeholder={props.placeholder || "Enter your name as shown on passport"}
           className={cn(
             "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
             hasError && "border-l-4 border-l-error-gentle border-error-gentle/30 bg-error-gentle-light focus-visible:ring-error-gentle/50",

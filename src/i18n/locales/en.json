@@ -73,8 +73,8 @@
     "progress": {"step": "Step {{current}} of {{total}}", "complete": "{{percent}}% Complete"},
     "personalInfo": {
       "title": "Personal Information",
-      "firstName": {"label": "First Name", "placeholder": "Enter your first name"},
-      "lastName": {"label": "Last Name", "placeholder": "Enter your last name"},
+      "firstName": {"label": "First Name (as shown on passport)", "placeholder": "Enter your first name"},
+      "lastName": {"label": "Last Name (as shown on passport)", "placeholder": "Enter your last name"},
       "dateOfBirth": {"label": "Date of Birth", "placeholder": "Select your date of birth"},
       "nationality": {"label": "Nationality", "placeholder": "Select your nationality"},
       "email": {"label": "Email Address", "placeholder": "Enter your email address"},

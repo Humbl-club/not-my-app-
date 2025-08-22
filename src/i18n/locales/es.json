@@ -91,8 +91,8 @@
     "progress": {"step": "Paso {{current}} de {{total}}", "complete": "{{percent}}% Completado"},
     "personalInfo": {
       "title": "Información Personal",
-      "firstName": {"label": "Nombre", "placeholder": "Ingrese su nombre"},
-      "lastName": {"label": "Apellido", "placeholder": "Ingrese su apellido"},
+      "firstName": {"label": "Nombre (como aparece en el pasaporte)", "placeholder": "Ingrese su nombre"},
+      "lastName": {"label": "Apellido (como aparece en el pasaporte)", "placeholder": "Ingrese su apellido"},
       "dateOfBirth": {"label": "Fecha de Nacimiento", "placeholder": "Seleccione su fecha de nacimiento"},
       "nationality": {"label": "Nacionalidad", "placeholder": "Seleccione su nacionalidad"},
       "email": {"label": "Dirección de Correo Electrónico", "placeholder": "Ingrese su dirección de correo electrónico"},

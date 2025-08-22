@@ -124,8 +124,8 @@
     "progress": {"step": "Étape {{current}} sur {{total}}", "complete": "{{percent}}% Terminé"},
     "personalInfo": {
       "title": "Informations personnelles",
-      "firstName": {"label": "Prénom", "placeholder": "Entrez votre prénom"},
-      "lastName": {"label": "Nom de famille", "placeholder": "Entrez votre nom de famille"},
+      "firstName": {"label": "Prénom (tel qu'indiqué sur le passeport)", "placeholder": "Entrez votre prénom"},
+      "lastName": {"label": "Nom de famille (tel qu'indiqué sur le passeport)", "placeholder": "Entrez votre nom de famille"},
       "dateOfBirth": {"label": "Date de naissance", "placeholder": "Sélectionnez votre date de naissance"},
       "nationality": {"label": "Nationalité", "placeholder": "Sélectionnez la nationalité"},
       "email": {"label": "Adresse e-mail", "placeholder": "Entrez votre adresse e-mail"},

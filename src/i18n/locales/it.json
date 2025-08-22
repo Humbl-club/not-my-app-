@@ -70,8 +70,8 @@
     "progress": {"step": "Passo {{current}} di {{total}}", "complete": "{{percent}}% Completato"},
     "personalInfo": {
       "title": "Informazioni Personali",
-      "firstName": {"label": "Nome", "placeholder": "Inserisci il tuo nome"},
-      "lastName": {"label": "Cognome", "placeholder": "Inserisci il tuo cognome"},
+      "firstName": {"label": "Nome (come riportato sul passaporto)", "placeholder": "Inserisci il tuo nome"},
+      "lastName": {"label": "Cognome (come riportato sul passaporto)", "placeholder": "Inserisci il tuo cognome"},
       "dateOfBirth": {"label": "Data di Nascita", "placeholder": "Seleziona la tua data di nascita"},
       "nationality": {"label": "Nazionalità", "placeholder": "Seleziona la tua nazionalità"},
       "email": {"label": "Indirizzo Email", "placeholder": "Inserisci il tuo indirizzo email"},

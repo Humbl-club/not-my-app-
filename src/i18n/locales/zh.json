@@ -77,8 +77,8 @@
     "progress": {"step": "第{{current}}步，共{{total}}步", "complete": "{{percent}}% 完成"},
     "personalInfo": {
       "title": "个人信息",
-      "firstName": {"label": "名字", "placeholder": "请输入您的名字"},
-      "lastName": {"label": "姓氏", "placeholder": "请输入您的姓氏"},
+      "firstName": {"label": "名字（如护照所示）", "placeholder": "请输入您的名字"},
+      "lastName": {"label": "姓氏（如护照所示）", "placeholder": "请输入您的姓氏"},
       "dateOfBirth": {"label": "出生日期", "placeholder": "选择您的出生日期"},
       "nationality": {"label": "国籍", "placeholder": "选择国籍"},
       "email": {"label": "电子邮箱地址", "placeholder": "请输入您的电子邮箱地址"},
