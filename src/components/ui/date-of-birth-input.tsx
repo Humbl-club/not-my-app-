@@ -29,12 +29,13 @@ interface DateOfBirthInputProps {
 }
 
 export const DateOfBirthInput = React.forwardRef<HTMLInputElement, DateOfBirthInputProps>(
-  ({ className, value = "", onChange, onBlur, disabled, placeholder = "YYYY-MM-DD", ...props }, ref) => {
+  ({ className, value = "", onChange, onBlur, disabled, placeholder = "YYYY-MM-DD or YYYY/MM/DD", ...props }, ref) => {
     const [calendarOpen, setCalendarOpen] = React.useState(false);
     const [inputValue, setInputValue] = React.useState(value);
     const [calendarDate, setCalendarDate] = React.useState<Date | undefined>(
       value && isValid(new Date(value)) ? new Date(value) : undefined
     );
+    const [autoOpenTimer, setAutoOpenTimer] = React.useState<NodeJS.Timeout | null>(null);
 
     // Sync with external value changes
     React.useEffect(() => {
@@ -46,30 +47,66 @@ export const DateOfBirthInput = React.forwardRef<HTMLInputElement, DateOfBirthIn
       }
     }, [value]);
 
-    const formatDateInput = (input: string) => {
-      // Remove all non-digits
-      const digits = input.replace(/\D/g, '');
+    const normalizeToYYYYMMDD = (input: string): string => {
+      // Convert YYYY/MM/DD to YYYY-MM-DD
+      return input.replace(/\//g, '-');
+    };
+
+    const parsePartialDate = (input: string) => {
+      const normalized = normalizeToYYYYMMDD(input);
+      const parts = normalized.split('-');
       
-      // Apply formatting
-      if (digits.length <= 4) {
-        return digits;
-      } else if (digits.length <= 6) {
-        return `${digits.slice(0, 4)}-${digits.slice(4)}`;
+      if (parts.length >= 2 && parts[0].length === 4 && parts[1].length === 2) {
+        const year = parseInt(parts[0]);
+        const month = parseInt(parts[1]) - 1; // Date uses 0-based months
+        
+        if (year >= 1900 && year <= new Date().getFullYear() && month >= 0 && month <= 11) {
+          return new Date(year, month, 1);
+        }
+      }
+      return null;
+    };
+
+    const formatDateInput = (input: string) => {
+      // Allow both - and / separators during typing
+      const cleanInput = input.replace(/[^\d\-\/]/g, '');
+      
+      // If user is typing with /, preserve it during typing, normalize later
+      if (cleanInput.includes('/')) {
+        const digits = cleanInput.replace(/[\/\-]/g, '');
+        if (digits.length <= 4) {
+          return digits;
+        } else if (digits.length <= 6) {
+          return `${digits.slice(0, 4)}/${digits.slice(4)}`;
+        } else {
+          return `${digits.slice(0, 4)}/${digits.slice(4, 6)}/${digits.slice(6, 8)}`;
+        }
       } else {
-        return `${digits.slice(0, 4)}-${digits.slice(4, 6)}-${digits.slice(6, 8)}`;
+        // Default to - separator
+        const digits = cleanInput.replace(/[\/\-]/g, '');
+        if (digits.length <= 4) {
+          return digits;
+        } else if (digits.length <= 6) {
+          return `${digits.slice(0, 4)}-${digits.slice(4)}`;
+        } else {
+          return `${digits.slice(0, 4)}-${digits.slice(4, 6)}-${digits.slice(6, 8)}`;
+        }
       }
     };
 
     const validateDate = (dateStr: string): string | null => {
       if (!dateStr) return null;
       
-      // Check format
-      const formatRegex = /^\d{4}-\d{2}-\d{2}$/;
+      // Normalize input to YYYY-MM-DD format
+      const normalized = normalizeToYYYYMMDD(dateStr);
+      
+      // Check format (accept both YYYY-MM-DD and YYYY/MM/DD)
+      const formatRegex = /^\d{4}[-\/]\d{2}[-\/]\d{2}$/;
       if (!formatRegex.test(dateStr)) {
-        return "Please enter date in YYYY-MM-DD format";
+        return "Please enter date in YYYY-MM-DD or YYYY/MM/DD format";
       }
 
-      const date = new Date(dateStr);
+      const date = new Date(normalized);
       
       // Check if valid calendar date
       if (!isValid(date)) {
@@ -96,13 +133,32 @@ export const DateOfBirthInput = React.forwardRef<HTMLInputElement, DateOfBirthIn
       
       setInputValue(formatted);
       
+      // Clear any existing timer
+      if (autoOpenTimer) {
+        clearTimeout(autoOpenTimer);
+        setAutoOpenTimer(null);
+      }
+      
+      // Check for partial date that should trigger calendar auto-open
+      const partialDate = parsePartialDate(formatted);
+      if (partialDate && (formatted.length === 6 || formatted.length === 7) && !calendarOpen) {
+        // Set timer to auto-open calendar after user stops typing
+        const timer = setTimeout(() => {
+          setCalendarDate(partialDate);
+          setCalendarOpen(true);
+        }, 800); // 800ms delay to allow user to continue typing
+        setAutoOpenTimer(timer);
+      }
+      
       // Only call onChange if we have a complete date or empty
       if (formatted === '' || formatted.length === 10) {
-        onChange?.(formatted);
+        // Normalize to YYYY-MM-DD before calling onChange
+        const normalizedValue = formatted === '' ? '' : normalizeToYYYYMMDD(formatted);
+        onChange?.(normalizedValue);
         
         // Update calendar date if valid
-        if (formatted.length === 10 && isValid(new Date(formatted))) {
-          setCalendarDate(new Date(formatted));
+        if (normalizedValue.length === 10 && isValid(new Date(normalizedValue))) {
+          setCalendarDate(new Date(normalizedValue));
         }
       }
     };
@@ -115,6 +171,12 @@ export const DateOfBirthInput = React.forwardRef<HTMLInputElement, DateOfBirthIn
         onChange?.(dateStr);
       }
       setCalendarOpen(false);
+      
+      // Clear any pending auto-open timer
+      if (autoOpenTimer) {
+        clearTimeout(autoOpenTimer);
+        setAutoOpenTimer(null);
+      }
     };
 
     const currentYear = new Date().getFullYear();
@@ -222,13 +284,16 @@ DateOfBirthInput.displayName = "DateOfBirthInput";
 export const validateDateOfBirth = (dateStr: string): string | null => {
   if (!dateStr) return "Date of birth is required";
   
-  // Check format
-  const formatRegex = /^\d{4}-\d{2}-\d{2}$/;
+  // Normalize input to YYYY-MM-DD format
+  const normalized = dateStr.replace(/\//g, '-');
+  
+  // Check format (accept both YYYY-MM-DD and YYYY/MM/DD)
+  const formatRegex = /^\d{4}[-\/]\d{2}[-\/]\d{2}$/;
   if (!formatRegex.test(dateStr)) {
-    return "Please enter date in YYYY-MM-DD format";
+    return "Please enter date in YYYY-MM-DD or YYYY/MM/DD format";
   }
 
-  const date = new Date(dateStr);
+  const date = new Date(normalized);
   
   // Check if valid calendar date
   if (!isValid(date)) {
