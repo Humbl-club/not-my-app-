@@ -10,28 +10,20 @@ export const Footer = () => {
     <footer className="bg-foreground text-white">
       <div className="container mx-auto px-6 py-12">
         <div className="text-center space-y-8">
-          {/* Minimal brand */}
-          <div className="flex items-center justify-center gap-3">
-            <div className="h-8 w-8 bg-turquoise rounded-lg flex items-center justify-center">
-              <Shield className="h-5 w-5 text-white" />
-            </div>
-            <h3 className="text-xl font-light">{t('footer.brand.title')}</h3>
+          {/* Footer links */}
+          <div className="flex justify-center items-center gap-6 text-sm">
+            <a href="/terms" className="hover:text-turquoise transition-colors">{t('footer.links.terms')}</a>
+            <span className="text-white/30">|</span>
+            <a href="/privacy" className="hover:text-turquoise transition-colors">{t('footer.links.privacy')}</a>
+            <span className="text-white/30">|</span>
+            <a href="/cookies" className="hover:text-turquoise transition-colors">{t('footer.links.cookies')}</a>
+            <span className="text-white/30">|</span>
+            <a href="/refund" className="hover:text-turquoise transition-colors">{t('footer.links.refund')}</a>
           </div>
 
-          {/* Trust indicators */}
-          <div className="flex justify-center items-center gap-8 text-xs opacity-70">
-            <span className="flex items-center gap-1">
-              <Shield className="h-3 w-3" />
-              {t('footer.security.ssl')}
-            </span>
-            <span className="flex items-center gap-1">
-              <Globe className="h-3 w-3" />
-              {t('footer.security.gdpr')}
-            </span>
-            <span className="flex items-center gap-1">
-              <Lock className="h-3 w-3" />
-              {t('footer.security.pci')}
-            </span>
+          {/* Contact info placeholder */}
+          <div className="text-sm opacity-70">
+            <p>Contact: [Email] | [Company Registration Details]</p>
           </div>
 
           {/* Copyright */}

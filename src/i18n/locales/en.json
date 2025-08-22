@@ -9,26 +9,13 @@
     "startApplication": "Apply Now"
   },
   "hero": {
-    "title": "Electronic Travel Authorization Platform",
-    "subtitle": "Simplify Your Global Travel Journey",
-    "description": "Apply for electronic travel authorizations worldwide including UK ETA, EU ETIAS, and other eVisa services. Experience fast, secure, and reliable processing with expert support in multiple languages.",
-    "feature1": "Multi-country authorization support",
-    "feature2": "Bank-level security encryption",
-    "feature3": "Expert multilingual support",
-    "feature4": "Global 24/7 assistance",
-    "startApplication": "Start Your Journey",
-    "learnMore": "Explore Services",
-    "stats": {
-      "title": "Global Processing Statistics",
-      "processingTime": "1-3 business days",
-      "processingLabel": "Average processing time",
-      "applicationsCount": "100,000+",
-      "applicationsLabel": "Travelers served worldwide"
-    },
-    "notice": {
-      "title": "Service Information:",
-      "text": "ETAsHub is an independent travel authorization service provider, offering professional assistance for electronic visa applications worldwide."
-    }
+    "title": "Apply for Your UK ETA",
+    "subtitle": "Simple, secure, and reliable assistance with your UK Electronic Travel Authorisation",
+    "startApplication": "Start Your Application",
+    "disclaimer": "ETAsHub is a private service provider and not affiliated with the UK government. You may apply directly on GOV.UK for the government fee only. Our service provides administrative assistance, tracking, and secure storage in addition to the government process.",
+    "valueProposition": "Simplify Your Travel — Focus on Your Journey, We Handle the Admin",
+    "processingTime": "Processing time: usually 1–3 business days (subject to UK Home Office decisions; see Terms & Conditions)",
+    "security": "Secure application handling • GDPR-compliant"
   },
   "trust": {
     "processing": "Average processing time",
@@ -38,18 +25,19 @@
     "notice": "This service is provided by an independent third party and is not affiliated with the UK Government."
   },
   "steps": {
-    "title": "Simple 4-Step Process",
-    "subtitle": "Complete your UK ETA application in minutes with our guided process.",
-    "step1": {"title": "Complete Application", "description": "Fill out the secure online form with your personal and travel details.", "time": "5-10 minutes"},
-    "step2": {"title": "Upload Documents", "description": "Securely upload your passport and photo to our encrypted platform.", "time": "2-3 minutes"},
-    "step3": {"title": "Make Payment", "description": "Secure payment processing with multiple payment options available.", "time": "1-2 minutes"},
-    "step4": {"title": "Receive ETA", "description": "Get your approved ETA delivered directly to your email inbox.", "time": "24-72 hours"}
+    "title": "How It Works — A Simple 4-Step Process",
+    "step1": {"title": "Complete Application Form", "description": "Provide your details through our secure online form.", "time": "5–10 minutes"},
+    "step2": {"title": "Upload Required Documents", "description": "Attach your passport scan and any required files.", "time": "a few minutes"},
+    "step3": {"title": "Secure Payment", "description": "Pay the government fee + our service fee for admin support.", "time": "instant"},
+    "step4": {"title": "Receive Your ETA", "description": "Once processed, we notify you immediately and store your ETA in your dashboard for easy access.", "time": "issued by UK authorities"}
   },
   "trustIndicators": {
-    "secure": {"title": "Bank-Level Security", "description": "SSL encrypted global protection"},
-    "gdpr": {"title": "GDPR Compliant", "description": "Full international data protection"},
-    "support": {"title": "24/7 Global Support", "description": "Multilingual assistance worldwide"},
-    "trusted": {"title": "Trusted Worldwide", "description": "100,000+ travelers served globally"}
+    "title": "Why Choose ETAsHub?",
+    "convenience": {"title": "Convenience", "description": "no confusing forms or mistakes; we handle it for you"},
+    "security": {"title": "Security", "description": "bank-level data protection, GDPR-compliant"},
+    "tracking": {"title": "Application Tracking", "description": "see the status of your application anytime"},
+    "storage": {"title": "Digital Storage", "description": "your ETA is securely saved for future reference"},
+    "reminders": {"title": "Reminders", "description": "we'll notify you before your ETA expires"}
   },
   "applicationSteps": {
     "title": "Simple 4-Step Process",
@@ -60,36 +48,22 @@
     "step4": {"title": "Receive Authorization", "description": "Get your electronic travel authorization via email. Track your application status online 24/7.", "time": "1-3 business days"}
   },
   "footer": {
-    "disclaimer": "ETAsHub is an independent travel authorization service provider and is not affiliated with any government entity. We provide professional assistance for electronic travel authorization applications worldwide.",
-    "brand": {
-      "title": "ETAsHub",
-      "subtitle": "Global Travel Authorization Platform",
-      "description": "Your trusted partner for electronic travel authorizations including ETA, ETIAS, and eVisa services worldwide."
-    },
-    "quickLinks": {
-      "title": "Quick Links",
-      "startApplication": "Start Application",
-      "trackApplication": "Track Application",
-      "requirements": "ETA Requirements",
-      "processingTimes": "Processing Times"
-    },
-    "legal": {
-      "title": "Legal",
-      "privacy": "Privacy Policy",
+    "links": {
       "terms": "Terms & Conditions",
-      "refund": "Refund Policy",
-      "cookies": "Cookie Policy"
+      "privacy": "Privacy Policy", 
+      "cookies": "Cookie Policy",
+      "refund": "Refund Policy"
     },
-    "support": {
-      "title": "Support",
-      "phoneLabel": "Global Phone Support",
-      "phone": "+1 (555) 123-4567",
-      "emailLabel": "Email Support",
-      "email": "support@etashub.com",
-      "contactButton": "Contact Support"
-    },
-    "security": {"ssl": "SSL Secure", "gdpr": "GDPR Compliant", "pci": "PCI DSS Certified"},
-    "copyright": "© 2024 ETAsHub. All rights reserved."
+    "copyright": "© 2025 ETAsHub. All rights reserved."
+  },
+  "legal": {
+    "title": "Legal Disclaimer",
+    "content": "ETAsHub is an independent third-party service provider. We are not affiliated with, endorsed by, or connected to the UK government, the UK Home Office, or any other official body. You may apply directly via the official UK government website (GOV.UK) for the government fee only. Our service includes administrative assistance, secure application handling, application tracking, document storage, and renewal reminders for an additional service fee. We do not provide legal or immigration advice. All decisions regarding ETA approvals, refusals, or processing times are made solely by the UK authorities."
+  },
+  "transparency": {
+    "title": "Transparency",
+    "feeBreakdown": "Clear fee breakdown (government fee + service fee)",
+    "noHidden": "No hidden charges — complete transparency upfront"
   },
   "application": {
     "title": "UK ETA Application Form",

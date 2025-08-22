@@ -1,7 +1,8 @@
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
-import { TrustIndicators } from '@/components/TrustIndicators';
 import { ApplicationSteps } from '@/components/ApplicationSteps';
+import { TrustIndicators } from '@/components/TrustIndicators';
+import { LegalDisclaimer } from '@/components/LegalDisclaimer';
 import { Footer } from '@/components/Footer';
 
 const Index = () => {
@@ -9,8 +10,9 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <HeroSection />
-      <TrustIndicators />
       <ApplicationSteps />
+      <TrustIndicators />
+      <LegalDisclaimer />
       <Footer />
     </div>
   );

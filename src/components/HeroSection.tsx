@@ -11,18 +11,18 @@ export const HeroSection = () => {
     <section className="relative bg-gradient-to-br from-primary to-turquoise text-white min-h-[80vh] flex items-center">
       <div className="container mx-auto px-6 text-center">
         <div className="max-w-4xl mx-auto space-y-12">
-          {/* Ultra-minimal tagline */}
-          <div className="space-y-8">
-            <h1 className="text-5xl md:text-7xl font-light tracking-tight leading-[1.1]">
+          {/* Main headline */}
+          <div className="space-y-6">
+            <h1 className="text-4xl md:text-6xl font-light tracking-tight leading-[1.1]">
               {t('hero.title')}
             </h1>
-            <p className="text-xl md:text-2xl opacity-90 font-light max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl opacity-90 font-light max-w-2xl mx-auto">
               {t('hero.subtitle')}
             </p>
           </div>
 
-          {/* Single CTA */}
-          <div className="pt-8">
+          {/* CTA Button */}
+          <div className="pt-4">
             <Button 
               size="lg" 
               className="bg-white text-primary hover:bg-white/95 shadow-lg hover:shadow-xl transition-all duration-300 font-medium text-lg px-12 py-4 rounded-full"
@@ -33,15 +33,22 @@ export const HeroSection = () => {
             </Button>
           </div>
 
-          {/* Minimal stats */}
-          <div className="grid grid-cols-2 gap-8 max-w-md mx-auto pt-16">
-            <div className="text-center">
-              <div className="text-3xl font-light text-white/90">{t('hero.stats.processingTime')}</div>
-              <div className="text-sm opacity-70 mt-1">{t('hero.stats.processingLabel')}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-light text-white/90">{t('hero.stats.applicationsCount')}</div>
-              <div className="text-sm opacity-70 mt-1">{t('hero.stats.applicationsLabel')}</div>
+          {/* Disclaimer */}
+          <div className="text-center max-w-3xl mx-auto pt-8">
+            <p className="text-sm opacity-80 bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+              {t('hero.disclaimer')}
+            </p>
+          </div>
+
+          {/* Value proposition and key info */}
+          <div className="text-center space-y-4 pt-8">
+            <h2 className="text-xl md:text-2xl font-light opacity-95">
+              {t('hero.valueProposition')}
+            </h2>
+            <div className="flex flex-col md:flex-row justify-center items-center gap-4 text-sm opacity-80">
+              <span>{t('hero.processingTime')}</span>
+              <span className="hidden md:block">•</span>
+              <span>{t('hero.security')}</span>
             </div>
           </div>
         </div>
