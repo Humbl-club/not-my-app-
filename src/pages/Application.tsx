@@ -315,14 +315,17 @@ const Application = () => {
                                 <FormLabel>
                                   {t('application.personalInfo.dateOfBirth.label')} <span aria-hidden="true" className="text-destructive">*</span>
                                 </FormLabel>
-                                <FormControl>
-                                  <DateOfBirthInput
-                                    {...field}
-                                    placeholder="YYYY-MM-DD"
-                                    aria-invalid={!!fieldState.error}
-                                  />
-                                </FormControl>
-                                <FormMessage />
+                                 <FormControl>
+                                   <DateOfBirthInput
+                                     {...field}
+                                     placeholder="YYYY-MM-DD"
+                                     aria-invalid={!!fieldState.error}
+                                   />
+                                 </FormControl>
+                                 <p className="text-sm text-muted-foreground mt-1">
+                                   {t('application.personalInfo.dateOfBirth.helperText')}
+                                 </p>
+                                 <FormMessage />
                               </FormItem>
                             )}
                           />

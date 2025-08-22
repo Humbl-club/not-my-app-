@@ -82,7 +82,7 @@
       "firstName": {"label": "First Name (as shown on passport)", "placeholder": "Enter your first name"},
       "secondNames": {"label": "Additional Names (as shown on passport)", "placeholder": "Enter additional names if any"},
       "lastName": {"label": "Last Name (as shown on passport)", "placeholder": "Enter your last name"},
-      "dateOfBirth": {"label": "Date of Birth", "placeholder": "Select your date of birth"},
+      "dateOfBirth": {"label": "Date of Birth", "placeholder": "Select your date of birth", "helperText": "Type YYYY-MM-DD or YYYY/MM/DD, or use the calendar"},
       "nationality": {"label": "Nationality", "placeholder": "Select your nationality"},
       "email": {"label": "Email Address", "placeholder": "Enter your email address"},
       "passportNumber": {"label": "Passport Number", "placeholder": "Enter your passport number"}

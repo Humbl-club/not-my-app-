@@ -213,10 +213,13 @@ const ApplicantForm = () => {
                     <FormField control={form.control} name="dateOfBirth" render={({ field, fieldState }) => (
                       <FormItem>
                         <FormLabel>{t('application.personalInfo.dateOfBirth.label')} <span className="text-destructive">*</span></FormLabel>
-                        <FormControl>
-                          <DateOfBirthInput {...field} placeholder="YYYY-MM-DD" aria-invalid={!!fieldState.error} />
-                        </FormControl>
-                        <FormMessage />
+                         <FormControl>
+                           <DateOfBirthInput {...field} placeholder="YYYY-MM-DD" aria-invalid={!!fieldState.error} />
+                         </FormControl>
+                         <p className="text-sm text-muted-foreground mt-1">
+                           {t('application.personalInfo.dateOfBirth.helperText')}
+                         </p>
+                         <FormMessage />
                       </FormItem>
                     )} />
                     <FormField control={form.control} name="nationality" render={({ field, fieldState }) => (

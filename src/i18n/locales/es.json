@@ -100,7 +100,7 @@
       "firstName": {"label": "Nombre (como aparece en el pasaporte)", "placeholder": "Ingrese su nombre"},
       "secondNames": {"label": "Nombres adicionales (como aparece en el pasaporte)", "placeholder": "Ingrese nombres adicionales si los hay"},
       "lastName": {"label": "Apellido (como aparece en el pasaporte)", "placeholder": "Ingrese su apellido"},
-      "dateOfBirth": {"label": "Fecha de Nacimiento", "placeholder": "Seleccione su fecha de nacimiento"},
+      "dateOfBirth": {"label": "Fecha de Nacimiento", "placeholder": "Seleccione su fecha de nacimiento", "helperText": "Escribe AAAA-MM-DD o AAAA/MM/DD, o usa el calendario"},
       "nationality": {"label": "Nacionalidad", "placeholder": "Seleccione su nacionalidad"},
       "email": {"label": "Dirección de Correo Electrónico", "placeholder": "Ingrese su dirección de correo electrónico"},
       "passportNumber": {"label": "Número de Pasaporte", "placeholder": "Ingrese su número de pasaporte"}

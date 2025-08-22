@@ -79,7 +79,7 @@
       "firstName": {"label": "Nome (come riportato sul passaporto)", "placeholder": "Inserisci il tuo nome"},
       "secondNames": {"label": "Nomi aggiuntivi (come riportato sul passaporto)", "placeholder": "Inserisci nomi aggiuntivi se presenti"},
       "lastName": {"label": "Cognome (come riportato sul passaporto)", "placeholder": "Inserisci il tuo cognome"},
-      "dateOfBirth": {"label": "Data di Nascita", "placeholder": "Seleziona la tua data di nascita"},
+      "dateOfBirth": {"label": "Data di Nascita", "placeholder": "Seleziona la tua data di nascita", "helperText": "Digita AAAA-MM-GG o AAAA/MM/GG, o usa il calendario"},
       "nationality": {"label": "Nazionalità", "placeholder": "Seleziona la tua nazionalità"},
       "email": {"label": "Indirizzo Email", "placeholder": "Inserisci il tuo indirizzo email"},
       "passportNumber": {"label": "Numero di Passaporto", "placeholder": "Inserisci il tuo numero di passaporto"}
