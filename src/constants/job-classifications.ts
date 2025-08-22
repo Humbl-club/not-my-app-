@@ -14,6 +14,52 @@ export interface JobClassification {
 export const jobClassifications: JobClassification[] = [
   // ============= LEGAL & COMPLIANCE =============
   
+  // General Legal (Generic Jobs)
+  {
+    code: "2610",
+    titleEn: "Legal Professional",
+    titles: {
+      en: "Legal Professional",
+      fr: "Juriste",
+      es: "Profesional Legal",
+      de: "Jurist",
+      it: "Professionista Legale",
+      pt: "Profissional Jurídico",
+      ru: "Юрист",
+      zh: "法律专业人员",
+      ja: "法務専門家",
+      ko: "법무 전문가",
+      ar: "مهني قانوني"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Legal Professionals",
+    category: "Legal & Compliance",
+    subCategory: "General Legal",
+    keywords: ["legal", "juriste", "law", "professional", "general"]
+  },
+  {
+    code: "2610b",
+    titleEn: "Compliance Professional",
+    titles: {
+      en: "Compliance Professional",
+      fr: "Professionnel de la Conformité",
+      es: "Profesional de Cumplimiento",
+      de: "Compliance-Experte",
+      it: "Professionista della Compliance",
+      pt: "Profissional de Compliance",
+      ru: "Специалист по комплаенсу",
+      zh: "合规专业人员",
+      ja: "コンプライアンス専門家",
+      ko: "컴플라이언스 전문가",
+      ar: "مهني الامتثال"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Legal Professionals",
+    category: "Legal & Compliance",
+    subCategory: "General Legal",
+    keywords: ["compliance", "regulatory", "professional", "general"]
+  },
+
   // Legal Practice
   {
     code: "2611",
@@ -368,6 +414,52 @@ export const jobClassifications: JobClassification[] = [
 
   // ============= HEALTHCARE & MEDICAL =============
   
+  // General Healthcare (Generic Jobs)
+  {
+    code: "2200",
+    titleEn: "Healthcare Professional",
+    titles: {
+      en: "Healthcare Professional",
+      fr: "Professionnel de la Santé",
+      es: "Profesional de la Salud",
+      de: "Gesundheitsfachkraft",
+      it: "Professionista Sanitario",
+      pt: "Profissional de Saúde",
+      ru: "Медицинский специалист",
+      zh: "医疗保健专业人员",
+      ja: "医療従事者",
+      ko: "의료 전문가",
+      ar: "مهني الرعاية الصحية"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Health Professionals",
+    category: "Healthcare & Medical",
+    subCategory: "General Healthcare",
+    keywords: ["healthcare", "medical", "health", "professional", "general"]
+  },
+  {
+    code: "2200b",
+    titleEn: "Medical Professional",
+    titles: {
+      en: "Medical Professional",
+      fr: "Professionnel Médical",
+      es: "Profesional Médico",
+      de: "Medizinische Fachkraft",
+      it: "Professionista Medico",
+      pt: "Profissional Médico",
+      ru: "Медицинский работник",
+      zh: "医疗专业人员",
+      ja: "医療専門家",
+      ko: "의료 전문가",
+      ar: "مهني طبي"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Health Professionals",
+    category: "Healthcare & Medical",
+    subCategory: "General Healthcare",
+    keywords: ["medical", "healthcare", "professional", "general"]
+  },
+
   // Medical Doctors
   {
     code: "2211",
@@ -858,6 +950,52 @@ export const jobClassifications: JobClassification[] = [
   },
 
   // ============= INFORMATION TECHNOLOGY =============
+  
+  // General IT (Generic Jobs)
+  {
+    code: "2500",
+    titleEn: "IT Professional",
+    titles: {
+      en: "IT Professional",
+      fr: "Professionnel IT",
+      es: "Profesional de TI",
+      de: "IT-Fachkraft",
+      it: "Professionista IT",
+      pt: "Profissional de TI",
+      ru: "ИТ-специалист",
+      zh: "IT专业人员",
+      ja: "IT専門家",
+      ko: "IT 전문가",
+      ar: "مهني تكنولوجيا المعلومات"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Information Technology",
+    category: "Information Technology",
+    subCategory: "General IT",
+    keywords: ["IT", "information", "technology", "professional", "general"]
+  },
+  {
+    code: "2500b",
+    titleEn: "Technology Professional",
+    titles: {
+      en: "Technology Professional",
+      fr: "Professionnel Technologique",
+      es: "Profesional de Tecnología",
+      de: "Technologie-Experte",
+      it: "Professionista Tecnologico",
+      pt: "Profissional de Tecnologia",
+      ru: "Технологический специалист",
+      zh: "技术专业人员",
+      ja: "テクノロジー専門家",
+      ko: "기술 전문가",
+      ar: "مهني التكنولوجيا"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Information Technology",
+    category: "Information Technology",
+    subCategory: "General IT",
+    keywords: ["technology", "tech", "professional", "general"]
+  },
 
   // Software Development
   {
@@ -1436,13 +1574,669 @@ export const majorGroups = [
       zh: "非技术工人"
     }
   }
+  ,
+  
+  // ============= FINANCE & ACCOUNTING =============
+  
+  // General Finance (Generic Jobs)
+  {
+    code: "2400",
+    titleEn: "Finance Professional",
+    titles: {
+      en: "Finance Professional",
+      fr: "Professionnel de la Finance",
+      es: "Profesional de Finanzas",
+      de: "Finanzfachkraft",
+      it: "Professionista Finanziario",
+      pt: "Profissional de Finanças",
+      ru: "Финансовый специалист",
+      zh: "金融专业人员",
+      ja: "金融専門家",
+      ko: "금융 전문가",
+      ar: "مهني مالي"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Finance Professionals",
+    category: "Finance & Accounting",
+    subCategory: "General Finance",
+    keywords: ["finance", "financial", "professional", "general"]
+  },
+  {
+    code: "2400b",
+    titleEn: "Banking Professional",
+    titles: {
+      en: "Banking Professional",
+      fr: "Professionnel Bancaire",
+      es: "Profesional Bancario",
+      de: "Bankfachkraft",
+      it: "Professionista Bancario",
+      pt: "Profissional Bancário",
+      ru: "Банковский специалист",
+      zh: "银行专业人员",
+      ja: "銀行専門家",
+      ko: "은행 전문가",
+      ar: "مهني مصرفي"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Finance Professionals",
+    category: "Finance & Accounting",
+    subCategory: "General Banking",
+    keywords: ["banking", "banker", "bank", "financial", "professional"]
+  },
+  {
+    code: "2400c",
+    titleEn: "Accounting Professional",
+    titles: {
+      en: "Accounting Professional",
+      fr: "Professionnel Comptable",
+      es: "Profesional Contable",
+      de: "Buchhaltungsfachkraft",
+      it: "Professionista Contabile",
+      pt: "Profissional Contábil",
+      ru: "Бухгалтерский специалист",
+      zh: "会计专业人员",
+      ja: "会計専門家",
+      ko: "회계 전문가",
+      ar: "مهني محاسبي"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Finance Professionals",
+    category: "Finance & Accounting",
+    subCategory: "General Accounting",
+    keywords: ["accounting", "accountant", "bookkeeper", "professional"]
+  },
+
+  // Banking
+  {
+    code: "2411",
+    titleEn: "Bank Teller",
+    titles: {
+      en: "Bank Teller",
+      fr: "Caissier de Banque",
+      es: "Cajero Bancario",
+      de: "Bankkassierer",
+      it: "Cassiere Bancario",
+      pt: "Caixa Bancário",
+      ru: "Кассир банка",
+      zh: "银行出纳员",
+      ja: "銀行窓口係",
+      ko: "은행 창구직원",
+      ar: "أمين صندوق البنك"
+    },
+    majorGroup: "Service and Sales Workers",
+    subMajorGroup: "Sales Workers",
+    category: "Finance & Accounting",
+    subCategory: "Banking",
+    keywords: ["bank", "teller", "cashier", "customer", "service"]
+  },
+  {
+    code: "2411b",
+    titleEn: "Loan Officer",
+    titles: {
+      en: "Loan Officer",
+      fr: "Agent de Crédit",
+      es: "Oficial de Préstamos",
+      de: "Kreditberater",
+      it: "Funzionario Prestiti",
+      pt: "Oficial de Empréstimos",
+      ru: "Кредитный специалист",
+      zh: "信贷员",
+      ja: "融資担当者",
+      ko: "대출 담당자",
+      ar: "موظف القروض"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Finance Professionals",
+    category: "Finance & Accounting",
+    subCategory: "Banking",
+    keywords: ["loan", "officer", "credit", "mortgage", "banking"]
+  },
+  {
+    code: "2411c",
+    titleEn: "Investment Banker",
+    titles: {
+      en: "Investment Banker",
+      fr: "Banquier d'Investissement",
+      es: "Banquero de Inversión",
+      de: "Investmentbanker",
+      it: "Banchiere d'Investimento",
+      pt: "Banqueiro de Investimento",
+      ru: "Инвестиционный банкир",
+      zh: "投资银行家",
+      ja: "投資銀行家",
+      ko: "투자은행가",
+      ar: "مصرفي الاستثمار"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Finance Professionals",
+    category: "Finance & Accounting",
+    subCategory: "Banking",
+    keywords: ["investment", "banker", "banking", "finance", "securities"]
+  },
+  {
+    code: "2411d",
+    titleEn: "Bank Manager",
+    titles: {
+      en: "Bank Manager",
+      fr: "Directeur de Banque",
+      es: "Gerente Bancario",
+      de: "Bankfilialleiter",
+      it: "Direttore Bancario",
+      pt: "Gerente Bancário",
+      ru: "Управляющий банком",
+      zh: "银行经理",
+      ja: "銀行支店長",
+      ko: "은행 지점장",
+      ar: "مدير البنك"
+    },
+    majorGroup: "Managers",
+    subMajorGroup: "Administrative and Commercial Managers",
+    category: "Finance & Accounting",
+    subCategory: "Banking",
+    keywords: ["bank", "manager", "branch", "banking", "management"]
+  },
+
+  // Accounting
+  {
+    code: "2412",
+    titleEn: "Accountant",
+    titles: {
+      en: "Accountant",
+      fr: "Comptable",
+      es: "Contador",
+      de: "Buchhalter",
+      it: "Contabile",
+      pt: "Contador",
+      ru: "Бухгалтер",
+      zh: "会计师",
+      ja: "会計士",
+      ko: "회계사",
+      ar: "محاسب"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Finance Professionals",
+    category: "Finance & Accounting",
+    subCategory: "Accounting",
+    keywords: ["accountant", "accounting", "bookkeeping", "CPA"]
+  },
+  {
+    code: "2412b",
+    titleEn: "Certified Public Accountant",
+    titles: {
+      en: "Certified Public Accountant",
+      fr: "Expert-Comptable",
+      es: "Contador Público Certificado",
+      de: "Wirtschaftsprüfer",
+      it: "Dottore Commercialista",
+      pt: "Contador Público Certificado",
+      ru: "Дипломированный бухгалтер",
+      zh: "注册会计师",
+      ja: "公認会計士",
+      ko: "공인회계사",
+      ar: "محاسب عام معتمد"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Finance Professionals",
+    category: "Finance & Accounting",
+    subCategory: "Accounting",
+    keywords: ["CPA", "certified", "accountant", "auditing"]
+  },
+  {
+    code: "2412c",
+    titleEn: "Bookkeeper",
+    titles: {
+      en: "Bookkeeper",
+      fr: "Teneur de Livres",
+      es: "Tenedor de Libros",
+      de: "Buchführer",
+      it: "Addetto alla Contabilità",
+      pt: "Escriturário",
+      ru: "Делопроизводитель",
+      zh: "记账员",
+      ja: "簿記係",
+      ko: "부記담당자",
+      ar: "محاسب الكتب"
+    },
+    majorGroup: "Clerical Support Workers",
+    subMajorGroup: "Numerical and Material Recording Clerks",
+    category: "Finance & Accounting",
+    subCategory: "Accounting",
+    keywords: ["bookkeeper", "bookkeeping", "records", "accounting"]
+  },
+  {
+    code: "2412d",
+    titleEn: "Financial Analyst",
+    titles: {
+      en: "Financial Analyst",
+      fr: "Analyste Financier",
+      es: "Analista Financiero",
+      de: "Finanzanalyst",
+      it: "Analista Finanziario",
+      pt: "Analista Financeiro",
+      ru: "Финансовый аналитик",
+      zh: "财务分析师",
+      ja: "財務アナリスト",
+      ko: "재무분석가",
+      ar: "محلل مالي"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Finance Professionals",
+    category: "Finance & Accounting",
+    subCategory: "Financial Analysis",
+    keywords: ["financial", "analyst", "analysis", "finance", "investment"]
+  },
+  {
+    code: "2412e",
+    titleEn: "Auditor",
+    titles: {
+      en: "Auditor",
+      fr: "Auditeur",
+      es: "Auditor",
+      de: "Prüfer",
+      it: "Revisore",
+      pt: "Auditor",
+      ru: "Аудитор",
+      zh: "审计师",
+      ja: "監査人",
+      ko: "감사관",
+      ar: "مدقق"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Finance Professionals",
+    category: "Finance & Accounting",
+    subCategory: "Accounting",
+    keywords: ["auditor", "audit", "financial", "review"]
+  },
+
+  // Financial Advisory
+  {
+    code: "2413",
+    titleEn: "Financial Advisor",
+    titles: {
+      en: "Financial Advisor",
+      fr: "Conseiller Financier",
+      es: "Asesor Financiero",
+      de: "Finanzberater",
+      it: "Consulente Finanziario",
+      pt: "Consultor Financeiro",
+      ru: "Финансовый консультант",
+      zh: "财务顾问",
+      ja: "ファイナンシャルアドバイザー",
+      ko: "재무 상담사",
+      ar: "مستشار مالي"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Finance Professionals",
+    category: "Finance & Accounting",
+    subCategory: "Financial Advisory",
+    keywords: ["financial", "advisor", "planning", "investment", "wealth"]
+  },
+  {
+    code: "2413b",
+    titleEn: "Investment Analyst",
+    titles: {
+      en: "Investment Analyst",
+      fr: "Analyste en Investissement",
+      es: "Analista de Inversiones",
+      de: "Investmentanalyst",
+      it: "Analista degli Investimenti",
+      pt: "Analista de Investimentos",
+      ru: "Инвестиционный аналитик",
+      zh: "投资分析师",
+      ja: "投資アナリスト",
+      ko: "투자분석가",
+      ar: "محلل الاستثمار"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Finance Professionals",
+    category: "Finance & Accounting",
+    subCategory: "Financial Advisory",
+    keywords: ["investment", "analyst", "portfolio", "securities", "stocks"]
+  },
+  {
+    code: "2413c",
+    titleEn: "Insurance Agent",
+    titles: {
+      en: "Insurance Agent",
+      fr: "Agent d'Assurance",
+      es: "Agente de Seguros",
+      de: "Versicherungsvertreter",
+      it: "Agente Assicurativo",
+      pt: "Corretor de Seguros",
+      ru: "Страховой агент",
+      zh: "保险代理人",
+      ja: "保険代理店",
+      ko: "보험 설계사",
+      ar: "وكيل التأمين"
+    },
+    majorGroup: "Service and Sales Workers",
+    subMajorGroup: "Sales Workers",
+    category: "Finance & Accounting",
+    subCategory: "Financial Advisory",
+    keywords: ["insurance", "agent", "policy", "coverage", "risk"]
+  },
+
+  // ============= SALES & MARKETING =============
+
+  // General Sales & Marketing (Generic Jobs)
+  {
+    code: "2420",
+    titleEn: "Sales Professional",
+    titles: {
+      en: "Sales Professional",
+      fr: "Professionnel des Ventes",
+      es: "Profesional de Ventas",
+      de: "Verkaufsfachkraft",
+      it: "Professionista delle Vendite",
+      pt: "Profissional de Vendas",
+      ru: "Специалист по продажам",
+      zh: "销售专业人员",
+      ja: "営業専門家",
+      ko: "영업 전문가",
+      ar: "مهني المبيعات"
+    },
+    majorGroup: "Service and Sales Workers",
+    subMajorGroup: "Sales Workers",
+    category: "Sales & Marketing",
+    subCategory: "General Sales",
+    keywords: ["sales", "selling", "professional", "general"]
+  },
+  {
+    code: "2420b",
+    titleEn: "Marketing Professional",
+    titles: {
+      en: "Marketing Professional",
+      fr: "Professionnel du Marketing",
+      es: "Profesional de Marketing",
+      de: "Marketingfachkraft",
+      it: "Professionista del Marketing",
+      pt: "Profissional de Marketing",
+      ru: "Маркетинговый специалист",
+      zh: "营销专业人员",
+      ja: "マーケティング専門家",
+      ko: "마케팅 전문가",
+      ar: "مهني التسويق"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Business and Administration Professionals",
+    category: "Sales & Marketing",
+    subCategory: "General Marketing",
+    keywords: ["marketing", "promotion", "advertising", "professional"]
+  },
+
+  // Sales
+  {
+    code: "5221",
+    titleEn: "Sales Representative",
+    titles: {
+      en: "Sales Representative",
+      fr: "Représentant Commercial",
+      es: "Representante de Ventas",
+      de: "Vertriebsmitarbeiter",
+      it: "Rappresentante di Vendita",
+      pt: "Representante de Vendas",
+      ru: "Торговый представитель",
+      zh: "销售代表",
+      ja: "営業担当者",
+      ko: "영업 대표",
+      ar: "مندوب مبيعات"
+    },
+    majorGroup: "Service and Sales Workers",
+    subMajorGroup: "Sales Workers",
+    category: "Sales & Marketing",
+    subCategory: "Sales",
+    keywords: ["sales", "representative", "selling", "customer"]
+  },
+  {
+    code: "1221",
+    titleEn: "Sales Manager",
+    titles: {
+      en: "Sales Manager",
+      fr: "Directeur des Ventes",
+      es: "Gerente de Ventas",
+      de: "Vertriebsleiter",
+      it: "Direttore Vendite",
+      pt: "Gerente de Vendas",
+      ru: "Менеджер по продажам",
+      zh: "销售经理",
+      ja: "営業マネージャー",
+      ko: "영업 관리자",
+      ar: "مدير المبيعات"
+    },
+    majorGroup: "Managers",
+    subMajorGroup: "Administrative and Commercial Managers",
+    category: "Sales & Marketing",
+    subCategory: "Sales",
+    keywords: ["sales", "manager", "management", "team", "revenue"]
+  },
+
+  // Marketing
+  {
+    code: "2431",
+    titleEn: "Marketing Manager",
+    titles: {
+      en: "Marketing Manager",
+      fr: "Directeur Marketing",
+      es: "Gerente de Marketing",
+      de: "Marketingleiter",
+      it: "Direttore Marketing",
+      pt: "Gerente de Marketing",
+      ru: "Менеджер по маркетингу",
+      zh: "营销经理",
+      ja: "マーケティングマネージャー",
+      ko: "마케팅 관리자",
+      ar: "مدير التسويق"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Business and Administration Professionals",
+    category: "Sales & Marketing",
+    subCategory: "Marketing",
+    keywords: ["marketing", "manager", "promotion", "brand", "campaigns"]
+  },
+  {
+    code: "2431b",
+    titleEn: "Digital Marketer",
+    titles: {
+      en: "Digital Marketer",
+      fr: "Spécialiste Marketing Digital",
+      es: "Especialista en Marketing Digital",
+      de: "Digital Marketing Spezialist",
+      it: "Specialista Marketing Digitale",
+      pt: "Especialista em Marketing Digital",
+      ru: "Цифровой маркетолог",
+      zh: "数字营销专员",
+      ja: "デジタルマーケター",
+      ko: "디지털 마케터",
+      ar: "مسوق رقمي"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Business and Administration Professionals",
+    category: "Sales & Marketing",
+    subCategory: "Marketing",
+    keywords: ["digital", "marketing", "online", "social", "media", "SEO"]
+  },
+
+  // ============= EDUCATION & TRAINING =============
+
+  // General Education (Generic Jobs)
+  {
+    code: "2300",
+    titleEn: "Education Professional",
+    titles: {
+      en: "Education Professional",
+      fr: "Professionnel de l'Éducation",
+      es: "Profesional de la Educación",
+      de: "Bildungsfachkraft",
+      it: "Professionista dell'Educazione",
+      pt: "Profissional da Educação",
+      ru: "Специалист по образованию",
+      zh: "教育专业人员",
+      ja: "教育専門家",
+      ko: "교육 전문가",
+      ar: "مهني التعليم"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Teaching Professionals",
+    category: "Education & Training",
+    subCategory: "General Education",
+    keywords: ["education", "teaching", "professional", "general"]
+  },
+  {
+    code: "2300b",
+    titleEn: "Teacher",
+    titles: {
+      en: "Teacher",
+      fr: "Enseignant",
+      es: "Profesor",
+      de: "Lehrer",
+      it: "Insegnante",
+      pt: "Professor",
+      ru: "Учитель",
+      zh: "教师",
+      ja: "教師",
+      ko: "교사",
+      ar: "معلم"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Teaching Professionals",
+    category: "Education & Training",
+    subCategory: "General Education",
+    keywords: ["teacher", "teaching", "education", "instructor"]
+  },
+
+  // Teaching
+  {
+    code: "2341",
+    titleEn: "Elementary School Teacher",
+    titles: {
+      en: "Elementary School Teacher",
+      fr: "Instituteur Primaire",
+      es: "Maestro de Primaria",
+      de: "Grundschullehrer",
+      it: "Maestro Elementare",
+      pt: "Professor do Ensino Fundamental",
+      ru: "Учитель начальных классов",
+      zh: "小学教师",
+      ja: "小学校教師",
+      ko: "초등학교 교사",
+      ar: "معلم المرحلة الابتدائية"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Teaching Professionals",
+    category: "Education & Training",
+    subCategory: "Teaching",
+    keywords: ["elementary", "primary", "teacher", "children", "school"]
+  },
+  {
+    code: "2330",
+    titleEn: "High School Teacher",
+    titles: {
+      en: "High School Teacher",
+      fr: "Professeur de Lycée",
+      es: "Profesor de Secundaria",
+      de: "Gymnasiallehrer",
+      it: "Professore di Scuola Superiore",
+      pt: "Professor do Ensino Médio",
+      ru: "Учитель средней школы",
+      zh: "中学教师",
+      ja: "高校教師",
+      ko: "고등학교 교사",
+      ar: "معلم المرحلة الثانوية"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Teaching Professionals",
+    category: "Education & Training",
+    subCategory: "Teaching",
+    keywords: ["high", "school", "secondary", "teacher", "subject"]
+  },
+  {
+    code: "2310",
+    titleEn: "University Professor",
+    titles: {
+      en: "University Professor",
+      fr: "Professeur d'Université",
+      es: "Profesor Universitario",
+      de: "Universitätsprofessor",
+      it: "Professore Universitario",
+      pt: "Professor Universitário",
+      ru: "Профессор университета",
+      zh: "大学教授",
+      ja: "大学教授",
+      ko: "대학교수",
+      ar: "أستاذ جامعي"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Teaching Professionals",
+    category: "Education & Training",
+    subCategory: "Teaching",
+    keywords: ["university", "professor", "higher", "education", "research"]
+  },
+
+  // Training & Development
+  {
+    code: "2424",
+    titleEn: "Corporate Trainer",
+    titles: {
+      en: "Corporate Trainer",
+      fr: "Formateur d'Entreprise",
+      es: "Formador Corporativo",
+      de: "Unternehmensausbilder",
+      it: "Formatore Aziendale",
+      pt: "Treinador Corporativo",
+      ru: "Корпоративный тренер",
+      zh: "企业培训师",
+      ja: "企業トレーナー",
+      ko: "기업 교육담당자",
+      ar: "مدرب الشركات"
+    },
+    majorGroup: "Professionals",
+    subMajorGroup: "Business and Administration Professionals",
+    category: "Education & Training",
+    subCategory: "Training & Development",
+    keywords: ["corporate", "trainer", "training", "development", "skills"]
+  },
+  {
+    code: "2424b",
+    titleEn: "Training Coordinator",
+    titles: {
+      en: "Training Coordinator",
+      fr: "Coordinateur de Formation",
+      es: "Coordinador de Capacitación",
+      de: "Ausbildungskoordinator",
+      it: "Coordinatore Formazione",
+      pt: "Coordenador de Treinamento",
+      ru: "Координатор обучения",
+      zh: "培训协调员",
+      ja: "研修コーディネーター",
+      ko: "교육 조정자",
+      ar: "منسق التدريب"
+    },
+    majorGroup: "Associate Professionals",
+    subMajorGroup: "Business and Administration Associate Professionals",
+    category: "Education & Training",
+    subCategory: "Training & Development",
+    keywords: ["training", "coordinator", "development", "programs"]
+  }
 ];
 
 export const popularJobs = [
+  // Generic Popular Jobs
+  "2610", // Legal Professional
+  "2400b", // Banking Professional  
+  "2500", // IT Professional
+  "2200", // Healthcare Professional
+  "2420", // Sales Professional
+  "2300b", // Teacher
+  
+  // Specific Popular Jobs
   "2511", // Software Developer  
   "2611", // Lawyer
   "2211", // General Practitioner
   "2221", // Registered Nurse
+  "2412", // Accountant
+  "2411", // Bank Teller
+  "5221", // Sales Representative
+  "2341", // Elementary School Teacher
   "1113", // Operations Manager
   "1115", // Project Manager
   "2512", // Data Scientist
