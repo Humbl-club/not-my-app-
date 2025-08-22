@@ -34,22 +34,11 @@ export const HeroSection = () => {
             </Button>
           </div>
 
-          {/* Subtle value props */}
-          <div className="pt-12 space-y-6">
-            <h2 className="text-2xl md:text-3xl font-light opacity-90">
+          {/* Subtle value proposition */}
+          <div className="pt-8">
+            <p className="text-lg opacity-75 font-light">
               {t('hero.valueProposition')}
-            </h2>
-            <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-base opacity-85">
-              <div className="flex items-center gap-2">
-                <Clock className="h-5 w-5" />
-                <span>{t('hero.processingTime')}</span>
-              </div>
-              <span className="hidden md:block text-white/40">•</span>
-              <div className="flex items-center gap-2">
-                <Globe className="h-5 w-5" />
-                <span>{t('hero.security')}</span>
-              </div>
-            </div>
+            </p>
           </div>
         </div>
       </div>
