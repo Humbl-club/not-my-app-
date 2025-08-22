@@ -18,6 +18,9 @@
     "feature2": "包含专家文档审查",
     "feature3": "24/7多语言支持",
     "feature4": "退款保证",
+    "multipleApplicants": "为您的整个家庭或团体申请",
+    "quickProcessing": "72小时内处理完成",
+    "expertSupport": "全程专家支持",
     "startApplication": "开始申请",
     "learnMore": "了解更多",
     "stats": {"title": "处理统计", "processingTime": "72小时", "processingLabel": "平均处理时间", "applicationsCount": "10,000+", "applicationsLabel": "已处理申请"},
@@ -26,7 +29,7 @@
   "trust": {"processing": "平均处理时间", "processingTime": "72小时", "applications": "已处理申请", "applicationsCount": "10,000+", "notice": "此服务由独立第三方提供，与英国政府无关联。"},
   "steps": {"title": "简单的4步流程", "subtitle": "一个美观简单的流程，只需不到15分钟", "step1": {"title": "填写申请", "description": "使用您的个人和旅行详细信息完成安全的在线表格。", "time": "5-10分钟"}, "step2": {"title": "上传文档", "description": "安全地将您的护照和照片上传到我们的加密平台。", "time": "2-3分钟"}, "step3": {"title": "付款", "description": "安全的付款处理，提供多种付款选项。", "time": "1-2分钟"}, "step4": {"title": "接收ETA", "description": "直接在您的电子邮件收件箱中获得已批准的ETA。", "time": "24-72小时"}},
   "trustIndicators": {"secure": {"title": "安全加密", "description": "SSL加密数据保护"}, "gdpr": {"title": "符合GDPR", "description": "全面的数据保护合规性"}, "support": {"title": "24/7支持", "description": "全天候协助"}, "trusted": {"title": "值得信赖的服务", "description": "超过10,000个成功申请"}},
-  "applicationSteps": {"title": "简单的4步流程", "subtitle": "精简的申请流程让您快速便捷地获得英国ETA", "step1": {"title": "完成申请", "description": "使用您的个人和旅行详细信息完成安全的在线表格。", "time": "5-10分钟"}, "step2": {"title": "上传文件", "description": "提交您的护照复印件和照片。我们的系统会自动验证所有要求。", "time": "2-3分钟"}, "step3": {"title": "安全支付", "description": "使用信用卡、借记卡或PayPal安全付款。所有交易均经过加密。", "time": "1-2分钟"}, "step4": {"title": "收到授权", "description": "在72小时内通过电子邮件收到您的英国ETA。在线跟踪您的申请状态。", "time": "最长72小时"}},
+  "applicationSteps": {"title": "简单的4步流程", "subtitle": "精简的申请流程让您快速便捷地获得英国ETA", "step1": {"title": "完成申请", "description": "为您自己和任何旅行同伴完成申请表格，填写个人和旅行详细信息。", "time": "5-10分钟"}, "step2": {"title": "上传文件", "description": "提交您的护照复印件和照片。我们的系统会自动验证所有要求。", "time": "2-3分钟"}, "step3": {"title": "安全支付", "description": "使用信用卡、借记卡或PayPal安全付款。所有交易均经过加密。", "time": "1-2分钟"}, "step4": {"title": "收到授权", "description": "在72小时内通过电子邮件收到您的英国ETA。在线跟踪您的申请状态。", "time": "最长72小时"}},
   "legal": {
     "title": "重要法律声明",
     "content": "ETAsHub是英国电子旅行授权(ETA)申请处理的独立服务。我们与英国政府或英国内政部无任何关联。我们的服务通过收取服务费加上强制性政府费用来协助您提交ETA申请。您可以通过英国政府官方网站免费直接提交申请，尽管我们的服务为您的便利提供了额外功能，如表格验证、客户支持和申请跟踪。"
@@ -55,9 +58,9 @@
       "title": "存储",
       "description": "安全存储您的文档以备将来参考"
     },
-    "reminders": {
-      "title": "提醒",
-      "description": "续订和更新的自动通知"
+    "family": {
+      "title": "家庭与团体申请",
+      "description": "在一次便捷的会话中为多名旅行者申请"
     }
   },
   "footer": {

@@ -11,6 +11,9 @@
   "hero": {
     "title": "Apply for Your UK ETA",
     "subtitle": "Simple, secure, and reliable assistance with your UK Electronic Travel Authorisation",
+    "multipleApplicants": "Apply for your entire family or group",
+    "quickProcessing": "Processed within 72 hours",
+    "expertSupport": "Expert support throughout",
     "startApplication": "Start Your Application",
     "disclaimer": "ETAsHub is a private service provider and not affiliated with the UK government. You may apply directly on GOV.UK for the government fee only. Our service provides administrative assistance, tracking, and secure storage in addition to the government process.",
     "valueProposition": "Simplify Your Travel — Focus on Your Journey, We Handle the Admin"
@@ -37,12 +40,12 @@
     "security": {"title": "Security", "description": "bank-level data protection, GDPR-compliant"},
     "tracking": {"title": "Application Tracking", "description": "see the status of your application anytime"},
     "storage": {"title": "Digital Storage", "description": "your ETA is securely saved for future reference"},
-    "reminders": {"title": "Reminders", "description": "we'll notify you before your ETA expires"}
+    "family": {"title": "Family & Group Applications", "description": "apply for multiple travelers in one convenient session"}
   },
   "applicationSteps": {
     "title": "Simple 4-Step Process",
     "subtitle": "Our streamlined process makes getting your electronic travel authorization fast and easy worldwide",
-    "step1": {"title": "Complete Application", "description": "Fill out the secure online form with your personal and travel details for any supported destination.", "time": "5-10 minutes"},
+    "step1": {"title": "Complete Application", "description": "Complete application forms for yourself and any travel companions with personal and travel details for any supported destination.", "time": "5-10 minutes"},
     "step2": {"title": "Upload Documents", "description": "Submit your passport copy and photo. Our system validates all requirements automatically.", "time": "2-3 minutes"},
     "step3": {"title": "Secure Payment", "description": "Pay securely with credit card, debit card, or PayPal. All transactions are encrypted globally.", "time": "1-2 minutes"},
     "step4": {"title": "Receive Authorization", "description": "Get your electronic travel authorization via email. Track your application status online 24/7.", "time": "1-3 business days"}

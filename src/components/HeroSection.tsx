@@ -22,6 +22,22 @@ export const HeroSection = () => {
             </p>
           </div>
 
+          {/* Feature highlights */}
+          <div className="flex flex-wrap justify-center gap-8 pt-4">
+            <div className="flex items-center gap-3 text-white/90">
+              <Users className="h-5 w-5" />
+              <span className="text-sm font-medium">{t('hero.multipleApplicants')}</span>
+            </div>
+            <div className="flex items-center gap-3 text-white/90">
+              <Clock className="h-5 w-5" />
+              <span className="text-sm font-medium">{t('hero.quickProcessing')}</span>
+            </div>
+            <div className="flex items-center gap-3 text-white/90">
+              <Globe className="h-5 w-5" />
+              <span className="text-sm font-medium">{t('hero.expertSupport')}</span>
+            </div>
+          </div>
+
           {/* CTA Button */}
           <div className="pt-6">
             <Button 

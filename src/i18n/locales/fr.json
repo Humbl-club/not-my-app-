@@ -17,6 +17,9 @@
     "feature2": "Examen expert des documents inclus",
     "feature3": "Support multilingue 24h/24 et 7j/7",
     "feature4": "Garantie de remboursement",
+    "multipleApplicants": "Demandez pour toute votre famille ou groupe",
+    "quickProcessing": "Traité en 72 heures",
+    "expertSupport": "Support expert tout au long",
     "startApplication": "Commencer la Demande",
     "learnMore": "En Savoir Plus",
     "stats": {
@@ -63,15 +66,15 @@
       "title": "Stockage",
       "description": "Stockage sécurisé de vos documents pour référence future"
     },
-    "reminders": {
-      "title": "Rappels",
-      "description": "Notifications automatiques pour le renouvellement et les mises à jour"
+    "family": {
+      "title": "Applications Familiales & Groupes",
+      "description": "Demandez pour plusieurs voyageurs en une session pratique"
     }
   },
   "applicationSteps": {
     "title": "Processus simple en 4 étapes",
     "subtitle": "Notre processus simplifié rend l'obtention de votre ETA Royaume-Uni rapide et facile",
-    "step1": {"title": "Remplir la demande", "description": "Complétez le formulaire en ligne sécurisé avec vos détails personnels et de voyage.", "time": "5-10 minutes"},
+    "step1": {"title": "Remplir la demande", "description": "Complétez les formulaires de demande pour vous-même et tous compagnons de voyage avec les détails personnels et de voyage.", "time": "5-10 minutes"},
     "step2": {"title": "Télécharger les documents", "description": "Soumettez la copie de votre passeport et votre photo. Notre système valide automatiquement toutes les exigences.", "time": "2-3 minutes"},
     "step3": {"title": "Paiement sécurisé", "description": "Payez en toute sécurité par carte de crédit, de débit ou PayPal. Toutes les transactions sont chiffrées.", "time": "1-2 minutes"},
     "step4": {"title": "Recevoir l'autorisation", "description": "Recevez votre ETA Royaume-Uni par e-mail sous 72 heures. Suivez le statut de votre demande en ligne.", "time": "Jusqu'à 72 heures"}

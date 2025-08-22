@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Lock, Clock, Globe, Star } from 'lucide-react';
+import { Shield, Users, Clock, Globe, Star } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export const TrustIndicators = () => {
@@ -10,7 +10,7 @@ export const TrustIndicators = () => {
     { key: 'security', icon: Shield },
     { key: 'tracking', icon: Clock },
     { key: 'storage', icon: Globe },
-    { key: 'reminders', icon: Lock }
+    { key: 'family', icon: Users }
   ];
 
   return (
