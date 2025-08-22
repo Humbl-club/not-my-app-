@@ -10,6 +10,7 @@ import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { JobTitleInput } from '@/components/ui/job-title-input';
 import { EmailInput, EMAIL_PATTERN } from '@/components/ui/email-input';
 import { PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
 import { DateOfBirthInput, validateDateOfBirth } from '@/components/ui/date-of-birth-input';
@@ -475,9 +476,9 @@ const ApplicantForm = () => {
                      <FormField control={form.control} name="jobTitle" render={({ field, fieldState }) => (
                        <FormItem>
                          <FormLabel>{t('application.employment.jobTitle.label')} <span className="text-destructive">*</span></FormLabel>
-                         <FormControl>
-                           <Input {...field} placeholder={t('application.employment.jobTitle.placeholder')} aria-invalid={!!fieldState.error} />
-                         </FormControl>
+                          <FormControl>
+                            <JobTitleInput {...field} placeholder={t('application.employment.jobTitle.placeholder')} aria-invalid={!!fieldState.error} />
+                          </FormControl>
                          <FormMessage />
                        </FormItem>
                      )} />

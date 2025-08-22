@@ -16,6 +16,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { JobTitleInput } from '@/components/ui/job-title-input';
 import { EmailInput, EMAIL_PATTERN } from '@/components/ui/email-input';
 import { PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
 import { DateOfBirthInput, validateDateOfBirth } from '@/components/ui/date-of-birth-input';
@@ -545,16 +546,14 @@ const Application = () => {
                                 <FormLabel>
                                   {t('application.employment.jobTitle.label', { defaultValue: "What's your job?" })} <span aria-hidden="true" className="text-destructive">*</span>
                                 </FormLabel>
-                                <FormControl>
-                                  <Input
-                                    {...field}
-                                    type="text"
-                                    inputMode="text"
-                                    placeholder={t('application.employment.jobTitle.placeholder', { defaultValue: 'Enter your job title' })}
-                                    aria-required="true"
-                                    aria-invalid={!!fieldState.error}
-                                  />
-                                </FormControl>
+                                 <FormControl>
+                                   <JobTitleInput
+                                     {...field}
+                                     placeholder={t('application.employment.jobTitle.placeholder', { defaultValue: 'Enter your job title' })}
+                                     aria-required="true"
+                                     aria-invalid={!!fieldState.error}
+                                   />
+                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
                             )}
