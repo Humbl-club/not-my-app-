@@ -158,5 +158,24 @@
     "actions": {"downloadReceipt": "下载收据", "emailReceipt": "发送收据邮件", "trackApplication": "跟踪申请"},
     "support": {"title": "需要帮助？", "email": "电子邮件支持", "phone": "电话支持", "hours": "24/7全天候服务"},
     "returnHome": "返回首页"
+  },
+  "validation": {
+    "email": {
+      "required": "电子邮件是必需的",
+      "format": "请输入有效的电子邮件地址",
+      "invalidChars": "电子邮件不能包含空格或无效字符",
+      "multipleAt": "电子邮件必须恰好有一个@符号",
+      "missingParts": "电子邮件必须有本地部分和域",
+      "consecutiveDots": "电子邮件不能有连续的点",
+      "invalidFormat": "无效的电子邮件格式"
+    },
+    "passportName": {
+      "required": "姓名是必需的",
+      "format": "仅使用大写字母A-Z、空格、连字符和撇号",
+      "tooLong": "姓名必须为1-50个字符",
+      "invalidStart": "姓名不能以空格或特殊字符开头或结尾",
+      "consecutive": "不能有连续的空格或特殊字符",
+      "passportFormat": "输入您护照上显示的确切姓名"
+    }
   }
 }

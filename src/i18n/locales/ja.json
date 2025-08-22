@@ -136,5 +136,24 @@
     "actions": {"downloadReceipt": "領収書をダウンロード", "emailReceipt": "領収書をメールで送信", "trackApplication": "申請追跡"},
     "support": {"title": "サポートが必要ですか？", "email": "メールサポート", "phone": "電話サポート", "hours": "24時間365日対応"},
     "returnHome": "ホームに戻る"
+  },
+  "validation": {
+    "email": {
+      "required": "メールアドレスが必要です",
+      "format": "有効なメールアドレスを入力してください",
+      "invalidChars": "メールにはスペースや無効な文字を含めることはできません",
+      "multipleAt": "メールは正確に1つの@記号を持つ必要があります",
+      "missingParts": "メールはローカル部分とドメインの両方を持つ必要があります",
+      "consecutiveDots": "メールに連続したドットを含めることはできません",
+      "invalidFormat": "無効なメール形式"
+    },
+    "passportName": {
+      "required": "名前が必要です",
+      "format": "大文字A-Z、スペース、ハイフン、アポストロフィのみ使用してください",
+      "tooLong": "名前は1-50文字である必要があります",
+      "invalidStart": "名前はスペースや特殊文字で始まったり終わったりすることはできません",
+      "consecutive": "連続したスペースや特殊文字を持つことはできません",
+      "passportFormat": "パスポートに表示されている通りに正確に名前を入力してください"
+    }
   }
 }

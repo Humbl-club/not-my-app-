@@ -145,5 +145,24 @@
     "actions": {"downloadReceipt": "영수증 다운로드", "emailReceipt": "이메일로 영수증 보내기", "trackApplication": "신청 추적"},
     "support": {"title": "도움이 필요하신가요?", "email": "이메일 지원", "phone": "전화 지원", "hours": "연중무휴 24시간"},
     "returnHome": "홈으로 돌아가기"
+  },
+  "validation": {
+    "email": {
+      "required": "이메일이 필요합니다",
+      "format": "유효한 이메일 주소를 입력하세요",
+      "invalidChars": "이메일에는 공백이나 잘못된 문자가 포함될 수 없습니다",
+      "multipleAt": "이메일은 정확히 하나의 @ 기호를 가져야 합니다",
+      "missingParts": "이메일은 로컬 부분과 도메인을 모두 가져야 합니다",
+      "consecutiveDots": "이메일에는 연속된 점이 있을 수 없습니다",
+      "invalidFormat": "잘못된 이메일 형식"
+    },
+    "passportName": {
+      "required": "이름이 필요합니다",
+      "format": "대문자 A-Z, 공백, 하이픈, 아포스트로피만 사용하세요",
+      "tooLong": "이름은 1-50자여야 합니다",
+      "invalidStart": "이름은 공백이나 특수 문자로 시작하거나 끝날 수 없습니다",
+      "consecutive": "연속된 공백이나 특수 문자를 가질 수 없습니다",
+      "passportFormat": "여권에 표시된 대로 정확히 이름을 입력하세요"
+    }
   }
 }

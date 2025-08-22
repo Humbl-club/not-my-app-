@@ -167,18 +167,24 @@
         "addButton": "Add Nationality"
       },
       "options": { "yes": "Yes", "no": "No" }
-    },
+  },
   "validation": {
     "email": {
       "required": "Email address is required",
       "invalidFormat": "Please enter a valid email address",
       "noSpaces": "Email address cannot contain spaces",
-      "missingAt": "Email address must contain @ symbol",
-      "multipleAt": "Email address must contain exactly one @ symbol",
-      "consecutiveDots": "Email address cannot contain consecutive dots",
-      "invalidStartEnd": "Email address cannot start or end with special characters",
-      "missingParts": "Email address must have both local part and domain",
-      "invalidTLD": "Email address must have a valid domain extension (at least 2 letters)"
+      "multipleAt": "Email must have exactly one @ symbol",
+      "missingParts": "Email must have both local part and domain",
+      "consecutiveDots": "Email cannot have consecutive dots",
+      "invalidFormat": "Invalid email format"
+    },
+    "passportName": {
+      "required": "Name is required",
+      "format": "Use only uppercase letters A-Z, spaces, hyphens, and apostrophes",
+      "tooLong": "Name must be 1-50 characters long",
+      "invalidStart": "Name cannot start or end with spaces or special characters",
+      "consecutive": "Cannot have consecutive spaces or special characters",
+      "passportFormat": "Enter your name exactly as it appears on your passport"
     }
   },
   "tracking": {

@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { EmailInput, EMAIL_PATTERN } from '@/components/ui/email-input';
+import { PassportNameInput, PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { nationalities } from '@/constants/nationalities';
@@ -29,15 +30,15 @@ const ApplicantForm = () => {
     } catch {}
   }, []);
 
-  const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,50}$/;
+  const nameRegex = PASSPORT_NAME_PATTERN;
   const emailRegex = EMAIL_PATTERN;
   const dateRegex = /^\\d{4}-\\d{2}-\\d{2}$/;
   const passportRegex = /^[A-Z0-9]{6,9}$/i;
   const nationalityRegex = /^(AF|AL|DZ|AS|AD|AO|AI|AQ|AG|AR|AM|AW|AU|AT|AZ|BS|BH|BD|BB|BY|BE|BZ|BJ|BM|BT|BO|BQ|BA|BW|BV|BR|IO|BN|BG|BF|BI|CV|KH|CM|CA|KY|CF|TD|CL|CN|CX|CC|CO|KM|CG|CD|CK|CR|CI|HR|CU|CW|CY|CZ|DK|DJ|DM|DO|EC|EG|SV|GQ|ER|EE|SZ|ET|FK|FO|FJ|FI|FR|GF|PF|TF|GA|GM|GE|DE|GH|GI|GR|GL|GD|GP|GU|GT|GG|GN|GW|GY|HT|HM|VA|HN|HK|HU|IS|IN|ID|IR|IQ|IE|IM|IL|IT|JM|JP|JE|JO|KZ|KE|KI|KP|KR|KW|KG|LA|LV|LB|LS|LR|LY|LI|LT|LU|MO|MK|MG|MW|MY|MV|ML|MT|MH|MQ|MR|MU|YT|MX|FM|MD|MC|MN|ME|MS|MA|MZ|MM|NA|NR|NP|NL|NC|NZ|NI|NE|NG|NU|NF|MP|NO|OM|PK|PW|PS|PA|PG|PY|PE|PH|PN|PL|PT|PR|QA|RE|RO|RU|RW|BL|SH|KN|LC|MF|PM|VC|WS|SM|ST|SA|SN|RS|SC|SL|SG|SX|SK|SI|SB|SO|ZA|GS|SS|ES|LK|SD|SR|SJ|SE|CH|SY|TW|TJ|TZ|TH|TL|TG|TK|TO|TT|TN|TR|TM|TC|TV|UG|UA|AE|GB|US|UM|UY|UZ|VU|VE|VN|VG|VI|WF|EH|YE|ZM|ZW)$/;
 
   const applicantSchema = z.object({
-    firstName: z.string().min(1, 'First name is required').regex(nameRegex).max(50),
-    lastName: z.string().min(1, 'Last name is required').regex(nameRegex).max(50),
+    firstName: z.string().min(1, 'validation.passportName.required').regex(nameRegex, 'validation.passportName.format').max(50, 'validation.passportName.tooLong'),
+    lastName: z.string().min(1, 'validation.passportName.required').regex(nameRegex, 'validation.passportName.format').max(50, 'validation.passportName.tooLong'),
     dateOfBirth: z.string().min(1, 'Date of birth is required').regex(dateRegex, 'Use format YYYY-MM-DD'),
     nationality: z.string().regex(nationalityRegex, 'Please select a nationality'),
     hasAdditionalNationalities: z.boolean().optional().default(false),
@@ -193,7 +194,11 @@ const ApplicantForm = () => {
                       <FormItem>
                         <FormLabel>{t('application.personalInfo.firstName.label')} <span className="text-destructive">*</span></FormLabel>
                         <FormControl>
-                          <Input {...field} aria-invalid={!!fieldState.error} />
+                          <PassportNameInput
+                            {...field}
+                            placeholder={t('application.personalInfo.firstName.placeholder')}
+                            error={fieldState.error?.message}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -202,7 +207,11 @@ const ApplicantForm = () => {
                       <FormItem>
                         <FormLabel>{t('application.personalInfo.lastName.label')} <span className="text-destructive">*</span></FormLabel>
                         <FormControl>
-                          <Input {...field} aria-invalid={!!fieldState.error} />
+                          <PassportNameInput
+                            {...field}
+                            placeholder={t('application.personalInfo.lastName.placeholder')}
+                            error={fieldState.error?.message}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

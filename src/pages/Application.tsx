@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { EmailInput, EMAIL_PATTERN } from '@/components/ui/email-input';
+import { PassportNameInput, PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -25,7 +26,7 @@ import { useEffect, useMemo } from 'react';
 import { nationalities } from '@/constants/nationalities';
 
 // Regex patterns
-const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,50}$/;
+const nameRegex = PASSPORT_NAME_PATTERN;
 const emailRegex = EMAIL_PATTERN;
 const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // YYYY-MM-DD
 const passportRegex = /^[A-Z0-9]{6,9}$/i;
@@ -50,14 +51,14 @@ const applicantBase = z
   .object({
     firstName: z
       .string()
-      .min(1, 'First name is required')
-      .regex(nameRegex, "Please enter a valid first name (letters, spaces, - and ' allowed)")
-      .max(50, 'First name is too long'),
+      .min(1, 'validation.passportName.required')
+      .regex(nameRegex, 'validation.passportName.format')
+      .max(50, 'validation.passportName.tooLong'),
     lastName: z
       .string()
-      .min(1, 'Last name is required')
-      .regex(nameRegex, "Please enter a valid last name (letters, spaces, - and ' allowed)")
-      .max(50, 'Last name is too long'),
+      .min(1, 'validation.passportName.required')
+      .regex(nameRegex, 'validation.passportName.format')
+      .max(50, 'validation.passportName.tooLong'),
     dateOfBirth: z
       .string()
       .min(1, 'Date of birth is required')
@@ -297,13 +298,11 @@ const Application = () => {
                                   {t('application.personalInfo.firstName.label')} <span aria-hidden="true" className="text-destructive">*</span>
                                 </FormLabel>
                                 <FormControl>
-                                  <Input
+                                  <PassportNameInput
                                     {...field}
-                                    type="text"
-                                    inputMode="text"
                                     placeholder={t('application.personalInfo.firstName.placeholder')}
                                     aria-required="true"
-                                    aria-invalid={!!fieldState.error}
+                                    error={fieldState.error?.message}
                                   />
                                 </FormControl>
                                 <FormMessage />
@@ -320,13 +319,11 @@ const Application = () => {
                                   {t('application.personalInfo.lastName.label')} <span aria-hidden="true" className="text-destructive">*</span>
                                 </FormLabel>
                                 <FormControl>
-                                  <Input
+                                  <PassportNameInput
                                     {...field}
-                                    type="text"
-                                    inputMode="text"
                                     placeholder={t('application.personalInfo.lastName.placeholder')}
                                     aria-required="true"
-                                    aria-invalid={!!fieldState.error}
+                                    error={fieldState.error?.message}
                                   />
                                 </FormControl>
                                 <FormMessage />
