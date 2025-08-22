@@ -4,9 +4,11 @@ import { cn } from "@/lib/utils";
 // Enhanced passport number validation pattern (6-12 alphanumeric characters)
 const PASSPORT_NUMBER_PATTERN = /^[A-Z0-9]{6,12}$/;
 
-// Check for repeated characters (3+ consecutive identical characters)
-const hasRepeatedCharacters = (value: string): boolean => {
-  return /(.)\1{2,}/.test(value);
+// Check if passport consists only of repeated characters (lacks character diversity)
+const isOnlyRepeatedCharacters = (value: string): boolean => {
+  const uniqueChars = new Set(value.split(''));
+  // If there are only 1-2 unique characters, it's likely a weak pattern
+  return uniqueChars.size <= 2;
 };
 
 // Check for simple sequences (ascending/descending patterns)
@@ -70,8 +72,8 @@ const PassportNumberInput = React.forwardRef<HTMLInputElement, PassportNumberInp
         return false;
       }
 
-      if (hasRepeatedCharacters(inputValue)) {
-        setInternalError("Cannot contain repeated characters (e.g., AAA, 111)");
+      if (isOnlyRepeatedCharacters(inputValue)) {
+        setInternalError("Cannot consist only of repeated characters (e.g., AAAAAAA, 111111)");
         return false;
       }
 
