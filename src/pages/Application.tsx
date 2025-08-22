@@ -239,28 +239,32 @@ const Application = () => {
     navigate('/application/documents');
   };
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gradient-subtle">
+      <div className="container mx-auto px-6 py-24">
         <div className="max-w-4xl mx-auto">
           {/* Progress Bar */}
-          <div className="mb-8">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium">{t('application.progress.step', { current: 1, total: 4 })}</span>
+          <div className="mb-16">
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-sm font-medium text-muted-foreground">{t('application.progress.step', { current: 1, total: 4 })}</span>
               <span className="text-sm text-muted-foreground">{t('application.progress.complete', { percent: 25 })}</span>
             </div>
-            <Progress value={25} className="h-2" />
+            <Progress value={25} className="h-3 bg-muted/50 [&>[data-state=complete]]:bg-gradient-travel" />
           </div>
 
           {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-2">{t('application.title')}</h1>
-            <p className="text-muted-foreground">{t('application.subtitle')}</p>
+          <div className="text-center mb-24">
+            <h1 className="text-5xl md:text-6xl font-light text-foreground mb-8 tracking-tight">
+              {t('application.title')}
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
+              {t('application.subtitle')}
+            </p>
           </div>
 
           {/* Application Form */}
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('application.personalInfo.title')}</CardTitle>
+          <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-border/30 shadow-card hover:shadow-form transition-all duration-500">
+            <CardHeader className="pb-8">
+              <CardTitle className="text-3xl font-light text-foreground mb-2">{t('application.personalInfo.title')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               <Form {...form}>
@@ -289,19 +293,19 @@ const Application = () => {
                     const hasApplicantError = !!formState.errors?.applicants?.[idx];
                     const stateRequired = ['US','CA'].includes((applicants?.[idx]?.address?.country as string) || '');
                     return (
-                      <div key={field.id} className={cn("rounded-lg border p-4 space-y-4", hasApplicantError && "border-l-4 border-l-error-gentle border-error-gentle/30 bg-error-gentle-light")}>
+                      <div key={field.id} className={cn("rounded-3xl border border-border/30 p-8 space-y-6 bg-white/50 backdrop-blur-sm transition-all duration-300", hasApplicantError && "border-l-4 border-l-error-gentle border-error-gentle/30 bg-error-gentle-light/50")}>
                         <div className="flex items-center justify-between">
-                          <h3 className="text-lg font-semibold">
+                          <h3 className="text-2xl font-light text-foreground">
                             {t('application.applicant.title', { defaultValue: 'Applicant {{num}}', num: idx + 1 })}
                           </h3>
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-3">
                              {hasApplicantError && (
-                               <Badge variant="outline" className="border-error-gentle text-error-gentle bg-error-gentle-light">
-                                 {t('application.errors.needsAttention', { defaultValue: 'Needs attention' })}
-                               </Badge>
+                                <Badge variant="outline" className="border-error-gentle text-error-gentle bg-error-gentle-light/80 rounded-full px-4 py-1">
+                                  {t('application.errors.needsAttention', { defaultValue: 'Needs attention' })}
+                                </Badge>
                              )}
                             {idx > 0 && (
-                              <Button type="button" variant="outline" onClick={() => remove(idx)} className="flex items-center gap-2">
+                              <Button type="button" variant="outline" onClick={() => remove(idx)} className="flex items-center gap-2 rounded-full border-border/50 hover:bg-destructive/10 hover:border-destructive/50">
                                 <Trash2 className="h-4 w-4" /> {t('application.applicant.remove', { defaultValue: 'Remove' })}
                               </Button>
                             )}
@@ -778,19 +782,19 @@ const Application = () => {
                   </div>
 
                   {/* Navigation */}
-                  <div className="flex justify-between pt-2">
+                  <div className="flex justify-between pt-8">
                     <Button
                       type="button"
                       variant="outline"
                       onClick={() => navigate('/')}
-                      className="flex items-center gap-2"
+                      className="flex items-center gap-2 rounded-full px-8 py-3 border-border/50 hover:bg-muted/50"
                     >
                       <ArrowLeft className="h-4 w-4" />
                       {t('application.back')}
                     </Button>
                     <Button
                       type="submit"
-                      className="flex items-center gap-2"
+                      className="flex items-center gap-2 bg-gradient-to-r from-primary to-turquoise text-white rounded-full px-8 py-3 hover:shadow-lg transition-all duration-300"
                       disabled={!isValid || isSubmitting}
                       aria-disabled={!isValid || isSubmitting}
                     >

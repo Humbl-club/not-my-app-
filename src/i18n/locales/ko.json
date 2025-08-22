@@ -44,8 +44,8 @@
       "description": "이메일 업데이트로 실시간 신청 추적"
     },
     "storage": {
-      "title": "저장",
-      "description": "향후 참조를 위한 안전한 문서 저장"
+      "title": "문서 관리",
+      "description": "안전한 문서 처리 및 쉬운 검색"
     },
     "family": {
       "title": "가족 및 그룹 신청",

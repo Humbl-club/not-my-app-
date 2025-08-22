@@ -12,19 +12,23 @@ const Track = () => {
   const sampleRef = referenceNumber || 'ETA-2024-001234';
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-gradient-subtle">
+      <div className="container mx-auto px-6 py-24">
+        <div className="max-w-5xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-2">{t('tracking.title')}</h1>
-            <p className="text-muted-foreground">{t('tracking.subtitle')}</p>
+          <div className="text-center mb-16">
+            <h1 className="text-5xl md:text-6xl font-light text-foreground mb-8 tracking-tight">
+              {t('tracking.title')}
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
+              {t('tracking.subtitle')}
+            </p>
           </div>
 
           {/* Search Form */}
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle>{t('tracking.lookupTitle')}</CardTitle>
+          <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-border/30 shadow-card mb-12">
+            <CardHeader className="pb-8">
+              <CardTitle className="text-2xl font-light text-foreground">{t('tracking.lookupTitle')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex gap-4">
@@ -35,7 +39,7 @@ const Track = () => {
                     onChange={(e) => setReferenceNumber(e.target.value)}
                   />
                 </div>
-                <Button className="flex items-center gap-2">
+                <Button className="flex items-center gap-2 bg-gradient-to-r from-primary to-turquoise text-white rounded-full px-6 py-3 hover:shadow-lg transition-all duration-300">
                   <Search className="h-4 w-4" />
                   {t('tracking.trackButton')}
                 </Button>
@@ -45,9 +49,9 @@ const Track = () => {
           </Card>
 
           {/* Sample Application Status */}
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle>{t('tracking.applicationStatus', { ref: sampleRef })}</CardTitle>
+          <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-border/30 shadow-card mb-12">
+            <CardHeader className="pb-8">
+              <CardTitle className="text-2xl font-light text-foreground">{t('tracking.applicationStatus', { ref: sampleRef })}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
@@ -146,9 +150,9 @@ const Track = () => {
           </Card>
 
           {/* Help Section */}
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('tracking.support.title')}</CardTitle>
+          <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-border/30 shadow-card">
+            <CardHeader className="pb-8">
+              <CardTitle className="text-2xl font-light text-foreground">{t('tracking.support.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

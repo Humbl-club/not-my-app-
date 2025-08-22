@@ -39,7 +39,7 @@
     "convenience": {"title": "Convenience", "description": "no confusing forms or mistakes; we handle it for you"},
     "security": {"title": "Security", "description": "bank-level data protection, GDPR-compliant"},
     "tracking": {"title": "Application Tracking", "description": "see the status of your application anytime"},
-    "storage": {"title": "Digital Storage", "description": "your ETA is securely saved for future reference"},
+    "storage": {"title": "Document Management", "description": "secure document processing and easy retrieval"},
     "family": {"title": "Family & Group Applications", "description": "apply for multiple travelers in one convenient session"}
   },
   "applicationSteps": {

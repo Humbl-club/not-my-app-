@@ -44,8 +44,8 @@
       "description": "メール更新によるリアルタイム申請追跡"
     },
     "storage": {
-      "title": "保存",
-      "description": "将来の参照のための安全な文書保存"
+      "title": "文書管理",
+      "description": "安全な文書処理と簡単な取得"
     },
     "family": {
       "title": "家族・グループ申請",

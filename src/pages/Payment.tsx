@@ -66,30 +66,34 @@ const Payment = () => {
   const total = serviceFee + vat;
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-gradient-subtle">
+      <div className="container mx-auto px-6 py-24">
+        <div className="max-w-6xl mx-auto">
           {/* Progress Bar */}
-          <div className="mb-8">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium">{t('application.progress.step', { current: 4, total: 4 })}</span>
+          <div className="mb-16">
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-sm font-medium text-muted-foreground">{t('application.progress.step', { current: 4, total: 4 })}</span>
               <span className="text-sm text-muted-foreground">{t('application.progress.complete', { percent: 100 })}</span>
             </div>
-            <Progress value={100} className="h-2" />
+            <Progress value={100} className="h-3 bg-muted/50 [&>[data-state=complete]]:bg-gradient-travel" />
           </div>
 
           {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-2">{t('application.payment.title')}</h1>
-            <p className="text-muted-foreground">{t('application.payment.subtitle')}</p>
+          <div className="text-center mb-24">
+            <h1 className="text-5xl md:text-6xl font-light text-foreground mb-8 tracking-tight">
+              {t('application.payment.title')}
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
+              {t('application.payment.subtitle')}
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Payment Form */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CreditCard className="h-5 w-5" />
+            <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-border/30 shadow-card hover:shadow-form transition-all duration-500">
+              <CardHeader className="pb-8">
+                <CardTitle className="flex items-center gap-3 text-2xl font-light text-foreground">
+                  <CreditCard className="h-6 w-6 text-primary" />
                   {t('application.payment.details.title')}
                 </CardTitle>
               </CardHeader>
@@ -195,8 +199,8 @@ const Payment = () => {
                       <span>{t('application.payment.details.security')}</span>
                     </div>
 
-                    <Button type="submit" className="w-full" size="lg">
-                      <Lock className="h-4 w-4 mr-2" />
+                    <Button type="submit" className="w-full bg-gradient-to-r from-primary to-turquoise text-white rounded-full px-8 py-4 hover:shadow-lg transition-all duration-300" size="lg">
+                      <Lock className="h-5 w-5 mr-2" />
                       {t('application.payment.complete')}
                     </Button>
                   </form>
@@ -205,11 +209,11 @@ const Payment = () => {
             </Card>
 
             {/* Order Summary */}
-            <div className="space-y-6">
+            <div className="space-y-8">
               {/* Additional Applicant Option */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Additional Applicant</CardTitle>
+              <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-border/30 shadow-card">
+                <CardHeader className="pb-6">
+                  <CardTitle className="text-xl font-light text-foreground">Additional Applicant</CardTitle>
                 </CardHeader>
                 <CardContent>
                   {hasSecondApplicant && secondApplicant ? (
@@ -225,6 +229,7 @@ const Payment = () => {
                           variant="outline" 
                           size="sm"
                           onClick={() => navigate('/application/second-applicant')}
+                          className="rounded-full border-border/50 hover:bg-muted/50"
                         >
                           Edit
                         </Button>
@@ -238,7 +243,7 @@ const Payment = () => {
                       <Button 
                         variant="outline" 
                         onClick={handleAddSecondApplicant}
-                        className="flex items-center gap-2"
+                        className="flex items-center gap-2 rounded-full border-border/50 hover:bg-muted/50"
                       >
                         <Plus className="h-4 w-4" />
                         Add Second Applicant
@@ -249,9 +254,9 @@ const Payment = () => {
               </Card>
 
               {/* Order Summary */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>{t('application.payment.summary.title')}</CardTitle>
+              <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-border/30 shadow-card">
+                <CardHeader className="pb-6">
+                  <CardTitle className="text-xl font-light text-foreground">{t('application.payment.summary.title')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex justify-between">
@@ -294,18 +299,18 @@ const Payment = () => {
           </div>
 
           {/* Navigation */}
-          <div className="flex justify-between mt-8">
+          <div className="flex justify-between mt-16">
             <Button 
               variant="outline" 
               onClick={() => navigate('/application/documents')}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 rounded-full px-8 py-3 border-border/50 hover:bg-muted/50"
             >
               <ArrowLeft className="h-4 w-4" />
               {t('application.back')}
             </Button>
             <Button 
               onClick={() => navigate('/application/review')}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 bg-gradient-to-r from-primary to-turquoise text-white rounded-full px-8 py-3 hover:shadow-lg transition-all duration-300"
             >
               Review Application
               <ArrowRight className="h-4 w-4" />
