@@ -338,7 +338,7 @@ const SecondApplicant = () => {
                               disabled={!primaryApplicant?.email}
                             />
                             <label htmlFor="useSameEmailAsPrimary" className="text-sm font-medium">
-                              {t('application.payment.email.sameAsPrimary', { defaultValue: 'Same as Applicant 1' })}
+                              {t('application.email.sameAsPrimary', { defaultValue: 'Same as Applicant 1' })}
                             </label>
                           </div>
                         </FormItem>
@@ -347,7 +347,7 @@ const SecondApplicant = () => {
                       {useSameEmail && primaryApplicant?.email ? (
                         <div className="p-3 bg-muted rounded-md">
                           <p className="text-sm text-muted-foreground">
-                            {t('application.payment.email.usingPrimary', { defaultValue: 'Using Applicant 1\'s email address' })}: {primaryApplicant.email}
+                            {t('application.email.usingPrimary', { defaultValue: 'Using Applicant 1\'s email address' })}: {primaryApplicant.email}
                           </p>
                         </div>
                       ) : (
@@ -370,7 +370,7 @@ const SecondApplicant = () => {
 
                   {/* Address Section */}
                   <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">{t('application.payment.address.title', { defaultValue: 'Address' })}</h3>
+                    <h3 className="text-lg font-semibold">{t('application.address.title', { defaultValue: 'Address' })}</h3>
                     
                     <FormField control={form.control} name="useSameAddressAsPrimary" render={({ field }) => (
                       <FormItem>
@@ -382,7 +382,7 @@ const SecondApplicant = () => {
                             disabled={!primaryApplicant?.address}
                           />
                           <label htmlFor="useSameAddressAsPrimary" className="text-sm font-medium">
-                            {t('application.payment.address.sameAsPrimary', { defaultValue: 'Same as Applicant 1' })}
+                            {t('application.address.sameAsPrimary', { defaultValue: 'Same as Applicant 1' })}
                           </label>
                         </div>
                       </FormItem>
@@ -391,14 +391,14 @@ const SecondApplicant = () => {
                     {useSameAddress && primaryApplicant?.address ? (
                       <div className="p-3 bg-muted rounded-md">
                         <p className="text-sm text-muted-foreground">
-                          {t('application.payment.address.usingPrimary', { defaultValue: 'Using Applicant 1\'s address' })}
+                          {t('application.address.usingPrimary', { defaultValue: 'Using Applicant 1\'s address' })}
                         </p>
                       </div>
                     ) : (
                       <div className="space-y-4">
                         <FormField control={form.control} name="address.line1" render={({ field, fieldState }) => (
                           <FormItem>
-                            <FormLabel>{t('application.payment.address.line1.label', { defaultValue: 'Address line 1' })} <span className="text-destructive">*</span></FormLabel>
+                            <FormLabel>{t('application.address.line1.label', { defaultValue: 'Address line 1' })} <span className="text-destructive">*</span></FormLabel>
                             <FormControl>
                               <Input {...field} aria-invalid={!!fieldState.error} />
                             </FormControl>
@@ -407,7 +407,7 @@ const SecondApplicant = () => {
                         )} />
                         <FormField control={form.control} name="address.line2" render={({ field }) => (
                           <FormItem>
-                            <FormLabel>{t('application.payment.address.line2.label', { defaultValue: 'Address line 2 (optional)' })}</FormLabel>
+                            <FormLabel>{t('application.address.line2.label', { defaultValue: 'Address line 2 (optional)' })}</FormLabel>
                             <FormControl>
                               <Input {...field} />
                             </FormControl>
@@ -417,7 +417,7 @@ const SecondApplicant = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <FormField control={form.control} name="address.city" render={({ field, fieldState }) => (
                             <FormItem>
-                              <FormLabel>{t('application.payment.address.city.label', { defaultValue: 'City' })} <span className="text-destructive">*</span></FormLabel>
+                              <FormLabel>{t('application.address.city.label', { defaultValue: 'City' })} <span className="text-destructive">*</span></FormLabel>
                               <FormControl>
                                 <Input {...field} aria-invalid={!!fieldState.error} />
                               </FormControl>
@@ -426,7 +426,7 @@ const SecondApplicant = () => {
                           )} />
                           <FormField control={form.control} name="address.state" render={({ field, fieldState }) => (
                             <FormItem>
-                              <FormLabel>{t('application.payment.address.state.label', { defaultValue: 'State/Province' })} <span className="text-destructive">*</span></FormLabel>
+                              <FormLabel>{t('application.address.state.label', { defaultValue: 'State/Province' })} <span className="text-destructive">*</span></FormLabel>
                               <FormControl>
                                 <Input {...field} aria-invalid={!!fieldState.error} />
                               </FormControl>
@@ -437,7 +437,7 @@ const SecondApplicant = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <FormField control={form.control} name="address.postalCode" render={({ field, fieldState }) => (
                             <FormItem>
-                              <FormLabel>{t('application.payment.address.postalCode.label', { defaultValue: 'Postal code' })} <span className="text-destructive">*</span></FormLabel>
+                              <FormLabel>{t('application.address.postalCode.label', { defaultValue: 'Postal code' })} <span className="text-destructive">*</span></FormLabel>
                               <FormControl>
                                 <Input {...field} aria-invalid={!!fieldState.error} />
                               </FormControl>
@@ -446,14 +446,14 @@ const SecondApplicant = () => {
                           )} />
                           <FormField control={form.control} name="address.country" render={({ field, fieldState }) => (
                             <FormItem>
-                              <FormLabel>{t('application.payment.address.country.label', { defaultValue: 'Country' })} <span className="text-destructive">*</span></FormLabel>
+                              <FormLabel>{t('application.address.country.label', { defaultValue: 'Country' })} <span className="text-destructive">*</span></FormLabel>
                               <FormControl>
                                 <select
                                   {...field}
                                   className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-destructive/5 aria-[invalid=true]:focus-visible:ring-destructive disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                                   aria-invalid={!!fieldState.error}
                                 >
-                                  <option value="">{t('application.payment.address.country.placeholder', { defaultValue: 'Select a country' })}</option>
+                                  <option value="">{t('application.address.country.placeholder', { defaultValue: 'Select a country' })}</option>
                                   {nationalities.map((n) => (
                                     <option key={n.code} value={n.code}>{n.name}</option>
                                   ))}
@@ -478,11 +478,11 @@ const SecondApplicant = () => {
                           <RadioGroup value={field.value} onValueChange={field.onChange} className="flex gap-6">
                             <div className="flex items-center space-x-2">
                               <RadioGroupItem value="yes" id="hasJob-yes" />
-                              <label htmlFor="hasJob-yes" className="text-sm font-medium">{t('application.payment.options.yes')}</label>
+                              <label htmlFor="hasJob-yes" className="text-sm font-medium">{t('application.options.yes')}</label>
                             </div>
                             <div className="flex items-center space-x-2">
                               <RadioGroupItem value="no" id="hasJob-no" />
-                              <label htmlFor="hasJob-no" className="text-sm font-medium">{t('application.payment.options.no')}</label>
+                              <label htmlFor="hasJob-no" className="text-sm font-medium">{t('application.options.no')}</label>
                             </div>
                           </RadioGroup>
                         </FormControl>
@@ -519,11 +519,11 @@ const SecondApplicant = () => {
                           <RadioGroup value={field.value} onValueChange={field.onChange} className="flex gap-6">
                             <div className="flex items-center space-x-2">
                               <RadioGroupItem value="yes" id="criminalConvictions-yes" />
-                              <label htmlFor="criminalConvictions-yes" className="text-sm font-medium">{t('application.payment.options.yes')}</label>
+                              <label htmlFor="criminalConvictions-yes" className="text-sm font-medium">{t('application.options.yes')}</label>
                             </div>
                             <div className="flex items-center space-x-2">
                               <RadioGroupItem value="no" id="criminalConvictions-no" />
-                              <label htmlFor="criminalConvictions-no" className="text-sm font-medium">{t('application.payment.options.no')}</label>
+                              <label htmlFor="criminalConvictions-no" className="text-sm font-medium">{t('application.options.no')}</label>
                             </div>
                           </RadioGroup>
                         </FormControl>
@@ -538,11 +538,11 @@ const SecondApplicant = () => {
                           <RadioGroup value={field.value} onValueChange={field.onChange} className="flex gap-6">
                             <div className="flex items-center space-x-2">
                               <RadioGroupItem value="yes" id="warCrimes-yes" />
-                              <label htmlFor="warCrimes-yes" className="text-sm font-medium">{t('application.payment.options.yes')}</label>
+                              <label htmlFor="warCrimes-yes" className="text-sm font-medium">{t('application.options.yes')}</label>
                             </div>
                             <div className="flex items-center space-x-2">
                               <RadioGroupItem value="no" id="warCrimes-no" />
-                              <label htmlFor="warCrimes-no" className="text-sm font-medium">{t('application.payment.options.no')}</label>
+                              <label htmlFor="warCrimes-no" className="text-sm font-medium">{t('application.options.no')}</label>
                             </div>
                           </RadioGroup>
                         </FormControl>
