@@ -234,7 +234,7 @@
         "addButton": "Add Nationality"
       },
       "options": { "yes": "Yes", "no": "No" }
-    },
+    }
   },
   "validation": {
     "email": {
