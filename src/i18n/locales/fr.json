@@ -287,8 +287,9 @@
       "multipleAt": "L'adresse e-mail doit contenir exactement un symbole @",
       "consecutiveDots": "L'adresse e-mail ne peut pas contenir de points consécutifs",
       "invalidStartEnd": "L'adresse e-mail ne peut pas commencer ou finir par des caractères spéciaux",
-      "missingParts": "L'adresse e-mail doit avoir une partie locale et un domaine",
-    "passportNameRequired": "Le nom du passeport est requis",
+      "missingParts": "L'adresse e-mail doit avoir une partie locale et un domaine"
+    },
+    "passportName": {
     "passportNameInvalid": "Utilisez uniquement des lettres majuscules A-Z, des espaces, des tirets et des apostrophes",
     "passportNameFormat": "Le nom ne peut pas commencer ou finir par des espaces ou des caractères spéciaux",
     "passportNameLength": "Le nom doit contenir entre 1 et 50 caractères",
