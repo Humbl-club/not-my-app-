@@ -267,16 +267,15 @@
       "warCrimes": { "label": "Avez-vous déjà été soupçonné ou condamné pour crimes de guerre, terrorisme ou extrémisme?" }
     },
     "email": {
-        "sameAsMain": "Same as main applicant",
-        "usingMain": "Using main applicant's email"
-    },
+        "sameAsMain": "Identique au demandeur principal",
+        "usingMain": "Utilise l'e-mail du demandeur principal"
+      },
       "additionalNationalities": {
         "label": "Avez-vous des nationalités supplémentaires?",
         "description": "Sélectionnez ceci si vous avez plusieurs citoyennetés",
         "addButton": "Ajouter une nationalité"
       },
       "options": { "yes": "Oui", "no": "Non" }
-    },
   "validation": {
     "email": {
       "required": "L'adresse e-mail est requise",
