@@ -22,6 +22,7 @@ import { PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
 import { DateOfBirthInput, validateDateOfBirth } from '@/components/ui/date-of-birth-input';
 import { PassportNumberInput } from '@/components/ui/passport-number-input';
 import { NameFieldsSection } from '@/components/NameFieldsSection';
+import { NationalityRadioSection } from '@/components/NationalityRadioSection';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -374,79 +375,10 @@ const Application = () => {
                         </div>
 
                         {/* Additional Nationalities */}
-                        <div className="space-y-3">
-                          <FormField
-                            control={control}
-                            name={`applicants.${idx}.hasAdditionalNationalities` as const}
-                            render={({ field }) => (
-                              <div className="flex items-center gap-2">
-                                <Checkbox
-                                  id={`hasAdditionalNationalities-${idx}`}
-                                  checked={!!field.value}
-                                  onCheckedChange={(checked) => {
-                                    field.onChange(checked);
-                                    if (!checked) {
-                                      form.setValue(`applicants.${idx}.additionalNationalities` as const, [], { shouldValidate: true });
-                                    } else if ((applicants?.[idx]?.additionalNationalities?.length ?? 0) === 0) {
-                                      form.setValue(`applicants.${idx}.additionalNationalities` as const, [''], { shouldValidate: true });
-                                    }
-                                  }}
-                                />
-                                <label htmlFor={`hasAdditionalNationalities-${idx}`} className="text-sm">
-                                  {t('application.personalInfo.nationality.additionalQuestion', { defaultValue: 'Do you hold another nationality?' })}
-                                </label>
-                              </div>
-                            )}
-                          />
-
-                          {applicants?.[idx]?.hasAdditionalNationalities && (
-                            <div className="space-y-3">
-                              {(applicants?.[idx]?.additionalNationalities ?? []).map((_, j) => (
-                                <div key={j} className="flex items-center gap-3">
-                                  <div className="flex-1">
-                                    <FormField
-                                      control={control}
-                                      name={`applicants.${idx}.additionalNationalities.${j}` as const}
-                                      render={({ field, fieldState }) => (
-                                        <FormItem>
-                                          <FormLabel className="sr-only">{t('application.personalInfo.nationality.additionalLabel', { defaultValue: 'Additional nationality' })}</FormLabel>
-                                          <FormControl>
-                                            <select
-                                              {...field}
-                                              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-destructive/5 aria-[invalid=true]:focus-visible:ring-destructive disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                                              aria-invalid={!!fieldState.error}
-                                            >
-                                              <option value="">{t('application.personalInfo.nationality.placeholder')}</option>
-                                              {nationalities.map((n) => (
-                                                <option key={`${n.code}-${j}`} value={n.code}>
-                                                  {n.name}
-                                                </option>
-                                              ))}
-                                            </select>
-                                          </FormControl>
-                                          <FormMessage />
-                                        </FormItem>
-                                      )}
-                                    />
-                                  </div>
-                                  <Button type="button" variant="outline" size="icon" onClick={() => {
-                                    const current = applicants?.[idx]?.additionalNationalities ?? [];
-                                    const next = current.filter((_, k) => k !== j);
-                                    form.setValue(`applicants.${idx}.additionalNationalities` as const, next, { shouldValidate: true });
-                                  }} aria-label={t('common.remove', { defaultValue: 'Remove' })}>
-                                    <Trash2 className="h-4 w-4" />
-                                  </Button>
-                                </div>
-                              ))}
-                              <Button type="button" variant="secondary" size="sm" className="mt-1" onClick={() => {
-                                const current = applicants?.[idx]?.additionalNationalities ?? [];
-                                form.setValue(`applicants.${idx}.additionalNationalities` as const, [...current, ''], { shouldValidate: true });
-                              }}>
-                                <UserPlus className="h-4 w-4 mr-2" /> {t('application.personalInfo.nationality.addAnother', { defaultValue: 'Add another nationality' })}
-                              </Button>
-                            </div>
-                          )}
-                        </div>
+                        <NationalityRadioSection
+                          control={control}
+                          baseName={`applicants.${idx}`}
+                        />
 
                          <div className="space-y-3">
                           <div className="flex items-center justify-between">
