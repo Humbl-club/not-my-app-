@@ -16,6 +16,8 @@ import { PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
 import { DateOfBirthInput, validateDateOfBirth } from '@/components/ui/date-of-birth-input';
 import { PassportNumberInput } from '@/components/ui/passport-number-input';
 import { NameFieldsSection } from '@/components/NameFieldsSection';
+import { NationalityRadioSection } from '@/components/NationalityRadioSection';
+import { AddressFieldsSection } from '@/components/AddressFieldsSection';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { nationalities } from '@/constants/nationalities';
@@ -76,10 +78,12 @@ const ApplicantForm = () => {
         message: "Passport number must contain only letters and numbers" 
       }),
     useSameAddressAsPrimary: z.boolean().optional().default(false),
+    useSameAddressAsPassport: z.boolean().optional().default(false),
     useSameEmailAsPrimary: z.boolean().optional().default(false),
     address: z.object({
       line1: z.string().optional(),
       line2: z.string().optional(),
+      line3: z.string().optional(),
       city: z.string().optional(),
       state: z.string().optional(),
       postalCode: z.string().optional(),
@@ -142,8 +146,9 @@ const ApplicantForm = () => {
       email: '',
       passportNumber: '',
       useSameAddressAsPrimary: false,
+      useSameAddressAsPassport: false,
       useSameEmailAsPrimary: false,
-      address: { line1: '', line2: '', city: '', state: '', postalCode: '', country: '' },
+      address: { line1: '', line2: '', line3: '', city: '', state: '', postalCode: '', country: '' },
       hasJob: undefined,
       jobTitle: {
         isStandardized: false,
@@ -283,77 +288,17 @@ const ApplicantForm = () => {
                     )} />
                   </div>
 
-                  <FormField control={form.control} name="hasAdditionalNationalities" render={({ field }) => (
-                    <FormItem className="flex flex-row items-center space-x-3 space-y-0 rounded-md border p-4">
-                      <FormControl>
-                        <Checkbox
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
-                        />
-                      </FormControl>
-                         <div className="space-y-0.5">
-                           <FormLabel className="text-base font-semibold">{t('application.additionalNationalities.label')}</FormLabel>
-                           <p className="text-sm text-muted-foreground">{t('application.additionalNationalities.description')}</p>
-                         </div>
-                    </FormItem>
-                  )} />
 
-                  {form.getValues('hasAdditionalNationalities') && (
-                     <FormField control={form.control} name="additionalNationalities" render={({ field, fieldState }) => (
-                       <FormItem>
-                         <FormLabel>{t('application.additionalNationalities.label')} <span className="text-destructive">*</span></FormLabel>
-                        <FormControl>
-                          <div className="space-y-3">
-                            {field.value?.map((nationality, index) => (
-                              <div key={index} className="flex items-center space-x-3">
-                                <select
-                                  value={nationality}
-                                  onChange={(e) => {
-                                    const newNationalities = [...(field.value || [])];
-                                    newNationalities[index] = e.target.value;
-                                    field.onChange(newNationalities);
-                                  }}
-                                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-destructive/5 aria-[invalid=true]:focus-visible:ring-destructive disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                                  aria-invalid={!!fieldState.error}
-                                >
-                                  <option value="">{t('application.personalInfo.nationality.placeholder')}</option>
-                                  {nationalities.map((n) => (
-                                    <option key={n.code} value={n.code}>{n.name}</option>
-                                  ))}
-                                </select>
-                                <Button
-                                  type="button"
-                                  variant="outline"
-                                  size="sm"
-                                  onClick={() => {
-                                    const newNationalities = [...(field.value || [])];
-                                    newNationalities.splice(index, 1);
-                                    field.onChange(newNationalities);
-                                  }}
-                                >
-                                  <Minus className="h-4 w-4" />
-                                </Button>
-                              </div>
-                            ))}
-                            {field.value?.length < 5 && (
-                              <Button
-                                type="button"
-                                variant="outline"
-                                size="sm"
-                                onClick={() => {
-                                  field.onChange([...(field.value || []), '']);
-                                }}
-                              >
-                                <Plus className="h-4 w-4 mr-2" />
-                                {t('application.additionalNationalities.addButton')}
-                              </Button>
-                            )}
-                          </div>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )} />
-                  )}
+                  <NationalityRadioSection
+                    control={form.control}
+                    baseName=""
+                  />
+
+                  <AddressFieldsSection
+                    form={form}
+                    baseName=""
+                    showSameAsPassportOption={true}
+                  />
 
                   <FormField control={form.control} name="email" render={({ field, fieldState }) => (
                     <FormItem>

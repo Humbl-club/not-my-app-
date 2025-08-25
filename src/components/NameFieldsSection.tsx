@@ -35,7 +35,7 @@ export function NameFieldsSection<T extends FieldValues>({
         name={getFieldName('firstName')}
         render={({ field, fieldState }) => (
           <FormItem className="space-y-1 w-full min-w-0">
-            <FormLabel className="text-sm font-medium leading-5 h-12 break-words text-start flex items-start gap-1">
+            <FormLabel className="text-sm font-medium leading-5 min-h-[3rem] break-words text-start flex items-start gap-1">
               {t('application.personalInfo.firstName.label')}
               <span aria-hidden="true" className="text-destructive text-lg leading-none">*</span>
             </FormLabel>
@@ -59,7 +59,7 @@ export function NameFieldsSection<T extends FieldValues>({
         name={getFieldName('secondNames')}
         render={({ field, fieldState }) => (
           <FormItem className="space-y-1 w-full min-w-0">
-            <FormLabel className="text-sm font-medium leading-5 h-12 break-words text-start flex items-start gap-2">
+            <FormLabel className="text-sm font-medium leading-5 min-h-[3rem] break-words text-start flex items-start gap-2">
               {t('application.personalInfo.secondNames.label')}
               <span className="text-xs text-muted-foreground font-normal">
                 {t('application.personalInfo.optional', { defaultValue: '(Optional)' })}
@@ -85,7 +85,7 @@ export function NameFieldsSection<T extends FieldValues>({
         name={getFieldName('lastName')}
         render={({ field, fieldState }) => (
           <FormItem className="space-y-1 w-full min-w-0">
-            <FormLabel className="text-sm font-medium leading-5 h-12 break-words text-start flex items-start gap-1">
+            <FormLabel className="text-sm font-medium leading-5 min-h-[3rem] break-words text-start flex items-start gap-1">
               {t('application.personalInfo.lastName.label')}
               <span aria-hidden="true" className="text-destructive text-lg leading-none">*</span>
             </FormLabel>
