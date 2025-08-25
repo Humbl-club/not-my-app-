@@ -175,7 +175,7 @@
     "passportNumberInvalid": "استخدم فقط الحروف والأرقام (A-Z، 0-9)",
     "passportNumberLength": "رقم جواز السفر يجب أن يكون 6-10 أحرف",
     "passportNumberFormat": "أدخل رقم جواز السفر بالضبط كما يظهر في جواز سفرك"
-    }
+  }
   },
   "tracking": {
     "title": "تتبع طلبك",

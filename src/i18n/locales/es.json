@@ -171,7 +171,8 @@
     "security": {
       "criminalConvictions": { "label": "¿Alguna vez ha tenido condenas penales?" },
       "warCrimes": { "label": "¿Alguna vez ha sido sospechoso o condenado por crímenes de guerra, terrorismo o extremismo?" }
-      "upload": {
+    },
+    "upload": {
         "title": "Subir documentos",
         "uploading": "Subiendo...",
         "success": "Archivo subido exitosamente",

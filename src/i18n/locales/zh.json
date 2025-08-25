@@ -175,7 +175,8 @@
       "passportPhoto": { "title": "护照照片", "upload": "上传护照照片", "requirements": "护照个人信息页面的清晰图像" },
       "personalPhoto": { "title": "个人照片", "upload": "上传个人照片", "camera": "用相机拍照", "requirements": "简单背景的近期照片" }
     },
-        "line1": { "label": "地址第一行" },
+    "address": {
+      "line1": { "label": "地址第一行" },
         "line2": { "label": "地址第二行（可选）" },
         "city": { "label": "城市" },
         "state": { "label": "省/州" },
