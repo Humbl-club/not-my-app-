@@ -276,7 +276,8 @@
         "addButton": "Ajouter une nationalité"
       },
       "options": { "yes": "Oui", "no": "Non" }
-    },
+    }
+  },
   "validation": {
     "email": {
       "required": "L'adresse e-mail est requise",
@@ -359,25 +360,6 @@
     "actions": {"downloadReceipt": "Télécharger le reçu", "emailReceipt": "Envoyer le reçu par e-mail", "trackApplication": "Suivre la demande"},
     "support": {"title": "Besoin d'aide ?", "email": "Support par e-mail", "phone": "Support téléphonique", "hours": "Disponible 24h/24 et 7j/7"},
     "returnHome": "Retour à l'accueil"
-  },
-  "validation": {
-    "email": {
-      "required": "L'adresse e-mail est requise",
-      "format": "Veuillez saisir une adresse e-mail valide",
-      "invalidChars": "L'e-mail ne peut pas contenir d'espaces ou de caractères invalides",
-      "multipleAt": "L'e-mail doit avoir exactement un symbole @",
-      "missingParts": "L'e-mail doit avoir une partie locale et un domaine",
-      "consecutiveDots": "L'e-mail ne peut pas avoir de points consécutifs",
-      "invalidFormat": "Format d'e-mail invalide"
-    },
-    "passportName": {
-      "required": "Le nom est requis",
-      "format": "Utilisez uniquement les lettres majuscules A-Z, espaces, traits d'union et apostrophes",
-      "tooLong": "Le nom doit contenir entre 1 et 50 caractères",
-      "invalidStart": "Le nom ne peut pas commencer ou se terminer par des espaces ou des caractères spéciaux",
-      "consecutive": "Ne peut pas avoir d'espaces ou de caractères spéciaux consécutifs",
-      "passportFormat": "Saisissez votre nom exactement comme il apparaît sur votre passeport"
-    }
   },
   "jobSelector": {
     "other": "Autre",
