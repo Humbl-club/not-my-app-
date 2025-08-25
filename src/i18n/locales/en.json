@@ -224,9 +224,9 @@
           "quality": "Good lighting with clear facial features"
         }
       },
-    "email": {
-      "sameAsMain": "Same as main applicant",
-      "usingMain": "Using main applicant's email"
+      "email": {
+        "sameAsMain": "Same as main applicant",
+        "usingMain": "Using main applicant's email"
       },
       "additionalNationalities": {
         "label": "Do you have additional nationalities?",

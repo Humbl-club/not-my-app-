@@ -200,7 +200,35 @@
         "label": "您是否拥有其他国籍？",
         "description": "如果您拥有多重国籍，请选择此项",
         "addButton": "添加国籍"
-      }
+      },
+      "options": { "yes": "是", "no": "否" }
+    }
+  },
+  "validation": {
+    "email": {
+      "required": "电子邮箱地址为必填项",
+      "invalidFormat": "请输入有效的电子邮箱地址",
+      "noSpaces": "电子邮箱地址不能包含空格",
+      "missingAt": "电子邮箱地址必须包含@符号",
+      "multipleAt": "电子邮箱地址只能包含一个@符号",
+      "missingDot": "电子邮箱地址的域名必须包含至少一个点",
+      "invalidDomain": "电子邮箱地址的域名无效",
+      "tooLong": "电子邮箱地址过长",
+      "invalidChars": "电子邮箱地址包含无效字符",
+      "localTooLong": "电子邮箱地址的本地部分过长"
+    },
+    "passportName": {
+      "required": "护照姓名为必填项",
+      "minLength": "护照姓名必须至少包含2个字符",
+      "maxLength": "护照姓名不能超过50个字符",
+      "invalidChars": "护照姓名只能包含字母、空格和连字符"
+    },
+    "passportNumber": {
+      "required": "护照号码为必填项",
+      "minLength": "护照号码必须至少包含6个字符",
+      "maxLength": "护照号码不能超过9个字符",
+      "invalidFormat": "护照号码格式无效"
+    }
   },
   "tracking": {
     "title": "跟踪您的申请",
