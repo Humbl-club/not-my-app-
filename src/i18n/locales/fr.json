@@ -276,6 +276,7 @@
         "addButton": "Ajouter une nationalité"
       },
       "options": { "yes": "Oui", "no": "Non" }
+    },
   "validation": {
     "email": {
       "required": "L'adresse e-mail est requise",
