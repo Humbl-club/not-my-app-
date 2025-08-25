@@ -177,13 +177,13 @@
     },
     "address": {
       "line1": { "label": "地址第一行" },
-        "line2": { "label": "地址第二行（可选）" },
-        "city": { "label": "城市" },
-        "state": { "label": "省/州" },
-        "postalCode": { "label": "邮政编码" },
-        "country": { "label": "国家/地区", "placeholder": "选择国家/地区" },
-        "usingMain": "使用主申请人的地址"
-      },
+      "line2": { "label": "地址第二行（可选）" },
+      "city": { "label": "城市" },
+      "state": { "label": "省/州" },
+      "postalCode": { "label": "邮政编码" },
+      "country": { "label": "国家/地区", "placeholder": "选择国家/地区" },
+      "usingMain": "使用主申请人的地址"
+    },
       "employment": {
         "hasJob": { "label": "您有工作吗？" },
         "jobTitle": { "label": "您的职业是什么？", "placeholder": "输入您的职位名称" }

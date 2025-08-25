@@ -290,13 +290,18 @@
       "missingParts": "L'adresse e-mail doit avoir une partie locale et un domaine"
     },
     "passportName": {
-    "passportNameInvalid": "Utilisez uniquement des lettres majuscules A-Z, des espaces, des tirets et des apostrophes",
-    "passportNameFormat": "Le nom ne peut pas commencer ou finir par des espaces ou des caractères spéciaux",
-    "passportNameLength": "Le nom doit contenir entre 1 et 50 caractères",
-    "passportNumberRequired": "Le numéro de passeport est requis",
-    "passportNumberInvalid": "Utilisez uniquement des lettres et des chiffres (A-Z, 0-9)",
-    "passportNumberLength": "Le numéro de passeport doit contenir entre 6 et 10 caractères",
-    "passportNumberFormat": "Entrez le numéro de passeport exactement comme indiqué sur votre passeport"
+      "required": "Le nom du passeport est requis",
+      "format": "Utilisez uniquement des lettres majuscules A-Z, des espaces, des tirets et des apostrophes",
+      "tooLong": "Le nom doit contenir entre 1 et 50 caractères",
+      "invalidStart": "Le nom ne peut pas commencer ou finir par des espaces ou des caractères spéciaux",
+      "consecutive": "Ne peut pas contenir d'espaces ou de caractères spéciaux consécutifs",
+      "passportFormat": "Entrez votre nom exactement comme il apparaît sur votre passeport"
+    },
+    "passportNumber": {
+      "required": "Le numéro de passeport est requis",
+      "format": "Utilisez uniquement des lettres et des chiffres (A-Z, 0-9)",
+      "length": "Le numéro de passeport doit contenir entre 6 et 10 caractères",
+      "passportFormat": "Entrez le numéro de passeport exactement comme indiqué sur votre passeport"
     }
   },
   "tracking": {
