@@ -80,14 +80,14 @@
    ,
       "address": {
         "title": "住所",
-        "sameAsPrimary": "主申請者と同じ",
+        "sameAsMain": "主申請者と同じ",
         "line1": { "label": "住所1行目" },
         "line2": { "label": "住所2行目（任意）" },
         "city": { "label": "市区町村" },
         "state": { "label": "都道府県" },
         "postalCode": { "label": "郵便番号" },
         "country": { "label": "国", "placeholder": "国を選択" },
-        "usingPrimary": "主申請者の住所を使用"
+        "usingMain": "主申請者の住所を使用"
       },
       "employment": {
         "hasJob": { "label": "職業はありますか？" },
@@ -98,9 +98,13 @@
         "warCrimes": { "label": "戦争犯罪、テロ、過激主義で疑われた、または有罪判決を受けたことはありますか？" }
       },
       "email": {
-        "sameAsPrimary": "主申請者と同じ",
-        "usingPrimary": "主申請者のメールアドレスを使用"
+        "sameAsMain": "主申請者と同じ",
+        "usingMain": "主申請者のメールアドレスを使用"
       },
+      "mainApplicant": "主申請者",
+      "mainApplicantDocuments": "主申請者の書類",
+      "documentsFor": "{{name}}の書類",
+      "applicant": "申請者{{number}}",
       "additionalNationalities": {
         "label": "追加の国籍をお持ちですか？",
         "description": "複数の市民権をお持ちの場合は選択してください",

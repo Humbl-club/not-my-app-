@@ -142,14 +142,14 @@
     },
     "address": {
       "title": "Adresse",
-      "sameAsPrimary": "Gleich wie Hauptantragsteller",
+      "sameAsMain": "Gleich wie Hauptantragsteller",
       "line1": { "label": "Adresszeile 1" },
       "line2": { "label": "Adresszeile 2 (optional)" },
       "city": { "label": "Stadt" },
       "state": { "label": "Bundesland/Provinz" },
       "postalCode": { "label": "Postleitzahl" },
       "country": { "label": "Land", "placeholder": "Wählen Sie ein Land" },
-      "usingPrimary": "Verwende Adresse des Hauptantragstellers"
+      "usingMain": "Verwende Adresse des Hauptantragstellers"
     },
     "employment": {
       "title": "Beschäftigung",
@@ -166,9 +166,13 @@
       "personalPhoto": { "title": "Persönliches Foto", "upload": "Persönliches Foto hochladen", "camera": "Foto mit Kamera aufnehmen", "requirements": "Aktuelles Foto mit einfachem Hintergrund" }
     },
     "email": {
-      "sameAsPrimary": "Gleich wie Hauptantragsteller",
-      "usingPrimary": "Verwende E-Mail-Adresse des Hauptantragstellers"
+      "sameAsMain": "Gleich wie Hauptantragsteller",
+      "usingMain": "Verwende E-Mail-Adresse des Hauptantragstellers"
     },
+    "mainApplicant": "Hauptantragsteller",
+    "mainApplicantDocuments": "Dokumente des Hauptantragstellers",
+    "documentsFor": "Dokumente für {{name}}",
+    "applicant": "Antragsteller {{number}}",
     "additionalNationalities": {
       "label": "Haben Sie zusätzliche Staatsangehörigkeiten?",
       "description": "Wählen Sie dies aus, wenn Sie mehrere Staatsbürgerschaften besitzen",

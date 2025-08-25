@@ -93,14 +93,14 @@
     "payment": {"title": "Pagamento", "subtitle": "Completa il tuo pagamento per inviare la tua richiesta", "details": {"title": "Dettagli Pagamento", "cardholderName": {"label": "Nome Titolare Carta *", "placeholder": "Inserisci il nome del titolare della carta"}, "cardNumber": {"label": "Numero Carta *", "placeholder": "1234 5678 9012 3456"}, "expiryDate": {"label": "Data di Scadenza *", "placeholder": "MM/AA"}, "cvv": {"label": "CVV *", "placeholder": "123"}, "security": "Il tuo pagamento è protetto con crittografia SSL e processato tramite fornitori di pagamento affidabili."}, "summary": {"title": "Riepilogo Ordine", "application": "Richiesta ETA Regno Unito", "serviceFee": "Commissione di Servizio", "vat": "IVA (20%)", "total": "Totale", "sslSecured": "Pagamento Protetto SSL", "moneyBack": "Garanzia Rimborso"}, "complete": "Completa Pagamento"},
     "address": {
       "title": "Indirizzo",
-      "sameAsPrimary": "Uguale al Richiedente Principale",
+      "sameAsMain": "Uguale al Richiedente Principale",
       "line1": { "label": "Indirizzo riga 1" },
       "line2": { "label": "Indirizzo riga 2 (opzionale)" },
       "city": { "label": "Città" },
       "state": { "label": "Stato/Provincia" },
       "postalCode": { "label": "CAP" },
       "country": { "label": "Paese", "placeholder": "Seleziona un paese" },
-      "usingPrimary": "Utilizzo l'indirizzo del Richiedente Principale"
+      "usingMain": "Utilizzo l'indirizzo del Richiedente Principale"
     },
     "employment": {
       "hasJob": { "label": "Ha un lavoro?" },
@@ -111,9 +111,13 @@
       "warCrimes": { "label": "È mai stato sospettato o condannato per crimini di guerra, terrorismo o estremismo?" }
     },
     "email": {
-      "sameAsPrimary": "Uguale al Richiedente Principale",
-      "usingPrimary": "Utilizzando l'indirizzo email del Richiedente Principale"
+      "sameAsMain": "Uguale al Richiedente Principale",
+      "usingMain": "Utilizzando l'indirizzo email del Richiedente Principale"
     },
+    "mainApplicant": "Richiedente Principale",
+    "mainApplicantDocuments": "Documenti del Richiedente Principale",
+    "documentsFor": "Documenti per {{name}}",
+    "applicant": "Richiedente {{number}}",
     "additionalNationalities": {
       "label": "Hai nazionalità aggiuntive?",
       "description": "Seleziona questo se hai multiple cittadinanze",

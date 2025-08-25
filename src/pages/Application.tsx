@@ -232,9 +232,12 @@ const Application = () => {
   }, [formState.errors]);
 
   const onSubmit = () => {
-    const primary = form.getValues('applicants.0');
+    const applicants = form.getValues('applicants');
     try {
-      sessionStorage.setItem('application.primaryApplicant', JSON.stringify(primary));
+      sessionStorage.setItem('application.applicants', JSON.stringify(applicants));
+      // Clean up legacy storage
+      sessionStorage.removeItem('application.primaryApplicant');
+      sessionStorage.removeItem('application.secondApplicant');
     } catch {}
     navigate('/application/documents');
   };

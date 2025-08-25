@@ -29,21 +29,28 @@ const Review = () => {
     ensureTag('link[rel="canonical"]', canonical);
   }, []);
 
-  const primary = useMemo(() => {
-    try { return JSON.parse(sessionStorage.getItem('application.primaryApplicant') || 'null'); } catch { return null; }
-  }, []);
-  const second = useMemo(() => {
-    try { return JSON.parse(sessionStorage.getItem('application.secondApplicant') || 'null'); } catch { return null; }
+  const applicants = useMemo(() => {
+    try { 
+      const stored = sessionStorage.getItem('application.applicants');
+      if (stored) {
+        return JSON.parse(stored);
+      }
+      // Fallback to legacy structure for migration
+      const primary = JSON.parse(sessionStorage.getItem('application.primaryApplicant') || 'null');
+      const second = JSON.parse(sessionStorage.getItem('application.secondApplicant') || 'null');
+      return [primary, second].filter(Boolean);
+    } catch { 
+      return []; 
+    }
   }, []);
 
   const data = useMemo(() => {
-    const applicants = [primary, second].filter(Boolean);
     return {
       applicants,
       generatedAt: new Date().toISOString(),
       source: window.location.origin,
     };
-  }, [primary, second]);
+  }, [applicants]);
 
   const toCSV = (items: any[]) => {
     if (!items.length) return '';

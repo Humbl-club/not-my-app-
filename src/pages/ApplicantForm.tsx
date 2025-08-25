@@ -36,9 +36,15 @@ const ApplicantForm = () => {
           setPrimaryApplicant(applicants[0]);
         }
       } else {
-        // Fallback to legacy structure
+        // Fallback to legacy structure for migration
         const legacyRaw = sessionStorage.getItem('application.primaryApplicant');
-        if (legacyRaw) setPrimaryApplicant(JSON.parse(legacyRaw));
+        if (legacyRaw) {
+          const legacy = JSON.parse(legacyRaw);
+          setPrimaryApplicant(legacy);
+          // Migrate to new structure
+          sessionStorage.setItem('application.applicants', JSON.stringify([legacy]));
+          sessionStorage.removeItem('application.primaryApplicant');
+        }
       }
     } catch {}
   }, []);
