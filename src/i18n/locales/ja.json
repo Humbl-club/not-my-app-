@@ -164,10 +164,36 @@
         "description": "複数の市民権をお持ちの場合は選択してください",
         "addButton": "国籍を追加"
       },
-      "options": { "yes": "はい", "no": "いいえ" }
+    },
+    "address": {
+      "title": "住所",
+      "sameAsMain": "主申請者と同じ",
+      "usingMain": "主申請者の住所を使用",
+      "sameAsPassport": {
+        "label": "パスポートと同じ住所を使用",
+        "description": "住所がパスポートと一致する場合はこちらをチェック"
+      },
+      "extracting": "住所を抽出中...",
+      "line1": { "label": "住所行1", "placeholder": "住所行1を入力" },
+      "line2": { "label": "住所行2（任意）", "placeholder": "住所行2を入力" },
+      "line3": { "label": "住所行3（任意）", "placeholder": "住所行3を入力" },
+      "city": { "label": "市区町村", "placeholder": "市区町村を入力" },
+      "state": { "label": "都道府県", "placeholder": "都道府県を入力" },
+      "postalCode": { "label": "郵便番号", "placeholder": "郵便番号を入力" },
+      "country": { "label": "国", "placeholder": "国を選択" }
+    },
+    "employment": {
+      "title": "雇用",
+      "hasJob": { "label": "お仕事はありますか？" },
+      "jobTitle": { "label": "お仕事は何ですか？", "placeholder": "職業を入力" }
+    },
+    "security": {
+      "title": "セキュリティ質問",
+      "criminalConvictions": { "label": "犯罪歴はありますか？" },
+      "warCrimes": { "label": "戦争犯罪、テロリズム、過激主義で容疑をかけられたり有罪判決を受けたことはありますか？" }
+    }
   },
   "tracking": {
-    "title": "申請を追跡",
     "subtitle": "参照番号を入力して申請状況を確認してください",
     "lookupTitle": "申請検索",
     "referenceNumber": "参照番号",

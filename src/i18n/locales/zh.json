@@ -28,17 +28,6 @@
   },
   "trust": {"processing": "平均处理时间", "processingTime": "72小时", "applications": "已处理申请", "applicationsCount": "10,000+", "notice": "此服务由独立第三方提供，与英国政府无关联。"},
   "steps": {"title": "简单的4步流程", "subtitle": "一个美观简单的流程，只需不到15分钟", "step1": {"title": "填写申请", "description": "使用您的个人和旅行详细信息完成安全的在线表格。", "time": "5-10分钟"}, "step2": {"title": "上传文档", "description": "安全地将您的护照和照片上传到我们的加密平台。", "time": "2-3分钟"}, "step3": {"title": "付款", "description": "安全的付款处理，提供多种付款选项。", "time": "1-2分钟"}, "step4": {"title": "接收ETA", "description": "直接在您的电子邮件收件箱中获得已批准的ETA。", "time": "24-72小时"}},
-  "trustIndicators": {"secure": {"title": "安全加密", "description": "SSL加密数据保护"}, "gdpr": {"title": "符合GDPR", "description": "全面的数据保护合规性"}, "support": {"title": "24/7支持", "description": "全天候协助"}, "trusted": {"title": "值得信赖的服务", "description": "超过10,000个成功申请"}},
-  "applicationSteps": {"title": "简单的4步流程", "subtitle": "精简的申请流程让您快速便捷地获得英国ETA", "step1": {"title": "完成申请", "description": "为您自己和任何旅行同伴完成申请表格，填写个人和旅行详细信息。", "time": "5-10分钟"}, "step2": {"title": "上传文件", "description": "提交您的护照复印件和照片。我们的系统会自动验证所有要求。", "time": "2-3分钟"}, "step3": {"title": "安全支付", "description": "使用信用卡、借记卡或PayPal安全付款。所有交易均经过加密。", "time": "1-2分钟"}, "step4": {"title": "收到授权", "description": "在72小时内通过电子邮件收到您的英国ETA。在线跟踪您的申请状态。", "time": "最长72小时"}},
-  "legal": {
-    "title": "重要法律声明",
-    "content": "ETAsHub是英国电子旅行授权(ETA)申请处理的独立服务。我们与英国政府或英国内政部无任何关联。我们的服务通过收取服务费加上强制性政府费用来协助您提交ETA申请。您可以通过英国政府官方网站免费直接提交申请，尽管我们的服务为您的便利提供了额外功能，如表格验证、客户支持和申请跟踪。"
-  },
-  "transparency": {
-    "title": "费用透明度",
-    "feeBreakdown": "提供完整费用明细",
-    "noHidden": "无隐藏费用"
-  },
   "trustIndicators": {
     "title": "为什么选择ETAsHub？",
     "subtitle": "成千上万的人信任我们处理他们旅行文件的五个理由",
@@ -63,36 +52,28 @@
       "description": "在一次便捷的会话中为多名旅行者申请"
     }
   },
+  "applicationSteps": {"title": "简单的4步流程", "subtitle": "精简的申请流程让您快速便捷地获得英国ETA", "step1": {"title": "完成申请", "description": "为您自己和任何旅行同伴完成申请表格，填写个人和旅行详细信息。", "time": "5-10分钟"}, "step2": {"title": "上传文件", "description": "提交您的护照复印件和照片。我们的系统会自动验证所有要求。", "time": "2-3分钟"}, "step3": {"title": "安全支付", "description": "使用信用卡、借记卡或PayPal安全付款。所有交易均经过加密。", "time": "1-2分钟"}, "step4": {"title": "收到授权", "description": "在72小时内通过电子邮件收到您的英国ETA。在线跟踪您的申请状态。", "time": "最长72小时"}},
+  "legal": {
+    "title": "重要法律声明",
+    "content": "ETAsHub是英国电子旅行授权(ETA)申请处理的独立服务。我们与英国政府或英国内政部无任何关联。我们的服务通过收取服务费加上强制性政府费用来协助您提交ETA申请。您可以通过英国政府官方网站免费直接提交申请，尽管我们的服务为您的便利提供了额外功能，如表格验证、客户支持和申请跟踪。"
+  },
+  "transparency": {
+    "title": "费用透明度",
+    "feeBreakdown": "提供完整费用明细",
+    "noHidden": "无隐藏费用"
+  },
   "footer": {
     "links": {"terms": "条款与条件", "privacy": "隐私政策", "cookies": "Cookie政策", "refund": "退款政策"},
     "contact": "联系方式: support@uketaservice.com | 公司注册: [详情]",
     "copyright": "© 2024 英国ETA申请服务。保留所有权利。"
   },
   "application": {
-    "title": "申请英国ETA",
-    "subtitle": "几分钟内完成您的申请",
+    "title": "英国ETA申请表格",
+    "subtitle": "请准确填写所有必填字段",
     "continue": "继续",
     "back": "返回",
     "submit": "提交申请",
     "progress": {"step": "第{{current}}步，共{{total}}步", "complete": "{{percent}}% 完成"},
-    "mainApplicant": "主申请人",
-    "applicant": "申请人",
-    "mainApplicantDocuments": "请为主申请人上传文件",
-    "documentsFor": "请为以下人员上传文件",
-    "documents": {
-      "title": "文件",
-      "passportPhoto": {
-        "title": "护照照片",
-        "upload": "上传护照照片",
-        "requirements": "要求:"
-      },
-      "personalPhoto": {
-        "title": "个人照片",
-        "upload": "上传照片",
-        "camera": "拍照",
-        "requirements": "照片要求:"
-      }
-    },
     "personalInfo": {
       "title": "个人信息",
       "nameSection": {
@@ -112,121 +93,164 @@
     "documents": {
       "title": "上传文件",
       "subtitle": "请上传您的护照和照片",
-      "passport": {"title": "护照信息页", "uploadTitle": "上传护照照片", "format": "仅限JPG或JPEG格式", "chooseFile": "选择文件", "requirements": {"title": "要求：", "readable": "护照个人信息页的清晰、可读图像", "visible": "所有文字必须可见且清晰可读", "noGlare": "无眩光或阴影", "format": "仅限JPG或JPEG格式"}},
-      "photo": {"title": "个人照片", "upload": {"title": "上传照片", "format": "JPG或JPEG", "button": "选择文件"}, "camera": {"title": "拍摄照片", "subtitle": "使用相机", "button": "打开相机"}, "requirements": {"title": "照片要求：", "background": "纯色、明亮的背景", "noObjects": "背景中不得有人或物体", "visibility": "头部、肩膀和上半身清晰可见", "lighting": "光线均匀，无阴影或眩光", "features": "五官清晰可见"}}
-    },
-    "payment": {"title": "付款", "subtitle": "完成付款以提交您的申请", "details": {"title": "付款详情", "cardholderName": {"label": "持卡人姓名 *", "placeholder": "请输入持卡人姓名"}, "cardNumber": {"label": "卡号 *", "placeholder": "1234 5678 9012 3456"}, "expiryDate": {"label": "有效期 *", "placeholder": "MM/YY"}, "cvv": {"label": "CVV *", "placeholder": "123"}, "security": "您的付款通过SSL加密保护，并由可信的支付提供商处理。"}, "summary": {"title": "订单摘要", "application": "英国 ETA 申请", "serviceFee": "服务费", "vat": "增值税 (20%)", "total": "合计", "sslSecured": "SSL安全支付", "moneyBack": "退款保证"}, "complete": "完成付款"}
-   ,
-      "address": {
-        "title": "地址",
-      "sameAsMain": "与主申请人相同",
-      "usingMain": "使用主申请人的地址",
-      "sameAsPassport": {
-        "label": "使用与护照相同的地址",
-        "description": "如果您的地址与护照一致，请选择此选项"
-      },
-      "extracting": "正在提取地址...",
-      "line1": { "label": "地址第一行" },
-      "line2": { "label": "地址第二行（可选）" },
-      "line3": { "label": "地址第三行（可选）" },
-      "city": { "label": "城市" },
-      "country": { "label": "国家", "placeholder": "选择国家" },
-      "postalCode": { "label": "邮政编码" },
-      "upload": {
-        "title": "上传文件",
-        "uploading": "上传中...",
-        "success": "文件上传成功",
-        "select": "选择文件",
-        "replace": "上传不同文件",
-        "requirements": "JPG或PNG，最大5MB"
-      },
       "passport": {
-        "upload": {
-          "title": "上传护照照片",
-          "description": "拖放或点击选择文件"
-        },
-        "preview": {
-          "alt": "护照照片预览"
-        },
+        "title": "护照信息页",
+        "uploadTitle": "上传护照照片",
+        "format": "仅限JPG或JPEG格式",
+        "chooseFile": "选择文件",
         "requirements": {
-          "title": "要求:",
-          "format": "清晰、高质量的JPG或PNG格式",
-          "size": "文件大小小于5MB",
-          "pages": "显示护照的主要信息页面",
-          "readable": "所有文字必须清晰可读"
+          "title": "要求：",
+          "readable": "护照个人信息页的清晰、可读图像",
+          "visible": "所有文字必须可见且清晰可读",
+          "noGlare": "无眩光或阴影",
+          "format": "仅限JPG或JPEG格式"
         }
       },
-      "personal": {
-        "upload": {
-          "title": "上传个人照片",
-          "description": "拖放或点击选择文件"
-        },
-        "preview": {
-          "alt": "个人照片预览"
-        },
+      "photo": {
+        "title": "个人照片",
+        "upload": {"title": "上传照片", "format": "JPG或JPEG", "button": "选择文件"},
+        "camera": {"title": "拍摄照片", "subtitle": "使用相机", "button": "打开相机"},
         "requirements": {
-          "title": "要求:",
-          "format": "清晰、高质量的JPG或PNG格式",
-          "size": "文件大小小于5MB",
-          "recent": "近期照片（最近6个月内拍摄）",
-          "quality": "面部特征清晰的良好光线"
+          "title": "照片要求：",
+          "background": "纯色、明亮的背景",
+          "noObjects": "背景中不得有人或物体",
+          "visibility": "头部、肩膀和上半身清晰可见",
+          "lighting": "光线均匀，无阴影或眩光",
+          "features": "五官清晰可见"
         }
+      }
+    },
+    "payment": {
+      "title": "付款",
+      "subtitle": "完成付款以提交您的申请",
+      "details": {
+        "title": "付款详情",
+        "cardholderName": {"label": "持卡人姓名 *", "placeholder": "请输入持卡人姓名"},
+        "cardNumber": {"label": "卡号 *", "placeholder": "1234 5678 9012 3456"},
+        "expiryDate": {"label": "有效期 *", "placeholder": "MM/YY"},
+        "cvv": {"label": "CVV *", "placeholder": "123"},
+        "security": "您的付款通过SSL加密保护，并由可信的支付提供商处理。"
       },
-      "passportPhoto": { "title": "护照照片", "upload": "上传护照照片", "requirements": "护照个人信息页面的清晰图像" },
-      "personalPhoto": { "title": "个人照片", "upload": "上传个人照片", "camera": "用相机拍照", "requirements": "简单背景的近期照片" }
+      "summary": {
+        "title": "订单摘要",
+        "application": "英国 ETA 申请",
+        "serviceFee": "服务费",
+        "vat": "增值税 (20%)",
+        "total": "合计",
+        "sslSecured": "SSL安全支付",
+        "moneyBack": "退款保证"
+      },
+      "complete": "完成付款"
     },
     "address": {
-      "line1": { "label": "地址第一行" },
-      "line2": { "label": "地址第二行（可选）" },
-      "city": { "label": "城市" },
-      "state": { "label": "省/州" },
-      "postalCode": { "label": "邮政编码" },
-      "country": { "label": "国家/地区", "placeholder": "选择国家/地区" },
-      "usingMain": "使用主申请人的地址"
+      "title": "地址",
+      "sameAsMain": "与主申请人相同",
+      "usingMain": "使用主申请人地址",
+      "sameAsPassport": {
+        "label": "使用与护照相同的地址",
+        "description": "如果您的地址与护照上的地址相符，请选择此项"
+      },
+      "extracting": "正在提取地址...",
+      "line1": { "label": "地址第一行", "placeholder": "输入地址第一行" },
+      "line2": { "label": "地址第二行（可选）", "placeholder": "输入地址第二行" },
+      "line3": { "label": "地址第三行（可选）", "placeholder": "输入地址第三行" },
+      "city": { "label": "城市", "placeholder": "输入城市" },
+      "state": { "label": "省/州", "placeholder": "输入省或州" },
+      "postalCode": { "label": "邮政编码", "placeholder": "输入邮政编码" },
+      "country": { "label": "国家", "placeholder": "选择国家" }
     },
-      "employment": {
-        "hasJob": { "label": "您有工作吗？" },
-        "jobTitle": { "label": "您的职业是什么？", "placeholder": "输入您的职位名称" }
+    "employment": {
+      "title": "就业",
+      "hasJob": { "label": "您有工作吗？" },
+      "jobTitle": { "label": "您的工作是什么？", "placeholder": "输入您的职位" }
+    },
+    "security": {
+      "title": "安全问题",
+      "criminalConvictions": { "label": "您是否有过犯罪记录？" },
+      "warCrimes": { "label": "您是否曾被怀疑或定罪犯有战争罪、恐怖主义或极端主义？" }
+    },
+    "upload": {
+      "title": "上传文件",
+      "uploading": "上传中...",
+      "success": "文件上传成功",
+      "select": "选择文件",
+      "replace": "上传不同文件",
+      "requirements": "JPG或PNG，最大5MB"
+    },
+    "passport": {
+      "upload": {
+        "title": "上传护照照片",
+        "description": "拖放或点击选择文件"
       },
-      "security": {
-        "criminalConvictions": { "label": "您是否曾有刑事定罪？" },
-        "warCrimes": { "label": "您是否曾被怀疑或因战争罪、恐怖主义或极端主义而被定罪？" }
+      "preview": {
+        "alt": "护照照片预览"
       },
-      "email": {
-        "sameAsMain": "与主申请人相同",
-        "usingMain": "使用主申请人的电子邮箱地址"
+      "requirements": {
+        "title": "要求:",
+        "format": "清晰、高质量的JPG或PNG格式",
+        "size": "文件大小小于5MB",
+        "pages": "显示护照的主要信息页面",
+        "readable": "所有文字必须清晰可读"
+      }
+    },
+    "personal": {
+      "upload": {
+        "title": "上传个人照片",
+        "description": "拖放或点击选择文件"
       },
-      "additionalNationalities": {
-        "label": "您是否拥有其他国籍？",
-        "description": "如果您拥有多重国籍，请选择此项",
-        "addButton": "添加国籍"
+      "preview": {
+        "alt": "个人照片预览"
       },
-      "options": { "yes": "是", "no": "否" }
+      "requirements": {
+        "title": "要求:",
+        "format": "清晰、高质量的JPG或PNG格式",
+        "size": "文件大小小于5MB",
+        "recent": "近期照片（最近6个月内拍摄）",
+        "quality": "面部特征清晰的良好光线"
+      }
+    },
+    "passportPhoto": { "title": "护照照片", "upload": "上传护照照片", "requirements": "护照个人信息页面的清晰图像" },
+    "personalPhoto": { "title": "个人照片", "upload": "上传个人照片", "camera": "用相机拍照", "requirements": "简单背景的近期照片" },
+    "email": {
+      "sameAsMain": "与主申请人相同",
+      "usingMain": "使用主申请人的电子邮箱地址"
+    },
+    "mainApplicant": "主申请人",
+    "mainApplicantDocuments": "主申请人文件",
+    "documentsFor": "{{name}}的文件",
+    "applicant": "申请人{{number}}",
+    "additionalNationalities": {
+      "label": "您是否拥有其他国籍？",
+      "description": "如果您拥有多重国籍，请选择此项",
+      "addButton": "添加国籍"
+    },
+    "options": { "yes": "是", "no": "否" }
   },
   "validation": {
     "email": {
-      "required": "电子邮箱地址为必填项",
-      "invalidFormat": "请输入有效的电子邮箱地址",
-      "noSpaces": "电子邮箱地址不能包含空格",
-      "missingAt": "电子邮箱地址必须包含@符号",
-      "multipleAt": "电子邮箱地址只能包含一个@符号",
-      "missingDot": "电子邮箱地址的域名必须包含至少一个点",
-      "invalidDomain": "电子邮箱地址的域名无效",
-      "tooLong": "电子邮箱地址过长",
-      "invalidChars": "电子邮箱地址包含无效字符",
-      "localTooLong": "电子邮箱地址的本地部分过长"
+      "required": "电子邮件地址是必需的",
+      "invalidFormat": "请输入有效的电子邮件地址",
+      "noSpaces": "电子邮件地址不能包含空格",
+      "missingAt": "电子邮件地址必须包含@符号",
+      "multipleAt": "电子邮件地址只能包含一个@符号",
+      "consecutiveDots": "电子邮件地址不能包含连续的点",
+      "invalidStartEnd": "电子邮件地址不能以特殊字符开头或结尾",
+      "missingParts": "电子邮件地址必须包含本地部分和域名",
+      "invalidFormat": "无效的电子邮件格式"
     },
     "passportName": {
-      "required": "护照姓名为必填项",
-      "minLength": "护照姓名必须至少包含2个字符",
-      "maxLength": "护照姓名不能超过50个字符",
-      "invalidChars": "护照姓名只能包含字母、空格和连字符"
+      "required": "姓名是必需的",
+      "format": "仅使用大写字母A-Z、空格、连字符和撇号",
+      "tooLong": "姓名必须为1-50个字符",
+      "invalidStart": "姓名不能以空格或特殊字符开头或结尾",
+      "consecutive": "不能有连续的空格或特殊字符",
+      "passportFormat": "输入您护照上显示的确切姓名"
     },
     "passportNumber": {
-      "required": "护照号码为必填项",
-      "minLength": "护照号码必须至少包含6个字符",
-      "maxLength": "护照号码不能超过9个字符",
-      "invalidFormat": "护照号码格式无效"
+      "required": "护照号码是必需的",
+      "invalid": "仅使用字母和数字(A-Z, 0-9)",
+      "length": "护照号码必须为6-10个字符",
+      "format": "输入护照上显示的确切护照号码"
     }
   },
   "tracking": {
@@ -248,7 +272,12 @@
       "etaIssued": "已签发ETA",
       "current": "当前",
       "pending": "待处理",
-      "descriptions": {"submitted": "您的申请已成功接收，付款已确认。", "documentsVerified": "所有提交的文件均已验证并接受。", "underReview": "您的申请目前正在由英国当局审核。", "etaIssued": "一旦批准，您的ETA将签发并发送至您的电子邮箱。"}
+      "descriptions": {
+        "submitted": "您的申请已成功接收，付款已确认。",
+        "documentsVerified": "所有提交的文件均已验证并接受。",
+        "underReview": "您的申请目前正在由英国当局审核。",
+        "etaIssued": "一旦批准，您的ETA将签发并发送至您的电子邮箱。"
+      }
     },
     "estimated": {"title": "预计完成时间", "description": "根据当前处理时间，预计您的ETA将在接下来的24-48小时内签发。准备就绪后，您将收到电子邮件通知。"},
     "support": {"title": "需要帮助？", "contactTitle": "联系支持", "description": "如果您对申请有任何疑问，请联系支持团队。", "emailLabel": "邮箱", "phoneLabel": "电话", "hoursLabel": "服务时间", "phone": "+44 20 7946 0958", "email": "support@uketaservice.com"},
@@ -262,29 +291,15 @@
     "submissionDate": "提交日期",
     "processingTime": "预计处理时间",
     "amountPaid": "已支付总额",
-    "nextSteps": {"title": "接下来会怎样？", "step1": {"title": "邮件确认", "description": "您将收到包含申请参考号的确认邮件。"}, "step2": {"title": "申请处理", "description": "我们的团队将审核您的申请并提交至英国当局。"}, "step3": {"title": "发送ETA", "description": "批准后的ETA将直接发送至您的电子邮箱。"}},
+    "nextSteps": {
+      "title": "接下来会怎样？",
+      "step1": {"title": "邮件确认", "description": "您将收到包含申请参考号的确认邮件。"},
+      "step2": {"title": "申请处理", "description": "我们的团队将审核您的申请并提交至英国当局。"},
+      "step3": {"title": "发送ETA", "description": "批准后的ETA将直接发送至您的电子邮箱。"}
+    },
     "actions": {"downloadReceipt": "下载收据", "emailReceipt": "发送收据邮件", "trackApplication": "跟踪申请"},
     "support": {"title": "需要帮助？", "email": "电子邮件支持", "phone": "电话支持", "hours": "24/7全天候服务"},
     "returnHome": "返回首页"
-  },
-  "validation": {
-    "email": {
-      "required": "电子邮件是必需的",
-      "format": "请输入有效的电子邮件地址",
-      "invalidChars": "电子邮件不能包含空格或无效字符",
-      "multipleAt": "电子邮件必须恰好有一个@符号",
-      "missingParts": "电子邮件必须有本地部分和域",
-      "consecutiveDots": "电子邮件不能有连续的点",
-      "invalidFormat": "无效的电子邮件格式"
-    },
-    "passportName": {
-      "required": "姓名是必需的",
-      "format": "仅使用大写字母A-Z、空格、连字符和撇号",
-      "tooLong": "姓名必须为1-50个字符",
-      "invalidStart": "姓名不能以空格或特殊字符开头或结尾",
-      "consecutive": "不能有连续的空格或特殊字符",
-      "passportFormat": "输入您护照上显示的确切姓名"
-    }
   },
   "jobSelector": {
     "other": "其他",

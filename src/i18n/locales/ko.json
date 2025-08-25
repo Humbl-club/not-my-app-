@@ -164,10 +164,36 @@
         "description": "복수 국적을 가지고 있다면 선택하세요",
         "addButton": "국적 추가"
       },
-      "options": { "yes": "예", "no": "아니오" }
+    },
+    "address": {
+      "title": "주소",
+      "sameAsMain": "주 신청자와 동일",
+      "usingMain": "주 신청자 주소 사용",
+      "sameAsPassport": {
+        "label": "여권과 동일한 주소 사용",
+        "description": "주소가 여권과 일치하는 경우 선택하세요"
+      },
+      "extracting": "주소 추출 중...",
+      "line1": { "label": "주소 1", "placeholder": "주소 1을 입력하세요" },
+      "line2": { "label": "주소 2 (선택사항)", "placeholder": "주소 2를 입력하세요" },
+      "line3": { "label": "주소 3 (선택사항)", "placeholder": "주소 3을 입력하세요" },
+      "city": { "label": "도시", "placeholder": "도시를 입력하세요" },
+      "state": { "label": "주/도", "placeholder": "주 또는 도를 입력하세요" },
+      "postalCode": { "label": "우편번호", "placeholder": "우편번호를 입력하세요" },
+      "country": { "label": "국가", "placeholder": "국가를 선택하세요" }
+    },
+    "employment": {
+      "title": "직업",
+      "hasJob": { "label": "직업이 있습니까?" },
+      "jobTitle": { "label": "직업은 무엇입니까?", "placeholder": "직업을 입력하세요" }
+    },
+    "security": {
+      "title": "보안 질문",
+      "criminalConvictions": { "label": "범죄 전과가 있습니까?" },
+      "warCrimes": { "label": "전쟁 범죄, 테러리즘 또는 극단주의로 의심받거나 유죄 판결을 받은 적이 있습니까?" }
+    }
   },
   "tracking": {
-    "title": "신청 추적",
     "subtitle": "참조 번호를 입력하여 신청 상태를 확인하세요",
     "lookupTitle": "신청 조회",
     "referenceNumber": "참조 번호",

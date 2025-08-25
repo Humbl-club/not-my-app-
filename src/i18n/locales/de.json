@@ -219,6 +219,34 @@
     },
     "options": { "yes": "Ja", "no": "Nein" }
   },
+  "address": {
+    "title": "Adresse",
+    "sameAsMain": "Gleich wie Hauptantragsteller",
+    "usingMain": "Adresse des Hauptantragstellers verwenden",
+    "sameAsPassport": {
+      "label": "Gleiche Adresse wie im Pass verwenden",
+      "description": "Wählen Sie dies, wenn Ihre Adresse mit der im Pass übereinstimmt"
+    },
+    "extracting": "Adresse wird extrahiert...",
+    "line1": { "label": "Adresszeile 1", "placeholder": "Geben Sie Adresszeile 1 ein" },
+    "line2": { "label": "Adresszeile 2 (optional)", "placeholder": "Geben Sie Adresszeile 2 ein" },
+    "line3": { "label": "Adresszeile 3 (optional)", "placeholder": "Geben Sie Adresszeile 3 ein" },
+    "city": { "label": "Stadt", "placeholder": "Geben Sie die Stadt ein" },
+    "state": { "label": "Bundesland/Provinz", "placeholder": "Geben Sie Bundesland oder Provinz ein" },
+    "postalCode": { "label": "Postleitzahl", "placeholder": "Geben Sie die Postleitzahl ein" },
+    "country": { "label": "Land", "placeholder": "Wählen Sie ein Land" }
+  },
+  "employment": {
+    "title": "Beschäftigung",
+    "hasJob": { "label": "Haben Sie einen Job?" },
+    "jobTitle": { "label": "Was ist Ihr Beruf?", "placeholder": "Geben Sie Ihren Berufstitel ein" }
+  },
+  "security": {
+    "title": "Sicherheitsfragen",
+    "criminalConvictions": { "label": "Wurden Sie jemals strafrechtlich verurteilt?" },
+    "warCrimes": { "label": "Wurden Sie jemals verdächtigt oder verurteilt wegen Kriegsverbrechen, Terrorismus oder Extremismus?" }
+  }
+},
   "validation": {
     "email": {
       "required": "E-Mail-Adresse ist erforderlich",

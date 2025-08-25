@@ -277,6 +277,34 @@
       },
       "options": { "yes": "Oui", "no": "Non" }
     },
+    "address": {
+      "title": "Adresse",
+      "sameAsMain": "Identique au demandeur principal",
+      "usingMain": "Utilisation de l'adresse du demandeur principal",
+      "sameAsPassport": {
+        "label": "Utiliser la même adresse que le passeport",
+        "description": "Cochez ceci si votre adresse correspond à celle de votre passeport"
+      },
+      "extracting": "Extraction de l'adresse...",
+      "line1": { "label": "Ligne d'adresse 1", "placeholder": "Entrez la ligne d'adresse 1" },
+      "line2": { "label": "Ligne d'adresse 2 (optionnel)", "placeholder": "Entrez la ligne d'adresse 2" },
+      "line3": { "label": "Ligne d'adresse 3 (optionnel)", "placeholder": "Entrez la ligne d'adresse 3" },
+      "city": { "label": "Ville", "placeholder": "Entrez la ville" },
+      "state": { "label": "État/Province", "placeholder": "Entrez l'état ou la province" },
+      "postalCode": { "label": "Code postal", "placeholder": "Entrez le code postal" },
+      "country": { "label": "Pays", "placeholder": "Sélectionnez un pays" }
+    },
+    "employment": {
+      "title": "Emploi",
+      "hasJob": { "label": "Avez-vous un emploi ?" },
+      "jobTitle": { "label": "Quel est votre métier ?", "placeholder": "Entrez votre titre de poste" }
+    },
+    "security": {
+      "title": "Questions de Sécurité",
+      "criminalConvictions": { "label": "Avez-vous déjà eu des condamnations pénales ?" },
+      "warCrimes": { "label": "Avez-vous déjà été soupçonné ou condamné pour crimes de guerre, terrorisme ou extrémisme ?" }
+    }
+  },
   "validation": {
     "email": {
       "required": "L'adresse e-mail est requise",

@@ -226,6 +226,34 @@
       },
       "options": { "yes": "Sí", "no": "No" }
     },
+    "address": {
+      "title": "Dirección",
+      "sameAsMain": "Igual que el solicitante principal",
+      "usingMain": "Usando la dirección del solicitante principal",
+      "sameAsPassport": {
+        "label": "Usar la misma dirección del pasaporte",
+        "description": "Marque esto si su dirección coincide con la del pasaporte"
+      },
+      "extracting": "Extrayendo dirección...",
+      "line1": { "label": "Línea de dirección 1", "placeholder": "Ingrese la línea de dirección 1" },
+      "line2": { "label": "Línea de dirección 2 (opcional)", "placeholder": "Ingrese la línea de dirección 2" },
+      "line3": { "label": "Línea de dirección 3 (opcional)", "placeholder": "Ingrese la línea de dirección 3" },
+      "city": { "label": "Ciudad", "placeholder": "Ingrese la ciudad" },
+      "state": { "label": "Estado/Provincia", "placeholder": "Ingrese el estado o provincia" },
+      "postalCode": { "label": "Código postal", "placeholder": "Ingrese el código postal" },
+      "country": { "label": "País", "placeholder": "Seleccione un país" }
+    },
+    "employment": {
+      "title": "Empleo",
+      "hasJob": { "label": "¿Tienes un trabajo?" },
+      "jobTitle": { "label": "¿Cuál es tu trabajo?", "placeholder": "Ingrese su título de trabajo" }
+    },
+    "security": {
+      "title": "Preguntas de Seguridad",
+      "criminalConvictions": { "label": "¿Alguna vez has tenido condenas penales?" },
+      "warCrimes": { "label": "¿Alguna vez has sido sospechoso o condenado por crímenes de guerra, terrorismo o extremismo?" }
+    }
+  },
   "validation": {
     "email": {
       "required": "La dirección de correo electrónico es requerida",
