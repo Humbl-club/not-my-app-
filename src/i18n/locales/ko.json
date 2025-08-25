@@ -29,7 +29,7 @@
   "trust": {"processing": "평균 처리 시간", "processingTime": "72시간", "applications": "처리된 신청", "applicationsCount": "10,000+", "notice": "이 서비스는 독립적인 제3자에 의해 제공되며 영국 정부와 관련이 없습니다."},
   "steps": {"title": "간단한 4단계 과정", "subtitle": "아름답게 간단한 과정으로 15분 미만 소요", "step1": {"title": "신청서 작성", "description": "개인 및 여행 세부 정보로 안전한 온라인 양식을 완성하세요.", "time": "5-10분"}, "step2": {"title": "문서 업로드", "description": "암호화된 플랫폼에 여권과 사진을 안전하게 업로드하세요.", "time": "2-3분"}, "step3": {"title": "결제하기", "description": "여러 결제 옵션을 사용한 안전한 결제 처리.", "time": "1-2분"}, "step4": {"title": "ETA 수령", "description": "승인된 ETA를 이메일 받은편지함으로 직접 받으세요.", "time": "24-72시간"}},
   "trustIndicators": {
-    "title": "왜 ETAShub를 선택하나요",
+    "title": "왜 ETAsHub를 선택해야 할까요?",
     "subtitle": "수천 명이 우리를 여행 서류 처리에 신뢰하는 다섯 가지 이유",
     "convenience": {
       "title": "편의성",

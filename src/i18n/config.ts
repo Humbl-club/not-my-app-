@@ -11,6 +11,7 @@ import ar from './locales/ar.json';
 import zh from './locales/zh.json';
 import ko from './locales/ko.json';
 import ja from './locales/ja.json';
+import de from './locales/de.json';
 
 const resources = {
   en: { translation: en },
@@ -21,6 +22,7 @@ const resources = {
   zh: { translation: zh },
   ko: { translation: ko },
   ja: { translation: ja },
+  de: { translation: de },
 };
 
 i18n

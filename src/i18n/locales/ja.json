@@ -29,7 +29,7 @@
   "trust": {"processing": "平均処理時間", "processingTime": "72時間", "applications": "処理済み申請", "applicationsCount": "10,000+", "notice": "このサービスは独立した第三者によって提供されており、英国政府とは関係ありません。"},
   "steps": {"title": "シンプルな4ステッププロセス", "subtitle": "美しくシンプルなプロセスで15分未満", "step1": {"title": "申請書記入", "description": "個人および旅行の詳細を使用して、安全なオンラインフォームを完成させます。", "time": "5-10分"}, "step2": {"title": "書類アップロード", "description": "暗号化されたプラットフォームにパスポートと写真を安全にアップロードします。", "time": "2-3分"}, "step3": {"title": "支払い", "description": "複数の支払いオプションを利用した安全な支払い処理。", "time": "1-2分"}, "step4": {"title": "ETA受領", "description": "承認されたETAをメールの受信箱に直接お届けします。", "time": "24-72時間"}},
   "trustIndicators": {
-    "title": "ETAShubを選ぶ理由",
+    "title": "ETAsHubを選ぶ理由",
     "subtitle": "何千人もの方々が旅行書類処理で私たちを信頼する5つの理由",
     "convenience": {
       "title": "利便性",

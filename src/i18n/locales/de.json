@@ -1,0 +1,288 @@
+{
+  "header": {
+    "phone": "+1 (555) 123-4567",
+    "email": "support@etashub.com",
+    "available247": "24/7 Globaler Support",
+    "title": "ETAsHub",
+    "subtitle": "Ihr Tor zum weltweiten Reisen",
+    "trackApplication": "Antrag verfolgen",
+    "startApplication": "Jetzt beantragen"
+  },
+  "hero": {
+    "title": "Beantragen Sie Ihre UK ETA",
+    "subtitle": "Einfache, sichere und zuverlässige Unterstützung bei Ihrer UK Electronic Travel Authorisation",
+    "multipleApplicants": "Beantragen Sie für Ihre ganze Familie oder Gruppe",
+    "quickProcessing": "Bearbeitung innerhalb von 72 Stunden",
+    "expertSupport": "Expertenunterstützung durchgehend",
+    "startApplication": "Ihren Antrag starten",
+    "disclaimer": "ETAsHub ist ein privater Dienstleister und nicht mit der britischen Regierung verbunden. Sie können direkt auf GOV.UK nur für die Regierungsgebühr beantragen. Unser Service bietet administrative Unterstützung, Verfolgung und sichere Speicherung zusätzlich zum Regierungsprozess.",
+    "valueProposition": "Vereinfachen Sie Ihr Reisen — Konzentrieren Sie sich auf Ihre Reise, wir erledigen die Verwaltung"
+  },
+  "trust": {
+    "processing": "Durchschnittliche Bearbeitungszeit",
+    "processingTime": "72 Stunden",
+    "applications": "Bearbeitete Anträge",
+    "applicationsCount": "10.000+",
+    "notice": "Dieser Service wird von einem unabhängigen Dritten angeboten und ist nicht mit der britischen Regierung verbunden."
+  },
+  "steps": {
+    "title": "So funktioniert es — Ein einfacher 4-Schritte-Prozess",
+    "subtitle": "Ein wunderbar einfacher Prozess, der weniger als 15 Minuten dauert",
+    "step1": {"title": "Antragsformular ausfüllen", "description": "Geben Sie Ihre Daten über unser sicheres Online-Formular ein.", "time": "5–10 Minuten"},
+    "step2": {"title": "Erforderliche Dokumente hochladen", "description": "Fügen Sie Ihren Passscan und alle erforderlichen Dateien hinzu.", "time": "ein paar Minuten"},
+    "step3": {"title": "Sichere Zahlung", "description": "Zahlen Sie die Regierungsgebühr + unsere Servicegebühr für administrative Unterstützung.", "time": "sofort"},
+    "step4": {"title": "Ihre ETA erhalten", "description": "Nach der Bearbeitung benachrichtigen wir Sie sofort und speichern Ihre ETA in Ihrem Dashboard für einfachen Zugriff.", "time": "ausgestellt von UK-Behörden"}
+  },
+  "trustIndicators": {
+    "title": "Warum ETAsHub wählen?",
+    "subtitle": "Fünf Gründe, warum Tausende uns mit ihrer Reisedokumentation vertrauen",
+    "convenience": {"title": "Bequemlichkeit", "description": "keine verwirrenden Formulare oder Fehler; wir erledigen es für Sie"},
+    "security": {"title": "Sicherheit", "description": "Datenschutz auf Bankniveau, DSGVO-konform"},
+    "tracking": {"title": "Antragsverfolgung", "description": "sehen Sie jederzeit den Status Ihres Antrags"},
+    "storage": {"title": "Dokumentenmanagement", "description": "sichere Dokumentenbearbeitung und einfacher Abruf"},
+    "family": {"title": "Familien- & Gruppenanträge", "description": "beantragen Sie für mehrere Reisende in einer bequemen Sitzung"}
+  },
+  "applicationSteps": {
+    "title": "Einfacher 4-Schritte-Prozess",
+    "subtitle": "Unser optimierter Prozess macht die Beschaffung Ihrer elektronischen Reisegenehmigung schnell und einfach weltweit",
+    "step1": {"title": "Antrag ausfüllen", "description": "Füllen Sie Antragsformulare für sich selbst und alle Reisebegleiter mit persönlichen und Reisedetails für jedes unterstützte Ziel aus.", "time": "5-10 Minuten"},
+    "step2": {"title": "Dokumente hochladen", "description": "Reichen Sie Ihre Passkopie und Ihr Foto ein. Unser System validiert alle Anforderungen automatisch.", "time": "2-3 Minuten"},
+    "step3": {"title": "Sichere Zahlung", "description": "Zahlen Sie sicher mit Kreditkarte, Debitkarte oder PayPal. Alle Transaktionen sind global verschlüsselt.", "time": "1-2 Minuten"},
+    "step4": {"title": "Genehmigung erhalten", "description": "Erhalten Sie Ihre elektronische Reisegenehmigung per E-Mail. Verfolgen Sie Ihren Antragsstatus 24/7 online.", "time": "1-3 Werktage"}
+  },
+  "footer": {
+    "links": {"terms": "Allgemeine Geschäftsbedingungen", "privacy": "Datenschutzrichtlinie", "cookies": "Cookie-Richtlinie", "refund": "Rückerstattungsrichtlinie"},
+    "contact": "Kontakt: support@uketaservice.com | Firmenregistrierung: [Details]",
+    "copyright": "© 2024 UK ETA Antragsservice. Alle Rechte vorbehalten."
+  },
+  "legal": {
+    "title": "Rechtlicher Haftungsausschluss",
+    "content": "ETAsHub ist ein unabhängiger Drittanbieter. Wir sind nicht mit der britischen Regierung, dem britischen Innenministerium oder einer anderen offiziellen Stelle verbunden, von ihnen unterstützt oder mit ihnen verbunden. Sie können direkt über die offizielle britische Regierungswebsite (GOV.UK) nur für die Regierungsgebühr beantragen. Unser Service umfasst administrative Unterstützung, sichere Antragsbearbeitung, Antragsverfolgung, Dokumentenspeicherung und Verlängerungserinnerungen für eine zusätzliche Servicegebühr. Wir bieten keine Rechts- oder Einwanderungsberatung. Alle Entscheidungen bezüglich ETA-Genehmigungen, Ablehnungen oder Bearbeitungszeiten werden ausschließlich von den britischen Behörden getroffen."
+  },
+  "transparency": {
+    "title": "Transparenz",
+    "feeBreakdown": "Klare Gebührenaufschlüsselung (Regierungsgebühr + Servicegebühr)",
+    "noHidden": "Keine versteckten Kosten — vollständige Transparenz im Voraus"
+  },
+  "application": {
+    "title": "UK ETA Antragsformular",
+    "subtitle": "Bitte füllen Sie alle erforderlichen Felder genau aus",
+    "continue": "Weiter",
+    "back": "Zurück",
+    "submit": "Antrag einreichen",
+    "progress": {"step": "Schritt {{current}} von {{total}}", "complete": "{{percent}}% abgeschlossen"},
+    "personalInfo": {
+      "title": "Persönliche Informationen",
+      "nameSection": {
+        "title": "Vollständiger Name",
+        "description": "Geben Sie Ihre Namen genau so ein, wie sie in Ihrem Pass stehen",
+        "helperText": "Verwenden Sie das Feld \"Zweite Namen\" für zusätzliche Vornamen, wenn sie nicht in das erste Namensfeld passen. Lassen Sie es leer, wenn nicht benötigt."
+      },
+      "optional": "(Optional)",
+      "firstName": {"label": "Vorname (wie im Pass gezeigt)", "placeholder": "Geben Sie Ihren Vornamen ein"},
+      "secondNames": {"label": "Zusätzliche Namen (wie im Pass gezeigt)", "placeholder": "Geben Sie zusätzliche Namen ein, falls vorhanden"},
+      "lastName": {"label": "Nachname (wie im Pass gezeigt)", "placeholder": "Geben Sie Ihren Nachnamen ein"},
+      "dateOfBirth": {"label": "Geburtsdatum", "placeholder": "Wählen Sie Ihr Geburtsdatum", "helperText": "Geben Sie JJJJ-MM-TT oder JJJJ/MM/TT ein oder verwenden Sie den Kalender"},
+      "nationality": {"label": "Staatsangehörigkeit", "placeholder": "Wählen Sie Ihre Staatsangehörigkeit"},
+      "email": {"label": "E-Mail-Adresse", "placeholder": "Geben Sie Ihre E-Mail-Adresse ein"},
+      "passportNumber": {"label": "Passnummer", "placeholder": "Geben Sie Ihre Passnummer ein"}
+    },
+    "documents": {
+      "title": "Dokumente hochladen",
+      "subtitle": "Bitte laden Sie Ihren Pass und Ihr Foto hoch",
+      "passport": {
+        "title": "Pass-Informationsseite",
+        "uploadTitle": "Passfoto hochladen",
+        "format": "Nur JPG oder JPEG Format",
+        "chooseFile": "Datei wählen",
+        "requirements": {
+          "title": "Anforderungen:",
+          "readable": "Klares, lesbares Bild der Pass-Personaldetailseite",
+          "visible": "Aller Text muss sichtbar und lesbar sein",
+          "noGlare": "Keine Blendung oder Schatten",
+          "format": "Nur JPG oder JPEG Format"
+        }
+      },
+      "photo": {
+        "title": "Persönliches Foto",
+        "upload": {"title": "Foto hochladen", "format": "JPG oder JPEG", "button": "Datei wählen"},
+        "camera": {"title": "Foto aufnehmen", "subtitle": "Kamera verwenden", "button": "Kamera öffnen"},
+        "requirements": {
+          "title": "Foto-Anforderungen:",
+          "background": "Einfacher, heller Hintergrund",
+          "noObjects": "Keine Personen oder Objekte im Hintergrund",
+          "visibility": "Vollständiger Kopf, Schultern und Oberkörper sichtbar",
+          "lighting": "Gleichmäßige Beleuchtung ohne Schatten oder Blendung",
+          "features": "Klare Sichtbarkeit der Gesichtszüge"
+        }
+      }
+    },
+    "payment": {
+      "title": "Zahlung",
+      "subtitle": "Vervollständigen Sie Ihre Zahlung, um Ihren Antrag zu übermitteln",
+      "details": {
+        "title": "Zahlungsdetails",
+        "cardholderName": {"label": "Name des Karteninhabers *", "placeholder": "Geben Sie den Namen des Karteninhabers ein"},
+        "cardNumber": {"label": "Kartennummer *", "placeholder": "1234 5678 9012 3456"},
+        "expiryDate": {"label": "Ablaufdatum *", "placeholder": "MM/JJ"},
+        "cvv": {"label": "CVV *", "placeholder": "123"},
+        "security": "Ihre Zahlung ist mit SSL-Verschlüsselung gesichert und wird über vertrauenswürdige Zahlungsanbieter verarbeitet."
+      },
+      "summary": {
+        "title": "Bestellübersicht",
+        "application": "UK ETA Antrag",
+        "serviceFee": "Servicegebühr",
+        "vat": "MwSt (20%)",
+        "total": "Gesamt",
+        "sslSecured": "SSL-gesicherte Zahlung",
+        "moneyBack": "Geld-zurück-Garantie"
+      },
+      "complete": "Zahlung abschließen",
+      "options": { "yes": "Ja", "no": "Nein" }
+    },
+    "address": {
+      "title": "Adresse",
+      "sameAsPrimary": "Gleich wie Hauptantragsteller",
+      "line1": { "label": "Adresszeile 1" },
+      "line2": { "label": "Adresszeile 2 (optional)" },
+      "city": { "label": "Stadt" },
+      "state": { "label": "Bundesland/Provinz" },
+      "postalCode": { "label": "Postleitzahl" },
+      "country": { "label": "Land", "placeholder": "Wählen Sie ein Land" },
+      "usingPrimary": "Verwende Adresse des Hauptantragstellers"
+    },
+    "employment": {
+      "title": "Beschäftigung",
+      "hasJob": { "label": "Haben Sie einen Job?" },
+      "jobTitle": { "label": "Was ist Ihr Beruf?", "placeholder": "Geben Sie Ihren Jobtitel ein" }
+    },
+    "security": {
+      "title": "Sicherheitsfragen",
+      "criminalConvictions": { "label": "Hatten Sie jemals Strafverurteilungen?" },
+      "warCrimes": { "label": "Wurden Sie jemals verdächtigt oder verurteilt wegen Kriegsverbrechen, Terrorismus oder Extremismus?" }
+    },
+    "documents": {
+      "passportPhoto": { "title": "Passfoto", "upload": "Passfoto hochladen", "requirements": "Klares Bild der Pass-Informationsseite" },
+      "personalPhoto": { "title": "Persönliches Foto", "upload": "Persönliches Foto hochladen", "camera": "Foto mit Kamera aufnehmen", "requirements": "Aktuelles Foto mit einfachem Hintergrund" }
+    },
+    "email": {
+      "sameAsPrimary": "Gleich wie Hauptantragsteller",
+      "usingPrimary": "Verwende E-Mail-Adresse des Hauptantragstellers"
+    },
+    "additionalNationalities": {
+      "label": "Haben Sie zusätzliche Staatsangehörigkeiten?",
+      "description": "Wählen Sie dies aus, wenn Sie mehrere Staatsbürgerschaften besitzen",
+      "addButton": "Staatsangehörigkeit hinzufügen"
+    },
+    "options": { "yes": "Ja", "no": "Nein" }
+  },
+  "validation": {
+    "email": {
+      "required": "E-Mail-Adresse ist erforderlich",
+      "invalidFormat": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "noSpaces": "E-Mail-Adresse darf keine Leerzeichen enthalten",
+      "multipleAt": "E-Mail muss genau ein @ Symbol haben",
+      "missingParts": "E-Mail muss sowohl lokalen Teil als auch Domain haben",
+      "consecutiveDots": "E-Mail kann keine aufeinanderfolgenden Punkte haben",
+      "invalidFormat": "Ungültiges E-Mail-Format"
+    },
+    "passportName": {
+      "required": "Name ist erforderlich",
+      "format": "Verwenden Sie nur Großbuchstaben A-Z, Leerzeichen, Bindestriche und Apostrophe",
+      "tooLong": "Name muss 1-50 Zeichen lang sein",
+      "invalidStart": "Name kann nicht mit Leerzeichen oder Sonderzeichen beginnen oder enden",
+      "consecutive": "Kann keine aufeinanderfolgenden Leerzeichen oder Sonderzeichen haben",
+      "passportFormat": "Geben Sie Ihren Namen genau so ein, wie er in Ihrem Pass steht"
+    },
+    "passportNumber": {
+      "required": "Passnummer ist erforderlich",
+      "invalid": "Verwenden Sie nur Buchstaben und Zahlen (A-Z, 0-9)",
+      "length": "Passnummer muss 6-10 Zeichen lang sein",
+      "format": "Geben Sie die Passnummer genau so ein, wie sie in Ihrem Pass steht"
+    }
+  },
+  "tracking": {
+    "title": "Ihren Antrag verfolgen",
+    "subtitle": "Geben Sie Ihre Referenznummer ein, um Ihren Antragsstatus zu überprüfen",
+    "lookupTitle": "Antragssuche",
+    "referenceNumber": "Referenznummer",
+    "referencePlaceholder": "Geben Sie Ihre Referenznummer ein (z.B. ETA-2024-001234)",
+    "trackButton": "Antrag verfolgen",
+    "hint": "Ihre Referenznummer wurde in Ihrer Bestätigungs-E-Mail bereitgestellt.",
+    "applicationStatus": "Antragsstatus: {{ref}}",
+    "labels": {
+      "applicantName": "Name des Antragstellers",
+      "submissionDate": "Einreichungsdatum",
+      "currentStatus": "Aktueller Status"
+    },
+    "status": {"received": "Antrag erhalten", "processing": "In Bearbeitung", "approved": "Genehmigt", "rejected": "Abgelehnt"},
+    "timeline": {
+      "title": "Antrags-Zeitleiste",
+      "submitted": "Antrag eingereicht",
+      "documentsVerified": "Dokumente verifiziert",
+      "underReview": "In Bearbeitung",
+      "etaIssued": "ETA ausgestellt",
+      "current": "Aktuell",
+      "pending": "Ausstehend",
+      "descriptions": {
+        "submitted": "Ihr Antrag wurde erfolgreich erhalten und die Zahlung bestätigt.",
+        "documentsVerified": "Alle eingereichten Dokumente wurden verifiziert und akzeptiert.",
+        "underReview": "Ihr Antrag wird derzeit von den britischen Behörden geprüft.",
+        "etaIssued": "Ihre ETA wird ausgestellt und an Ihre E-Mail gesendet, sobald sie genehmigt wurde."
+      }
+    },
+    "estimated": {
+      "title": "Geschätzte Fertigstellung",
+      "description": "Basierend auf aktuellen Bearbeitungszeiten wird erwartet, dass Ihre ETA in den nächsten 24-48 Stunden ausgestellt wird. Sie erhalten eine E-Mail-Benachrichtigung, sobald Ihre ETA bereit ist."
+    },
+    "support": {
+      "title": "Benötigen Sie Hilfe?",
+      "contactTitle": "Support kontaktieren",
+      "description": "Wenn Sie Fragen zu Ihrem Antrag haben, kontaktieren Sie bitte unser Support-Team.",
+      "emailLabel": "E-Mail",
+      "phoneLabel": "Telefon",
+      "hoursLabel": "Öffnungszeiten",
+      "phone": "+44 20 7946 0958",
+      "email": "support@uketaservice.com"
+    },
+    "processingTimes": {
+      "title": "Bearbeitungszeiten",
+      "description": "Aktuelle durchschnittliche Bearbeitungszeiten für UK ETA Anträge.",
+      "standard": "Standardbearbeitung: 24-72 Stunden",
+      "peak": "Hochsaison: Bis zu 5 Tage",
+      "complex": "Komplexe Fälle: Bis zu 10 Tage"
+    }
+  },
+  "confirmation": {
+    "title": "Antrag erfolgreich eingereicht!",
+    "subtitle": "Ihr UK ETA Antrag wurde erhalten und wird nun bearbeitet.",
+    "applicationDetails": "Antragsdetails",
+    "referenceNumber": "Antragsreferenz",
+    "submissionDate": "Einreichungsdatum",
+    "processingTime": "Erwartete Bearbeitungszeit",
+    "amountPaid": "Gesamtbetrag bezahlt",
+    "nextSteps": {
+      "title": "Was passiert als nächstes?",
+      "step1": {"title": "E-Mail-Bestätigung", "description": "Sie erhalten eine E-Mail-Bestätigung mit Ihrer Antragsreferenznummer."},
+      "step2": {"title": "Antragsbearbeitung", "description": "Unser Team wird Ihren Antrag prüfen und an die britischen Behörden weiterleiten."},
+      "step3": {"title": "ETA-Zustellung", "description": "Ihre genehmigte ETA wird direkt an Ihre E-Mail-Adresse gesendet."}
+    },
+    "actions": {"downloadReceipt": "Quittung herunterladen", "emailReceipt": "Quittung per E-Mail", "trackApplication": "Antrag verfolgen"},
+    "support": {"title": "Brauchen Sie Hilfe?", "email": "E-Mail-Support", "phone": "Telefon-Support", "hours": "24/7 verfügbar"},
+    "returnHome": "Zur Startseite zurückkehren"
+  },
+  "jobSelector": {
+    "other": "Andere",
+    "customJobPrompt": "Geben Sie einen benutzerdefinierten Jobtitel ein",
+    "searchPlaceholder": "Nach Jobs suchen...",
+    "popularJobs": "Beliebte Jobs",
+    "enterJobTitle": "Geben Sie Ihren Jobtitel ein",
+    "typeJobTitle": "Geben Sie Ihren Jobtitel ein...",
+    "translating": "Übersetzen...",
+    "englishTranslation": "Englische Übersetzung:",
+    "manualTranslationPrompt": "Bitte geben Sie Ihren Jobtitel auch auf Englisch ein:",
+    "englishJobTitle": "Jobtitel auf Englisch eingeben",
+    "cancel": "Abbrechen",
+    "noJobsFound": "Keine Jobs gefunden."
+  }
+}
