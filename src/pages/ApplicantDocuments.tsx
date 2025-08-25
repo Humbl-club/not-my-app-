@@ -1,14 +1,16 @@
-import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
-import { ArrowLeft, ArrowRight, Upload, Camera } from 'lucide-react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate, useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import { Progress } from "@/components/ui/progress";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { SecureDocumentUpload } from "@/components/SecureDocumentUpload";
+import { toast } from "sonner";
 
 const ApplicantDocuments = () => {
   const { t } = useTranslation();
@@ -154,46 +156,19 @@ const ApplicantDocuments = () => {
                     <CardTitle>{t('application.documents.passportPhoto.title', { defaultValue: 'Passport Photo' })}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <FormField
+                     <FormField
                       control={form.control}
                       name="passportPhoto"
                       render={({ field, fieldState }) => (
                         <FormItem>
                           <FormControl>
-                            <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-8 text-center">
-                              <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                              <p className="text-lg font-medium mb-2">{t('application.documents.passportPhoto.upload', { defaultValue: 'Upload passport photo' })}</p>
-                              <p className="text-muted-foreground mb-4">JPG or JPEG format only</p>
-                              <div className="flex gap-2 justify-center">
-                                <Button 
-                                  type="button"
-                                  variant="outline"
-                                  onClick={() => {
-                                    const input = document.createElement('input');
-                                    input.type = 'file';
-                                    input.accept = '.jpg,.jpeg';
-                                    input.onchange = (e) => {
-                                      const file = (e.target as HTMLInputElement).files?.[0];
-                                      if (file) handleFileUpload('passportPhoto', file);
-                                    };
-                                    input.click();
-                                  }}
-                                >
-                                  Choose File
-                                </Button>
-                                <Button 
-                                  type="button"
-                                  variant="outline"
-                                  onClick={() => openCamera('passportPhoto')}
-                                >
-                                  <Camera className="h-4 w-4 mr-2" />
-                                  Camera
-                                </Button>
-                              </div>
-                              {field.value && (
-                                <p className="mt-2 text-sm text-green-600">✓ File uploaded successfully</p>
-                              )}
-                            </div>
+                            <SecureDocumentUpload
+                              type="passport"
+                              value={field.value}
+                              onChange={field.onChange}
+                              error={fieldState.error?.message}
+                              required={true}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -222,53 +197,20 @@ const ApplicantDocuments = () => {
                     <CardTitle>{t('application.documents.personalPhoto.title', { defaultValue: 'Personal Photo' })}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <FormField
+                     <FormField
                       control={form.control}
                       name="personalPhoto"
                       render={({ field, fieldState }) => (
                         <FormItem>
                           <FormControl>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                              <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
-                                <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                                <p className="font-medium mb-1">{t('application.documents.personalPhoto.upload', { defaultValue: 'Upload Photo' })}</p>
-                                <p className="text-sm text-muted-foreground mb-3">JPG or JPEG</p>
-                                <Button 
-                                  type="button"
-                                  variant="outline" 
-                                  size="sm"
-                                  onClick={() => {
-                                    const input = document.createElement('input');
-                                    input.type = 'file';
-                                    input.accept = '.jpg,.jpeg';
-                                    input.onchange = (e) => {
-                                      const file = (e.target as HTMLInputElement).files?.[0];
-                                      if (file) handleFileUpload('personalPhoto', file);
-                                    };
-                                    input.click();
-                                  }}
-                                >
-                                  Choose File
-                                </Button>
-                              </div>
-                              <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
-                                <Camera className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                                <p className="font-medium mb-1">{t('application.documents.personalPhoto.camera', { defaultValue: 'Take Photo' })}</p>
-                                <p className="text-sm text-muted-foreground mb-3">Use camera</p>
-                                <Button 
-                                  type="button"
-                                  variant="outline" 
-                                  size="sm"
-                                  onClick={() => openCamera('personalPhoto')}
-                                >
-                                  Open Camera
-                                </Button>
-                              </div>
-                            </div>
+                            <SecureDocumentUpload
+                              type="personal"
+                              value={field.value}
+                              onChange={field.onChange}
+                              error={fieldState.error?.message}
+                              required={true}
+                            />
                           </FormControl>
-                          {field.value && (
-                            <p className="text-sm text-green-600">✓ Photo uploaded successfully</p>
-                          )}
                           <FormMessage />
                         </FormItem>
                       )}

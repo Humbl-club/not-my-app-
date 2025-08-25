@@ -159,14 +159,21 @@
     },
       "address": {
         "title": "Address",
+        "sameAsPrimary": "Same address as Applicant 1",
+        "usingPrimary": "Using Applicant 1's address",
         "sameAsMain": "Same as main applicant",
-        "line1": { "label": "Address line 1" },
-        "line2": { "label": "Address line 2 (optional)" },
-        "city": { "label": "City" },
-        "state": { "label": "State/Province" },
-        "postalCode": { "label": "Postal code" },
-        "country": { "label": "Country", "placeholder": "Select a country" },
-        "usingMain": "Using main applicant's address"
+        "usingMain": "Using main applicant's address",
+        "sameAsPassport": {
+          "label": "Use same address as passport",
+          "description": "Check this if your address matches your passport"
+        },
+        "line1": { "label": "Address line 1", "placeholder": "Enter address line 1" },
+        "line2": { "label": "Address line 2 (optional)", "placeholder": "Enter address line 2" },
+        "line3": { "label": "Address line 3 (optional)", "placeholder": "Enter address line 3" },
+        "city": { "label": "City", "placeholder": "Enter city" },
+        "state": { "label": "State/Province", "placeholder": "Enter state or province" },
+        "postalCode": { "label": "Postal code", "placeholder": "Enter postal code" },
+        "country": { "label": "Country", "placeholder": "Select a country" }
       },
       "employment": {
         "title": "Employment",

@@ -23,6 +23,7 @@ import { DateOfBirthInput, validateDateOfBirth } from '@/components/ui/date-of-b
 import { PassportNumberInput } from '@/components/ui/passport-number-input';
 import { NameFieldsSection } from '@/components/NameFieldsSection';
 import { NationalityRadioSection } from '@/components/NationalityRadioSection';
+import { AddressFieldsSection } from "@/components/AddressFieldsSection";
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -42,12 +43,13 @@ const postalRegex = /^[A-Za-z0-9 -]{3,10}$/;
 
 
 const addressShape = z.object({
-  line1: z.string().optional(),
+  line1: z.string().min(1, "Address line 1 is required"),
   line2: z.string().optional(),
-  city: z.string().optional(),
+  line3: z.string().optional(),
+  city: z.string().min(1, "City is required"),
   state: z.string().optional(),
-  postalCode: z.string().optional(),
-  country: z.string().optional(),
+  postalCode: z.string().min(1, "Postal code is required"),
+  country: z.string().min(1, "Country is required"),
 });
 
 type AddressValues = z.infer<typeof addressShape>;
@@ -95,9 +97,10 @@ const applicantBase = z
     }).optional(),
     hasCriminalConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer this question' }),
     hasWarCrimesConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer this question' }),
-    useSameAddressAsPrimary: z.boolean().optional().default(false),
-    useSameEmailAsPrimary: z.boolean().optional().default(false),
-    address: addressShape,
+  useSameEmailAsPrimary: z.boolean().optional(),
+  address: addressShape,
+  useSameAddressAsPrimary: z.boolean().optional(),
+  useSameAddressAsPassport: z.boolean().optional(),
   })
   .superRefine((val, ctx) => {
     if (!val.useSameAddressAsPrimary) {
@@ -169,7 +172,7 @@ const defaultApplicant = (shareAddress = false, shareEmail = false): z.infer<typ
   hasWarCrimesConvictions: undefined as any,
   useSameAddressAsPrimary: shareAddress,
   useSameEmailAsPrimary: shareEmail,
-  address: { line1: '', line2: '', city: '', state: '', postalCode: '', country: '' },
+  address: { line1: '', line2: '', line3: '', city: '', state: '', postalCode: '', country: '' },
 });
 
 const Application = () => {
@@ -507,146 +510,12 @@ const Application = () => {
 
 
                         {/* Address */}
-                        <div className="space-y-3">
-                          <div className="flex items-center justify-between">
-                            <h4 className="text-base font-medium">
-                              {t('application.address.title', { defaultValue: 'Address' })}
-                            </h4>
-                            {idx > 0 && (
-                              <FormField
-                                control={control}
-                                name={`applicants.${idx}.useSameAddressAsPrimary`}
-                                render={({ field }) => (
-                                  <div className="flex items-center gap-2">
-                                    <Checkbox
-                                      id={`sameAddress-${idx}`}
-                                      checked={!!field.value}
-                                      onCheckedChange={field.onChange}
-                                    />
-                                    <label htmlFor={`sameAddress-${idx}`} className="text-sm text-muted-foreground">
-                                      {t('application.address.sameAsPrimary', { defaultValue: 'Same as Applicant 1' })}
-                                    </label>
-                                  </div>
-                                )}
-                              />
-                            )}
-                          </div>
-
-                          {!useSame && (
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                              <FormField
-                                control={control}
-                                name={`applicants.${idx}.address.line1`}
-                                render={({ field, fieldState }) => (
-                                  <FormItem className="md:col-span-2">
-                                    <FormLabel>
-                                      {t('application.address.line1.label', { defaultValue: 'Address line 1' })} <span aria-hidden="true" className="text-destructive">*</span>
-                                    </FormLabel>
-                                    <FormControl>
-                                      <Input {...field} type="text" aria-required="true" aria-invalid={!!fieldState.error} />
-                                    </FormControl>
-                                    <FormMessage />
-                                  </FormItem>
-                                )}
-                              />
-
-                              <FormField
-                                control={control}
-                                name={`applicants.${idx}.address.line2`}
-                                render={({ field }) => (
-                                  <FormItem className="md:col-span-2">
-                                    <FormLabel>{t('application.address.line2.label', { defaultValue: 'Address line 2 (optional)' })}</FormLabel>
-                                    <FormControl>
-                                      <Input {...field} type="text" />
-                                    </FormControl>
-                                  </FormItem>
-                                )}
-                              />
-
-                              <FormField
-                                control={control}
-                                name={`applicants.${idx}.address.city`}
-                                render={({ field, fieldState }) => (
-                                  <FormItem>
-                                    <FormLabel>
-                                      {t('application.address.city.label', { defaultValue: 'City' })} <span aria-hidden="true" className="text-destructive">*</span>
-                                    </FormLabel>
-                                    <FormControl>
-                                      <Input {...field} type="text" aria-required="true" aria-invalid={!!fieldState.error} />
-                                    </FormControl>
-                                    <FormMessage />
-                                  </FormItem>
-                                )}
-                              />
-
-                              <FormField
-                                control={control}
-                                name={`applicants.${idx}.address.state`}
-                                render={({ field, fieldState }) => (
-                                  <FormItem>
-                                    <FormLabel>
-                                      {t('application.address.state.label', { defaultValue: 'State/Province' })} {stateRequired && (<span aria-hidden="true" className="text-destructive">*</span>)}
-                                    </FormLabel>
-                                    <FormControl>
-                                      <Input {...field} type="text" aria-required={stateRequired} aria-invalid={!!fieldState.error} />
-                                    </FormControl>
-                                    <FormMessage />
-                                  </FormItem>
-                                )}
-                              />
-
-                              <FormField
-                                control={control}
-                                name={`applicants.${idx}.address.postalCode`}
-                                render={({ field, fieldState }) => (
-                                  <FormItem>
-                                    <FormLabel>
-                                      {t('application.address.postalCode.label', { defaultValue: 'Postal code' })} <span aria-hidden="true" className="text-destructive">*</span>
-                                    </FormLabel>
-                                    <FormControl>
-                                      <Input {...field} type="text" inputMode="text" aria-required="true" aria-invalid={!!fieldState.error} />
-                                    </FormControl>
-                                    <FormMessage />
-                                  </FormItem>
-                                )}
-                              />
-
-                              <FormField
-                                control={control}
-                                name={`applicants.${idx}.address.country`}
-                                render={({ field, fieldState }) => (
-                                  <FormItem>
-                                    <FormLabel>
-                                      {t('application.address.country.label', { defaultValue: 'Country' })} <span aria-hidden="true" className="text-destructive">*</span>
-                                    </FormLabel>
-                                    <FormControl>
-                                       <select
-                                         {...field}
-                                         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-destructive/5 aria-[invalid=true]:focus-visible:ring-destructive disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                                         aria-required="true"
-                                         aria-invalid={!!fieldState.error}
-                                       >
-                                         <option value="">{t('application.address.country.placeholder', { defaultValue: 'Select a country' })}</option>
-                                         {nationalities.map((nationality) => (
-                                           <option key={nationality.code} value={nationality.code}>
-                                             {nationality.name}
-                                           </option>
-                                         ))}
-                                       </select>
-                                    </FormControl>
-                                    <FormMessage />
-                                  </FormItem>
-                                )}
-                              />
-                            </div>
-                          )}
-
-                          {useSame && idx > 0 && (
-                            <p className="text-sm text-muted-foreground">
-                              {t('application.address.usingPrimary', { defaultValue: "Using Applicant 1's address" })}
-                            </p>
-                          )}
-                        </div>
+                        <AddressFieldsSection
+                          form={form}
+                          baseName={`applicants.${idx}`}
+                          showSameAsPassportOption={idx > 0}
+                          passportData={null}
+                        />
 
                         <FormField
                           control={control}
