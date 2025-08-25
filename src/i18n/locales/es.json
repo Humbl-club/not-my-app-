@@ -225,8 +225,7 @@
         "addButton": "Agregar Nacionalidad"
       },
       "options": { "yes": "Sí", "no": "No" }
-    }
-  },
+    },
   "validation": {
     "email": {
       "required": "La dirección de correo electrónico es requerida",
