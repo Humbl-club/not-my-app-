@@ -161,7 +161,46 @@
       "criminalConvictions": { "label": "Hatten Sie jemals Strafverurteilungen?" },
       "warCrimes": { "label": "Wurden Sie jemals verdächtigt oder verurteilt wegen Kriegsverbrechen, Terrorismus oder Extremismus?" }
     },
-    "documents": {
+      "upload": {
+        "title": "Dokumente hochladen",
+        "uploading": "Wird hochgeladen...",
+        "success": "Datei erfolgreich hochgeladen",
+        "select": "Datei auswählen",
+        "replace": "Andere Datei hochladen",
+        "requirements": "JPG oder PNG, max 5MB"
+      },
+      "passport": {
+        "upload": {
+          "title": "Reisepass-Foto hochladen",
+          "description": "Ziehen Sie eine Datei hierher oder klicken Sie zum Auswählen"
+        },
+        "preview": {
+          "alt": "Vorschau des Reisepass-Fotos"
+        },
+        "requirements": {
+          "title": "Anforderungen:",
+          "format": "Klares, hochwertiges JPG- oder PNG-Format",
+          "size": "Dateigröße unter 5MB",
+          "pages": "Zeigen Sie die Hauptinformationsseite Ihres Reisepasses",
+          "readable": "Aller Text muss klar lesbar sein"
+        }
+      },
+      "personal": {
+        "upload": {
+          "title": "Persönliches Foto hochladen",
+          "description": "Ziehen Sie eine Datei hierher oder klicken Sie zum Auswählen"
+        },
+        "preview": {
+          "alt": "Vorschau des persönlichen Fotos"
+        },
+        "requirements": {
+          "title": "Anforderungen:",
+          "format": "Klares, hochwertiges JPG- oder PNG-Format",
+          "size": "Dateigröße unter 5MB",
+          "recent": "Aktuelles Foto (in den letzten 6 Monaten aufgenommen)",
+          "quality": "Gute Beleuchtung mit klaren Gesichtszügen"
+        }
+      },
       "passportPhoto": { "title": "Passfoto", "upload": "Passfoto hochladen", "requirements": "Klares Bild der Pass-Informationsseite" },
       "personalPhoto": { "title": "Persönliches Foto", "upload": "Persönliches Foto hochladen", "camera": "Foto mit Kamera aufnehmen", "requirements": "Aktuelles Foto mit einfachem Hintergrund" }
     },

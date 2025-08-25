@@ -119,7 +119,62 @@
    ,
       "address": {
         "title": "地址",
-        "sameAsMain": "与主申请人相同",
+      "sameAsMain": "与主申请人相同",
+      "usingMain": "使用主申请人的地址",
+      "sameAsPassport": {
+        "label": "使用与护照相同的地址",
+        "description": "如果您的地址与护照一致，请选择此选项"
+      },
+      "extracting": "正在提取地址...",
+      "line1": { "label": "地址第一行" },
+      "line2": { "label": "地址第二行（可选）" },
+      "line3": { "label": "地址第三行（可选）" },
+      "city": { "label": "城市" },
+      "country": { "label": "国家", "placeholder": "选择国家" },
+      "postalCode": { "label": "邮政编码" },
+      "upload": {
+        "title": "上传文件",
+        "uploading": "上传中...",
+        "success": "文件上传成功",
+        "select": "选择文件",
+        "replace": "上传不同文件",
+        "requirements": "JPG或PNG，最大5MB"
+      },
+      "passport": {
+        "upload": {
+          "title": "上传护照照片",
+          "description": "拖放或点击选择文件"
+        },
+        "preview": {
+          "alt": "护照照片预览"
+        },
+        "requirements": {
+          "title": "要求:",
+          "format": "清晰、高质量的JPG或PNG格式",
+          "size": "文件大小小于5MB",
+          "pages": "显示护照的主要信息页面",
+          "readable": "所有文字必须清晰可读"
+        }
+      },
+      "personal": {
+        "upload": {
+          "title": "上传个人照片",
+          "description": "拖放或点击选择文件"
+        },
+        "preview": {
+          "alt": "个人照片预览"
+        },
+        "requirements": {
+          "title": "要求:",
+          "format": "清晰、高质量的JPG或PNG格式",
+          "size": "文件大小小于5MB",
+          "recent": "近期照片（最近6个月内拍摄）",
+          "quality": "面部特征清晰的良好光线"
+        }
+      },
+      "passportPhoto": { "title": "护照照片", "upload": "上传护照照片", "requirements": "护照个人信息页面的清晰图像" },
+      "personalPhoto": { "title": "个人照片", "upload": "上传个人照片", "camera": "用相机拍照", "requirements": "简单背景的近期照片" }
+    },
         "line1": { "label": "地址第一行" },
         "line2": { "label": "地址第二行（可选）" },
         "city": { "label": "城市" },

@@ -138,20 +138,14 @@ export const SecureDocumentUpload: React.FC<SecureDocumentUploadProps> = ({
               <Upload className="mx-auto h-12 w-12 text-muted-foreground" />
               <div className="space-y-2">
                 <p className="text-base font-medium">
-                  {t(`application.documents.${type}.upload.title`, { 
-                    defaultValue: `Upload ${type} photo` 
-                  })}
+                  {t(`application.documents.${type}.upload.title`)}
                   {required && <span className="text-destructive ml-1">*</span>}
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  {t(`application.documents.${type}.upload.description`, { 
-                    defaultValue: 'Drag and drop or click to select a file' 
-                  })}
+                  {t(`application.documents.${type}.upload.description`)}
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  {t('application.documents.upload.requirements', { 
-                    defaultValue: 'JPG or PNG, max 5MB' 
-                  })}
+                  {t('application.documents.upload.requirements')}
                 </p>
               </div>
               <Button 
@@ -161,9 +155,9 @@ export const SecureDocumentUpload: React.FC<SecureDocumentUploadProps> = ({
                 disabled={isUploading}
               >
                 {isUploading ? (
-                  t('application.documents.upload.uploading', { defaultValue: 'Uploading...' })
+                  t('application.documents.upload.uploading')
                 ) : (
-                  t('application.documents.upload.select', { defaultValue: 'Select File' })
+                  t('application.documents.upload.select')
                 )}
               </Button>
             </div>
@@ -174,9 +168,7 @@ export const SecureDocumentUpload: React.FC<SecureDocumentUploadProps> = ({
                 <div className="relative max-w-xs mx-auto">
                   <img
                     src={preview}
-                    alt={t(`application.documents.${type}.preview.alt`, { 
-                      defaultValue: `${type} photo preview` 
-                    })}
+                    alt={t(`application.documents.${type}.preview.alt`)}
                     className="w-full h-48 object-cover rounded-lg border"
                   />
                   <Button
@@ -196,9 +188,7 @@ export const SecureDocumentUpload: React.FC<SecureDocumentUploadProps> = ({
                 <div className="flex items-center justify-center gap-2 text-success">
                   <CheckCircle className="h-5 w-5" />
                   <span className="text-sm font-medium">
-                    {t('application.documents.upload.success', { 
-                      defaultValue: 'File uploaded successfully' 
-                    })}
+                    {t('application.documents.upload.success')}
                   </span>
                 </div>
               )}
@@ -213,9 +203,7 @@ export const SecureDocumentUpload: React.FC<SecureDocumentUploadProps> = ({
                   disabled={isUploading}
                 >
                   <FileImage className="h-4 w-4 mr-2" />
-                  {t('application.documents.upload.replace', { 
-                    defaultValue: 'Upload Different File' 
-                  })}
+                  {t('application.documents.upload.replace')}
                 </Button>
               </div>
             </div>
@@ -234,45 +222,31 @@ export const SecureDocumentUpload: React.FC<SecureDocumentUploadProps> = ({
       {/* Requirements */}
       <div className="text-xs text-muted-foreground space-y-1">
         <p className="font-medium">
-          {t(`application.documents.${type}.requirements.title`, { 
-            defaultValue: 'Requirements:' 
-          })}
+          {t(`application.documents.${type}.requirements.title`)}
         </p>
         <ul className="list-disc list-inside space-y-1 ml-2">
           <li>
-            {t(`application.documents.${type}.requirements.format`, { 
-              defaultValue: 'Clear, high-quality JPG or PNG format' 
-            })}
+            {t(`application.documents.${type}.requirements.format`)}
           </li>
           <li>
-            {t(`application.documents.${type}.requirements.size`, { 
-              defaultValue: 'File size under 5MB' 
-            })}
+            {t(`application.documents.${type}.requirements.size`)}
           </li>
           {type === 'passport' ? (
             <>
               <li>
-                {t('application.documents.passport.requirements.pages', { 
-                  defaultValue: 'Show the main information page of your passport' 
-                })}
+                {t('application.documents.passport.requirements.pages')}
               </li>
               <li>
-                {t('application.documents.passport.requirements.readable', { 
-                  defaultValue: 'All text must be clearly readable' 
-                })}
+                {t('application.documents.passport.requirements.readable')}
               </li>
             </>
           ) : (
             <>
               <li>
-                {t('application.documents.personal.requirements.recent', { 
-                  defaultValue: 'Recent photo (taken within the last 6 months)' 
-                })}
+                {t('application.documents.personal.requirements.recent')}
               </li>
               <li>
-                {t('application.documents.personal.requirements.quality', { 
-                  defaultValue: 'Good lighting with clear facial features' 
-                })}
+                {t('application.documents.personal.requirements.quality')}
               </li>
             </>
           )}

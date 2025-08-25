@@ -149,7 +149,13 @@
     },
     "address": {
       "title": "Dirección",
-      "sameAsPrimary": "Igual que el Solicitante Principal",
+      "sameAsMain": "Igual que el solicitante principal",
+      "usingMain": "Usando la dirección del solicitante principal",
+      "sameAsPassport": {
+        "label": "Usar la misma dirección que el pasaporte",
+        "description": "Marca esta opción si tu dirección coincide con tu pasaporte"
+      },
+      "extracting": "Extrayendo dirección...",
       "line1": { "label": "Línea de dirección 1" },
       "line2": { "label": "Línea de dirección 2 (opcional)" },
       "city": { "label": "Ciudad" },
@@ -165,6 +171,48 @@
     "security": {
       "criminalConvictions": { "label": "¿Alguna vez ha tenido condenas penales?" },
       "warCrimes": { "label": "¿Alguna vez ha sido sospechoso o condenado por crímenes de guerra, terrorismo o extremismo?" }
+      "upload": {
+        "title": "Subir documentos",
+        "uploading": "Subiendo...",
+        "success": "Archivo subido exitosamente",
+        "select": "Seleccionar archivo",
+        "replace": "Subir archivo diferente",
+        "requirements": "JPG o PNG, máx 5MB"
+      },
+      "passport": {
+        "upload": {
+          "title": "Subir foto del pasaporte",
+          "description": "Arrastra y suelta o haz clic para seleccionar un archivo"
+        },
+        "preview": {
+          "alt": "Vista previa de la foto del pasaporte"
+        },
+        "requirements": {
+          "title": "Requisitos:",
+          "format": "Formato JPG o PNG claro y de alta calidad",
+          "size": "Tamaño de archivo menor a 5MB",
+          "pages": "Mostrar la página principal de información de tu pasaporte",
+          "readable": "Todo el texto debe ser claramente legible"
+        }
+      },
+      "personal": {
+        "upload": {
+          "title": "Subir foto personal",
+          "description": "Arrastra y suelta o haz clic para seleccionar un archivo"
+        },
+        "preview": {
+          "alt": "Vista previa de la foto personal"
+        },
+        "requirements": {
+          "title": "Requisitos:",
+          "format": "Formato JPG o PNG claro y de alta calidad",
+          "size": "Tamaño de archivo menor a 5MB",
+          "recent": "Foto reciente (tomada en los últimos 6 meses)",
+          "quality": "Buena iluminación con rasgos faciales claros"
+        }
+      },
+      "passportPhoto": { "title": "Foto del pasaporte", "upload": "Subir foto del pasaporte", "requirements": "Imagen clara de la página de información personal del pasaporte" },
+      "personalPhoto": { "title": "Foto personal", "upload": "Subir foto personal", "camera": "Tomar foto con cámara", "requirements": "Foto reciente con fondo simple" }
     },
       "email": {
         "sameAsMain": "Igual que el Solicitante Principal",

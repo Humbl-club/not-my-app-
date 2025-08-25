@@ -159,14 +159,13 @@
     },
       "address": {
         "title": "Address",
-        "sameAsPrimary": "Same address as Applicant 1",
-        "usingPrimary": "Using Applicant 1's address",
-        "sameAsMain": "Same as main applicant",
-        "usingMain": "Using main applicant's address",
-        "sameAsPassport": {
-          "label": "Use same address as passport",
-          "description": "Check this if your address matches your passport"
-        },
+      "sameAsMain": "Same as main applicant",
+      "usingMain": "Using main applicant's address",
+      "sameAsPassport": {
+        "label": "Use same address as passport",
+        "description": "Check this if your address matches your passport"
+      },
+      "extracting": "Extracting address...",
         "line1": { "label": "Address line 1", "placeholder": "Enter address line 1" },
         "line2": { "label": "Address line 2 (optional)", "placeholder": "Enter address line 2" },
         "line3": { "label": "Address line 3 (optional)", "placeholder": "Enter address line 3" },
@@ -185,9 +184,45 @@
         "criminalConvictions": { "label": "Have you ever had criminal convictions?" },
         "warCrimes": { "label": "Have you ever been suspected or convicted of war crimes, terrorism or extremism?" }
       },
-      "documents": {
-        "passportPhoto": { "title": "Passport Photo", "upload": "Upload passport photo", "requirements": "Clear image of passport information page" },
-        "personalPhoto": { "title": "Personal Photo", "upload": "Upload personal photo", "camera": "Take photo with camera", "requirements": "Recent photo with plain background" }
+      "upload": {
+        "title": "Upload Documents",
+        "uploading": "Uploading...",
+        "success": "File uploaded successfully",
+        "select": "Select File",
+        "replace": "Upload Different File",
+        "requirements": "JPG or PNG, max 5MB"
+      },
+      "passport": {
+        "upload": {
+          "title": "Upload Passport Photo",
+          "description": "Drag and drop or click to select a file"
+        },
+        "preview": {
+          "alt": "Passport photo preview"
+        },
+        "requirements": {
+          "title": "Requirements:",
+          "format": "Clear, high-quality JPG or PNG format",
+          "size": "File size under 5MB",
+          "pages": "Show the main information page of your passport",
+          "readable": "All text must be clearly readable"
+        }
+      },
+      "personal": {
+        "upload": {
+          "title": "Upload Personal Photo",
+          "description": "Drag and drop or click to select a file"
+        },
+        "preview": {
+          "alt": "Personal photo preview"
+        },
+        "requirements": {
+          "title": "Requirements:",
+          "format": "Clear, high-quality JPG or PNG format",
+          "size": "File size under 5MB",
+          "recent": "Recent photo (taken within the last 6 months)",
+          "quality": "Good lighting with clear facial features"
+        }
       },
     "email": {
       "sameAsMain": "Same as main applicant",

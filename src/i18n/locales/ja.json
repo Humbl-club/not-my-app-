@@ -80,7 +80,62 @@
    ,
       "address": {
         "title": "住所",
-        "sameAsMain": "主申請者と同じ",
+      "sameAsMain": "主申請者と同じ",
+      "usingMain": "主申請者の住所を使用",
+      "sameAsPassport": {
+        "label": "パスポートと同じ住所を使用",
+        "description": "住所がパスポートと一致する場合はこれを選択してください"
+      },
+      "extracting": "住所を抽出中...",
+      "line1": { "label": "住所1行目" },
+      "line2": { "label": "住所2行目（任意）" },
+      "line3": { "label": "住所3行目（任意）" },
+      "city": { "label": "市区町村" },
+      "country": { "label": "国", "placeholder": "国を選択" },
+      "postalCode": { "label": "郵便番号" },
+      "upload": {
+        "title": "書類をアップロード",
+        "uploading": "アップロード中...",
+        "success": "ファイルが正常にアップロードされました",
+        "select": "ファイルを選択",
+        "replace": "別のファイルをアップロード",
+        "requirements": "JPGまたはPNG、最大5MB"
+      },
+      "passport": {
+        "upload": {
+          "title": "パスポート写真をアップロード",
+          "description": "ドラッグ＆ドロップまたはクリックしてファイルを選択"
+        },
+        "preview": {
+          "alt": "パスポート写真のプレビュー"
+        },
+        "requirements": {
+          "title": "要件:",
+          "format": "鮮明で高品質なJPGまたはPNG形式",
+          "size": "ファイルサイズ5MB未満",
+          "pages": "パスポートのメイン情報ページを表示",
+          "readable": "すべてのテキストが明確に読み取れること"
+        }
+      },
+      "personal": {
+        "upload": {
+          "title": "個人写真をアップロード",
+          "description": "ドラッグ＆ドロップまたはクリックしてファイルを選択"
+        },
+        "preview": {
+          "alt": "個人写真のプレビュー"
+        },
+        "requirements": {
+          "title": "要件:",
+          "format": "鮮明で高品質なJPGまたはPNG形式",
+          "size": "ファイルサイズ5MB未満",
+          "recent": "最近の写真（過去6ヶ月以内に撮影）",
+          "quality": "顔の特徴がはっきりと見える良好な照明"
+        }
+      },
+      "passportPhoto": { "title": "パスポート写真", "upload": "パスポート写真をアップロード", "requirements": "パスポート個人情報ページの鮮明な画像" },
+      "personalPhoto": { "title": "個人写真", "upload": "個人写真をアップロード", "camera": "カメラで写真を撮る", "requirements": "シンプルな背景の最近の写真" }
+    },
         "line1": { "label": "住所1行目" },
         "line2": { "label": "住所2行目（任意）" },
         "city": { "label": "市区町村" },

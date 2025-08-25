@@ -92,16 +92,14 @@ export function AddressFieldsSection<T extends FieldValues>({
               </FormControl>
               <div className="space-y-0.5">
                 <FormLabel className="text-base font-semibold">
-                  {t('application.address.sameAsPassport.label', { defaultValue: 'Same as passport address' })}
+                  {t('application.address.sameAsPassport.label')}
                 </FormLabel>
                 <p className="text-sm text-muted-foreground">
-                  {t('application.address.sameAsPassport.description', { 
-                    defaultValue: 'Automatically extract address from your uploaded passport' 
-                  })}
+                  {t('application.address.sameAsPassport.description')}
                 </p>
                 {isExtracting && (
                   <p className="text-sm text-primary">
-                    {t('application.address.extracting', { defaultValue: 'Extracting address...' })}
+                    {t('application.address.extracting')}
                   </p>
                 )}
               </div>
@@ -120,13 +118,13 @@ export function AddressFieldsSection<T extends FieldValues>({
             render={({ field, fieldState }) => (
               <FormItem>
                 <FormLabel>
-                  {t('application.address.line1.label', { defaultValue: 'Address Line 1' })}
+                  {t('application.address.line1.label')}
                   <span className="text-destructive ml-1">*</span>
                 </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
-                    placeholder={t('application.address.line1.placeholder', { defaultValue: 'Enter your street address' })}
+                    placeholder={t('application.address.line1.placeholder')}
                     aria-invalid={!!fieldState.error}
                     onBlur={(e) => {
                       const error = addressValidationRules.line1(e.target.value);
@@ -149,15 +147,15 @@ export function AddressFieldsSection<T extends FieldValues>({
             render={({ field, fieldState }) => (
               <FormItem>
                 <FormLabel>
-                  {t('application.address.line2.label', { defaultValue: 'Address Line 2' })}
+                  {t('application.address.line2.label')}
                   <span className="text-xs text-muted-foreground ml-2">
-                    {t('application.personalInfo.optional', { defaultValue: '(Optional)' })}
+                    {t('application.personalInfo.optional')}
                   </span>
                 </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
-                    placeholder={t('application.address.line2.placeholder', { defaultValue: 'Apartment, suite, etc.' })}
+                    placeholder={t('application.address.line2.placeholder')}
                     aria-invalid={!!fieldState.error}
                     onBlur={(e) => {
                       const error = addressValidationRules.line2(e.target.value);
@@ -180,15 +178,15 @@ export function AddressFieldsSection<T extends FieldValues>({
             render={({ field, fieldState }) => (
               <FormItem>
                 <FormLabel>
-                  {t('application.address.line3.label', { defaultValue: 'Address Line 3' })}
+                  {t('application.address.line3.label')}
                   <span className="text-xs text-muted-foreground ml-2">
-                    {t('application.personalInfo.optional', { defaultValue: '(Optional)' })}
+                    {t('application.personalInfo.optional')}
                   </span>
                 </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
-                    placeholder={t('application.address.line3.placeholder', { defaultValue: 'Additional address information' })}
+                    placeholder={t('application.address.line3.placeholder')}
                     aria-invalid={!!fieldState.error}
                     onBlur={(e) => {
                       const error = addressValidationRules.line3(e.target.value);
@@ -212,13 +210,13 @@ export function AddressFieldsSection<T extends FieldValues>({
               render={({ field, fieldState }) => (
                 <FormItem>
                   <FormLabel>
-                    {t('application.address.city.label', { defaultValue: 'Town or City' })}
+                    {t('application.address.city.label')}
                     <span className="text-destructive ml-1">*</span>
                   </FormLabel>
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder={t('application.address.city.placeholder', { defaultValue: 'Enter your city' })}
+                      placeholder={t('application.address.city.placeholder')}
                       aria-invalid={!!fieldState.error}
                       onBlur={(e) => {
                         const error = addressValidationRules.city(e.target.value);
@@ -240,13 +238,13 @@ export function AddressFieldsSection<T extends FieldValues>({
               render={({ field, fieldState }) => (
                 <FormItem>
                   <FormLabel>
-                    {t('application.address.country.label', { defaultValue: 'Country' })}
+                    {t('application.address.country.label')}
                     <span className="text-destructive ml-1">*</span>
                   </FormLabel>
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder={t('application.address.country.placeholder', { defaultValue: 'Enter your country' })}
+                      placeholder={t('application.address.country.placeholder')}
                       aria-invalid={!!fieldState.error}
                       onBlur={(e) => {
                         const error = addressValidationRules.country(e.target.value);
@@ -270,15 +268,15 @@ export function AddressFieldsSection<T extends FieldValues>({
             render={({ field, fieldState }) => (
               <FormItem>
                 <FormLabel>
-                  {t('application.address.postalCode.label', { defaultValue: 'Postal Code / Zip Code' })}
+                  {t('application.address.postalCode.label')}
                   <span className="text-xs text-muted-foreground ml-2">
-                    {t('application.personalInfo.optional', { defaultValue: '(Optional)' })}
+                    {t('application.personalInfo.optional')}
                   </span>
                 </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
-                    placeholder={t('application.address.postalCode.placeholder', { defaultValue: 'Enter postal code' })}
+                    placeholder={t('application.address.postalCode.placeholder')}
                     aria-invalid={!!fieldState.error}
                     onBlur={(e) => {
                       const error = addressValidationRules.postalCode(e.target.value);

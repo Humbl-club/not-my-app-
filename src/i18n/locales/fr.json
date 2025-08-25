@@ -156,7 +156,46 @@
       "email": {"label": "Adresse e-mail", "placeholder": "Entrez votre adresse e-mail"},
       "passportNumber": {"label": "Numéro de passeport", "placeholder": "Entrez votre numéro de passeport"}
     },
-    "documents": {
+      "upload": {
+        "title": "Télécharger les documents",
+        "uploading": "Téléchargement...",
+        "success": "Fichier téléchargé avec succès",
+        "select": "Sélectionner un fichier",
+        "replace": "Télécharger un autre fichier",
+        "requirements": "JPG ou PNG, max 5MB"
+      },
+      "passport": {
+        "upload": {
+          "title": "Télécharger la photo du passeport",
+          "description": "Glissez-déposez ou cliquez pour sélectionner un fichier"
+        },
+        "preview": {
+          "alt": "Aperçu de la photo du passeport"
+        },
+        "requirements": {
+          "title": "Exigences:",
+          "format": "Format JPG ou PNG de haute qualité",
+          "size": "Taille de fichier inférieure à 5MB",
+          "pages": "Montrer la page principale d'informations de votre passeport",
+          "readable": "Tout le texte doit être clairement lisible"
+        }
+      },
+      "personal": {
+        "upload": {
+          "title": "Télécharger la photo personnelle",
+          "description": "Glissez-déposez ou cliquez pour sélectionner un fichier"
+        },
+        "preview": {
+          "alt": "Aperçu de la photo personnelle"
+        },
+        "requirements": {
+          "title": "Exigences:",
+          "format": "Format JPG ou PNG de haute qualité",
+          "size": "Taille de fichier inférieure à 5MB",
+          "recent": "Photo récente (prise dans les 6 derniers mois)",
+          "quality": "Bon éclairage avec des traits du visage clairs"
+        }
+      },
       "title": "Télécharger les documents",
       "subtitle": "Veuillez télécharger votre passeport et votre photo",
       "passport": {

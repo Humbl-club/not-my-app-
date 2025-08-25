@@ -93,7 +93,62 @@
     "payment": {"title": "Pagamento", "subtitle": "Completa il tuo pagamento per inviare la tua richiesta", "details": {"title": "Dettagli Pagamento", "cardholderName": {"label": "Nome Titolare Carta *", "placeholder": "Inserisci il nome del titolare della carta"}, "cardNumber": {"label": "Numero Carta *", "placeholder": "1234 5678 9012 3456"}, "expiryDate": {"label": "Data di Scadenza *", "placeholder": "MM/AA"}, "cvv": {"label": "CVV *", "placeholder": "123"}, "security": "Il tuo pagamento è protetto con crittografia SSL e processato tramite fornitori di pagamento affidabili."}, "summary": {"title": "Riepilogo Ordine", "application": "Richiesta ETA Regno Unito", "serviceFee": "Commissione di Servizio", "vat": "IVA (20%)", "total": "Totale", "sslSecured": "Pagamento Protetto SSL", "moneyBack": "Garanzia Rimborso"}, "complete": "Completa Pagamento"},
     "address": {
       "title": "Indirizzo",
-      "sameAsMain": "Uguale al Richiedente Principale",
+      "sameAsMain": "Uguale al richiedente principale",
+      "usingMain": "Utilizzando l'indirizzo del richiedente principale",
+      "sameAsPassport": {
+        "label": "Usa lo stesso indirizzo del passaporto",
+        "description": "Seleziona questa opzione se il tuo indirizzo corrisponde al tuo passaporto"
+      },
+      "extracting": "Estrazione indirizzo...",
+      "line1": { "label": "Indirizzo riga 1" },
+      "line2": { "label": "Indirizzo riga 2 (opzionale)" },
+      "line3": { "label": "Indirizzo riga 3 (opzionale)" },
+      "city": { "label": "Città" },
+      "country": { "label": "Paese", "placeholder": "Seleziona un paese" },
+      "postalCode": { "label": "Codice postale" },
+      "upload": {
+        "title": "Carica documenti",
+        "uploading": "Caricamento...",
+        "success": "File caricato con successo",
+        "select": "Seleziona file",
+        "replace": "Carica file diverso",
+        "requirements": "JPG o PNG, max 5MB"
+      },
+      "passport": {
+        "upload": {
+          "title": "Carica foto del passaporto",
+          "description": "Trascina e rilascia o clicca per selezionare un file"
+        },
+        "preview": {
+          "alt": "Anteprima foto del passaporto"
+        },
+        "requirements": {
+          "title": "Requisiti:",
+          "format": "Formato JPG o PNG chiaro e di alta qualità",
+          "size": "Dimensione file sotto i 5MB",
+          "pages": "Mostra la pagina principale delle informazioni del tuo passaporto",
+          "readable": "Tutto il testo deve essere chiaramente leggibile"
+        }
+      },
+      "personal": {
+        "upload": {
+          "title": "Carica foto personale",
+          "description": "Trascina e rilascia o clicca per selezionare un file"
+        },
+        "preview": {
+          "alt": "Anteprima foto personale"
+        },
+        "requirements": {
+          "title": "Requisiti:",
+          "format": "Formato JPG o PNG chiaro e di alta qualità",
+          "size": "Dimensione file sotto i 5MB",
+          "recent": "Foto recente (scattata negli ultimi 6 mesi)",
+          "quality": "Buona illuminazione con lineamenti del viso chiari"
+        }
+      },
+      "passportPhoto": { "title": "Foto del passaporto", "upload": "Carica foto del passaporto", "requirements": "Immagine chiara della pagina informazioni personali del passaporto" },
+      "personalPhoto": { "title": "Foto personale", "upload": "Carica foto personale", "camera": "Scatta foto con fotocamera", "requirements": "Foto recente con sfondo semplice" }
+    },
       "line1": { "label": "Indirizzo riga 1" },
       "line2": { "label": "Indirizzo riga 2 (opzionale)" },
       "city": { "label": "Città" },

@@ -153,7 +153,7 @@ const ApplicantDocuments = () => {
                 {/* Passport Upload */}
                 <Card>
                   <CardHeader>
-                    <CardTitle>{t('application.documents.passportPhoto.title', { defaultValue: 'Passport Photo' })}</CardTitle>
+                    <CardTitle>{t('application.documents.passportPhoto.title')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                      <FormField
@@ -175,7 +175,7 @@ const ApplicantDocuments = () => {
                       )}
                     />
                     <div className="mt-4 text-sm text-muted-foreground">
-                      <h4 className="font-medium mb-2">{t('application.documents.passportPhoto.requirements', { defaultValue: 'Requirements:' })}</h4>
+                      <h4 className="font-medium mb-2">{t('application.documents.passport.requirements.title')}</h4>
                       <ul className="list-disc list-inside space-y-1">
                         <li>The photo must be unaltered by effects or filters</li>
                         <li>Original, not a screenshot or photocopy</li>
@@ -194,7 +194,7 @@ const ApplicantDocuments = () => {
                 {/* Personal Photo Upload */}
                 <Card>
                   <CardHeader>
-                    <CardTitle>{t('application.documents.personalPhoto.title', { defaultValue: 'Personal Photo' })}</CardTitle>
+                    <CardTitle>{t('application.documents.personalPhoto.title')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                      <FormField
@@ -216,7 +216,7 @@ const ApplicantDocuments = () => {
                       )}
                     />
                     <div className="text-sm text-muted-foreground">
-                      <h4 className="font-medium mb-2">{t('application.documents.personalPhoto.requirements', { defaultValue: 'Photo Requirements:' })}</h4>
+                      <h4 className="font-medium mb-2">{t('application.documents.personal.requirements.title')}</h4>
                       <div className="space-y-3">
                         <div>
                           <p className="font-medium text-foreground mb-1">The photo must be:</p>
