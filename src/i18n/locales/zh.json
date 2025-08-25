@@ -202,7 +202,6 @@
         "addButton": "添加国籍"
       },
       "options": { "yes": "是", "no": "否" }
-    }
   },
   "validation": {
     "email": {
