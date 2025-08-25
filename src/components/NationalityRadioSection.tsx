@@ -51,7 +51,7 @@ export function NationalityRadioSection<T extends FieldValues>({
         render={({ field }) => (
           <FormItem className="space-y-3">
             <FormLabel className="text-base font-semibold">
-              {t('application.nationality.hasAdditional.label', { 
+              {t('application.additionalNationalities.label', { 
                 defaultValue: 'Do you hold another nationality?' 
               })}
             </FormLabel>
@@ -64,13 +64,13 @@ export function NationalityRadioSection<T extends FieldValues>({
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="yes" id="nationality-yes" />
                   <FormLabel htmlFor="nationality-yes" className="font-normal cursor-pointer">
-                    {t('application.nationality.hasAdditional.yes', { defaultValue: 'Yes' })}
+                    {t('application.options.yes', { defaultValue: 'Yes' })}
                   </FormLabel>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="no" id="nationality-no" />
                   <FormLabel htmlFor="nationality-no" className="font-normal cursor-pointer">
-                    {t('application.nationality.hasAdditional.no', { defaultValue: 'No' })}
+                    {t('application.options.no', { defaultValue: 'No' })}
                   </FormLabel>
                 </div>
               </RadioGroup>
@@ -88,7 +88,7 @@ export function NationalityRadioSection<T extends FieldValues>({
           render={({ field, fieldState }) => (
             <FormItem>
               <FormLabel className="text-base font-semibold">
-                {t('application.nationality.additional.label', { 
+                {t('application.additionalNationalities.addButton', { 
                   defaultValue: 'Additional Nationalities' 
                 })}
                 <span className="text-destructive ml-1">*</span>
@@ -109,7 +109,7 @@ export function NationalityRadioSection<T extends FieldValues>({
                         aria-invalid={!!fieldState.error}
                       >
                         <option value="">
-                          {t('application.nationality.additional.placeholder', { 
+                          {t('common.select', { 
                             defaultValue: 'Select nationality' 
                           })}
                         </option>
@@ -117,7 +117,7 @@ export function NationalityRadioSection<T extends FieldValues>({
                           <option key={n.code} value={n.code}>{n.name}</option>
                         ))}
                         <option value="OTHER">
-                          {t('application.nationality.additional.other', { 
+                          {t('common.other', { 
                             defaultValue: 'Other (please specify below)' 
                           })}
                         </option>
@@ -133,7 +133,7 @@ export function NationalityRadioSection<T extends FieldValues>({
                           newNationalities.splice(index, 1);
                           field.onChange(newNationalities);
                         }}
-                        aria-label={t('application.nationality.additional.remove', { 
+                        aria-label={t('common.remove', { 
                           defaultValue: 'Remove nationality' 
                         })}
                       >
@@ -146,12 +146,12 @@ export function NationalityRadioSection<T extends FieldValues>({
                   {field.value?.some((nat: string) => nat === 'OTHER') && (
                     <div className="mt-3">
                       <FormLabel className="text-sm font-medium">
-                        {t('application.nationality.additional.manual.label', { 
+                        {t('common.specify', { 
                           defaultValue: 'Please specify your other nationality' 
                         })}
                       </FormLabel>
                       <Input
-                        placeholder={t('application.nationality.additional.manual.placeholder', { 
+                        placeholder={t('common.enterValue', { 
                           defaultValue: 'Enter nationality name' 
                         })}
                         className="mt-1"
@@ -171,7 +171,7 @@ export function NationalityRadioSection<T extends FieldValues>({
                       className="flex items-center gap-2"
                     >
                       <Plus className="h-4 w-4" />
-                      {t('application.nationality.additional.add', { 
+                      {t('application.additionalNationalities.addButton', { 
                         defaultValue: 'Add another nationality' 
                       })}
                     </Button>
@@ -180,8 +180,9 @@ export function NationalityRadioSection<T extends FieldValues>({
                   {/* Limit message */}
                   {(field.value?.length || 0) >= 8 && (
                     <p className="text-sm text-muted-foreground">
-                      {t('application.nationality.additional.limit', { 
-                        defaultValue: 'Maximum 8 additional nationalities allowed' 
+                      {t('common.maxLimit', { 
+                        defaultValue: 'Maximum 8 additional nationalities allowed',
+                        count: 8
                       })}
                     </p>
                   )}
