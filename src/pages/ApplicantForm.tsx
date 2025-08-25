@@ -25,12 +25,21 @@ const ApplicantForm = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
 
-  // Load primary applicant for reference
   const [primaryApplicant, setPrimaryApplicant] = useState<any | null>(null);
   useEffect(() => {
     try {
-      const raw = sessionStorage.getItem('application.primaryApplicant');
-      if (raw) setPrimaryApplicant(JSON.parse(raw));
+      // Load main applicant (previously called primary)
+      const raw = sessionStorage.getItem('application.applicants');
+      if (raw) {
+        const applicants = JSON.parse(raw);
+        if (applicants[0]) {
+          setPrimaryApplicant(applicants[0]);
+        }
+      } else {
+        // Fallback to legacy structure
+        const legacyRaw = sessionStorage.getItem('application.primaryApplicant');
+        if (legacyRaw) setPrimaryApplicant(JSON.parse(legacyRaw));
+      }
     } catch {}
   }, []);
 
@@ -97,9 +106,17 @@ const ApplicantForm = () => {
       const applicantsData = sessionStorage.getItem('application.applicants');
       if (applicantsData) {
         const applicants = JSON.parse(applicantsData);
-        const applicantIndex = parseInt(id.replace('applicant-', '')) - 1;
-        if (applicants[applicantIndex]) {
-          setExistingData(applicants[applicantIndex]);
+        if (id === 'main') {
+          // Load main applicant
+          if (applicants[0]) {
+            setExistingData(applicants[0]);
+          }
+        } else {
+          // Load additional applicant
+          const applicantIndex = parseInt(id.replace('applicant-', ''));
+          if (applicants[applicantIndex]) {
+            setExistingData(applicants[applicantIndex]);
+          }
         }
       }
     } catch {}
@@ -167,12 +184,14 @@ const ApplicantForm = () => {
     try {
       // Get existing applicants
       const existingApplicants = JSON.parse(sessionStorage.getItem('application.applicants') || '[]');
-      const applicantIndex = parseInt(id.replace('applicant-', '')) - 1;
       
-      // Update or add applicant
-      if (applicantIndex >= 0 && applicantIndex < existingApplicants.length) {
-        existingApplicants[applicantIndex] = values;
+      if (id === 'main') {
+        // Update main applicant (index 0)
+        existingApplicants[0] = values;
       } else {
+        // Update additional applicant
+        const applicantIndex = parseInt(id.replace('applicant-', ''));
+        
         // Ensure array is large enough
         while (existingApplicants.length <= applicantIndex) {
           existingApplicants.push({});
@@ -186,7 +205,8 @@ const ApplicantForm = () => {
     navigate(`/application/applicant/${id}/documents`);
   };
 
-  const applicantNumber = id ? parseInt(id.replace('applicant-', '')) + 1 : 2;
+  const applicantNumber = id === 'main' ? 1 : (id ? parseInt(id.replace('applicant-', '')) + 1 : 2);
+  const isMainApplicant = id === 'main';
 
   return (
     <div className="min-h-screen bg-background">
@@ -203,8 +223,12 @@ const ApplicantForm = () => {
 
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-2">Applicant {applicantNumber}</h1>
-            <p className="text-muted-foreground">Please provide details for applicant {applicantNumber}</p>
+            <h1 className="text-3xl font-bold mb-2">
+              {isMainApplicant ? 'Main Applicant' : `Applicant ${applicantNumber}`}
+            </h1>
+            <p className="text-muted-foreground">
+              {isMainApplicant ? 'Please provide your details' : `Please provide details for applicant ${applicantNumber}`}
+            </p>
           </div>
 
           {/* Applicant Form */}
@@ -349,8 +373,8 @@ const ApplicantForm = () => {
                           />
                         </FormControl>
                         <div className="space-y-0.5">
-                           <FormLabel className="text-base font-semibold">{t('application.email.sameAsPrimary')}</FormLabel>
-                           <p className="text-sm text-muted-foreground">{t('application.email.usingPrimary')}: {primaryApplicant.email}</p>
+                          <FormLabel className="text-base font-semibold">{t('application.email.sameAsMain')}</FormLabel>
+                          <p className="text-sm text-muted-foreground">{t('application.email.usingMain')}: {primaryApplicant.email}</p>
                         </div>
                       </FormItem>
                     )} />
@@ -380,8 +404,8 @@ const ApplicantForm = () => {
                         />
                       </FormControl>
                       <div className="space-y-0.5">
-                         <FormLabel className="text-base font-semibold">{t('application.address.sameAsPrimary')}</FormLabel>
-                         <p className="text-sm text-muted-foreground">{t('application.address.usingPrimary')}</p>
+                        <FormLabel className="text-base font-semibold">{t('application.address.sameAsMain')}</FormLabel>
+                        <p className="text-sm text-muted-foreground">{t('application.address.usingMain')}</p>
                       </div>
                     </FormItem>
                   )} />

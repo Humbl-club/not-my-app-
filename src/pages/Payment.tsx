@@ -16,18 +16,35 @@ const Payment = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  // Check if there's a second applicant
-  const [hasSecondApplicant, setHasSecondApplicant] = useState(false);
-  const [secondApplicant, setSecondApplicant] = useState<any | null>(null);
-
+  // Track applicants from unified structure
+  const [applicants, setApplicants] = useState<any[]>([]);
+  
   useEffect(() => {
     try {
-      const raw = sessionStorage.getItem('application.secondApplicant');
-      if (raw) {
-        setSecondApplicant(JSON.parse(raw));
-        setHasSecondApplicant(true);
+      // Load from new unified structure
+      const applicantsData = sessionStorage.getItem('application.applicants');
+      if (applicantsData) {
+        const parsedApplicants = JSON.parse(applicantsData);
+        setApplicants(parsedApplicants);
+        return;
       }
-    } catch {}
+
+      // Fallback: Load from legacy structure
+      const legacyApplicants = [];
+      const mainApplicantData = sessionStorage.getItem('application.primaryApplicant');
+      const secondApplicantData = sessionStorage.getItem('application.secondApplicant');
+      
+      if (mainApplicantData) {
+        legacyApplicants.push(JSON.parse(mainApplicantData));
+      }
+      if (secondApplicantData) {
+        legacyApplicants.push(JSON.parse(secondApplicantData));
+      }
+      
+      setApplicants(legacyApplicants);
+    } catch {
+      setApplicants([]);
+    }
   }, []);
 
   const paymentSchema = z.object({
@@ -52,7 +69,7 @@ const Payment = () => {
     },
   });
 
-  const handleAddSecondApplicant = () => {
+  const handleAddApplicant = () => {
     navigate('/application/manage');
   };
 
@@ -61,9 +78,18 @@ const Payment = () => {
     navigate('/application/confirmation');
   };
 
-  const serviceFee = 79.99;
-  const vat = serviceFee * 0.2;
-  const total = serviceFee + vat;
+  // Dynamic fee calculation for 1-8 applicants
+  const numberOfApplicants = Math.max(1, applicants.length);
+  const governmentFee = 16.00; // £16.00 per applicant (government fee)
+  const mainAdminFee = 36.00; // £36.00 main admin fee for first applicant
+  const additionalAdminFee = 26.00; // £26.00 per additional applicant
+  
+  // Calculate fees
+  const totalGovernmentFees = governmentFee * numberOfApplicants;
+  const totalAdminFees = mainAdminFee + (additionalAdminFee * Math.max(0, numberOfApplicants - 1));
+  const subtotal = totalGovernmentFees + totalAdminFees;
+  const vat = subtotal * 0.2; // 20% VAT
+  const total = subtotal + vat;
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
@@ -210,76 +236,82 @@ const Payment = () => {
 
             {/* Order Summary */}
             <div className="space-y-8">
-              {/* Additional Applicant Option */}
+              {/* Applicants Summary */}
               <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-border/30 shadow-card">
                 <CardHeader className="pb-6">
-                  <CardTitle className="text-xl font-light text-foreground">Additional Applicant</CardTitle>
+                  <CardTitle className="text-xl font-light text-foreground">
+                    Application Summary ({numberOfApplicants} {numberOfApplicants === 1 ? 'applicant' : 'applicants'})
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  {hasSecondApplicant && secondApplicant ? (
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
+                  <div className="space-y-3">
+                    {applicants.map((applicant, index) => (
+                      <div key={index} className="flex items-center justify-between">
                         <div>
-                          <p className="font-medium">Second Applicant Added</p>
+                          <p className="font-medium">
+                            {index === 0 ? 'Main Applicant' : `Applicant ${index + 1}`}
+                          </p>
                           <p className="text-sm text-muted-foreground">
-                            {secondApplicant.firstName} {secondApplicant.lastName}
+                            {applicant.firstName && applicant.lastName 
+                              ? `${applicant.firstName} ${applicant.lastName}`
+                              : 'Details provided'
+                            }
                           </p>
                         </div>
+                      </div>
+                    ))}
+                    
+                    {numberOfApplicants < 8 && (
+                      <div className="text-center py-4 border-t">
+                        <p className="text-muted-foreground mb-4">
+                          Add more applicants to this application
+                        </p>
                         <Button 
                           variant="outline" 
-                          size="sm"
-                          onClick={() => navigate('/application/second-applicant')}
-                          className="rounded-full border-border/50 hover:bg-muted/50"
+                          onClick={handleAddApplicant}
+                          className="flex items-center gap-2 rounded-full border-border/50 hover:bg-muted/50"
                         >
-                          Edit
+                          <Plus className="h-4 w-4" />
+                          Add Another Applicant
                         </Button>
                       </div>
-                    </div>
-                  ) : (
-                    <div className="text-center py-4">
-                      <p className="text-muted-foreground mb-4">
-                        Add a second applicant to this application
-                      </p>
-                      <Button 
-                        variant="outline" 
-                        onClick={handleAddSecondApplicant}
-                        className="flex items-center gap-2 rounded-full border-border/50 hover:bg-muted/50"
-                      >
-                        <Plus className="h-4 w-4" />
-                        Add Second Applicant
-                      </Button>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </CardContent>
               </Card>
 
-              {/* Order Summary */}
+              {/* Fee Breakdown */}
               <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-border/30 shadow-card">
                 <CardHeader className="pb-6">
                   <CardTitle className="text-xl font-light text-foreground">{t('application.payment.summary.title')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex justify-between">
-                    <span>{t('application.payment.summary.application')}</span>
-                    <span>£{serviceFee.toFixed(2)}</span>
+                    <span>Government fees ({numberOfApplicants} × £{governmentFee.toFixed(2)})</span>
+                    <span>£{totalGovernmentFees.toFixed(2)}</span>
                   </div>
                   
-                  {hasSecondApplicant && (
+                  <div className="flex justify-between">
+                    <span>Main applicant admin fee</span>
+                    <span>£{mainAdminFee.toFixed(2)}</span>
+                  </div>
+                  
+                  {numberOfApplicants > 1 && (
                     <div className="flex justify-between">
-                      <span>Second Applicant</span>
-                      <span>£{serviceFee.toFixed(2)}</span>
+                      <span>Additional applicants ({numberOfApplicants - 1} × £{additionalAdminFee.toFixed(2)})</span>
+                      <span>£{(additionalAdminFee * (numberOfApplicants - 1)).toFixed(2)}</span>
                     </div>
                   )}
                   
                   <div className="flex justify-between text-sm text-muted-foreground">
                     <span>{t('application.payment.summary.vat')}</span>
-                    <span>£{(vat * (hasSecondApplicant ? 2 : 1)).toFixed(2)}</span>
+                    <span>£{vat.toFixed(2)}</span>
                   </div>
                   
                   <div className="border-t pt-4">
                     <div className="flex justify-between font-bold text-lg">
                       <span>{t('application.payment.summary.total')}</span>
-                      <span>£{(total * (hasSecondApplicant ? 2 : 1)).toFixed(2)}</span>
+                      <span>£{total.toFixed(2)}</span>
                     </div>
                   </div>
                   
@@ -302,7 +334,7 @@ const Payment = () => {
           <div className="flex justify-between mt-16">
             <Button 
               variant="outline" 
-              onClick={() => navigate('/application/documents')}
+              onClick={() => navigate('/application/manage')}
               className="flex items-center gap-2 rounded-full px-8 py-3 border-border/50 hover:bg-muted/50"
             >
               <ArrowLeft className="h-4 w-4" />

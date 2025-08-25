@@ -2,14 +2,16 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { ArrowLeft, ArrowRight, Plus, Edit, CheckCircle, AlertCircle, Trash2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, UserPlus, Edit, Trash2, Check, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { Badge } from '@/components/ui/badge';
 
 interface Applicant {
   id: string;
-  firstName: string;
-  lastName: string;
+  role: 'main' | 'additional';
+  firstName?: string;
+  lastName?: string;
   personalInfoComplete: boolean;
   documentsComplete: boolean;
 }
@@ -17,229 +19,287 @@ interface Applicant {
 const ApplicationManager = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [primaryApplicant, setPrimaryApplicant] = useState<Applicant | null>(null);
-  const [additionalApplicants, setAdditionalApplicants] = useState<Applicant[]>([]);
+  
+  // Changed from max 10 to max 8 as per requirements
+  const maxApplicants = 8;
+  
+  const [applicants, setApplicants] = useState<Applicant[]>([]);
 
-  const maxApplicants = 10;
-
+  // Load applicant data from sessionStorage
   useEffect(() => {
-    // Load primary applicant
     try {
-      const primaryData = sessionStorage.getItem('application.primaryApplicant');
-      if (primaryData) {
-        const data = JSON.parse(primaryData);
-        setPrimaryApplicant({
-          id: 'primary',
-          firstName: data.firstName || '',
-          lastName: data.lastName || '',
-          personalInfoComplete: !!(data.firstName && data.lastName && data.email),
-          documentsComplete: !!(data.passportPhoto && data.personalPhoto),
-        });
-      }
-    } catch {}
-
-    // Load additional applicants
-    try {
+      // Load from new unified structure
       const applicantsData = sessionStorage.getItem('application.applicants');
       if (applicantsData) {
-        const data = JSON.parse(applicantsData);
-        setAdditionalApplicants(data.map((applicant: any, index: number) => ({
-          id: `applicant-${index + 1}`,
+        const parsedApplicants = JSON.parse(applicantsData);
+        const mappedApplicants = parsedApplicants.map((applicant: any, index: number) => ({
+          id: index === 0 ? 'main' : `applicant-${index}`,
+          role: index === 0 ? 'main' : 'additional',
           firstName: applicant.firstName || '',
           lastName: applicant.lastName || '',
-          personalInfoComplete: !!(applicant.firstName && applicant.lastName && applicant.email),
-          documentsComplete: !!(applicant.passportPhoto && applicant.personalPhoto),
-        })));
+          personalInfoComplete: !!(applicant.firstName && applicant.lastName && applicant.email && applicant.passportNumber),
+          documentsComplete: !!(applicant.passportPhoto && applicant.personalPhoto)
+        }));
+        setApplicants(mappedApplicants);
+        return;
       }
-    } catch {}
+
+      // Fallback: Load from legacy structure and migrate
+      const mainApplicantData = sessionStorage.getItem('application.primaryApplicant');
+      const secondApplicantData = sessionStorage.getItem('application.secondApplicant');
+      
+      const legacyApplicants: Applicant[] = [];
+      
+      if (mainApplicantData) {
+        const mainApplicant = JSON.parse(mainApplicantData);
+        legacyApplicants.push({
+          id: 'main',
+          role: 'main',
+          firstName: mainApplicant.firstName || '',
+          lastName: mainApplicant.lastName || '',
+          personalInfoComplete: !!(mainApplicant.firstName && mainApplicant.lastName && mainApplicant.email && mainApplicant.passportNumber),
+          documentsComplete: !!(mainApplicant.passportPhoto && mainApplicant.personalPhoto)
+        });
+      } else {
+        // Create empty main applicant
+        legacyApplicants.push({
+          id: 'main',
+          role: 'main',
+          firstName: '',
+          lastName: '',
+          personalInfoComplete: false,
+          documentsComplete: false
+        });
+      }
+
+      if (secondApplicantData) {
+        const secondApplicant = JSON.parse(secondApplicantData);
+        legacyApplicants.push({
+          id: 'applicant-1',
+          role: 'additional',
+          firstName: secondApplicant.firstName || '',
+          lastName: secondApplicant.lastName || '',
+          personalInfoComplete: !!(secondApplicant.firstName && secondApplicant.lastName && secondApplicant.email && secondApplicant.passportNumber),
+          documentsComplete: !!(secondApplicant.passportPhoto && secondApplicant.personalPhoto)
+        });
+      }
+
+      setApplicants(legacyApplicants);
+    } catch (error) {
+      // Create default main applicant if no data exists
+      setApplicants([{
+        id: 'main',
+        role: 'main',
+        firstName: '',
+        lastName: '',
+        personalInfoComplete: false,
+        documentsComplete: false
+      }]);
+    }
   }, []);
 
-  const totalApplicants = 1 + additionalApplicants.length;
-  const allApplicantsComplete = primaryApplicant?.personalInfoComplete && 
-    primaryApplicant?.documentsComplete && 
-    additionalApplicants.every(app => app.personalInfoComplete && app.documentsComplete);
+  const totalApplicants = applicants.length;
+  const completedApplicants = applicants.filter(a => a.personalInfoComplete && a.documentsComplete).length;
+  const allApplicantsComplete = applicants.length > 0 && applicants.every(a => a.personalInfoComplete && a.documentsComplete);
+  const overallProgress = applicants.length > 0 ? Math.round((completedApplicants / applicants.length) * 100) : 0;
 
   const handleAddApplicant = () => {
-    if (totalApplicants >= maxApplicants) return;
-    
-    const newApplicantId = `applicant-${additionalApplicants.length + 1}`;
-    navigate(`/application/applicant/${newApplicantId}`);
-  };
-
-  const handleEditApplicant = (id: string) => {
-    if (id === 'primary') {
-      navigate('/application');
-    } else {
-      navigate(`/application/applicant/${id}`);
+    if (applicants.length < maxApplicants) {
+      const newId = applicants.length === 1 ? 'applicant-1' : `applicant-${applicants.length}`;
+      navigate(`/application/applicant/${newId}`);
     }
   };
 
-  const handleRemoveApplicant = (id: string) => {
-    if (id === 'primary') return; // Can't remove primary
-    
-    try {
-      const currentData = sessionStorage.getItem('application.applicants');
-      if (currentData) {
-        const applicants = JSON.parse(currentData);
-        const applicantIndex = parseInt(id.replace('applicant-', '')) - 1;
-        applicants.splice(applicantIndex, 1);
-        sessionStorage.setItem('application.applicants', JSON.stringify(applicants));
-        
-        // Refresh data
-        setAdditionalApplicants(applicants.map((applicant: any, index: number) => ({
-          id: `applicant-${index + 1}`,
-          firstName: applicant.firstName || '',
-          lastName: applicant.lastName || '',
-          personalInfoComplete: !!(applicant.firstName && applicant.lastName && applicant.email),
-          documentsComplete: !!(applicant.passportPhoto && applicant.personalPhoto),
-        })));
-      }
-    } catch {}
+  const handleEditApplicant = (applicantId: string) => {
+    navigate(`/application/applicant/${applicantId}`);
   };
 
-  const ApplicantCard = ({ applicant, isPrimary = false }: { applicant: Applicant; isPrimary?: boolean }) => (
-    <Card>
-      <CardContent className="p-4">
-        <div className="flex items-center justify-between">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 mb-2">
-              <h3 className="font-medium">
-                {isPrimary ? 'Primary Applicant' : `Applicant ${parseInt(applicant.id.replace('applicant-', '')) + 1}`}
-              </h3>
-              {applicant.personalInfoComplete && applicant.documentsComplete && (
-                <CheckCircle className="h-5 w-5 text-green-600" />
+  const handleRemoveApplicant = (applicantId: string) => {
+    if (applicantId === 'main') return; // Cannot remove main applicant
+    
+    const updatedApplicants = applicants.filter(a => a.id !== applicantId);
+    
+    // Re-index additional applicants to maintain proper numbering
+    const reindexedApplicants = updatedApplicants.map((applicant, index) => {
+      if (applicant.role === 'main') return applicant;
+      return {
+        ...applicant,
+        id: `applicant-${index}`
+      };
+    });
+    
+    setApplicants(reindexedApplicants);
+    
+    // Update sessionStorage
+    try {
+      const applicantsData = sessionStorage.getItem('application.applicants');
+      if (applicantsData) {
+        const allApplicants = JSON.parse(applicantsData);
+        const applicantIndex = applicantId === 'main' ? 0 : parseInt(applicantId.replace('applicant-', ''));
+        allApplicants.splice(applicantIndex, 1);
+        sessionStorage.setItem('application.applicants', JSON.stringify(allApplicants));
+      }
+    } catch (error) {
+      console.error('Error updating sessionStorage:', error);
+    }
+  };
+
+  const ApplicantCard = ({ applicant, index }: { applicant: Applicant; index: number }) => {
+    const isMain = applicant.role === 'main';
+    const displayName = applicant.firstName && applicant.lastName 
+      ? `${applicant.firstName} ${applicant.lastName}` 
+      : isMain ? 'Main Applicant' : `Applicant ${index + 1}`;
+    
+    const personalInfoStatus = applicant.personalInfoComplete ? 'complete' : 'incomplete';
+    const documentsStatus = applicant.documentsComplete ? 'complete' : 'incomplete';
+    const overallStatus = applicant.personalInfoComplete && applicant.documentsComplete ? 'complete' : 'incomplete';
+
+    return (
+      <Card className={`transition-all duration-300 ${overallStatus === 'complete' ? 'border-primary/30 bg-primary/5' : 'border-border'}`}>
+        <CardHeader className="pb-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <CardTitle className="text-lg font-medium">
+                {isMain ? t('application.applicant.main', { defaultValue: 'Main Applicant' }) : `${t('application.applicant.title', { defaultValue: 'Applicant {{num}}', num: index + 1 })}`}
+              </CardTitle>
+              {overallStatus === 'complete' && (
+                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
+                  <Check className="h-3 w-3 mr-1" />
+                  Complete
+                </Badge>
               )}
             </div>
-            <p className="text-sm text-muted-foreground mb-3">
-              {applicant.firstName && applicant.lastName 
-                ? `${applicant.firstName} ${applicant.lastName}`
-                : 'Not started'
-              }
-            </p>
-            
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-sm">
-                {applicant.personalInfoComplete ? (
-                  <CheckCircle className="h-4 w-4 text-green-600" />
-                ) : (
-                  <AlertCircle className="h-4 w-4 text-amber-500" />
-                )}
-                <span>Personal Information</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                {applicant.documentsComplete ? (
-                  <CheckCircle className="h-4 w-4 text-green-600" />
-                ) : (
-                  <AlertCircle className="h-4 w-4 text-amber-500" />
-                )}
-                <span>Documents</span>
-              </div>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => handleEditApplicant(applicant.id)}
-            >
-              <Edit className="h-4 w-4" />
-            </Button>
-            {!isPrimary && (
+            <div className="flex items-center gap-2">
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => handleRemoveApplicant(applicant.id)}
+                onClick={() => handleEditApplicant(applicant.id)}
+                className="rounded-full"
               >
-                <Trash2 className="h-4 w-4" />
+                <Edit className="h-4 w-4 mr-2" />
+                Edit
               </Button>
-            )}
+              {!isMain && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handleRemoveApplicant(applicant.id)}
+                  className="rounded-full border-destructive/30 text-destructive hover:bg-destructive/10"
+                >
+                  <Trash2 className="h-4 w-4" />
+                </Button>
+              )}
+            </div>
           </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {displayName !== (isMain ? 'Main Applicant' : `Applicant ${index + 1}`) && (
+            <p className="text-muted-foreground">{displayName}</p>
+          )}
+          
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-sm">Personal Information</span>
+              <div className="flex items-center gap-2">
+                {personalInfoStatus === 'complete' ? (
+                  <Check className="h-4 w-4 text-primary" />
+                ) : (
+                  <X className="h-4 w-4 text-muted-foreground" />
+                )}
+                <span className={`text-sm ${personalInfoStatus === 'complete' ? 'text-primary' : 'text-muted-foreground'}`}>
+                  {personalInfoStatus === 'complete' ? 'Complete' : 'Incomplete'}
+                </span>
+              </div>
+            </div>
+            
+            <div className="flex items-center justify-between">
+              <span className="text-sm">Documents</span>
+              <div className="flex items-center gap-2">
+                {documentsStatus === 'complete' ? (
+                  <Check className="h-4 w-4 text-primary" />
+                ) : (
+                  <X className="h-4 w-4 text-muted-foreground" />
+                )}
+                <span className={`text-sm ${documentsStatus === 'complete' ? 'text-primary' : 'text-muted-foreground'}`}>
+                  {documentsStatus === 'complete' ? 'Complete' : 'Incomplete'}
+                </span>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  };
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-3xl mx-auto">
+    <div className="min-h-screen bg-gradient-subtle">
+      <div className="container mx-auto px-6 py-24">
+        <div className="max-w-4xl mx-auto">
           {/* Progress Bar */}
-          <div className="mb-8">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium">{t('application.progress.step', { current: 3, total: 4 })}</span>
+          <div className="mb-16">
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-sm font-medium text-muted-foreground">
+                {t('application.progress.step', { current: 2, total: 4 })}
+              </span>
               <span className="text-sm text-muted-foreground">
-                {allApplicantsComplete ? t('application.progress.complete', { percent: 75 }) : 'Complete all applicants to proceed'}
+                {t('application.progress.complete', { percent: overallProgress })}
               </span>
             </div>
-            <Progress value={allApplicantsComplete ? 75 : 60} className="h-2" />
+            <Progress value={overallProgress} className="h-3 bg-muted/50 [&>[data-state=complete]]:bg-gradient-travel" />
           </div>
 
           {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-2">Manage Applicants</h1>
-            <p className="text-muted-foreground">
-              Add up to {maxApplicants} applicants total. Complete all forms before proceeding to payment.
+          <div className="text-center mb-24">
+            <h1 className="text-5xl md:text-6xl font-light text-foreground mb-8 tracking-tight">
+              Manage Applicants
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
+              {completedApplicants} of {totalApplicants} applicants completed • {totalApplicants} {totalApplicants === 1 ? 'applicant' : 'applicants'} in application
             </p>
           </div>
 
-          {/* Primary Applicant */}
-          <div className="space-y-6">
-            {primaryApplicant && (
-              <div>
-                <h2 className="text-lg font-semibold mb-3">Primary Applicant</h2>
-                <ApplicantCard applicant={primaryApplicant} isPrimary />
-              </div>
-            )}
+          {/* Applicants List */}
+          <div className="space-y-6 mb-12">
+            {applicants.map((applicant, index) => (
+              <ApplicantCard key={applicant.id} applicant={applicant} index={index} />
+            ))}
+          </div>
 
-            {/* Additional Applicants */}
-            {additionalApplicants.length > 0 && (
-              <div>
-                <h2 className="text-lg font-semibold mb-3">Additional Applicants</h2>
-                <div className="space-y-3">
-                  {additionalApplicants.map((applicant) => (
-                    <ApplicantCard key={applicant.id} applicant={applicant} />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Add Applicant */}
-            {totalApplicants < maxApplicants && (
-              <Card className="border-dashed">
-                <CardContent className="p-8 text-center">
-                  <Plus className="h-8 w-8 mx-auto mb-3 text-muted-foreground" />
-                  <h3 className="font-medium mb-2">Add Another Applicant</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    {totalApplicants} of {maxApplicants} applicants added
+          {/* Add More Applicants */}
+          {applicants.length < maxApplicants && (
+            <Card className="border-dashed border-2 border-border/50 bg-muted/20">
+              <CardContent className="flex items-center justify-center py-12">
+                <div className="text-center space-y-4">
+                  <p className="text-muted-foreground">
+                    Add up to {maxApplicants - applicants.length} more {maxApplicants - applicants.length === 1 ? 'applicant' : 'applicants'} to this application
                   </p>
-                  <Button onClick={handleAddApplicant}>
-                    <Plus className="h-4 w-4 mr-2" />
-                    Add Applicant
+                  <Button onClick={handleAddApplicant} className="rounded-full bg-gradient-to-r from-primary to-turquoise text-white hover:shadow-lg transition-all duration-300">
+                    <UserPlus className="h-4 w-4 mr-2" />
+                    Add Another Applicant
                   </Button>
-                </CardContent>
-              </Card>
-            )}
+                </div>
+              </CardContent>
+            </Card>
+          )}
 
-            {/* Navigation */}
-            <div className="flex justify-between mt-8">
-              <Button 
-                variant="outline" 
-                onClick={() => navigate('/application/documents')}
-                className="flex items-center gap-2"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                {t('application.back')}
-              </Button>
-              <Button 
-                onClick={() => navigate('/application/payment')}
-                disabled={!allApplicantsComplete}
-                className="flex items-center gap-2"
-              >
-                {t('application.continue')}
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </div>
+          {/* Navigation */}
+          <div className="flex justify-between mt-16">
+            <Button 
+              variant="outline" 
+              onClick={() => navigate('/application')}
+              className="flex items-center gap-2 rounded-full px-8 py-3 border-border/50 hover:bg-muted/50"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              {t('application.back')}
+            </Button>
+            <Button 
+              onClick={() => navigate('/application/payment')}
+              disabled={!allApplicantsComplete}
+              className="flex items-center gap-2 bg-gradient-to-r from-primary to-turquoise text-white rounded-full px-8 py-3 hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Continue to Payment
+              <ArrowRight className="h-4 w-4" />
+            </Button>
           </div>
         </div>
       </div>

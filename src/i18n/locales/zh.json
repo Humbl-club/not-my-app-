@@ -101,14 +101,14 @@
    ,
       "address": {
         "title": "地址",
-        "sameAsPrimary": "与主申请人相同",
+        "sameAsMain": "与主申请人相同",
         "line1": { "label": "地址第一行" },
         "line2": { "label": "地址第二行（可选）" },
         "city": { "label": "城市" },
         "state": { "label": "省/州" },
         "postalCode": { "label": "邮政编码" },
         "country": { "label": "国家/地区", "placeholder": "选择国家/地区" },
-        "usingPrimary": "使用主申请人的地址"
+        "usingMain": "使用主申请人的地址"
       },
       "employment": {
         "hasJob": { "label": "您有工作吗？" },
@@ -119,8 +119,8 @@
         "warCrimes": { "label": "您是否曾被怀疑或因战争罪、恐怖主义或极端主义而被定罪？" }
       },
       "email": {
-        "sameAsPrimary": "与主申请人相同",
-        "usingPrimary": "使用主申请人的电子邮箱地址"
+        "sameAsMain": "与主申请人相同",
+        "usingMain": "使用主申请人的电子邮箱地址"
       },
       "additionalNationalities": {
         "label": "您是否拥有其他国籍？",

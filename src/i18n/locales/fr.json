@@ -192,14 +192,14 @@
     },
     "address": {
       "title": "Adresse",
-      "sameAsPrimary": "Identique au demandeur principal",
+      "sameAsMain": "Identique au demandeur principal",
       "line1": { "label": "Ligne d'adresse 1" },
       "line2": { "label": "Ligne d'adresse 2 (optionnel)" },
       "city": { "label": "Ville" },
       "state": { "label": "État/Province" },
       "postalCode": { "label": "Code postal" },
       "country": { "label": "Pays", "placeholder": "Sélectionner un pays" },
-      "usingPrimary": "Utilise l'adresse du demandeur principal"
+      "usingMain": "Utilise l'adresse du demandeur principal"
     },
     "employment": {
       "hasJob": { "label": "Avez-vous un emploi?" },
@@ -210,8 +210,8 @@
       "warCrimes": { "label": "Avez-vous déjà été soupçonné ou condamné pour crimes de guerre, terrorisme ou extrémisme?" }
     },
     "email": {
-      "sameAsPrimary": "Identique au demandeur principal",
-      "usingPrimary": "Utilise l'adresse e-mail du demandeur principal"
+        "sameAsMain": "Same as main applicant",
+        "usingMain": "Using main applicant's email"
     },
       "additionalNationalities": {
         "label": "Avez-vous des nationalités supplémentaires?",

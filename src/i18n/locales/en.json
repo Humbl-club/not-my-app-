@@ -139,16 +139,16 @@
       },
       "complete": "Complete Payment"
     },
-    "address": {
+      "address": {
         "title": "Address",
-        "sameAsPrimary": "Same as Primary Applicant",
+        "sameAsMain": "Same as main applicant",
         "line1": { "label": "Address line 1" },
         "line2": { "label": "Address line 2 (optional)" },
         "city": { "label": "City" },
         "state": { "label": "State/Province" },
         "postalCode": { "label": "Postal code" },
         "country": { "label": "Country", "placeholder": "Select a country" },
-        "usingPrimary": "Using Primary Applicant's address"
+        "usingMain": "Using main applicant's address"
       },
       "employment": {
         "title": "Employment",
@@ -164,9 +164,9 @@
         "passportPhoto": { "title": "Passport Photo", "upload": "Upload passport photo", "requirements": "Clear image of passport information page" },
         "personalPhoto": { "title": "Personal Photo", "upload": "Upload personal photo", "camera": "Take photo with camera", "requirements": "Recent photo with plain background" }
       },
-      "email": {
-        "sameAsPrimary": "Same as Primary Applicant",
-        "usingPrimary": "Using Primary Applicant's email address"
+    "email": {
+      "sameAsMain": "Same as main applicant",
+      "usingMain": "Using main applicant's email"
       },
       "additionalNationalities": {
         "label": "Do you have additional nationalities?",
