@@ -75,6 +75,24 @@
     "back": "返回",
     "submit": "提交申请",
     "progress": {"step": "第{{current}}步，共{{total}}步", "complete": "{{percent}}% 完成"},
+    "mainApplicant": "主申请人",
+    "applicant": "申请人",
+    "mainApplicantDocuments": "请为主申请人上传文件",
+    "documentsFor": "请为以下人员上传文件",
+    "documents": {
+      "title": "文件",
+      "passportPhoto": {
+        "title": "护照照片",
+        "upload": "上传护照照片",
+        "requirements": "要求:"
+      },
+      "personalPhoto": {
+        "title": "个人照片",
+        "upload": "上传照片",
+        "camera": "拍照",
+        "requirements": "照片要求:"
+      }
+    },
     "personalInfo": {
       "title": "个人信息",
       "nameSection": {

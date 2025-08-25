@@ -71,6 +71,24 @@
     "back": "Back",
     "submit": "Submit Application",
     "progress": {"step": "Step {{current}} of {{total}}", "complete": "{{percent}}% Complete"},
+    "mainApplicant": "Main Applicant",
+    "applicant": "Applicant",
+    "mainApplicantDocuments": "Please upload documents for the main applicant",
+    "documentsFor": "Please upload documents for",
+    "documents": {
+      "title": "Documents",
+      "passportPhoto": {
+        "title": "Passport Photo",
+        "upload": "Upload passport photo",
+        "requirements": "Requirements:"
+      },
+      "personalPhoto": {
+        "title": "Personal Photo", 
+        "upload": "Upload Photo",
+        "camera": "Take Photo",
+        "requirements": "Photo Requirements:"
+      }
+    },
     "personalInfo": {
       "title": "Personal Information",
       "nameSection": {

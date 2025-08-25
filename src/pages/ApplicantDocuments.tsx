@@ -24,9 +24,9 @@ const ApplicantDocuments = () => {
       const applicantsData = sessionStorage.getItem('application.applicants');
       if (applicantsData) {
         const applicants = JSON.parse(applicantsData);
-        const applicantIndex = parseInt(id.replace('applicant-', '')) - 1;
-        if (applicants[applicantIndex]) {
-          setApplicant(applicants[applicantIndex]);
+        const foundApplicant = applicants.find((app: any) => app.id === id);
+        if (foundApplicant) {
+          setApplicant(foundApplicant);
         } else {
           // Redirect back if no applicant data
           navigate(`/application/applicant/${id}`);
@@ -94,10 +94,10 @@ const ApplicantDocuments = () => {
     try {
       // Get existing applicants
       const existingApplicants = JSON.parse(sessionStorage.getItem('application.applicants') || '[]');
-      const applicantIndex = parseInt(id.replace('applicant-', '')) - 1;
       
-      // Merge documents with existing applicant data
-      if (applicantIndex >= 0 && applicantIndex < existingApplicants.length) {
+      // Find and update the specific applicant
+      const applicantIndex = existingApplicants.findIndex((app: any) => app.id === id);
+      if (applicantIndex >= 0) {
         existingApplicants[applicantIndex] = {
           ...existingApplicants[applicantIndex],
           ...values,
@@ -109,7 +109,17 @@ const ApplicantDocuments = () => {
     navigate('/application/manage');
   };
 
-  const applicantNumber = id ? parseInt(id.replace('applicant-', '')) : 1;
+  const getApplicantDisplayInfo = () => {
+    if (id === 'main') {
+      return { title: t('application.mainApplicant'), subtitle: t('application.mainApplicantDocuments') };
+    } else {
+      const applicantNumber = id ? parseInt(id.replace('applicant-', '')) : 1;
+      return { 
+        title: `${t('application.applicant')} ${applicantNumber}`, 
+        subtitle: `${t('application.documentsFor')} ${t('application.applicant').toLowerCase()} ${applicantNumber}` 
+      };
+    }
+  };
 
   if (!applicant) {
     return <div>Loading...</div>;
@@ -130,8 +140,8 @@ const ApplicantDocuments = () => {
 
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-2">Applicant {applicantNumber} Documents</h1>
-            <p className="text-muted-foreground">Please upload documents for applicant {applicantNumber}</p>
+            <h1 className="text-3xl font-bold mb-2">{getApplicantDisplayInfo().title} {t('application.documents.title')}</h1>
+            <p className="text-muted-foreground">{getApplicantDisplayInfo().subtitle}</p>
           </div>
 
           {/* Document Upload */}

@@ -89,6 +89,24 @@
     "back": "Atrás",
     "submit": "Enviar Solicitud",
     "progress": {"step": "Paso {{current}} de {{total}}", "complete": "{{percent}}% Completado"},
+    "mainApplicant": "Solicitante Principal",
+    "applicant": "Solicitante",
+    "mainApplicantDocuments": "Por favor sube documentos para el solicitante principal",
+    "documentsFor": "Por favor sube documentos para",
+    "documents": {
+      "title": "Documentos",
+      "passportPhoto": {
+        "title": "Foto de Pasaporte",
+        "upload": "Subir foto de pasaporte",
+        "requirements": "Requisitos:"
+      },
+      "personalPhoto": {
+        "title": "Foto Personal",
+        "upload": "Subir Foto",
+        "camera": "Tomar Foto",
+        "requirements": "Requisitos de Foto:"
+      }
+    },
     "personalInfo": {
       "title": "Información Personal",
       "nameSection": {

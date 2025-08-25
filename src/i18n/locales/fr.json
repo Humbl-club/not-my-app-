@@ -122,6 +122,24 @@
     "back": "Retour",
     "submit": "Soumettre la demande",
     "progress": {"step": "Étape {{current}} sur {{total}}", "complete": "{{percent}}% Terminé"},
+    "mainApplicant": "Demandeur Principal",
+    "applicant": "Demandeur",
+    "mainApplicantDocuments": "Veuillez télécharger les documents pour le demandeur principal",
+    "documentsFor": "Veuillez télécharger les documents pour",
+    "documents": {
+      "title": "Documents",
+      "passportPhoto": {
+        "title": "Photo de Passeport",
+        "upload": "Télécharger la photo de passeport",
+        "requirements": "Exigences:"
+      },
+      "personalPhoto": {
+        "title": "Photo Personnelle",
+        "upload": "Télécharger Photo",
+        "camera": "Prendre Photo",
+        "requirements": "Exigences Photo:"
+      }
+    },
     "personalInfo": {
       "title": "Informations personnelles",
       "nameSection": {
