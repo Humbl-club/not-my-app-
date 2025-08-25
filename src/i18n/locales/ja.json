@@ -164,6 +164,7 @@
         "description": "複数の市民権をお持ちの場合は選択してください",
         "addButton": "国籍を追加"
       },
+      "options": { "yes": "はい", "no": "いいえ" }
     },
     "address": {
       "title": "住所",

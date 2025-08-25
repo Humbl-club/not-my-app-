@@ -164,6 +164,7 @@
         "description": "복수 국적을 가지고 있다면 선택하세요",
         "addButton": "국적 추가"
       },
+      "options": { "yes": "예", "no": "아니오" }
     },
     "address": {
       "title": "주소",
