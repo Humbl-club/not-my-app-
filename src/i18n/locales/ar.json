@@ -301,6 +301,42 @@
     "support": {"title": "تحتاج مساعدة؟", "email": "دعم البريد الإلكتروني", "phone": "دعم الهاتف", "hours": "متاح على مدار الساعة"},
     "returnHome": "العودة إلى الصفحة الرئيسية"
   },
+  "review": {
+    "pageTitle": "مراجعة وتصدير",
+    "metaDescription": "راجع وصدّر بيانات طلب تصريح السفر الإلكتروني للمملكة المتحدة كـ JSON أو CSV، أو أرسلها إلى Zapier.",
+    "header": {
+      "title": "مراجعة وتصدير",
+      "backButton": "رجوع",
+      "continueButton": "متابعة"
+    },
+    "dataPreview": {
+      "title": "معاينة بيانات الطلب",
+      "copyJson": "نسخ JSON",
+      "downloadJson": "تحميل JSON",
+      "downloadCsv": "تحميل CSV",
+      "noData": "لا توجد بيانات مقدم طلب متاحة"
+    },
+    "zapier": {
+      "title": "إرسال إلى Zapier (اختياري)",
+      "placeholder": "https://hooks.zapier.com/hooks/catch/...",
+      "sendButton": "إرسال",
+      "tip": "نصيحة: اربط الـ webhook الخاص بك بـ Google Sheets لملء الصفوف تلقائياً لإرسال تصريح السفر الإلكتروني للمملكة المتحدة."
+    },
+    "messages": {
+      "copied": "تم نسخ البيانات إلى الحافظة",
+      "copyError": "فشل في نسخ البيانات",
+      "zapierSuccess": "تم إرسال الطلب إلى Zapier. تحقق من تاريخ الـ Zap الخاص بك للتأكد من تشغيله.",
+      "zapierError": "فشل في تشغيل webhook Zapier. يرجى التحقق من الرابط والمحاولة مرة أخرى.",
+      "webhookRequired": "يرجى إدخال رابط webhook Zapier الخاص بك",
+      "noApplicants": "لا يوجد مقدمو طلبات للتصدير",
+      "invalidData": "بيانات طلب غير صحيحة. يرجى إكمال نموذج الطلب أولاً.",
+      "processing": "جاري المعالجة..."
+    },
+    "validation": {
+      "invalidWebhook": "يرجى إدخال رابط webhook Zapier صحيح",
+      "emptyData": "لم يتم العثور على بيانات طلب. يرجى إكمال الطلب أولاً."
+    }
+  },
   "jobSelector": {
     "other": "أخرى",
     "customJobPrompt": "أدخل مسمى وظيفي مخصص",

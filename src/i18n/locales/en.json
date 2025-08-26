@@ -330,6 +330,42 @@
     "support": {"title": "Need Help?", "email": "Email Support", "phone": "Phone Support", "hours": "Available 24/7"},
     "returnHome": "Return to Home"
   },
+  "review": {
+    "pageTitle": "Review & Export",
+    "metaDescription": "Review and export your UK ETA application data as JSON or CSV, or send to Zapier.",
+    "header": {
+      "title": "Review & Export",
+      "backButton": "Back",
+      "continueButton": "Continue"
+    },
+    "dataPreview": {
+      "title": "Application Data Preview",
+      "copyJson": "Copy JSON",
+      "downloadJson": "Download JSON", 
+      "downloadCsv": "Download CSV",
+      "noData": "No applicant data available"
+    },
+    "zapier": {
+      "title": "Send to Zapier (Optional)",
+      "placeholder": "https://hooks.zapier.com/hooks/catch/...",
+      "sendButton": "Send",
+      "tip": "Tip: Connect your webhook to Google Sheets to auto-fill rows for UK ETA submission."
+    },
+    "messages": {
+      "copied": "Data copied to clipboard",
+      "copyError": "Failed to copy data",
+      "zapierSuccess": "Request sent to Zapier. Check your Zap's history to confirm it was triggered.",
+      "zapierError": "Failed to trigger Zapier webhook. Please check the URL and try again.",
+      "webhookRequired": "Please enter your Zapier webhook URL",
+      "noApplicants": "No applicants to export",
+      "invalidData": "Invalid application data. Please complete the application form first.",
+      "processing": "Processing..."
+    },
+    "validation": {
+      "invalidWebhook": "Please enter a valid Zapier webhook URL",
+      "emptyData": "No application data found. Please complete the application first."
+    }
+  },
   "jobSelector": {
     "other": "Other",
     "customJobPrompt": "Enter a custom job title",

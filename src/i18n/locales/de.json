@@ -317,6 +317,42 @@
     "support": {"title": "Brauchen Sie Hilfe?", "email": "E-Mail-Support", "phone": "Telefon-Support", "hours": "24/7 verfügbar"},
     "returnHome": "Zur Startseite zurückkehren"
   },
+  "review": {
+    "pageTitle": "Überprüfen und Exportieren",
+    "metaDescription": "Überprüfen und exportieren Sie Ihre UK ETA-Antragsdaten als JSON oder CSV oder senden Sie sie an Zapier.",
+    "header": {
+      "title": "Überprüfen und Exportieren",
+      "backButton": "Zurück",
+      "continueButton": "Fortsetzen"
+    },
+    "dataPreview": {
+      "title": "Vorschau der Antragsdaten",
+      "copyJson": "JSON kopieren",
+      "downloadJson": "JSON herunterladen",
+      "downloadCsv": "CSV herunterladen",
+      "noData": "Keine Antragstellerdaten verfügbar"
+    },
+    "zapier": {
+      "title": "An Zapier senden (Optional)",
+      "placeholder": "https://hooks.zapier.com/hooks/catch/...",
+      "sendButton": "Senden",
+      "tip": "Tipp: Verbinden Sie Ihren Webhook mit Google Sheets, um Zeilen für die UK ETA-Einreichung automatisch auszufüllen."
+    },
+    "messages": {
+      "copied": "Daten in die Zwischenablage kopiert",
+      "copyError": "Fehler beim Kopieren der Daten",
+      "zapierSuccess": "Anfrage an Zapier gesendet. Überprüfen Sie den Verlauf Ihres Zaps, um zu bestätigen, dass er ausgelöst wurde.",
+      "zapierError": "Fehler beim Auslösen des Zapier-Webhooks. Bitte überprüfen Sie die URL und versuchen Sie es erneut.",
+      "webhookRequired": "Bitte geben Sie Ihre Zapier-Webhook-URL ein",
+      "noApplicants": "Keine Antragsteller zum Exportieren",
+      "invalidData": "Ungültige Antragsdaten. Bitte füllen Sie zuerst das Antragsformular aus.",
+      "processing": "Wird verarbeitet..."
+    },
+    "validation": {
+      "invalidWebhook": "Bitte geben Sie eine gültige Zapier-Webhook-URL ein",
+      "emptyData": "Keine Antragsdaten gefunden. Bitte vervollständigen Sie zuerst den Antrag."
+    }
+  },
   "jobSelector": {
     "other": "Andere",
     "customJobPrompt": "Geben Sie einen benutzerdefinierten Jobtitel ein",

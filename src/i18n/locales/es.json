@@ -301,6 +301,42 @@
     "support": {"title": "¿Necesitas Ayuda?", "email": "Soporte por Correo Electrónico", "phone": "Soporte Telefónico", "hours": "Disponible 24/7"},
     "returnHome": "Volver al Inicio"
   },
+  "review": {
+    "pageTitle": "Revisar y Exportar",
+    "metaDescription": "Revisa y exporta tus datos de solicitud ETA del Reino Unido como JSON o CSV, o envía a Zapier.",
+    "header": {
+      "title": "Revisar y Exportar",
+      "backButton": "Atrás",
+      "continueButton": "Continuar"
+    },
+    "dataPreview": {
+      "title": "Vista Previa de Datos de Solicitud",
+      "copyJson": "Copiar JSON",
+      "downloadJson": "Descargar JSON",
+      "downloadCsv": "Descargar CSV",
+      "noData": "No hay datos de solicitante disponibles"
+    },
+    "zapier": {
+      "title": "Enviar a Zapier (Opcional)",
+      "placeholder": "https://hooks.zapier.com/hooks/catch/...",
+      "sendButton": "Enviar",
+      "tip": "Consejo: Conecta tu webhook a Google Sheets para auto-completar filas para la presentación ETA del Reino Unido."
+    },
+    "messages": {
+      "copied": "Datos copiados al portapapeles",
+      "copyError": "Error al copiar datos",
+      "zapierSuccess": "Solicitud enviada a Zapier. Revisa el historial de tu Zap para confirmar que se activó.",
+      "zapierError": "Error al activar el webhook de Zapier. Por favor verifica la URL e intenta de nuevo.",
+      "webhookRequired": "Por favor ingresa tu URL webhook de Zapier",
+      "noApplicants": "No hay solicitantes para exportar",
+      "invalidData": "Datos de solicitud inválidos. Por favor completa el formulario de solicitud primero.",
+      "processing": "Procesando..."
+    },
+    "validation": {
+      "invalidWebhook": "Por favor ingresa una URL webhook de Zapier válida",
+      "emptyData": "No se encontraron datos de solicitud. Por favor completa la solicitud primero."
+    }
+  },
   "jobSelector": {
     "other": "Otro",
     "customJobPrompt": "Ingresa un título de trabajo personalizado",
