@@ -268,20 +268,84 @@ const ApplicantForm = () => {
   const formState = form.formState;
   const formValues = form.watch();
   
-  // Use React Hook Form's validation state directly
-  const isFormValid = formState.isValid;
+  // Enhanced validation logic
+  const isFormValid = useMemo(() => {
+    // Check if form has been validated at least once
+    if (!formState.isSubmitted && !formState.isDirty) {
+      return false;
+    }
+    
+    // Use form's built-in validation
+    const hasErrors = Object.keys(formState.errors).length > 0;
+    
+    // Manual check for critical RadioGroup fields
+    const hasJobAnswer = formValues.hasJob === 'yes' || formValues.hasJob === 'no';
+    const hasCriminalAnswer = formValues.hasCriminalConvictions === 'yes' || formValues.hasCriminalConvictions === 'no';
+    const hasWarCrimesAnswer = formValues.hasWarCrimesConvictions === 'yes' || formValues.hasWarCrimesConvictions === 'no';
+    
+    // Check job title if user has a job
+    const hasJobTitle = formValues.hasJob !== 'yes' || 
+      (formValues.jobTitle?.titleOriginal?.trim() || formValues.jobTitle?.titleEnglish?.trim());
+    
+    // Check address requirements
+    const addressValid = formValues.useSameAddressAsPrimary || 
+      formValues.useSameAddressAsPassport || 
+      (formValues.address?.line1?.trim() && 
+       formValues.address?.city?.trim() && 
+       formValues.address?.country?.trim() && 
+       formValues.address?.postalCode?.trim());
+    
+    // Check all required fields
+    const requiredFields = [
+      formValues.firstName?.trim(),
+      formValues.lastName?.trim(),
+      formValues.dateOfBirth?.trim(),
+      formValues.nationality?.trim(),
+      formValues.email?.trim(),
+      formValues.passportNumber?.trim()
+    ];
+    
+    const allRequiredFilled = requiredFields.every(field => field && field !== "");
+    
+    const finalValidation = !hasErrors && 
+      hasJobAnswer && 
+      hasCriminalAnswer && 
+      hasWarCrimesAnswer && 
+      hasJobTitle && 
+      addressValid && 
+      allRequiredFilled;
+    
+    return finalValidation;
+  }, [formState, formValues]);
   
-  // Debug logging
-  console.log('Form validation debug:', {
+  // Enhanced debug logging
+  console.log('CONTINUE BUTTON DEBUG:', {
     isFormValid,
+    formStateValid: formState.isValid,
+    hasErrors: Object.keys(formState.errors).length > 0,
     errors: formState.errors,
-    touchedFields: formState.touchedFields,
+    isDirty: formState.isDirty,
+    isSubmitted: formState.isSubmitted,
     radioValues: {
       hasJob: formValues.hasJob,
       hasCriminalConvictions: formValues.hasCriminalConvictions,
       hasWarCrimesConvictions: formValues.hasWarCrimesConvictions
     },
-    formValues: formValues
+    addressStates: {
+      useSameAsPrimary: formValues.useSameAddressAsPrimary,
+      useSameAsPassport: formValues.useSameAddressAsPassport,
+      addressLine1: formValues.address?.line1,
+      addressCity: formValues.address?.city
+    },
+    requiredFields: {
+      firstName: !!formValues.firstName?.trim(),
+      lastName: !!formValues.lastName?.trim(),
+      dateOfBirth: !!formValues.dateOfBirth?.trim(),
+      nationality: !!formValues.nationality?.trim(),
+      email: !!formValues.email?.trim(),
+      passportNumber: !!formValues.passportNumber?.trim()
+    },
+    jobTitle: formValues.jobTitle
   });
   
   // Calculate completion percentage
@@ -631,7 +695,16 @@ const ApplicantForm = () => {
                   <FormField control={form.control} name="hasJob" render={({ field, fieldState }) => (
                     <FormItem>
                       <FormLabel>{t('application.employment.hasJob.label')} <span className="text-destructive">*</span></FormLabel>
-                        <RadioGroup onValueChange={field.onChange} value={field.value || ""} className="flex flex-col space-y-1">
+                      <FormControl>
+                        <RadioGroup 
+                          onValueChange={(value) => {
+                            field.onChange(value);
+                            // Trigger validation immediately
+                            form.trigger('hasJob');
+                          }} 
+                          value={field.value || ""} 
+                          className="flex flex-col space-y-1"
+                        >
                          <FormItem className="flex items-center space-x-3 space-y-0">
                            <FormControl>
                              <RadioGroupItem value="yes" />
@@ -644,7 +717,8 @@ const ApplicantForm = () => {
                            </FormControl>
                            <FormLabel>{t('application.options.no')}</FormLabel>
                          </FormItem>
-                       </RadioGroup>
+                        </RadioGroup>
+                      </FormControl>
                       <FormMessage />
                     </FormItem>
                   )} />
@@ -669,7 +743,16 @@ const ApplicantForm = () => {
                    <FormField control={form.control} name="hasCriminalConvictions" render={({ field, fieldState }) => (
                      <FormItem>
                        <FormLabel>{t('application.security.criminalConvictions.label')} <span className="text-destructive">*</span></FormLabel>
-                        <RadioGroup onValueChange={field.onChange} value={field.value || ""} className="flex flex-col space-y-1">
+                       <FormControl>
+                        <RadioGroup 
+                          onValueChange={(value) => {
+                            field.onChange(value);
+                            // Trigger validation immediately
+                            form.trigger('hasCriminalConvictions');
+                          }} 
+                          value={field.value || ""} 
+                          className="flex flex-col space-y-1"
+                        >
                          <FormItem className="flex items-center space-x-3 space-y-0">
                            <FormControl>
                              <RadioGroupItem value="yes" />
@@ -682,7 +765,8 @@ const ApplicantForm = () => {
                            </FormControl>
                            <FormLabel>{t('application.options.no')}</FormLabel>
                          </FormItem>
-                       </RadioGroup>
+                        </RadioGroup>
+                       </FormControl>
                        <FormMessage />
                      </FormItem>
                    )} />
@@ -690,7 +774,16 @@ const ApplicantForm = () => {
                    <FormField control={form.control} name="hasWarCrimesConvictions" render={({ field, fieldState }) => (
                      <FormItem>
                        <FormLabel>{t('application.security.warCrimes.label')} <span className="text-destructive">*</span></FormLabel>
-                       <RadioGroup onValueChange={field.onChange} value={field.value || ""} className="flex flex-col space-y-1">
+                       <FormControl>
+                        <RadioGroup 
+                          onValueChange={(value) => {
+                            field.onChange(value);
+                            // Trigger validation immediately
+                            form.trigger('hasWarCrimesConvictions');
+                          }} 
+                          value={field.value || ""} 
+                          className="flex flex-col space-y-1"
+                        >
                          <FormItem className="flex items-center space-x-3 space-y-0">
                            <FormControl>
                              <RadioGroupItem value="yes" />
@@ -703,7 +796,8 @@ const ApplicantForm = () => {
                            </FormControl>
                            <FormLabel>{t('application.options.no')}</FormLabel>
                          </FormItem>
-                       </RadioGroup>
+                        </RadioGroup>
+                       </FormControl>
                        <FormMessage />
                      </FormItem>
                    )} />
