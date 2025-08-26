@@ -211,41 +211,6 @@
       "emptyData": "신청 데이터를 찾을 수 없습니다. 먼저 신청을 완성해주세요."
     }
   },
-    "pageTitle": "검토 및 내보내기",
-    "metaDescription": "영국 ETA 신청 데이터를 JSON 또는 CSV로 검토하고 내보내거나 Zapier로 전송하세요.",
-    "header": {
-      "title": "검토 및 내보내기",
-      "backButton": "뒤로",
-      "continueButton": "계속"
-    },
-    "dataPreview": {
-      "title": "신청 데이터 미리보기",
-      "copyJson": "JSON 복사",
-      "downloadJson": "JSON 다운로드",
-      "downloadCsv": "CSV 다운로드",
-      "noData": "사용 가능한 신청자 데이터가 없습니다"
-    },
-    "zapier": {
-      "title": "Zapier로 전송 (선택사항)",
-      "placeholder": "https://hooks.zapier.com/hooks/catch/...",
-      "sendButton": "전송",
-      "tip": "팁: 웹훅을 Google Sheets에 연결하여 영국 ETA 제출을 위한 행을 자동으로 채울 수 있습니다."
-    },
-    "messages": {
-      "copied": "데이터가 클립보드에 복사되었습니다",
-      "copyError": "데이터 복사에 실패했습니다",
-      "zapierSuccess": "요청이 Zapier로 전송되었습니다. Zap 기록을 확인하여 트리거되었는지 확인하세요.",
-      "zapierError": "Zapier 웹훅 트리거에 실패했습니다. URL을 확인하고 다시 시도하세요.",
-      "webhookRequired": "Zapier 웹훅 URL을 입력하세요",
-      "noApplicants": "내보낼 신청자가 없습니다",
-      "invalidData": "잘못된 신청 데이터입니다. 먼저 신청 양식을 완료하세요.",
-      "processing": "처리 중..."
-    },
-    "validation": {
-      "invalidWebhook": "유효한 Zapier 웹훅 URL을 입력하세요",
-      "emptyData": "신청 데이터를 찾을 수 없습니다. 먼저 신청을 완료하세요."
-    }
-  },
   "jobSelector": {
     "other": "기타",
     "customJobPrompt": "맞춤 직업 제목 입력",

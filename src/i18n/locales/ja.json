@@ -202,41 +202,6 @@
       "emptyData": "申請データが見つかりません。最初に申請を完了してください。"
     }
   },
-    "pageTitle": "確認・エクスポート",
-    "metaDescription": "英国ETA申請データをJSONまたはCSV形式で確認・エクスポート、またはZapierに送信します。",
-    "header": {
-      "title": "確認・エクスポート",
-      "backButton": "戻る",
-      "continueButton": "続行"
-    },
-    "dataPreview": {
-      "title": "申請データプレビュー",
-      "copyJson": "JSONをコピー",
-      "downloadJson": "JSONをダウンロード",
-      "downloadCsv": "CSVをダウンロード",
-      "noData": "申請者データがありません"
-    },
-    "zapier": {
-      "title": "Zapierに送信（任意）",
-      "placeholder": "https://hooks.zapier.com/hooks/catch/...",
-      "sendButton": "送信",
-      "tip": "ヒント：WebhookをGoogle Sheetsに接続して、英国ETA申請の行を自動入力できます。"
-    },
-    "messages": {
-      "copied": "データがクリップボードにコピーされました",
-      "copyError": "データのコピーに失敗しました",
-      "zapierSuccess": "リクエストがZapierに送信されました。Zapの履歴を確認してトリガーされたことを確認してください。",
-      "zapierError": "Zapier webhookのトリガーに失敗しました。URLを確認して再試行してください。",
-      "webhookRequired": "Zapier webhook URLを入力してください",
-      "noApplicants": "エクスポートする申請者はありません",
-      "invalidData": "申請データが無効です。まず申請フォームを完了してください。",
-      "processing": "処理中..."
-    },
-    "validation": {
-      "invalidWebhook": "有効なZapier webhook URLを入力してください",
-      "emptyData": "申請データが見つかりません。まず申請を完了してください。"
-    }
-  },
   "jobSelector": {
     "other": "その他",
     "customJobPrompt": "カスタム職業タイトルを入力",
