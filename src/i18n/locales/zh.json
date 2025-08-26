@@ -251,6 +251,19 @@
       "invalid": "仅使用字母和数字(A-Z, 0-9)",
       "length": "护照号码必须为6-10个字符",
       "format": "输入护照上显示的确切护照号码"
+    },
+    "address": {
+      "line1Required": "地址第1行是必需的",
+      "cityRequired": "城市是必需的",
+      "countryRequired": "国家是必需的",
+      "postalCodeRequired": "邮政编码是必需的"
+    },
+    "form": {
+      "completed": "表单填写完成",
+      "almostComplete": "即将完成",
+      "halfwayComplete": "已完成一半以上",
+      "fillRequired": "请填写必填字段",
+      "percentComplete": "% 完成"
     }
   },
   "tracking": {

@@ -208,19 +208,19 @@ const ApplicantForm = () => {
     // Validate required address fields manually
     let hasErrors = false;
     if (!values.address?.line1?.trim()) {
-      form.setError('address.line1', { message: 'Address line 1 is required' });
+      form.setError('address.line1', { message: t('validation.address.line1Required') });
       hasErrors = true;
     }
     if (!values.address?.city?.trim()) {
-      form.setError('address.city', { message: 'City is required' });
+      form.setError('address.city', { message: t('validation.address.cityRequired') });
       hasErrors = true;
     }
     if (!values.address?.country?.trim()) {
-      form.setError('address.country', { message: 'Country is required' });
+      form.setError('address.country', { message: t('validation.address.countryRequired') });
       hasErrors = true;
     }
     if (!values.address?.postalCode?.trim()) {
-      form.setError('address.postalCode', { message: 'Postal code is required' });
+      form.setError('address.postalCode', { message: t('validation.address.postalCodeRequired') });
       hasErrors = true;
     }
     

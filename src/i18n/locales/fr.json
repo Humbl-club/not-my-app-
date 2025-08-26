@@ -251,6 +251,19 @@
       "invalid": "Utilisez uniquement des lettres et chiffres (A-Z, 0-9)",
       "length": "Le numéro de passeport doit contenir 6-10 caractères",
       "format": "Entrez le numéro de passeport exactement comme il apparaît sur votre passeport"
+    },
+    "address": {
+      "line1Required": "La ligne d'adresse 1 est requise",
+      "cityRequired": "La ville est requise",
+      "countryRequired": "Le pays est requis",
+      "postalCodeRequired": "Le code postal est requis"
+    },
+    "form": {
+      "completed": "Formulaire complété avec succès",
+      "almostComplete": "Presque terminé",
+      "halfwayComplete": "Plus de la moitié complétée",
+      "fillRequired": "Veuillez remplir les champs requis",
+      "percentComplete": "% terminé"
     }
   },
   "tracking": {

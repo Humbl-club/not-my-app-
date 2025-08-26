@@ -12,6 +12,8 @@ import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
 import { addressValidationRules, extractAddressFromPassport } from '@/utils/addressValidator';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { nationalities } from '@/constants/nationalities';
 
 interface AddressFieldsSectionProps<T extends FieldValues> {
   form: UseFormReturn<T>;
@@ -242,18 +244,18 @@ export function AddressFieldsSection<T extends FieldValues>({
                     <span className="text-destructive ml-1">*</span>
                   </FormLabel>
                   <FormControl>
-                    <Input
-                      {...field}
-                      placeholder={t('application.address.country.placeholder')}
-                      aria-invalid={!!fieldState.error}
-                      onBlur={(e) => {
-                        const error = addressValidationRules.country(e.target.value);
-                        if (error) {
-                          fieldState.error = { message: error } as any;
-                        }
-                        field.onBlur();
-                      }}
-                    />
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <SelectTrigger aria-invalid={!!fieldState.error}>
+                        <SelectValue placeholder={t('application.address.country.placeholder')} />
+                      </SelectTrigger>
+                      <SelectContent className="bg-background border border-border shadow-lg max-h-60">
+                        {nationalities.map((country) => (
+                          <SelectItem key={country.code} value={country.name}>
+                            {country.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

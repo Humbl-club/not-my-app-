@@ -251,6 +251,19 @@
       "invalid": "استخدم الأحرف والأرقام فقط (A-Z, 0-9)",
       "length": "رقم جواز السفر يجب أن يكون من 6-10 أحرف",
       "format": "أدخل رقم جواز السفر تماماً كما يظهر في جواز سفرك"
+    },
+    "address": {
+      "line1Required": "عنوان السطر 1 مطلوب",
+      "cityRequired": "المدينة مطلوبة",
+      "countryRequired": "البلد مطلوب",
+      "postalCodeRequired": "الرمز البريدي مطلوب"
+    },
+    "form": {
+      "completed": "تم إكمال النموذج بنجاح",
+      "almostComplete": "مكتمل تقريباً",
+      "halfwayComplete": "مكتمل أكثر من النصف",
+      "fillRequired": "يرجى ملء الحقول المطلوبة",
+      "percentComplete": "% مكتمل"
     }
   },
   "tracking": {

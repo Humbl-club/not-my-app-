@@ -251,6 +251,19 @@
       "invalid": "Usa solo lettere e numeri (A-Z, 0-9)",
       "length": "Il numero di passaporto deve essere di 6-10 caratteri",
       "format": "Inserisci il numero di passaporto esattamente come appare sul tuo passaporto"
+    },
+    "address": {
+      "line1Required": "La linea indirizzo 1 è richiesta",
+      "cityRequired": "La città è richiesta",
+      "countryRequired": "Il paese è richiesto",
+      "postalCodeRequired": "Il codice postale è richiesto"
+    },
+    "form": {
+      "completed": "Modulo completato con successo",
+      "almostComplete": "Quasi completato",
+      "halfwayComplete": "Più della metà completato",
+      "fillRequired": "Si prega di compilare i campi richiesti",
+      "percentComplete": "% completato"
     }
   },
   "tracking": {

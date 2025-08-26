@@ -258,6 +258,19 @@
       "invalid": "Use only letters and numbers (A-Z, 0-9)",
       "length": "Passport number must be 6-10 characters long",
       "format": "Enter passport number exactly as shown on your passport"
+    },
+    "address": {
+      "line1Required": "Address line 1 is required",
+      "cityRequired": "City is required",
+      "countryRequired": "Country is required",
+      "postalCodeRequired": "Postal code is required"
+    },
+    "form": {
+      "completed": "Form completed successfully",
+      "almostComplete": "Almost complete",
+      "halfwayComplete": "More than halfway complete",
+      "fillRequired": "Please fill out required fields",
+      "percentComplete": "% complete"
     }
   },
   "tracking": {

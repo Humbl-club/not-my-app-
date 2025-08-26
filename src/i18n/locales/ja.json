@@ -160,6 +160,19 @@
       "invalidStart": "名前はスペースや特殊文字で始まったり終わったりしてはいけません",
       "consecutive": "連続するスペースや特殊文字を持つことはできません",
       "passportFormat": "パスポートに表示されている通りに正確に名前を入力してください"
+    },
+    "address": {
+      "line1Required": "住所1行目は必須です",
+      "cityRequired": "市区町村は必須です",
+      "countryRequired": "国は必須です",
+      "postalCodeRequired": "郵便番号は必須です"
+    },
+    "form": {
+      "completed": "フォームが正常に完了しました",
+      "almostComplete": "もうすぐ完了",
+      "halfwayComplete": "半分以上完了",
+      "fillRequired": "必須フィールドを入力してください",
+      "percentComplete": "% 完了"
     }
   },
   "review": {

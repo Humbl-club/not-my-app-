@@ -23,10 +23,10 @@ export const FormValidationStatus: React.FC<FormValidationStatusProps> = ({
   };
 
   const getStatusText = () => {
-    if (isValid) return "Form completed successfully";
-    if (completionPercentage > 75) return "Almost complete";
-    if (completionPercentage > 50) return "More than halfway complete";
-    return "Please fill out required fields";
+    if (isValid) return t("validation.form.completed");
+    if (completionPercentage > 75) return t("validation.form.almostComplete");
+    if (completionPercentage > 50) return t("validation.form.halfwayComplete");
+    return t("validation.form.fillRequired");
   };
 
   const getStatusColor = () => {
@@ -40,7 +40,7 @@ export const FormValidationStatus: React.FC<FormValidationStatusProps> = ({
       {getStatusIcon()}
       <div className="flex-1">
         <p className="text-sm font-medium">{getStatusText()}</p>
-        <p className="text-xs opacity-75">{completionPercentage}% complete</p>
+        <p className="text-xs opacity-75">{completionPercentage}{t("validation.form.percentComplete")}</p>
       </div>
     </div>
   );

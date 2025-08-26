@@ -245,6 +245,19 @@
       "invalid": "Verwenden Sie nur Buchstaben und Zahlen (A-Z, 0-9)",
       "length": "Passnummer muss 6-10 Zeichen lang sein",
       "format": "Geben Sie die Passnummer genau so ein, wie sie in Ihrem Pass steht"
+    },
+    "address": {
+      "line1Required": "Adresszeile 1 ist erforderlich",
+      "cityRequired": "Stadt ist erforderlich",
+      "countryRequired": "Land ist erforderlich",
+      "postalCodeRequired": "Postleitzahl ist erforderlich"
+    },
+    "form": {
+      "completed": "Formular erfolgreich ausgefüllt",
+      "almostComplete": "Fast vollständig",
+      "halfwayComplete": "Mehr als zur Hälfte ausgefüllt",
+      "fillRequired": "Bitte füllen Sie die erforderlichen Felder aus",
+      "percentComplete": "% vollständig"
     }
   },
   "tracking": {

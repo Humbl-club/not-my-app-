@@ -169,6 +169,19 @@
       "invalidStart": "이름은 공백이나 특수 문자로 시작하거나 끝날 수 없습니다",
       "consecutive": "연속된 공백이나 특수 문자를 가질 수 없습니다",
       "passportFormat": "여권에 표시된 대로 정확히 이름을 입력하세요"
+    },
+    "address": {
+      "line1Required": "주소 라인 1이 필요합니다",
+      "cityRequired": "도시가 필요합니다",
+      "countryRequired": "국가가 필요합니다",
+      "postalCodeRequired": "우편번호가 필요합니다"
+    },
+    "form": {
+      "completed": "양식이 성공적으로 완료되었습니다",
+      "almostComplete": "거의 완료됨",
+      "halfwayComplete": "절반 이상 완료됨",
+      "fillRequired": "필수 항목을 입력해주세요",
+      "percentComplete": "% 완료"
     }
   },
   "review": {

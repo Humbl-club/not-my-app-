@@ -251,6 +251,19 @@
       "invalid": "Usa solo letras y números (A-Z, 0-9)",
       "length": "El número de pasaporte debe tener 6-10 caracteres",
       "format": "Ingresa el número de pasaporte exactamente como aparece en tu pasaporte"
+    },
+    "address": {
+      "line1Required": "La línea de dirección 1 es requerida",
+      "cityRequired": "La ciudad es requerida",
+      "countryRequired": "El país es requerido",
+      "postalCodeRequired": "El código postal es requerido"
+    },
+    "form": {
+      "completed": "Formulario completado exitosamente",
+      "almostComplete": "Casi completado",
+      "halfwayComplete": "Más de la mitad completado",
+      "fillRequired": "Por favor completa los campos requeridos",
+      "percentComplete": "% completo"
     }
   },
   "tracking": {
