@@ -125,7 +125,7 @@ const ApplicantForm = () => {
       postalCode: z.string().optional(),
       country: z.string().optional(),
     }).optional(),
-    hasJob: z.enum(['yes', 'no', '']).optional(),
+    hasJob: z.enum(['yes', 'no']).optional(),
     jobTitle: z.object({
       isStandardized: z.boolean().default(false),
       jobCode: z.string().optional(),
@@ -133,8 +133,8 @@ const ApplicantForm = () => {
       titleEnglish: z.string().default(""),
       category: z.string().optional(),
     }),
-    hasCriminalConvictions: z.enum(['yes', 'no', '']).optional(),
-    hasWarCrimesConvictions: z.enum(['yes', 'no', '']).optional(),
+    hasCriminalConvictions: z.enum(['yes', 'no']).optional(),
+    hasWarCrimesConvictions: z.enum(['yes', 'no']).optional(),
   }).superRefine((data, ctx) => {
     // Address validation - only required if not using same address options
     if (!data.useSameAddressAsPrimary && !data.useSameAddressAsPassport) {
@@ -169,7 +169,7 @@ const ApplicantForm = () => {
     }
     
     // Job validation - require selection
-    if (data.hasJob === "" || data.hasJob === undefined) {
+    if (data.hasJob === undefined) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: t('validation.employment.required'),
@@ -187,7 +187,7 @@ const ApplicantForm = () => {
     }
 
     // Security questions validation - require answers
-    if (data.hasCriminalConvictions === "" || data.hasCriminalConvictions === undefined) {
+    if (data.hasCriminalConvictions === undefined) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: t('validation.security.criminalConvictions.required'),
@@ -195,7 +195,7 @@ const ApplicantForm = () => {
       });
     }
 
-    if (data.hasWarCrimesConvictions === "" || data.hasWarCrimesConvictions === undefined) {
+    if (data.hasWarCrimesConvictions === undefined) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: t('validation.security.warCrimes.required'),
@@ -253,14 +253,14 @@ const ApplicantForm = () => {
       useSameAddressAsPassport: false,
       useSameEmailAsPrimary: false,
       address: { line1: '', line2: '', line3: '', city: '', state: '', postalCode: '', country: '' },
-      hasJob: "",
+      hasJob: undefined,
       jobTitle: {
         isStandardized: false,
         titleOriginal: "",
         titleEnglish: "",
       },
-      hasCriminalConvictions: "",
-      hasWarCrimesConvictions: "",
+      hasCriminalConvictions: undefined,
+      hasWarCrimesConvictions: undefined,
     },
   });
 
@@ -268,54 +268,25 @@ const ApplicantForm = () => {
   const formState = form.formState;
   const formValues = form.watch();
   
-  // Enhanced validation logic
+  // Simplified validation logic using React Hook Form's built-in validation
   const isFormValid = useMemo(() => {
-    // Check if form has been validated at least once
-    if (!formState.isSubmitted && !formState.isDirty) {
-      return false;
-    }
+    // Use React Hook Form's built-in validation which handles the Zod schema
+    const hasNoErrors = Object.keys(formState.errors).length === 0;
     
-    // Use form's built-in validation
-    const hasErrors = Object.keys(formState.errors).length > 0;
+    // Check if required fields have values (basic completeness check)
+    const requiredFieldsComplete = !!(
+      formValues.firstName?.trim() &&
+      formValues.lastName?.trim() &&
+      formValues.dateOfBirth?.trim() &&
+      formValues.nationality?.trim() &&
+      formValues.email?.trim() &&
+      formValues.passportNumber?.trim() &&
+      formValues.hasJob !== undefined &&
+      formValues.hasCriminalConvictions !== undefined &&
+      formValues.hasWarCrimesConvictions !== undefined
+    );
     
-    // Manual check for critical RadioGroup fields
-    const hasJobAnswer = formValues.hasJob === 'yes' || formValues.hasJob === 'no';
-    const hasCriminalAnswer = formValues.hasCriminalConvictions === 'yes' || formValues.hasCriminalConvictions === 'no';
-    const hasWarCrimesAnswer = formValues.hasWarCrimesConvictions === 'yes' || formValues.hasWarCrimesConvictions === 'no';
-    
-    // Check job title if user has a job
-    const hasJobTitle = formValues.hasJob !== 'yes' || 
-      (formValues.jobTitle?.titleOriginal?.trim() || formValues.jobTitle?.titleEnglish?.trim());
-    
-    // Check address requirements
-    const addressValid = formValues.useSameAddressAsPrimary || 
-      formValues.useSameAddressAsPassport || 
-      (formValues.address?.line1?.trim() && 
-       formValues.address?.city?.trim() && 
-       formValues.address?.country?.trim() && 
-       formValues.address?.postalCode?.trim());
-    
-    // Check all required fields
-    const requiredFields = [
-      formValues.firstName?.trim(),
-      formValues.lastName?.trim(),
-      formValues.dateOfBirth?.trim(),
-      formValues.nationality?.trim(),
-      formValues.email?.trim(),
-      formValues.passportNumber?.trim()
-    ];
-    
-    const allRequiredFilled = requiredFields.every(field => field && field !== "");
-    
-    const finalValidation = !hasErrors && 
-      hasJobAnswer && 
-      hasCriminalAnswer && 
-      hasWarCrimesAnswer && 
-      hasJobTitle && 
-      addressValid && 
-      allRequiredFilled;
-    
-    return finalValidation;
+    return hasNoErrors && requiredFieldsComplete && formState.isValid;
   }, [formState, formValues]);
   
   // Enhanced debug logging
@@ -696,15 +667,15 @@ const ApplicantForm = () => {
                     <FormItem>
                       <FormLabel>{t('application.employment.hasJob.label')} <span className="text-destructive">*</span></FormLabel>
                       <FormControl>
-                        <RadioGroup 
-                          onValueChange={(value) => {
-                            field.onChange(value);
-                            // Trigger validation immediately
-                            form.trigger('hasJob');
-                          }} 
-                          value={field.value || ""} 
-                          className="flex flex-col space-y-1"
-                        >
+                         <RadioGroup 
+                           onValueChange={(value) => {
+                             field.onChange(value);
+                             // Trigger validation immediately
+                             form.trigger('hasJob');
+                           }} 
+                           value={field.value} 
+                           className="flex flex-col space-y-1"
+                         >
                          <FormItem className="flex items-center space-x-3 space-y-0">
                            <FormControl>
                              <RadioGroupItem value="yes" />
@@ -744,15 +715,15 @@ const ApplicantForm = () => {
                      <FormItem>
                        <FormLabel>{t('application.security.criminalConvictions.label')} <span className="text-destructive">*</span></FormLabel>
                        <FormControl>
-                        <RadioGroup 
-                          onValueChange={(value) => {
-                            field.onChange(value);
-                            // Trigger validation immediately
-                            form.trigger('hasCriminalConvictions');
-                          }} 
-                          value={field.value || ""} 
-                          className="flex flex-col space-y-1"
-                        >
+                         <RadioGroup 
+                           onValueChange={(value) => {
+                             field.onChange(value);
+                             // Trigger validation immediately
+                             form.trigger('hasCriminalConvictions');
+                           }} 
+                           value={field.value} 
+                           className="flex flex-col space-y-1"
+                         >
                          <FormItem className="flex items-center space-x-3 space-y-0">
                            <FormControl>
                              <RadioGroupItem value="yes" />
@@ -775,15 +746,15 @@ const ApplicantForm = () => {
                      <FormItem>
                        <FormLabel>{t('application.security.warCrimes.label')} <span className="text-destructive">*</span></FormLabel>
                        <FormControl>
-                        <RadioGroup 
-                          onValueChange={(value) => {
-                            field.onChange(value);
-                            // Trigger validation immediately
-                            form.trigger('hasWarCrimesConvictions');
-                          }} 
-                          value={field.value || ""} 
-                          className="flex flex-col space-y-1"
-                        >
+                         <RadioGroup 
+                           onValueChange={(value) => {
+                             field.onChange(value);
+                             // Trigger validation immediately
+                             form.trigger('hasWarCrimesConvictions');
+                           }} 
+                           value={field.value} 
+                           className="flex flex-col space-y-1"
+                         >
                          <FormItem className="flex items-center space-x-3 space-y-0">
                            <FormControl>
                              <RadioGroupItem value="yes" />
