@@ -33,7 +33,7 @@ const ApplicationManager = () => {
       if (applicantsData) {
         const parsedApplicants = JSON.parse(applicantsData);
         const mappedApplicants = parsedApplicants.map((applicant: any, index: number) => ({
-          id: index === 0 ? 'main' : `applicant-${index}`,
+          id: index === 0 ? 'main' : `applicant-${index + 1}`,
           role: index === 0 ? 'main' : 'additional',
           firstName: applicant.firstName || '',
           lastName: applicant.lastName || '',
@@ -75,7 +75,7 @@ const ApplicationManager = () => {
       if (secondApplicantData) {
         const secondApplicant = JSON.parse(secondApplicantData);
         legacyApplicants.push({
-          id: 'applicant-1',
+          id: 'applicant-2',
           role: 'additional',
           firstName: secondApplicant.firstName || '',
           lastName: secondApplicant.lastName || '',
@@ -105,7 +105,7 @@ const ApplicationManager = () => {
 
   const handleAddApplicant = () => {
     if (applicants.length < maxApplicants) {
-      const newId = applicants.length === 1 ? 'applicant-1' : `applicant-${applicants.length}`;
+      const newId = `applicant-${applicants.length + 1}`;
       navigate(`/application/applicant/${newId}`);
     }
   };
@@ -124,7 +124,7 @@ const ApplicationManager = () => {
       if (applicant.role === 'main') return applicant;
       return {
         ...applicant,
-        id: `applicant-${index}`
+        id: `applicant-${index + 1}`
       };
     });
     
@@ -135,9 +135,11 @@ const ApplicationManager = () => {
       const applicantsData = sessionStorage.getItem('application.applicants');
       if (applicantsData) {
         const allApplicants = JSON.parse(applicantsData);
-        const applicantIndex = applicantId === 'main' ? 0 : parseInt(applicantId.replace('applicant-', ''));
-        allApplicants.splice(applicantIndex, 1);
-        sessionStorage.setItem('application.applicants', JSON.stringify(allApplicants));
+        const applicantIndex = applicantId === 'main' ? 0 : parseInt(applicantId.replace('applicant-', '')) - 1;
+        if (applicantIndex >= 0 && applicantIndex < allApplicants.length) {
+          allApplicants.splice(applicantIndex, 1);
+          sessionStorage.setItem('application.applicants', JSON.stringify(allApplicants));
+        }
       }
     } catch (error) {
       console.error('Error updating sessionStorage:', error);

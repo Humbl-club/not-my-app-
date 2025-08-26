@@ -123,9 +123,13 @@ const ApplicantForm = () => {
           }
         } else {
           // Load additional applicant
-          const applicantIndex = parseInt(id.replace('applicant-', ''));
-          if (applicants[applicantIndex]) {
-            setExistingData(applicants[applicantIndex]);
+          const match = id.match(/^applicant-(\d+)$/);
+          if (match) {
+            const applicantNumber = parseInt(match[1]);
+            const applicantIndex = applicantNumber - 1; // Convert to 0-based index
+            if (applicants[applicantIndex]) {
+              setExistingData(applicants[applicantIndex]);
+            }
           }
         }
       }
@@ -201,13 +205,17 @@ const ApplicantForm = () => {
         existingApplicants[0] = values;
       } else {
         // Update additional applicant
-        const applicantIndex = parseInt(id.replace('applicant-', ''));
-        
-        // Ensure array is large enough
-        while (existingApplicants.length <= applicantIndex) {
-          existingApplicants.push({});
+        const match = id.match(/^applicant-(\d+)$/);
+        if (match) {
+          const applicantNumber = parseInt(match[1]);
+          const applicantIndex = applicantNumber - 1; // Convert to 0-based index
+          
+          // Ensure array is large enough
+          while (existingApplicants.length <= applicantIndex) {
+            existingApplicants.push({});
+          }
+          existingApplicants[applicantIndex] = values;
         }
-        existingApplicants[applicantIndex] = values;
       }
       
       sessionStorage.setItem('application.applicants', JSON.stringify(existingApplicants));
@@ -216,7 +224,18 @@ const ApplicantForm = () => {
     navigate(`/application/applicant/${id}/documents`);
   };
 
-  const applicantNumber = id === 'main' ? 1 : (id ? parseInt(id.replace('applicant-', '')) + 1 : 2);
+  // Parse applicant number with validation
+  const getApplicantNumber = (applicantId: string | undefined): number => {
+    if (!applicantId || applicantId === 'main') return 1;
+    const match = applicantId.match(/^applicant-(\d+)$/);
+    if (match) {
+      const num = parseInt(match[1]);
+      return isNaN(num) ? 2 : num;
+    }
+    return 2; // fallback
+  };
+  
+  const applicantNumber = getApplicantNumber(id);
   const isMainApplicant = id === 'main';
 
   return (

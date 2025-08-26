@@ -115,10 +115,14 @@ const ApplicantDocuments = () => {
     if (id === 'main') {
       return { title: t('application.mainApplicant'), subtitle: t('application.mainApplicantDocuments') };
     } else {
-      const applicantNumber = id ? parseInt(id.replace('applicant-', '')) : 1;
+      // Parse applicant number with validation
+      const match = id?.match(/^applicant-(\d+)$/);
+      const applicantNumber = match ? parseInt(match[1]) : 2;
+      const safeNumber = isNaN(applicantNumber) ? 2 : applicantNumber;
+      
       return { 
-        title: `${t('application.applicant')} ${applicantNumber}`, 
-        subtitle: `${t('application.documentsFor')} ${t('application.applicant').toLowerCase()} ${applicantNumber}` 
+        title: `${t('application.applicant')} ${safeNumber}`, 
+        subtitle: `${t('application.documentsFor')} ${t('application.applicant').toLowerCase()} ${safeNumber}` 
       };
     }
   };
