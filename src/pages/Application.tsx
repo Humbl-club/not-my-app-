@@ -1,613 +1,70 @@
-import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
-import { ArrowLeft, ArrowRight, Trash2, UserPlus } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { z } from 'zod';
-import { useForm, useFieldArray, useWatch } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { JobSelector } from '@/components/ui/job-selector';
-import { EmailInput, EMAIL_PATTERN } from '@/components/ui/email-input';
-import { PASSPORT_NAME_PATTERN } from '@/components/ui/passport-name-input';
-import { DateOfBirthInput, validateDateOfBirth } from '@/components/ui/date-of-birth-input';
-import { PassportNumberInput } from '@/components/ui/passport-number-input';
-import { NameFieldsSection } from '@/components/NameFieldsSection';
-import { NationalityRadioSection } from '@/components/NationalityRadioSection';
-import { AddressFieldsSection } from "@/components/AddressFieldsSection";
-import { Checkbox } from '@/components/ui/checkbox';
-import { Badge } from '@/components/ui/badge';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { cn } from '@/lib/utils';
-import { useEffect, useMemo } from 'react';
-import { nationalities } from '@/constants/nationalities';
-
-// Regex patterns
-const nameRegex = PASSPORT_NAME_PATTERN;
-const emailRegex = EMAIL_PATTERN;
-const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // YYYY-MM-DD
-const passportRegex = /^[A-Z0-9]{6,9}$/i;
-const nationalityRegex = /^(AF|AL|DZ|AS|AD|AO|AI|AQ|AG|AR|AM|AW|AU|AT|AZ|BS|BH|BD|BB|BY|BE|BZ|BJ|BM|BT|BO|BQ|BA|BW|BV|BR|IO|BN|BG|BF|BI|CV|KH|CM|CA|KY|CF|TD|CL|CN|CX|CC|CO|KM|CG|CD|CK|CR|CI|HR|CU|CW|CY|CZ|DK|DJ|DM|DO|EC|EG|SV|GQ|ER|EE|SZ|ET|FK|FO|FJ|FI|FR|GF|PF|TF|GA|GM|GE|DE|GH|GI|GR|GL|GD|GP|GU|GT|GG|GN|GW|GY|HT|HM|VA|HN|HK|HU|IS|IN|ID|IR|IQ|IE|IM|IL|IT|JM|JP|JE|JO|KZ|KE|KI|KP|KR|KW|KG|LA|LV|LB|LS|LR|LY|LI|LT|LU|MO|MK|MG|MW|MY|MV|ML|MT|MH|MQ|MR|MU|YT|MX|FM|MD|MC|MN|ME|MS|MA|MZ|MM|NA|NR|NP|NL|NC|NZ|NI|NE|NG|NU|NF|MP|NO|OM|PK|PW|PS|PA|PG|PY|PE|PH|PN|PL|PT|PR|QA|RE|RO|RU|RW|BL|SH|KN|LC|MF|PM|VC|WS|SM|ST|SA|SN|RS|SC|SL|SG|SX|SK|SI|SB|SO|ZA|GS|SS|ES|LK|SD|SR|SJ|SE|CH|SY|TW|TJ|TZ|TH|TL|TG|TK|TO|TT|TN|TR|TM|TC|TV|UG|UA|AE|GB|US|UM|UY|UZ|VU|VE|VN|VG|VI|WF|EH|YE|ZM|ZW)$/;
-const cityRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,50}$/;
-const stateRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,50}$/;
-const postalRegex = /^[A-Za-z0-9 -]{3,10}$/;
-
-
-const addressShape = z.object({
-  line1: z.string().min(1, "Address line 1 is required"),
-  line2: z.string().optional(),
-  line3: z.string().optional(),
-  city: z.string().min(1, "City is required"),
-  state: z.string().optional(),
-  postalCode: z.string().min(1, "Postal code is required"),
-  country: z.string().min(1, "Country is required"),
-});
-
-type AddressValues = z.infer<typeof addressShape>;
-
-const applicantBase = z
-  .object({
-    firstName: z
-      .string()
-      .min(1, 'validation.passportName.required')
-      .regex(nameRegex, 'validation.passportName.format')
-      .max(50, 'validation.passportName.tooLong'),
-    secondNames: z
-      .string()
-      .regex(nameRegex, 'validation.passportName.format')
-      .max(50, 'validation.passportName.tooLong')
-      .optional(),
-    lastName: z
-      .string()
-      .min(1, 'validation.passportName.required')
-      .regex(nameRegex, 'validation.passportName.format')
-      .max(50, 'validation.passportName.tooLong'),
-    dateOfBirth: z
-      .string()
-      .refine((val) => validateDateOfBirth(val) === null, (val) => ({
-        message: validateDateOfBirth(val) || 'Invalid date'
-      })),
-    nationality: z.string().regex(nationalityRegex, 'Please select a nationality'),
-    hasAdditionalNationalities: z.boolean().optional().default(false),
-    additionalNationalities: z.array(z.string().regex(nationalityRegex, 'Please select a nationality')).optional().default([]),
-    email: z.string().min(1, 'Email is required').regex(emailRegex, 'Please enter a valid email address'),
-    passportNumber: z
-      .string()
-      .min(6, { message: "Passport number must be at least 6 characters" })
-      .max(10, { message: "Passport number must be no more than 10 characters" })
-      .regex(/^[A-Z0-9]+$/, { 
-        message: "Passport number must contain only letters and numbers" 
-      }),
-    hasJob: z.enum(['yes', 'no'], { required_error: 'Please answer this question' }),
-    job: z.object({
-      isStandardized: z.boolean().optional().default(false),
-      jobCode: z.string().optional(),
-      titleOriginal: z.string().optional().default(''),
-      titleEnglish: z.string().optional().default(''),
-      category: z.string().optional(),
-    }).optional(),
-    hasCriminalConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer this question' }),
-    hasWarCrimesConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer this question' }),
-  useSameEmailAsPrimary: z.boolean().optional(),
-  address: addressShape,
-  useSameAddressAsPrimary: z.boolean().optional(),
-  useSameAddressAsPassport: z.boolean().optional(),
-  })
-  .superRefine((val, ctx) => {
-    if (!val.useSameAddressAsPrimary) {
-      // Validate address only when not sharing with primary
-      if (!val.address?.line1 || val.address.line1.trim().length < 3) {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Address line 1 is required', path: ['address', 'line1'] });
-      }
-      if (!val.address?.city || !cityRegex.test(val.address.city)) {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Enter a valid city', path: ['address', 'city'] });
-      }
-      const countryCode = val.address?.country ?? '';
-      const stateRequired = ['US','CA'].includes(countryCode);
-      if (stateRequired) {
-        if (!val.address?.state || !stateRegex.test(val.address.state)) {
-          ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Enter a valid state/province', path: ['address', 'state'] });
-        }
-      } else {
-        if (val.address?.state && !stateRegex.test(val.address.state)) {
-          ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Enter a valid state/province', path: ['address', 'state'] });
-        }
-      }
-      if (!val.address?.postalCode || !postalRegex.test(val.address.postalCode)) {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Enter a valid postal code', path: ['address', 'postalCode'] });
-      }
-      if (!val.address?.country || !nationalityRegex.test(val.address.country)) {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Please select a country', path: ['address', 'country'] });
-      }
-    }
-
-    // Employment validation
-    if (val.hasJob === 'yes') {
-      if (!val.job?.titleOriginal || val.job.titleOriginal.trim().length < 2) {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Job title is required', path: ['job'] });
-      }
-    }
-
-    if (val.hasAdditionalNationalities) {
-      const arr = val.additionalNationalities ?? [];
-      if (arr.length === 0) {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Please add at least one nationality', path: ['additionalNationalities'] });
-      }
-      arr.forEach((c, i) => {
-        if (!nationalityRegex.test(c)) {
-          ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Please select a nationality', path: ['additionalNationalities', i] });
-        }
-      });
-    }
-  });
-
-const schema = z.object({
-  applicants: z.array(applicantBase).min(1, 'At least one applicant is required'),
-});
-
-type FormValues = z.infer<typeof schema>;
-
-const defaultApplicant = (shareAddress = false, shareEmail = false): z.infer<typeof applicantBase> => ({
-  firstName: '',
-  secondNames: '',
-  lastName: '',
-  dateOfBirth: '',
-  nationality: '',
-  hasAdditionalNationalities: false,
-  additionalNationalities: [],
-  email: '',
-  passportNumber: '',
-  hasJob: undefined as any,
-  job: undefined,
-  hasCriminalConvictions: undefined as any,
-  hasWarCrimesConvictions: undefined as any,
-  useSameAddressAsPrimary: shareAddress,
-  useSameEmailAsPrimary: shareEmail,
-  address: { line1: '', line2: '', line3: '', city: '', state: '', postalCode: '', country: '' },
-});
+import { useNavigate } from "react-router-dom";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ApplicationSteps } from "@/components/ApplicationSteps";
 
 const Application = () => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const form = useForm<FormValues>({
-    resolver: zodResolver(schema),
-    mode: 'onChange',
-    defaultValues: {
-      applicants: [defaultApplicant(false)],
-    },
-  });
-
-  const { control, handleSubmit, formState } = form;
-  const { fields, append, remove } = useFieldArray({ control, name: 'applicants' });
-  const { isValid, isSubmitting } = formState;
-  
-  // Watch all applicants to avoid hooks issues
-  const applicants = useWatch({ control, name: 'applicants' });
-
-  const primaryEmail = applicants?.[0]?.email ?? '';
-
-  useEffect(() => {
-    if (!applicants) return;
-    applicants.forEach((a, i) => {
-      if (i === 0) return;
-      if (a?.useSameEmailAsPrimary) {
-        form.setValue(`applicants.${i}.email`, primaryEmail, { shouldValidate: true });
-      }
-    });
-  }, [primaryEmail, applicants?.length, JSON.stringify(applicants?.map(a => a?.useSameEmailAsPrimary))]);
-
-  const applicantsWithErrors = useMemo(() => {
-    const errs = (formState.errors?.applicants as any[]) || [];
-    const list: number[] = [];
-    errs.forEach((e, i) => { if (e) list.push(i); });
-    return list;
-  }, [formState.errors]);
-
-  const firstErrorPath = useMemo(() => {
-      const errs: any[] = (formState.errors?.applicants as any[]) || [];
-    for (let i = 0; i < errs.length; i++) {
-      const e = errs[i];
-      if (!e) continue;
-      const order = ['firstName','secondNames','lastName','dateOfBirth','nationality','email','passportNumber','hasJob','job','hasCriminalConvictions','hasWarCrimesConvictions'];
-      for (const k of order) { if (e?.[k]) return `applicants.${i}.${k}` as const; }
-      if (e?.additionalNationalities && Array.isArray(e.additionalNationalities)) {
-        for (let j = 0; j < e.additionalNationalities.length; j++) {
-          if (e.additionalNationalities[j]) {
-            return `applicants.${i}.additionalNationalities.${j}` as const;
-          }
-        }
-      }
-      if (e?.address) {
-        const addrOrder = ['line1','city','state','postalCode','country'];
-        for (const k of addrOrder) { if (e.address?.[k]) return `applicants.${i}.address.${k}` as const; }
-      }
-    }
-    return null;
-  }, [formState.errors]);
-
-  const onSubmit = () => {
-    const applicants = form.getValues('applicants');
-    try {
-      sessionStorage.setItem('application.applicants', JSON.stringify(applicants));
-      // Clean up legacy storage
-      sessionStorage.removeItem('application.primaryApplicant');
-      sessionStorage.removeItem('application.secondApplicant');
-    } catch {}
-    navigate('/application/documents');
-  };
   return (
     <div className="min-h-screen bg-gradient-subtle">
-      <div className="container mx-auto px-6 py-24">
-        <div className="max-w-4xl mx-auto">
-          {/* Progress Bar */}
-          <div className="mb-16">
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-sm font-medium text-muted-foreground">{t('application.progress.step', { current: 1, total: 4 })}</span>
-              <span className="text-sm text-muted-foreground">{t('application.progress.complete', { percent: 25 })}</span>
-            </div>
-            <Progress value={25} className="h-3 bg-muted/50 [&>[data-state=complete]]:bg-gradient-travel" />
-          </div>
-
-          {/* Header */}
-          <div className="text-center mb-24">
-            <h1 className="text-5xl md:text-6xl font-light text-foreground mb-8 tracking-tight">
-              {t('application.title')}
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
-              {t('application.subtitle')}
-            </p>
-          </div>
-
-          {/* Application Form */}
-          <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-border/30 shadow-card hover:shadow-form transition-all duration-500">
-            <CardHeader className="pb-8">
-              <CardTitle className="text-3xl font-light text-foreground mb-2">{t('application.personalInfo.title')}</CardTitle>
+      <div className="container mx-auto px-4 py-8">
+        <ApplicationSteps />
+        
+        <div className="max-w-4xl mx-auto mt-8">
+          <Card>
+            <CardHeader>
+              <CardTitle>Start Your Application</CardTitle>
+              <CardDescription>
+                Complete your electronic travel authorization application in a few simple steps.
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-              <Form {...form}>
-                <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
-                  {formState.submitCount > 0 && !isValid && (
-                    <div role="alert" aria-live="polite" className="rounded-md border-l-4 border-l-error-gentle border border-error-gentle/30 bg-error-gentle-light p-4">
-                      <div className="flex items-start justify-between gap-4">
-                        <div>
-                          <p className="font-medium text-error-gentle">Please check the highlighted fields below.</p>
-                          {applicantsWithErrors.length > 0 && (
-                            <p className="text-sm text-muted-foreground">
-                              Applicants needing attention: {applicantsWithErrors.map((i) => i + 1).join(', ')}
-                            </p>
-                          )}
-                        </div>
-                        {firstErrorPath && (
-                          <Button type="button" variant="outline" size="sm" className="border-error-gentle text-error-gentle hover:bg-error-gentle/10" onClick={() => form.setFocus(firstErrorPath as any)}>
-                            Review missing fields
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                  {fields.map((field, idx) => {
-                    const useSame = applicants?.[idx]?.useSameAddressAsPrimary;
-                    const hasApplicantError = !!formState.errors?.applicants?.[idx];
-                    const stateRequired = ['US','CA'].includes((applicants?.[idx]?.address?.country as string) || '');
-                    return (
-                      <div key={field.id} className={cn("rounded-3xl border border-border/30 p-8 space-y-6 bg-white/50 backdrop-blur-sm transition-all duration-300", hasApplicantError && "border-l-4 border-l-error-gentle border-error-gentle/30 bg-error-gentle-light/50")}>
-                        <div className="flex items-center justify-between">
-                          <h3 className="text-2xl font-light text-foreground">
-                            {t('application.applicant.title', { defaultValue: 'Applicant {{num}}', num: idx + 1 })}
-                          </h3>
-                          <div className="flex items-center gap-3">
-                             {hasApplicantError && (
-                                <Badge variant="outline" className="border-error-gentle text-error-gentle bg-error-gentle-light/80 rounded-full px-4 py-1">
-                                  {t('application.errors.needsAttention', { defaultValue: 'Needs attention' })}
-                                </Badge>
-                             )}
-                            {idx > 0 && (
-                              <Button type="button" variant="outline" onClick={() => remove(idx)} className="flex items-center gap-2 rounded-full border-border/50 hover:bg-destructive/10 hover:border-destructive/50">
-                                <Trash2 className="h-4 w-4" /> {t('application.applicant.remove', { defaultValue: 'Remove' })}
-                              </Button>
-                            )}
-                          </div>
-                        </div>
-
-                        <NameFieldsSection
-                          control={control}
-                          baseName={`applicants.${idx}`}
-                        />
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <FormField
-                            control={control}
-                            name={`applicants.${idx}.dateOfBirth`}
-                            render={({ field, fieldState }) => (
-                              <FormItem>
-                                <FormLabel>
-                                  {t('application.personalInfo.dateOfBirth.label')} <span aria-hidden="true" className="text-destructive">*</span>
-                                </FormLabel>
-                                 <FormControl>
-                                   <DateOfBirthInput
-                                     {...field}
-                                     placeholder="YYYY-MM-DD"
-                                     aria-invalid={!!fieldState.error}
-                                   />
-                                 </FormControl>
-                                 <p className="text-sm text-muted-foreground mt-1">
-                                   {t('application.personalInfo.dateOfBirth.helperText')}
-                                 </p>
-                                 <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-
-                          <FormField
-                            control={control}
-                            name={`applicants.${idx}.nationality`}
-                            render={({ field, fieldState }) => (
-                              <FormItem>
-                                <FormLabel>
-                                  {t('application.personalInfo.nationality.label')} <span aria-hidden="true" className="text-destructive">*</span>
-                                </FormLabel>
-                                <FormControl>
-                                   <select
-                                     {...field}
-                                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-destructive/5 aria-[invalid=true]:focus-visible:ring-destructive disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                                     aria-required="true"
-                                     aria-invalid={!!fieldState.error}
-                                   >
-                                     <option value="">{t('application.personalInfo.nationality.placeholder')}</option>
-                                     {nationalities.map((nationality) => (
-                                       <option key={nationality.code} value={nationality.code}>
-                                         {nationality.name}
-                                       </option>
-                                     ))}
-                                   </select>
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-
-                        {/* Additional Nationalities */}
-                        <NationalityRadioSection
-                          control={control}
-                          baseName={`applicants.${idx}`}
-                        />
-
-                         <div className="space-y-3">
-                          <div className="flex items-center justify-between">
-                            <FormLabel>
-                              {t('application.personalInfo.email.label')} <span aria-hidden="true" className="text-destructive">*</span>
-                            </FormLabel>
-                            {idx > 0 && (
-                              <FormField
-                                control={control}
-                                name={`applicants.${idx}.useSameEmailAsPrimary`}
-                                render={({ field }) => (
-                                  <div className="flex items-center gap-2">
-                                    <Checkbox
-                                      id={`sameEmail-${idx}`}
-                                      checked={!!field.value}
-                                      onCheckedChange={field.onChange}
-                                    />
-                                    <label htmlFor={`sameEmail-${idx}`} className="text-sm text-muted-foreground">
-                                      {t('application.email.sameAsPrimary', { defaultValue: 'Same as Applicant 1' })}
-                                    </label>
-                                  </div>
-                                )}
-                              />
-                            )}
-                          </div>
-
-                          {(!applicants?.[idx]?.useSameEmailAsPrimary || idx === 0) && (
-                             <FormField
-                               control={control}
-                               name={`applicants.${idx}.email`}
-                               render={({ field, fieldState }) => (
-                                 <FormItem>
-                                   <FormControl>
-                                     <EmailInput
-                                       {...field}
-                                       aria-required="true"
-                                       aria-invalid={!!fieldState.error}
-                                       showRealTimeErrors={false}
-                                     />
-                                   </FormControl>
-                                   <FormMessage />
-                                 </FormItem>
-                               )}
-                             />
-                          )}
-
-                          {applicants?.[idx]?.useSameEmailAsPrimary && idx > 0 && (
-                            <p className="text-sm text-muted-foreground">
-                              {t('application.email.usingPrimary', { defaultValue: "Using Applicant 1's email address" })}
-                            </p>
-                          )}
-                        </div>
-
-                        <FormField
-                          control={control}
-                          name={`applicants.${idx}.passportNumber`}
-                          render={({ field, fieldState }) => (
-                            <FormItem>
-                              <FormLabel>
-                                {t('application.personalInfo.passportNumber.label')} <span aria-hidden="true" className="text-destructive">*</span>
-                              </FormLabel>
-                              <FormControl>
-                                <PassportNumberInput
-                                  value={field.value}
-                                  onChange={field.onChange}
-                                  onBlur={field.onBlur}
-                                  error={fieldState.error?.message}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={control}
-                          name={`applicants.${idx}.hasJob`}
-                          render={({ field, fieldState }) => (
-                            <FormItem>
-                              <FormLabel>
-                                {t('application.employment.hasJob.label', { defaultValue: 'Do you have a job?' })} <span aria-hidden="true" className="text-destructive">*</span>
-                              </FormLabel>
-                              <FormControl>
-                                <RadioGroup
-                                  value={field.value}
-                                  onValueChange={field.onChange}
-                                  className="flex space-x-6"
-                                >
-                                  <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="yes" id={`hasjob-yes-${idx}`} />
-                                    <label htmlFor={`hasjob-yes-${idx}`} className="text-sm">{t('application.options.yes', { defaultValue: 'Yes' })}</label>
-                                  </div>
-                                  <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="no" id={`hasjob-no-${idx}`} />
-                                    <label htmlFor={`hasjob-no-${idx}`} className="text-sm">{t('application.options.no', { defaultValue: 'No' })}</label>
-                                  </div>
-                                </RadioGroup>
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        {applicants?.[idx]?.hasJob === 'yes' && (
-                          <FormField
-                            control={control}
-                            name={`applicants.${idx}.job`}
-                            render={({ field, fieldState }) => (
-                              <FormItem>
-                                <FormLabel>
-                                  {t('application.employment.jobTitle.label', { defaultValue: "What's your job?" })} <span aria-hidden="true" className="text-destructive">*</span>
-                                </FormLabel>
-                                 <FormControl>
-                                   <JobSelector
-                                     value={field.value}
-                                     onChange={field.onChange}
-                                     placeholder={t('application.employment.jobTitle.placeholder', { defaultValue: 'Enter your job title' })}
-                                     required
-                                   />
-                                 </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        )}
-
-
-                        {/* Address */}
-                        <AddressFieldsSection
-                          form={form}
-                          baseName={`applicants.${idx}`}
-                          showSameAsPassportOption={idx > 0}
-                          passportData={null}
-                        />
-
-                        <FormField
-                          control={control}
-                          name={`applicants.${idx}.hasCriminalConvictions`}
-                          render={({ field, fieldState }) => (
-                            <FormItem>
-                              <FormLabel>
-                                {t('application.security.criminalConvictions.label', { defaultValue: 'Have you ever had criminal convictions?' })} <span aria-hidden="true" className="text-destructive">*</span>
-                              </FormLabel>
-                              <FormControl>
-                                <RadioGroup
-                                  value={field.value}
-                                  onValueChange={field.onChange}
-                                  className="flex space-x-6"
-                                >
-                                  <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="yes" id={`criminal-yes-${idx}`} />
-                                    <label htmlFor={`criminal-yes-${idx}`} className="text-sm">{t('application.options.yes', { defaultValue: 'Yes' })}</label>
-                                  </div>
-                                  <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="no" id={`criminal-no-${idx}`} />
-                                    <label htmlFor={`criminal-no-${idx}`} className="text-sm">{t('application.options.no', { defaultValue: 'No' })}</label>
-                                  </div>
-                                </RadioGroup>
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={control}
-                          name={`applicants.${idx}.hasWarCrimesConvictions`}
-                          render={({ field, fieldState }) => (
-                            <FormItem>
-                              <FormLabel>
-                                {t('application.security.warCrimes.label', { defaultValue: 'Have you ever been suspected or convicted of war crimes, terrorism or extremism?' })} <span aria-hidden="true" className="text-destructive">*</span>
-                              </FormLabel>
-                              <FormControl>
-                                <RadioGroup
-                                  value={field.value}
-                                  onValueChange={field.onChange}
-                                  className="flex space-x-6"
-                                >
-                                  <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="yes" id={`war-yes-${idx}`} />
-                                    <label htmlFor={`war-yes-${idx}`} className="text-sm">{t('application.options.yes', { defaultValue: 'Yes' })}</label>
-                                  </div>
-                                  <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="no" id={`war-no-${idx}`} />
-                                    <label htmlFor={`war-no-${idx}`} className="text-sm">{t('application.options.no', { defaultValue: 'No' })}</label>
-                                  </div>
-                                </RadioGroup>
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                      </div>
-                    );
-                  })}
-
-                  <div className="flex justify-between">
-                    <div className="text-sm text-muted-foreground">
-                      {t('application.applicant.addLater', { defaultValue: 'You can add another applicant just before payment.' })}
-                    </div>
-                  </div>
-
-                  {/* Navigation */}
-                  <div className="flex justify-between pt-8">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={() => navigate('/')}
-                      className="flex items-center gap-2 rounded-full px-8 py-3 border-border/50 hover:bg-muted/50"
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Single Applicant</CardTitle>
+                    <CardDescription>
+                      Apply for one person
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button 
+                      className="w-full" 
+                      onClick={() => navigate('/application/applicant/1')}
                     >
-                      <ArrowLeft className="h-4 w-4" />
-                      {t('application.back')}
+                      Start Single Application
                     </Button>
-                    <Button
-                      type="submit"
-                      className="flex items-center gap-2 bg-gradient-to-r from-primary to-turquoise text-white rounded-full px-8 py-3 hover:shadow-lg transition-all duration-300"
-                      disabled={!isValid || isSubmitting}
-                      aria-disabled={!isValid || isSubmitting}
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Group Application</CardTitle>
+                    <CardDescription>
+                      Apply for multiple people at once
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button 
+                      variant="outline" 
+                      className="w-full"
+                      onClick={() => navigate('/application/manage')}
                     >
-                      {t('application.continue')}
-                      <ArrowRight className="h-4 w-4" />
+                      Start Group Application
                     </Button>
-                  </div>
-                </form>
-              </Form>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="text-center pt-4">
+                <Button 
+                  variant="ghost" 
+                  onClick={() => navigate('/')}
+                >
+                  Back to Home
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -617,4 +74,3 @@ const Application = () => {
 };
 
 export default Application;
-
