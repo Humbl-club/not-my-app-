@@ -341,41 +341,6 @@
       "emptyData": "Aucune donnée de demande trouvée. Veuillez d'abord remplir la demande."
     }
   },
-    "pageTitle": "Révision et Exportation",
-    "metaDescription": "Révisez et exportez vos données de demande ETA du Royaume-Uni en JSON ou CSV, ou envoyez à Zapier.",
-    "header": {
-      "title": "Révision et Exportation",
-      "backButton": "Retour",
-      "continueButton": "Continuer"
-    },
-    "dataPreview": {
-      "title": "Aperçu des Données de Demande",
-      "copyJson": "Copier JSON",
-      "downloadJson": "Télécharger JSON",
-      "downloadCsv": "Télécharger CSV",
-      "noData": "Aucune donnée de candidat disponible"
-    },
-    "zapier": {
-      "title": "Envoyer à Zapier (Optionnel)",
-      "placeholder": "https://hooks.zapier.com/hooks/catch/...",
-      "sendButton": "Envoyer",
-      "tip": "Conseil: Connectez votre webhook à Google Sheets pour remplir automatiquement les lignes pour la soumission ETA du Royaume-Uni."
-    },
-    "messages": {
-      "copied": "Données copiées dans le presse-papiers",
-      "copyError": "Échec de la copie des données",
-      "zapierSuccess": "Demande envoyée à Zapier. Vérifiez l'historique de votre Zap pour confirmer qu'elle a été déclenchée.",
-      "zapierError": "Échec du déclenchement du webhook Zapier. Veuillez vérifier l'URL et réessayer.",
-      "webhookRequired": "Veuillez entrer votre URL webhook Zapier",
-      "noApplicants": "Aucun candidat à exporter",
-      "invalidData": "Données de demande invalides. Veuillez d'abord compléter le formulaire de demande.",
-      "processing": "Traitement en cours..."
-    },
-    "validation": {
-      "invalidWebhook": "Veuillez entrer une URL webhook Zapier valide",
-      "emptyData": "Aucune donnée de demande trouvée. Veuillez d'abord compléter la demande."
-    }
-  },
   "jobSelector": {
     "other": "Autre",
     "customJobPrompt": "Entrez un titre de poste personnalisé",
