@@ -336,44 +336,6 @@
       "noApplicants": "Nessun richiedente da esportare",
       "invalidData": "Dati della domanda non validi. Si prega di completare prima il modulo di domanda.",
       "processing": "Elaborazione in corso..."
-    },
-    "validation": {
-      "emptyData": "Nessun dato della domanda trovato. Si prega di completare prima la domanda."
-    }
-  },
-    "pageTitle": "Rivedi ed Esporta",
-    "metaDescription": "Rivedi ed esporta i dati della tua domanda ETA del Regno Unito come JSON o CSV, o invia a Zapier.",
-    "header": {
-      "title": "Rivedi ed Esporta",
-      "backButton": "Indietro",
-      "continueButton": "Continua"
-    },
-    "dataPreview": {
-      "title": "Anteprima Dati Domanda",
-      "copyJson": "Copia JSON",
-      "downloadJson": "Scarica JSON",
-      "downloadCsv": "Scarica CSV",
-      "noData": "Nessun dato del richiedente disponibile"
-    },
-    "zapier": {
-      "title": "Invia a Zapier (Opzionale)",
-      "placeholder": "https://hooks.zapier.com/hooks/catch/...",
-      "sendButton": "Invia",
-      "tip": "Suggerimento: Collega il tuo webhook a Google Sheets per riempire automaticamente le righe per l'invio ETA del Regno Unito."
-    },
-    "messages": {
-      "copied": "Dati copiati negli appunti",
-      "copyError": "Errore nella copia dei dati",
-      "zapierSuccess": "Richiesta inviata a Zapier. Controlla la cronologia del tuo Zap per confermarne l'attivazione.",
-      "zapierError": "Errore nell'attivazione del webhook Zapier. Controlla l'URL e riprova.",
-      "webhookRequired": "Inserisci l'URL del webhook Zapier",
-      "noApplicants": "Nessun richiedente da esportare",
-      "invalidData": "Dati della domanda non validi. Completa prima il modulo di domanda.",
-      "processing": "Elaborazione in corso..."
-    },
-    "validation": {
-      "invalidWebhook": "Inserisci un URL webhook Zapier valido",
-      "emptyData": "Nessun dato della domanda trovato. Completa prima la domanda."
     }
   },
   "jobSelector": {
