@@ -125,7 +125,7 @@ const ApplicantForm = () => {
       postalCode: z.string().optional(),
       country: z.string().optional(),
     }).optional(),
-    hasJob: z.enum(['yes', 'no']).optional(),
+    hasJob: z.enum(['yes', 'no', '']).optional(),
     jobTitle: z.object({
       isStandardized: z.boolean().default(false),
       jobCode: z.string().optional(),
@@ -133,8 +133,8 @@ const ApplicantForm = () => {
       titleEnglish: z.string().default(""),
       category: z.string().optional(),
     }),
-    hasCriminalConvictions: z.enum(['yes', 'no']).optional(),
-    hasWarCrimesConvictions: z.enum(['yes', 'no']).optional(),
+    hasCriminalConvictions: z.enum(['yes', 'no', '']).optional(),
+    hasWarCrimesConvictions: z.enum(['yes', 'no', '']).optional(),
   }).superRefine((data, ctx) => {
     // Address validation - only required if not using same address options
     if (!data.useSameAddressAsPrimary && !data.useSameAddressAsPassport) {
@@ -169,7 +169,7 @@ const ApplicantForm = () => {
     }
     
     // Job validation - require selection
-    if (!data.hasJob) {
+    if (data.hasJob === "" || data.hasJob === undefined) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: t('validation.employment.required'),
@@ -187,7 +187,7 @@ const ApplicantForm = () => {
     }
 
     // Security questions validation - require answers
-    if (!data.hasCriminalConvictions) {
+    if (data.hasCriminalConvictions === "" || data.hasCriminalConvictions === undefined) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: t('validation.security.criminalConvictions.required'),
@@ -195,7 +195,7 @@ const ApplicantForm = () => {
       });
     }
 
-    if (!data.hasWarCrimesConvictions) {
+    if (data.hasWarCrimesConvictions === "" || data.hasWarCrimesConvictions === undefined) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: t('validation.security.warCrimes.required'),
@@ -253,14 +253,14 @@ const ApplicantForm = () => {
       useSameAddressAsPassport: false,
       useSameEmailAsPrimary: false,
       address: { line1: '', line2: '', line3: '', city: '', state: '', postalCode: '', country: '' },
-      hasJob: undefined,
+      hasJob: "",
       jobTitle: {
         isStandardized: false,
         titleOriginal: "",
         titleEnglish: "",
       },
-      hasCriminalConvictions: undefined,
-      hasWarCrimesConvictions: undefined,
+      hasCriminalConvictions: "",
+      hasWarCrimesConvictions: "",
     },
   });
 
@@ -276,6 +276,11 @@ const ApplicantForm = () => {
     isFormValid,
     errors: formState.errors,
     touchedFields: formState.touchedFields,
+    radioValues: {
+      hasJob: formValues.hasJob,
+      hasCriminalConvictions: formValues.hasCriminalConvictions,
+      hasWarCrimesConvictions: formValues.hasWarCrimesConvictions
+    },
     formValues: formValues
   });
   
@@ -626,7 +631,7 @@ const ApplicantForm = () => {
                   <FormField control={form.control} name="hasJob" render={({ field, fieldState }) => (
                     <FormItem>
                       <FormLabel>{t('application.employment.hasJob.label')} <span className="text-destructive">*</span></FormLabel>
-                       <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col space-y-1">
+                        <RadioGroup onValueChange={field.onChange} value={field.value || ""} className="flex flex-col space-y-1">
                          <FormItem className="flex items-center space-x-3 space-y-0">
                            <FormControl>
                              <RadioGroupItem value="yes" />
@@ -664,7 +669,7 @@ const ApplicantForm = () => {
                    <FormField control={form.control} name="hasCriminalConvictions" render={({ field, fieldState }) => (
                      <FormItem>
                        <FormLabel>{t('application.security.criminalConvictions.label')} <span className="text-destructive">*</span></FormLabel>
-                       <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col space-y-1">
+                        <RadioGroup onValueChange={field.onChange} value={field.value || ""} className="flex flex-col space-y-1">
                          <FormItem className="flex items-center space-x-3 space-y-0">
                            <FormControl>
                              <RadioGroupItem value="yes" />
@@ -685,7 +690,7 @@ const ApplicantForm = () => {
                    <FormField control={form.control} name="hasWarCrimesConvictions" render={({ field, fieldState }) => (
                      <FormItem>
                        <FormLabel>{t('application.security.warCrimes.label')} <span className="text-destructive">*</span></FormLabel>
-                       <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col space-y-1">
+                       <RadioGroup onValueChange={field.onChange} value={field.value || ""} className="flex flex-col space-y-1">
                          <FormItem className="flex items-center space-x-3 space-y-0">
                            <FormControl>
                              <RadioGroupItem value="yes" />
