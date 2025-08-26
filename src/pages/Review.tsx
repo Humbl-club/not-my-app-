@@ -48,11 +48,15 @@ const Review = () => {
   }, []);
 
   const hasValidData = useMemo(() => {
-    return applicants.length > 0 && applicants.some(applicant => 
+    return applicants.length > 0 && applicants.every(applicant => 
+      // Check that applicant exists and has all required personal info and documents
       applicant && 
       applicant.firstName && 
       applicant.lastName && 
-      applicant.email
+      applicant.email &&
+      applicant.passportNumber &&
+      applicant.passportPhoto &&
+      applicant.personalPhoto
     );
   }, [applicants]);
 

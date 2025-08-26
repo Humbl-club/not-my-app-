@@ -90,6 +90,16 @@ const ApplicantDocuments = () => {
     form.setValue(fieldName, mockUrl, { shouldValidate: true });
   };
 
+  // Helper function to check if all applicants are complete
+  const areAllApplicantsComplete = (applicants: any[]) => {
+    return applicants.length > 0 && applicants.every(applicant =>
+      // Personal info complete
+      applicant.firstName && applicant.lastName && applicant.email && applicant.passportNumber &&
+      // Documents complete
+      applicant.passportPhoto && applicant.personalPhoto
+    );
+  };
+
   const handleSubmit = async (values: DocumentsValues) => {
     if (!id) return;
     
@@ -105,10 +115,19 @@ const ApplicantDocuments = () => {
           ...values,
         };
         sessionStorage.setItem('application.applicants', JSON.stringify(existingApplicants));
+        
+        // Check if all applicants are now complete
+        if (areAllApplicantsComplete(existingApplicants)) {
+          // All applicants complete - go to review
+          navigate('/application/review');
+        } else {
+          // Still need more completion - go back to manager
+          navigate('/application/manage');
+        }
       }
-    } catch {}
-    
-    navigate('/application/manage');
+    } catch {
+      navigate('/application/manage');
+    }
   };
 
   const getApplicantDisplayInfo = () => {
