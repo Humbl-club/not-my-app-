@@ -1,0 +1,107 @@
+name: Auto Sync and Deploy
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # Test and build the application
+  test-and-build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run tests
+      run: npm test --if-present
+      
+    - name: Build frontend
+      run: npm run build
+      
+    - name: Build backend
+      run: |
+        cd backend
+        npm ci
+        
+    - name: Archive build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-files
+        path: |
+          dist/
+          backend/
+
+  # Auto-sync to deployment branch
+  auto-sync:
+    needs: test-and-build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Configure Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+    - name: Create or update deployment branch
+      run: |
+        # Check if deploy branch exists
+        if git ls-remote --heads origin deploy | grep -q deploy; then
+          echo "Deploy branch exists, updating..."
+          git checkout deploy
+          git merge main --strategy-option=ours
+        else
+          echo "Creating new deploy branch..."
+          git checkout -b deploy
+        fi
+        
+    - name: Push to deploy branch
+      run: |
+        git push origin deploy
+        
+    - name: Create deployment tag
+      run: |
+        DATE=$(date +'%Y%m%d-%H%M%S')
+        git tag "deploy-$DATE"
+        git push origin "deploy-$DATE"
+
+  # Optional: Deploy to staging/production
+  deploy:
+    needs: [test-and-build, auto-sync]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout deploy branch
+      uses: actions/checkout@v4
+      with:
+        ref: deploy
+        
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: build-files
+        
+    - name: Deploy notification
+      run: |
+        echo "🚀 Deployment ready for commit: ${{ github.sha }}"
+        echo "📦 Build artifacts available"
+        echo "🌍 Ready for production deployment"
