@@ -8,6 +8,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { PassportNameInput } from '@/components/ui/passport-name-input';
+import { FieldStatusIndicator } from '@/components/FieldStatusIndicator';
 import { cn } from '@/lib/utils';
 
 interface NameFieldsSectionProps<T extends FieldValues> {
@@ -34,7 +35,13 @@ export function NameFieldsSection<T extends FieldValues>({
         control={control}
         name={getFieldName('firstName')}
         render={({ field, fieldState }) => (
-          <FormItem className="space-y-1 w-full min-w-0">
+          <FormItem className="relative space-y-1 w-full min-w-0">
+            <FieldStatusIndicator
+              isRequired={true}
+              hasValue={!!field.value?.trim()}
+              hasError={!!fieldState.error}
+              className="z-10"
+            />
             <FormLabel className="text-sm font-medium leading-5 min-h-[3rem] break-words text-start flex items-start gap-1">
               {t('application.personalInfo.firstName.label')}
               <span aria-hidden="true" className="text-destructive text-lg leading-none">*</span>
@@ -84,7 +91,13 @@ export function NameFieldsSection<T extends FieldValues>({
         control={control}
         name={getFieldName('lastName')}
         render={({ field, fieldState }) => (
-          <FormItem className="space-y-1 w-full min-w-0">
+          <FormItem className="relative space-y-1 w-full min-w-0">
+            <FieldStatusIndicator
+              isRequired={true}
+              hasValue={!!field.value?.trim()}
+              hasError={!!fieldState.error}
+              className="z-10"
+            />
             <FormLabel className="text-sm font-medium leading-5 min-h-[3rem] break-words text-start flex items-start gap-1">
               {t('application.personalInfo.lastName.label')}
               <span aria-hidden="true" className="text-destructive text-lg leading-none">*</span>

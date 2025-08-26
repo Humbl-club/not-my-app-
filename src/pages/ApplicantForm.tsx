@@ -22,6 +22,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { nationalities } from '@/constants/nationalities';
 import { FormValidationStatus } from '@/components/FormValidationStatus';
+import { FieldStatusIndicator } from '@/components/FieldStatusIndicator';
 import { cn } from '@/lib/utils';
 
 const ApplicantForm = () => {
@@ -202,6 +203,22 @@ const ApplicantForm = () => {
         path: ['hasWarCrimesConvictions'],
       });
     }
+  }).refine((data) => {
+    // Form is valid if all required fields are present
+    return !!(
+      data.firstName?.trim() &&
+      data.lastName?.trim() &&
+      data.dateOfBirth?.trim() &&
+      data.nationality?.trim() &&
+      data.email?.trim() &&
+      data.passportNumber?.trim() &&
+      data.hasJob !== undefined &&
+      data.hasCriminalConvictions !== undefined &&
+      data.hasWarCrimesConvictions !== undefined
+    );
+  }, {
+    message: t('validation.form.incomplete'),
+    path: [],
   }), [t]);
 
   type ApplicantValues = z.infer<typeof applicantSchema>;
@@ -268,26 +285,8 @@ const ApplicantForm = () => {
   const formState = form.formState;
   const formValues = form.watch();
   
-  // Simplified validation logic using React Hook Form's built-in validation
-  const isFormValid = useMemo(() => {
-    // Use React Hook Form's built-in validation which handles the Zod schema
-    const hasNoErrors = Object.keys(formState.errors).length === 0;
-    
-    // Check if required fields have values (basic completeness check)
-    const requiredFieldsComplete = !!(
-      formValues.firstName?.trim() &&
-      formValues.lastName?.trim() &&
-      formValues.dateOfBirth?.trim() &&
-      formValues.nationality?.trim() &&
-      formValues.email?.trim() &&
-      formValues.passportNumber?.trim() &&
-      formValues.hasJob !== undefined &&
-      formValues.hasCriminalConvictions !== undefined &&
-      formValues.hasWarCrimesConvictions !== undefined
-    );
-    
-    return hasNoErrors && requiredFieldsComplete && formState.isValid;
-  }, [formState, formValues]);
+  // Simplified validation - use React Hook Form's built-in validation
+  const isFormValid = formState.isValid;
   
   // Enhanced debug logging
   console.log('CONTINUE BUTTON DEBUG:', {
@@ -483,7 +482,13 @@ const ApplicantForm = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <FormField control={form.control} name="dateOfBirth" render={({ field, fieldState }) => (
-                      <FormItem>
+                      <FormItem className="relative">
+                        <FieldStatusIndicator
+                          isRequired={true}
+                          hasValue={!!field.value?.trim()}
+                          hasError={!!fieldState.error}
+                          className="z-10"
+                        />
                         <FormLabel>{t('application.personalInfo.dateOfBirth.label')} <span className="text-destructive">*</span></FormLabel>
                          <FormControl>
                            <DateOfBirthInput {...field} placeholder="YYYY-MM-DD" aria-invalid={!!fieldState.error} />
@@ -495,7 +500,13 @@ const ApplicantForm = () => {
                       </FormItem>
                     )} />
                     <FormField control={form.control} name="nationality" render={({ field, fieldState }) => (
-                      <FormItem>
+                      <FormItem className="relative">
+                        <FieldStatusIndicator
+                          isRequired={true}
+                          hasValue={!!field.value?.trim()}
+                          hasError={!!fieldState.error}
+                          className="z-10"
+                        />
                         <FormLabel>{t('application.personalInfo.nationality.label')} <span className="text-destructive">*</span></FormLabel>
                         <FormControl>
                           <select
@@ -528,7 +539,13 @@ const ApplicantForm = () => {
                   />
 
                   <FormField control={form.control} name="email" render={({ field, fieldState }) => (
-                    <FormItem>
+                    <FormItem className="relative">
+                      <FieldStatusIndicator
+                        isRequired={true}
+                        hasValue={!!field.value?.trim()}
+                        hasError={!!fieldState.error}
+                        className="z-10"
+                      />
                       <FormLabel>{t('application.personalInfo.email.label')} <span className="text-warning">*</span></FormLabel>
                       <FormControl>
                         <EmailInput 
@@ -559,7 +576,13 @@ const ApplicantForm = () => {
                   )}
 
                   <FormField control={form.control} name="passportNumber" render={({ field, fieldState }) => (
-                    <FormItem>
+                    <FormItem className="relative">
+                      <FieldStatusIndicator
+                        isRequired={true}
+                        hasValue={!!field.value?.trim()}
+                        hasError={!!fieldState.error}
+                        className="z-10"
+                      />
                       <FormLabel>{t('application.personalInfo.passportNumber.label')} <span className="text-destructive">*</span></FormLabel>
                       <FormControl>
                         <PassportNumberInput
@@ -664,7 +687,13 @@ const ApplicantForm = () => {
                   )}
 
                   <FormField control={form.control} name="hasJob" render={({ field, fieldState }) => (
-                    <FormItem>
+                    <FormItem className="relative">
+                      <FieldStatusIndicator
+                        isRequired={true}
+                        hasValue={field.value !== undefined}
+                        hasError={!!fieldState.error}
+                        className="z-10"
+                      />
                       <FormLabel>{t('application.employment.hasJob.label')} <span className="text-destructive">*</span></FormLabel>
                       <FormControl>
                          <RadioGroup 
@@ -712,7 +741,13 @@ const ApplicantForm = () => {
                    )}
 
                    <FormField control={form.control} name="hasCriminalConvictions" render={({ field, fieldState }) => (
-                     <FormItem>
+                     <FormItem className="relative">
+                       <FieldStatusIndicator
+                         isRequired={true}
+                         hasValue={field.value !== undefined}
+                         hasError={!!fieldState.error}
+                         className="z-10"
+                       />
                        <FormLabel>{t('application.security.criminalConvictions.label')} <span className="text-destructive">*</span></FormLabel>
                        <FormControl>
                          <RadioGroup 
@@ -743,7 +778,13 @@ const ApplicantForm = () => {
                    )} />
 
                    <FormField control={form.control} name="hasWarCrimesConvictions" render={({ field, fieldState }) => (
-                     <FormItem>
+                     <FormItem className="relative">
+                       <FieldStatusIndicator
+                         isRequired={true}
+                         hasValue={field.value !== undefined}
+                         hasError={!!fieldState.error}
+                         className="z-10"
+                       />
                        <FormLabel>{t('application.security.warCrimes.label')} <span className="text-destructive">*</span></FormLabel>
                        <FormControl>
                          <RadioGroup 
