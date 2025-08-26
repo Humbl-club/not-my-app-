@@ -21,6 +21,8 @@ import { AddressFieldsSection } from '@/components/AddressFieldsSection';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { nationalities } from '@/constants/nationalities';
+import { FormValidationStatus } from '@/components/FormValidationStatus';
+import { cn } from '@/lib/utils';
 
 const ApplicantForm = () => {
   const { t } = useTranslation();
@@ -28,6 +30,9 @@ const ApplicantForm = () => {
   const { id } = useParams<{ id: string }>();
 
   const [primaryApplicant, setPrimaryApplicant] = useState<any | null>(null);
+  const [passportData, setPassportData] = useState<any | null>(null);
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  
   useEffect(() => {
     try {
       // Load main applicant (previously called primary)
@@ -50,6 +55,36 @@ const ApplicantForm = () => {
       }
     } catch {}
   }, []);
+
+  // Load passport data for address extraction
+  useEffect(() => {
+    if (id) {
+      try {
+        const applicantsData = sessionStorage.getItem('application.applicants');
+        if (applicantsData) {
+          const applicants = JSON.parse(applicantsData);
+          let applicantData = null;
+          
+          if (id === 'main' && applicants[0]) {
+            applicantData = applicants[0];
+          } else {
+            const match = id.match(/^applicant-(\d+)$/);
+            if (match) {
+              const applicantNumber = parseInt(match[1]);
+              const applicantIndex = applicantNumber - 1;
+              if (applicants[applicantIndex]) {
+                applicantData = applicants[applicantIndex];
+              }
+            }
+          }
+          
+          if (applicantData?.passportPhoto) {
+            setPassportData({ photo: applicantData.passportPhoto });
+          }
+        }
+      } catch {}
+    }
+  }, [id]);
 
   const nameRegex = PASSPORT_NAME_PATTERN;
   const emailRegex = EMAIL_PATTERN;
@@ -88,11 +123,7 @@ const ApplicantForm = () => {
       state: z.string().optional(),
       postalCode: z.string().optional(),
       country: z.string().optional(),
-    }).superRefine((data, ctx) => {
-      // Skip validation if using primary applicant's address
-      const form = ctx.path[0] === 'address' ? ctx.path.slice(0, -1) : [];
-      return true; // Address validation will be handled by form state
-    }),
+    }).optional(), // Make address optional and handle validation in runtime
     hasJob: z.enum(['yes', 'no'], { required_error: 'Please answer if you have a job' }),
     jobTitle: z.object({
       isStandardized: z.boolean().default(false),
@@ -139,6 +170,7 @@ const ApplicantForm = () => {
   const form = useForm<ApplicantValues>({
     resolver: zodResolver(applicantSchema),
     mode: 'onChange',
+    reValidateMode: 'onChange',
     defaultValues: {
       firstName: '',
       secondNames: '',
@@ -164,6 +196,81 @@ const ApplicantForm = () => {
     },
   });
 
+  // Create custom validation function for address
+  const validateAddress = () => {
+    const values = form.getValues();
+    if (values.useSameAddressAsPrimary || values.useSameAddressAsPassport) {
+      // Clear address errors when using same address options
+      form.clearErrors('address');
+      return true;
+    }
+    
+    // Validate required address fields manually
+    let hasErrors = false;
+    if (!values.address?.line1?.trim()) {
+      form.setError('address.line1', { message: 'Address line 1 is required' });
+      hasErrors = true;
+    }
+    if (!values.address?.city?.trim()) {
+      form.setError('address.city', { message: 'City is required' });
+      hasErrors = true;
+    }
+    if (!values.address?.country?.trim()) {
+      form.setError('address.country', { message: 'Country is required' });
+      hasErrors = true;
+    }
+    if (!values.address?.postalCode?.trim()) {
+      form.setError('address.postalCode', { message: 'Postal code is required' });
+      hasErrors = true;
+    }
+    
+    return !hasErrors;
+  };
+
+  // Watch form state for validation feedback
+  const formState = form.formState;
+  const formValues = form.watch();
+  
+  // Custom form validation
+  const isCustomFormValid = () => {
+    const baseValid = formState.isValid;
+    const addressValid = validateAddress();
+    return baseValid && addressValid;
+  };
+  
+  const isFormValid = isCustomFormValid();
+  
+  // Calculate completion percentage
+  const calculateCompletion = () => {
+    const fields = [
+      'firstName', 'lastName', 'dateOfBirth', 'nationality', 'email', 
+      'passportNumber', 'hasJob', 'hasCriminalConvictions', 'hasWarCrimesConvictions'
+    ];
+    
+    // Address fields only required if not using same as primary or passport
+    const addressFields = (formValues.useSameAddressAsPrimary || formValues.useSameAddressAsPassport) 
+      ? [] 
+      : ['address.line1', 'address.city', 'address.country', 'address.postalCode'];
+    
+    // Job fields only required if user has a job
+    const jobFields = formValues.hasJob === 'yes' 
+      ? [(formValues.jobTitle?.titleOriginal || formValues.jobTitle?.titleEnglish) ? 'jobTitle' : null].filter(Boolean)
+      : [];
+    
+    const allFields = [...fields, ...addressFields, ...jobFields];
+    const completedFields = allFields.filter(field => {
+      if (!field) return false;
+      const value = field.includes('.') 
+        ? field.split('.').reduce((obj, key) => obj?.[key], formValues)
+        : formValues[field as keyof typeof formValues];
+      return value && value !== '' && value !== undefined;
+    });
+    
+    return Math.round((completedFields.length / allFields.length) * 100);
+  };
+  
+  const completionPercentage = calculateCompletion();
+
   // Watch checkbox values for reactive updates
   const useSameEmail = useWatch({ control: form.control, name: 'useSameEmailAsPrimary' });
   const useSameAddress = useWatch({ control: form.control, name: 'useSameAddressAsPrimary' });
@@ -188,13 +295,30 @@ const ApplicantForm = () => {
   useEffect(() => {
     if (useSameAddress && primaryApplicant?.address) {
       form.setValue('address', primaryApplicant.address);
+      // Clear validation errors for address when using primary address
+      form.clearErrors('address');
     } else if (!useSameAddress) {
-      form.setValue('address', { line1: '', line2: '', city: '', state: '', postalCode: '', country: '' });
+      form.setValue('address', { line1: '', line2: '', line3: '', city: '', state: '', postalCode: '', country: '' });
     }
   }, [useSameAddress, primaryApplicant?.address, form]);
 
+  // Watch address checkbox for passport option
+  const useSamePassportAddress = useWatch({ control: form.control, name: 'useSameAddressAsPassport' });
+  
+  useEffect(() => {
+    if (useSamePassportAddress) {
+      // Clear address validation errors when using passport address
+      form.clearErrors('address');
+    }
+  }, [useSamePassportAddress, form]);
+
   const handleSubmit = async (values: ApplicantValues) => {
     if (!id) return;
+    
+    // Run custom address validation before submit
+    if (!validateAddress()) {
+      return; // Stop submission if address validation fails
+    }
     
     try {
       // Get existing applicants
@@ -246,9 +370,9 @@ const ApplicantForm = () => {
           <div className="mb-8">
             <div className="flex justify-between items-center mb-2">
               <span className="text-sm font-medium">{t('application.progress.step', { current: 2, total: 4 })}</span>
-              <span className="text-sm text-muted-foreground">{t('application.progress.complete', { percent: 50 })}</span>
+              <span className="text-sm text-muted-foreground">{t('application.progress.complete', { percent: completionPercentage })}</span>
             </div>
-            <Progress value={50} className="h-2" />
+            <Progress value={completionPercentage} className="h-2" />
           </div>
 
           {/* Header */}
@@ -267,6 +391,15 @@ const ApplicantForm = () => {
               <CardTitle>{t('application.personalInfo.title')}</CardTitle>
             </CardHeader>
             <CardContent>
+              {/* Form Status Indicator */}
+              <div className="mb-6">
+                <FormValidationStatus 
+                  isValid={isFormValid}
+                  completionPercentage={completionPercentage}
+                  errors={formState.errors}
+                />
+              </div>
+              
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6" noValidate>
                   <NameFieldsSection
@@ -317,6 +450,7 @@ const ApplicantForm = () => {
                     form={form}
                     baseName=""
                     showSameAsPassportOption={true}
+                    passportData={passportData}
                   />
 
                   <FormField control={form.control} name="email" render={({ field, fieldState }) => (
@@ -380,7 +514,7 @@ const ApplicantForm = () => {
                     </FormItem>
                   )} />
 
-                  {!form.getValues('useSameAddressAsPrimary') && (
+                  {!form.getValues('useSameAddressAsPrimary') && !form.getValues('useSameAddressAsPassport') && (
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <FormField control={form.control} name="address.line1" render={({ field, fieldState }) => (
@@ -535,22 +669,54 @@ const ApplicantForm = () => {
                      </FormItem>
                    )} />
                   
-                  {/* Navigation */}
-                  <div className="flex justify-between pt-6">
-                    <Button 
-                      type="button"
-                      variant="outline" 
-                      onClick={() => navigate('/application/manage')}
-                      className="flex items-center gap-2"
-                    >
-                      <ArrowLeft className="h-4 w-4" />
-                      {t('application.back')}
-                    </Button>
-                    <Button type="submit" className="flex items-center gap-2">
-                      {t('application.continue')}
-                      <ArrowRight className="h-4 w-4" />
-                    </Button>
-                  </div>
+                   {/* Form Validation Summary */}
+                   {!isFormValid && Object.keys(formState.errors).length > 0 && (
+                     <div className="p-4 bg-error-gentle-light border border-error-gentle/20 rounded-lg">
+                       <h3 className="text-sm font-medium text-error-gentle mb-2">
+                         Please complete the following required fields:
+                       </h3>
+                       <ul className="text-sm text-error-gentle space-y-1">
+                         {Object.entries(formState.errors).map(([field, error]) => {
+                           if (field.startsWith('address.') && (formValues.useSameAddressAsPrimary || formValues.useSameAddressAsPassport)) {
+                             return null; // Don't show address errors if using same address
+                           }
+                           return (
+                             <li key={field} className="flex items-center gap-2">
+                               <span className="w-1 h-1 bg-error-gentle rounded-full"></span>
+                               {field.includes('address.') ? 
+                                 `Address ${field.split('.')[1]}: ${error?.message}` : 
+                                 `${field.charAt(0).toUpperCase() + field.slice(1)}: ${error?.message}`
+                               }
+                             </li>
+                           );
+                         }).filter(Boolean)}
+                       </ul>
+                     </div>
+                   )}
+                   
+                   {/* Navigation */}
+                   <div className="flex justify-between pt-6">
+                     <Button 
+                       type="button"
+                       variant="outline" 
+                       onClick={() => navigate('/application/manage')}
+                       className="flex items-center gap-2"
+                     >
+                       <ArrowLeft className="h-4 w-4" />
+                       {t('application.back')}
+                     </Button>
+                     <Button 
+                       type="submit" 
+                       disabled={!isFormValid}
+                       className={cn(
+                         "flex items-center gap-2",
+                         !isFormValid && "opacity-50 cursor-not-allowed"
+                       )}
+                     >
+                       {t('application.continue')}
+                       <ArrowRight className="h-4 w-4" />
+                     </Button>
+                   </div>
                 </form>
               </Form>
             </CardContent>
