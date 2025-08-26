@@ -6,6 +6,7 @@ interface FieldStatusIndicatorProps {
   isRequired?: boolean;
   hasValue?: boolean;
   hasError?: boolean;
+  hasInteracted?: boolean;
   className?: string;
 }
 
@@ -13,9 +14,11 @@ export const FieldStatusIndicator: React.FC<FieldStatusIndicatorProps> = ({
   isRequired = false,
   hasValue = false,
   hasError = false,
+  hasInteracted = false,
   className
 }) => {
-  if (!isRequired) return null;
+  // Only show status for required fields that have been interacted with
+  if (!isRequired || !hasInteracted) return null;
 
   const getIcon = () => {
     if (hasError) return <AlertCircle className="h-4 w-4 text-destructive" />;

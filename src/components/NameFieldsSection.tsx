@@ -40,6 +40,7 @@ export function NameFieldsSection<T extends FieldValues>({
               isRequired={true}
               hasValue={!!field.value?.trim()}
               hasError={!!fieldState.error}
+              hasInteracted={fieldState.isTouched}
               className="z-10"
             />
             <FormLabel className="text-sm font-medium leading-5 min-h-[3rem] break-words text-start flex items-start gap-1">
@@ -96,6 +97,7 @@ export function NameFieldsSection<T extends FieldValues>({
               isRequired={true}
               hasValue={!!field.value?.trim()}
               hasError={!!fieldState.error}
+              hasInteracted={fieldState.isTouched}
               className="z-10"
             />
             <FormLabel className="text-sm font-medium leading-5 min-h-[3rem] break-words text-start flex items-start gap-1">

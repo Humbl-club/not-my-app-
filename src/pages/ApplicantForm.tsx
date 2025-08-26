@@ -126,7 +126,10 @@ const ApplicantForm = () => {
       postalCode: z.string().optional(),
       country: z.string().optional(),
     }).optional(),
-    hasJob: z.enum(['yes', 'no']).optional(),
+    hasJob: z.enum(['yes', 'no'], { 
+      required_error: t('validation.employment.required'),
+      invalid_type_error: t('validation.employment.required')
+    }),
     jobTitle: z.object({
       isStandardized: z.boolean().default(false),
       jobCode: z.string().optional(),
@@ -134,8 +137,14 @@ const ApplicantForm = () => {
       titleEnglish: z.string().default(""),
       category: z.string().optional(),
     }),
-    hasCriminalConvictions: z.enum(['yes', 'no']).optional(),
-    hasWarCrimesConvictions: z.enum(['yes', 'no']).optional(),
+    hasCriminalConvictions: z.enum(['yes', 'no'], {
+      required_error: t('validation.security.criminalConvictions.required'),
+      invalid_type_error: t('validation.security.criminalConvictions.required')
+    }),
+    hasWarCrimesConvictions: z.enum(['yes', 'no'], {
+      required_error: t('validation.security.warCrimes.required'),
+      invalid_type_error: t('validation.security.warCrimes.required')
+    }),
   }).superRefine((data, ctx) => {
     // Address validation - only required if not using same address options
     if (!data.useSameAddressAsPrimary && !data.useSameAddressAsPassport) {
@@ -169,15 +178,6 @@ const ApplicantForm = () => {
       }
     }
     
-    // Job validation - require selection
-    if (data.hasJob === undefined) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: t('validation.employment.required'),
-        path: ['hasJob'],
-      });
-    }
-
     // Job title validation - only required if user has a job
     if (data.hasJob === 'yes' && (!data.jobTitle?.titleOriginal?.trim() && !data.jobTitle?.titleEnglish?.trim())) {
       ctx.addIssue({
@@ -186,39 +186,6 @@ const ApplicantForm = () => {
         path: ['jobTitle', 'titleOriginal'],
       });
     }
-
-    // Security questions validation - require answers
-    if (data.hasCriminalConvictions === undefined) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: t('validation.security.criminalConvictions.required'),
-        path: ['hasCriminalConvictions'],
-      });
-    }
-
-    if (data.hasWarCrimesConvictions === undefined) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: t('validation.security.warCrimes.required'),
-        path: ['hasWarCrimesConvictions'],
-      });
-    }
-  }).refine((data) => {
-    // Form is valid if all required fields are present
-    return !!(
-      data.firstName?.trim() &&
-      data.lastName?.trim() &&
-      data.dateOfBirth?.trim() &&
-      data.nationality?.trim() &&
-      data.email?.trim() &&
-      data.passportNumber?.trim() &&
-      data.hasJob !== undefined &&
-      data.hasCriminalConvictions !== undefined &&
-      data.hasWarCrimesConvictions !== undefined
-    );
-  }, {
-    message: t('validation.form.incomplete'),
-    path: [],
   }), [t]);
 
   type ApplicantValues = z.infer<typeof applicantSchema>;
@@ -483,12 +450,13 @@ const ApplicantForm = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <FormField control={form.control} name="dateOfBirth" render={({ field, fieldState }) => (
                       <FormItem className="relative">
-                        <FieldStatusIndicator
-                          isRequired={true}
-                          hasValue={!!field.value?.trim()}
-                          hasError={!!fieldState.error}
-                          className="z-10"
-                        />
+                         <FieldStatusIndicator
+                           isRequired={true}
+                           hasValue={!!field.value?.trim()}
+                           hasError={!!fieldState.error}
+                           hasInteracted={fieldState.isTouched}
+                           className="z-10"
+                         />
                         <FormLabel>{t('application.personalInfo.dateOfBirth.label')} <span className="text-destructive">*</span></FormLabel>
                          <FormControl>
                            <DateOfBirthInput {...field} placeholder="YYYY-MM-DD" aria-invalid={!!fieldState.error} />
@@ -501,12 +469,13 @@ const ApplicantForm = () => {
                     )} />
                     <FormField control={form.control} name="nationality" render={({ field, fieldState }) => (
                       <FormItem className="relative">
-                        <FieldStatusIndicator
-                          isRequired={true}
-                          hasValue={!!field.value?.trim()}
-                          hasError={!!fieldState.error}
-                          className="z-10"
-                        />
+                         <FieldStatusIndicator
+                           isRequired={true}
+                           hasValue={!!field.value?.trim()}
+                           hasError={!!fieldState.error}
+                           hasInteracted={fieldState.isTouched}
+                           className="z-10"
+                         />
                         <FormLabel>{t('application.personalInfo.nationality.label')} <span className="text-destructive">*</span></FormLabel>
                         <FormControl>
                           <select
@@ -540,12 +509,13 @@ const ApplicantForm = () => {
 
                   <FormField control={form.control} name="email" render={({ field, fieldState }) => (
                     <FormItem className="relative">
-                      <FieldStatusIndicator
-                        isRequired={true}
-                        hasValue={!!field.value?.trim()}
-                        hasError={!!fieldState.error}
-                        className="z-10"
-                      />
+                       <FieldStatusIndicator
+                         isRequired={true}
+                         hasValue={!!field.value?.trim()}
+                         hasError={!!fieldState.error}
+                         hasInteracted={fieldState.isTouched}
+                         className="z-10"
+                       />
                       <FormLabel>{t('application.personalInfo.email.label')} <span className="text-warning">*</span></FormLabel>
                       <FormControl>
                         <EmailInput 
@@ -577,12 +547,13 @@ const ApplicantForm = () => {
 
                   <FormField control={form.control} name="passportNumber" render={({ field, fieldState }) => (
                     <FormItem className="relative">
-                      <FieldStatusIndicator
-                        isRequired={true}
-                        hasValue={!!field.value?.trim()}
-                        hasError={!!fieldState.error}
-                        className="z-10"
-                      />
+                       <FieldStatusIndicator
+                         isRequired={true}
+                         hasValue={!!field.value?.trim()}
+                         hasError={!!fieldState.error}
+                         hasInteracted={fieldState.isTouched}
+                         className="z-10"
+                       />
                       <FormLabel>{t('application.personalInfo.passportNumber.label')} <span className="text-destructive">*</span></FormLabel>
                       <FormControl>
                         <PassportNumberInput
@@ -688,12 +659,13 @@ const ApplicantForm = () => {
 
                   <FormField control={form.control} name="hasJob" render={({ field, fieldState }) => (
                     <FormItem className="relative">
-                      <FieldStatusIndicator
-                        isRequired={true}
-                        hasValue={field.value !== undefined}
-                        hasError={!!fieldState.error}
-                        className="z-10"
-                      />
+                       <FieldStatusIndicator
+                         isRequired={true}
+                         hasValue={field.value !== undefined}
+                         hasError={!!fieldState.error}
+                         hasInteracted={fieldState.isTouched}
+                         className="z-10"
+                       />
                       <FormLabel>{t('application.employment.hasJob.label')} <span className="text-destructive">*</span></FormLabel>
                       <FormControl>
                          <RadioGroup 
@@ -742,12 +714,13 @@ const ApplicantForm = () => {
 
                    <FormField control={form.control} name="hasCriminalConvictions" render={({ field, fieldState }) => (
                      <FormItem className="relative">
-                       <FieldStatusIndicator
-                         isRequired={true}
-                         hasValue={field.value !== undefined}
-                         hasError={!!fieldState.error}
-                         className="z-10"
-                       />
+                        <FieldStatusIndicator
+                          isRequired={true}
+                          hasValue={field.value !== undefined}
+                          hasError={!!fieldState.error}
+                          hasInteracted={fieldState.isTouched}
+                          className="z-10"
+                        />
                        <FormLabel>{t('application.security.criminalConvictions.label')} <span className="text-destructive">*</span></FormLabel>
                        <FormControl>
                          <RadioGroup 
@@ -779,12 +752,13 @@ const ApplicantForm = () => {
 
                    <FormField control={form.control} name="hasWarCrimesConvictions" render={({ field, fieldState }) => (
                      <FormItem className="relative">
-                       <FieldStatusIndicator
-                         isRequired={true}
-                         hasValue={field.value !== undefined}
-                         hasError={!!fieldState.error}
-                         className="z-10"
-                       />
+                        <FieldStatusIndicator
+                          isRequired={true}
+                          hasValue={field.value !== undefined}
+                          hasError={!!fieldState.error}
+                          hasInteracted={fieldState.isTouched}
+                          className="z-10"
+                        />
                        <FormLabel>{t('application.security.warCrimes.label')} <span className="text-destructive">*</span></FormLabel>
                        <FormControl>
                          <RadioGroup 
