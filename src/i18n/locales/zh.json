@@ -341,41 +341,6 @@
       "emptyData": "未找到申请数据。请先完成申请。"
     }
   },
-    "pageTitle": "审核和导出",
-    "metaDescription": "审核并导出您的英国ETA申请数据为JSON或CSV格式，或发送到Zapier。",
-    "header": {
-      "title": "审核和导出",
-      "backButton": "返回",
-      "continueButton": "继续"
-    },
-    "dataPreview": {
-      "title": "申请数据预览",
-      "copyJson": "复制JSON",
-      "downloadJson": "下载JSON",
-      "downloadCsv": "下载CSV",
-      "noData": "没有可用的申请人数据"
-    },
-    "zapier": {
-      "title": "发送到Zapier（可选）",
-      "placeholder": "https://hooks.zapier.com/hooks/catch/...",
-      "sendButton": "发送",
-      "tip": "提示：将您的webhook连接到Google Sheets，为英国ETA提交自动填充行。"
-    },
-    "messages": {
-      "copied": "数据已复制到剪贴板",
-      "copyError": "复制数据失败",
-      "zapierSuccess": "请求已发送到Zapier。请检查您的Zap历史记录以确认触发。",
-      "zapierError": "触发Zapier webhook失败。请检查URL并重试。",
-      "webhookRequired": "请输入您的Zapier webhook URL",
-      "noApplicants": "没有申请人可导出",
-      "invalidData": "申请数据无效。请先完成申请表。",
-      "processing": "处理中..."
-    },
-    "validation": {
-      "invalidWebhook": "请输入有效的Zapier webhook URL",
-      "emptyData": "未找到申请数据。请先完成申请。"
-    }
-  },
   "jobSelector": {
     "other": "其他",
     "customJobPrompt": "输入自定义职位名称",
