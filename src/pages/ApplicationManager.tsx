@@ -295,11 +295,11 @@ const ApplicationManager = () => {
               {t('application.back')}
             </Button>
             <Button 
-              onClick={() => navigate('/application/payment')}
+              onClick={() => navigate('/application/review')}
               disabled={!allApplicantsComplete}
               className="flex items-center gap-2 bg-gradient-to-r from-primary to-turquoise text-white rounded-full px-8 py-3 hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Continue to Payment
+              Review Application
               <ArrowRight className="h-4 w-4" />
             </Button>
           </div>

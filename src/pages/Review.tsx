@@ -1,19 +1,18 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { ArrowLeft, Copy, Download, AlertTriangle, Edit } from 'lucide-react';
+import { ArrowLeft, AlertTriangle, Edit } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const Review = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const { t } = useTranslation();
-  const [loadingOperation, setLoadingOperation] = useState<string | null>(null);
 
-  // SEO: title, description, canonical
+  // SEO setup
   useEffect(() => {
     document.title = t('review.pageTitle') + ' | UK ETA';
     const ensureTag = (selector: string, el: HTMLElement) => {
@@ -57,158 +56,12 @@ const Review = () => {
     );
   }, [applicants]);
 
-  const data = useMemo(() => {
-    return {
-      applicants,
-      generatedAt: new Date().toISOString(),
-      source: window.location.origin,
-    };
-  }, [applicants]);
-
-  const toCSV = (items: any[]) => {
-    if (!items.length) return '';
-    const headers = [
-      'firstName','lastName','dateOfBirth','nationality','additionalNationalities','email','passportNumber','job','hasCriminalConvictions','hasWarCrimesConvictions','address.line1','address.line2','address.city','address.state','address.postalCode','address.country'
-    ];
-    const escape = (v: any) => {
-      if (v === undefined || v === null) return '';
-      const s = typeof v === 'string' ? v : JSON.stringify(v);
-      const needsQuote = s.includes(',') || s.includes('"') || s.includes('\n');
-      const esc = s.replace(/"/g, '""');
-      return needsQuote ? `"${esc}"` : esc;
-    };
-    const rows = items.map((it) => {
-      const addNats = Array.isArray(it?.additionalNationalities) ? it.additionalNationalities.join('|') : '';
-      return [
-        it?.firstName,
-        it?.lastName,
-        it?.dateOfBirth,
-        it?.nationality,
-        addNats,
-        it?.email,
-        it?.passportNumber,
-        it?.job,
-        it?.hasCriminalConvictions,
-        it?.hasWarCrimesConvictions,
-        it?.address?.line1,
-        it?.address?.line2,
-        it?.address?.city,
-        it?.address?.state,
-        it?.address?.postalCode,
-        it?.address?.country,
-      ].map(escape).join(',');
-    });
-    return [headers.join(','), ...rows].join('\n');
-  };
-
-  const download = (filename: string, text: string, type = 'application/json') => {
-    const blob = new Blob([text], { type: type + ';charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
-  };
-
-  const handleCopyJSON = async () => {
+  // Route protection - redirect if no valid data
+  useEffect(() => {
     if (!hasValidData) {
-      toast({ 
-        title: t('review.messages.invalidData'), 
-        description: t('review.validation.emptyData'), 
-        variant: 'destructive' 
-      });
-      return;
+      navigate('/application/manage');
     }
-    
-    setLoadingOperation('copying');
-    try {
-      await navigator.clipboard.writeText(JSON.stringify(data, null, 2));
-      toast({ 
-        title: t('review.messages.copied'), 
-        description: t('review.messages.copied')
-      });
-    } catch (error) {
-      console.error('Copy failed:', error);
-      toast({ 
-        title: t('review.messages.copyError'), 
-        description: t('review.messages.copyError'), 
-        variant: 'destructive' 
-      });
-    } finally {
-      setLoadingOperation(null);
-    }
-  };
-
-  const handleDownloadJSON = () => {
-    if (!hasValidData) {
-      toast({ 
-        title: t('review.messages.invalidData'), 
-        description: t('review.validation.emptyData'), 
-        variant: 'destructive' 
-      });
-      return;
-    }
-
-    setLoadingOperation('downloadingJSON');
-    try {
-      download('uk-eta-data.json', JSON.stringify(data, null, 2));
-      toast({ 
-        title: t('review.dataPreview.downloadJson'), 
-        description: t('review.dataPreview.downloadJson')
-      });
-    } catch (error) {
-      console.error('Download failed:', error);
-      toast({ 
-        title: t('review.messages.copyError'), 
-        description: t('review.messages.copyError'), 
-        variant: 'destructive' 
-      });
-    } finally {
-      setLoadingOperation(null);
-    }
-  };
-
-  const handleDownloadCSV = () => {
-    if (!hasValidData) {
-      toast({ 
-        title: t('review.messages.invalidData'), 
-        description: t('review.validation.emptyData'), 
-        variant: 'destructive' 
-      });
-      return;
-    }
-
-    setLoadingOperation('downloadingCSV');
-    try {
-      const csv = toCSV(data.applicants || []);
-      if (!csv) {
-        toast({ 
-          title: t('review.messages.noApplicants'), 
-          description: t('review.messages.noApplicants'), 
-          variant: 'destructive' 
-        });
-        return;
-      }
-      download('uk-eta-applicants.csv', csv, 'text/csv');
-      toast({ 
-        title: t('review.dataPreview.downloadCsv'), 
-        description: t('review.dataPreview.downloadCsv')
-      });
-    } catch (error) {
-      console.error('CSV export failed:', error);
-      toast({ 
-        title: t('review.messages.copyError'), 
-        description: t('review.messages.copyError'), 
-        variant: 'destructive' 
-      });
-    } finally {
-      setLoadingOperation(null);
-    }
-  };
-
+  }, [hasValidData, navigate]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -283,49 +136,6 @@ const Review = () => {
                 <p className="text-sm text-muted-foreground">
                   {t('review.disclaimer')}
                 </p>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Export Data - Secondary Feature */}
-        <section className="mt-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-base">{t('review.dataPreview.title')}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex flex-wrap gap-3">
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  className="flex items-center gap-2" 
-                  onClick={handleCopyJSON}
-                  disabled={!hasValidData || loadingOperation === 'copying'}
-                >
-                  <Copy className="h-4 w-4" /> 
-                  {loadingOperation === 'copying' ? t('review.messages.processing') : t('review.dataPreview.copyJson')}
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  className="flex items-center gap-2" 
-                  onClick={handleDownloadJSON}
-                  disabled={!hasValidData || loadingOperation === 'downloadingJSON'}
-                >
-                  <Download className="h-4 w-4" /> 
-                  {loadingOperation === 'downloadingJSON' ? t('review.messages.processing') : t('review.dataPreview.downloadJson')}
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  className="flex items-center gap-2" 
-                  onClick={handleDownloadCSV}
-                  disabled={!hasValidData || loadingOperation === 'downloadingCSV'}
-                >
-                  <Download className="h-4 w-4" /> 
-                  {loadingOperation === 'downloadingCSV' ? t('review.messages.processing') : t('review.dataPreview.downloadCsv')}
-                </Button>
               </div>
             </CardContent>
           </Card>
