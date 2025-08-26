@@ -258,6 +258,34 @@
       "countryRequired": "البلد مطلوب",
       "postalCodeRequired": "الرمز البريدي مطلوب"
     },
+    "nationality": {
+      "required": "يرجى اختيار الجنسية"
+    },
+    "dateOfBirth": {
+      "invalid": "يرجى إدخال تاريخ صحيح"
+    },
+    "employment": {
+      "required": "يرجى الإجابة إذا كان لديك وظيفة"
+    },
+    "jobTitle": {
+      "required": "يرجى تقديم مسمى وظيفي"
+    },
+    "security": {
+      "criminalConvictions": {
+        "required": "يرجى الإجابة عن الإدانات الجنائية"
+      },
+      "warCrimes": {
+        "required": "يرجى الإجابة عن جرائم الحرب"
+      }
+    },
+    "passportNumber": {
+      "required": "رقم جواز السفر مطلوب",
+      "invalid": "استخدم الأحرف والأرقام فقط (A-Z, 0-9)",
+      "length": "رقم جواز السفر يجب أن يكون من 6-10 أحرف",
+      "format": "أدخل رقم جواز السفر تماماً كما يظهر في جواز سفرك",
+      "tooShort": "رقم جواز السفر يجب أن يكون 6 أحرف على الأقل",
+      "tooLong": "رقم جواز السفر يجب ألا يتجاوز 10 أحرف"
+    },
     "form": {
       "completed": "تم إكمال النموذج بنجاح",
       "almostComplete": "مكتمل تقريباً",

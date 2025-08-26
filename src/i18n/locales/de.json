@@ -252,6 +252,34 @@
       "countryRequired": "Land ist erforderlich",
       "postalCodeRequired": "Postleitzahl ist erforderlich"
     },
+    "nationality": {
+      "required": "Bitte wählen Sie eine Nationalität"
+    },
+    "dateOfBirth": {
+      "invalid": "Bitte geben Sie ein gültiges Datum ein"
+    },
+    "employment": {
+      "required": "Bitte beantworten Sie, ob Sie einen Job haben"
+    },
+    "jobTitle": {
+      "required": "Bitte geben Sie eine Berufsbezeichnung an"
+    },
+    "security": {
+      "criminalConvictions": {
+        "required": "Bitte beantworten Sie die Frage zu Vorstrafen"
+      },
+      "warCrimes": {
+        "required": "Bitte beantworten Sie die Frage zu Kriegsverbrechen"
+      }
+    },
+    "passportNumber": {
+      "required": "Passnummer ist erforderlich",
+      "invalid": "Verwenden Sie nur Buchstaben und Zahlen (A-Z, 0-9)",
+      "length": "Passnummer muss 6-10 Zeichen lang sein",
+      "format": "Geben Sie die Passnummer genau so ein, wie sie in Ihrem Pass steht",
+      "tooShort": "Passnummer muss mindestens 6 Zeichen haben",
+      "tooLong": "Passnummer darf höchstens 10 Zeichen haben"
+    },
     "form": {
       "completed": "Formular erfolgreich ausgefüllt",
       "almostComplete": "Fast vollständig",

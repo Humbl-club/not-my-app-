@@ -167,6 +167,34 @@
       "countryRequired": "国は必須です",
       "postalCodeRequired": "郵便番号は必須です"
     },
+    "nationality": {
+      "required": "国籍を選択してください"
+    },
+    "dateOfBirth": {
+      "invalid": "有効な日付を入力してください"
+    },
+    "employment": {
+      "required": "お仕事があるかどうか回答してください"
+    },
+    "jobTitle": {
+      "required": "職業を入力してください"
+    },
+    "security": {
+      "criminalConvictions": {
+        "required": "犯罪歴について回答してください"
+      },
+      "warCrimes": {
+        "required": "戦争犯罪について回答してください"
+      }
+    },
+    "passportNumber": {
+      "required": "パスポート番号は必須です",
+      "invalid": "文字と数字のみ使用してください (A-Z, 0-9)",
+      "length": "パスポート番号は6-10文字である必要があります",
+      "format": "パスポートに表示されている通りに正確にパスポート番号を入力してください",
+      "tooShort": "パスポート番号は少なくとも6文字である必要があります",
+      "tooLong": "パスポート番号は10文字を超えてはいけません"
+    },
     "form": {
       "completed": "フォームが正常に完了しました",
       "almostComplete": "もうすぐ完了",

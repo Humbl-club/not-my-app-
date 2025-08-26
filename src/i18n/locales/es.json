@@ -258,6 +258,34 @@
       "countryRequired": "El país es requerido",
       "postalCodeRequired": "El código postal es requerido"
     },
+    "nationality": {
+      "required": "Por favor seleccione una nacionalidad"
+    },
+    "dateOfBirth": {
+      "invalid": "Por favor ingrese una fecha válida"
+    },
+    "employment": {
+      "required": "Por favor responda si tiene un trabajo"
+    },
+    "jobTitle": {
+      "required": "Por favor proporcione un título de trabajo"
+    },
+    "security": {
+      "criminalConvictions": {
+        "required": "Por favor responda sobre condenas penales"
+      },
+      "warCrimes": {
+        "required": "Por favor responda sobre crímenes de guerra"
+      }
+    },
+    "passportNumber": {
+      "required": "El número de pasaporte es requerido",
+      "invalid": "Usa solo letras y números (A-Z, 0-9)",
+      "length": "El número de pasaporte debe tener 6-10 caracteres",
+      "format": "Ingresa el número de pasaporte exactamente como aparece en tu pasaporte",
+      "tooShort": "El número de pasaporte debe tener al menos 6 caracteres",
+      "tooLong": "El número de pasaporte no debe exceder 10 caracteres"
+    },
     "form": {
       "completed": "Formulario completado exitosamente",
       "almostComplete": "Casi completado",

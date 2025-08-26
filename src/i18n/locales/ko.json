@@ -176,6 +176,34 @@
       "countryRequired": "국가가 필요합니다",
       "postalCodeRequired": "우편번호가 필요합니다"
     },
+    "nationality": {
+      "required": "국적을 선택해주세요"
+    },
+    "dateOfBirth": {
+      "invalid": "유효한 날짜를 입력해주세요"
+    },
+    "employment": {
+      "required": "직업이 있는지 답해주세요"
+    },
+    "jobTitle": {
+      "required": "직업을 입력해주세요"
+    },
+    "security": {
+      "criminalConvictions": {
+        "required": "범죄 기록에 대해 답해주세요"
+      },
+      "warCrimes": {
+        "required": "전쟁 범죄에 대해 답해주세요"
+      }
+    },
+    "passportNumber": {
+      "required": "여권번호가 필요합니다",
+      "invalid": "문자와 숫자만 사용하세요 (A-Z, 0-9)",
+      "length": "여권번호는 6-10자여야 합니다",
+      "format": "여권에 표시된 대로 정확히 여권번호를 입력하세요",
+      "tooShort": "여권번호는 최소 6자여야 합니다",
+      "tooLong": "여권번호는 10자를 초과할 수 없습니다"
+    },
     "form": {
       "completed": "양식이 성공적으로 완료되었습니다",
       "almostComplete": "거의 완료됨",

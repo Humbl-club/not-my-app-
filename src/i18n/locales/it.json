@@ -258,6 +258,34 @@
       "countryRequired": "Il paese è richiesto",
       "postalCodeRequired": "Il codice postale è richiesto"
     },
+    "nationality": {
+      "required": "Si prega di selezionare una nazionalità"
+    },
+    "dateOfBirth": {
+      "invalid": "Si prega di inserire una data valida"
+    },
+    "employment": {
+      "required": "Si prega di rispondere se hai un lavoro"
+    },
+    "jobTitle": {
+      "required": "Si prega di fornire un titolo di lavoro"
+    },
+    "security": {
+      "criminalConvictions": {
+        "required": "Si prega di rispondere riguardo le condanne penali"
+      },
+      "warCrimes": {
+        "required": "Si prega di rispondere riguardo i crimini di guerra"
+      }
+    },
+    "passportNumber": {
+      "required": "Il numero di passaporto è richiesto",
+      "invalid": "Usa solo lettere e numeri (A-Z, 0-9)",
+      "length": "Il numero di passaporto deve essere di 6-10 caratteri",
+      "format": "Inserisci il numero di passaporto esattamente come appare sul tuo passaporto",
+      "tooShort": "Il numero di passaporto deve avere almeno 6 caratteri",
+      "tooLong": "Il numero di passaporto non deve superare 10 caratteri"
+    },
     "form": {
       "completed": "Modulo completato con successo",
       "almostComplete": "Quasi completato",

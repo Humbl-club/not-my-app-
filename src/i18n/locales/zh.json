@@ -258,6 +258,34 @@
       "countryRequired": "国家是必需的",
       "postalCodeRequired": "邮政编码是必需的"
     },
+    "nationality": {
+      "required": "请选择国籍"
+    },
+    "dateOfBirth": {
+      "invalid": "请输入有效日期"
+    },
+    "employment": {
+      "required": "请回答是否有工作"
+    },
+    "jobTitle": {
+      "required": "请提供职位名称"
+    },
+    "security": {
+      "criminalConvictions": {
+        "required": "请回答关于犯罪记录的问题"
+      },
+      "warCrimes": {
+        "required": "请回答关于战争罪的问题"
+      }
+    },
+    "passportNumber": {
+      "required": "护照号码是必需的",
+      "invalid": "仅使用字母和数字(A-Z, 0-9)",
+      "length": "护照号码必须为6-10个字符",
+      "format": "输入护照上显示的确切护照号码",
+      "tooShort": "护照号码必须至少6个字符",
+      "tooLong": "护照号码不能超过10个字符"
+    },
     "form": {
       "completed": "表单填写完成",
       "almostComplete": "即将完成",
