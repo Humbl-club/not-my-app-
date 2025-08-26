@@ -77,95 +77,16 @@
     "personalInfo": {"title": "個人情報", "nameSection": {"title": "氏名", "description": "パスポートに記載されている通りに正確に入力してください", "helperText": "名前が最初の名前欄に収まらない場合は、「追加の名前」欄を使用してください。不要な場合は空欄のままにしてください。"}, "optional": "(任意)", "firstName": {"label": "名前（パスポートの記載通り）", "placeholder": "名前を入力してください"}, "secondNames": {"label": "追加の名前（パスポートの記載通り）", "placeholder": "追加の名前があれば入力してください"}, "lastName": {"label": "姓（パスポートの記載通り）", "placeholder": "姓を入力してください"}, "dateOfBirth": {"label": "生年月日", "placeholder": "生年月日を選択してください", "helperText": "YYYY-MM-DD または YYYY/MM/DD で入力するか、カレンダーを使用してください"}, "nationality": {"label": "国籍", "placeholder": "国籍を選択してください"}, "email": {"label": "メールアドレス", "placeholder": "メールアドレスを入力してください"}, "passportNumber": {"label": "パスポート番号", "placeholder": "パスポート番号を入力してください"}},
     "documents": {"title": "書類のアップロード", "subtitle": "パスポートと写真をアップロードしてください", "passport": {"title": "パスポート情報ページ", "uploadTitle": "パスポート写真をアップロード", "format": "JPGまたはJPEG形式のみ", "chooseFile": "ファイルを選択", "requirements": {"title": "要件：", "readable": "パスポートの個人情報ページの鮮明で読みやすい画像", "visible": "すべてのテキストが見やすく読みやすいこと", "noGlare": "反射や影がないこと", "format": "JPGまたはJPEG形式のみ"}}, "photo": {"title": "個人写真", "upload": {"title": "写真をアップロード", "format": "JPGまたはJPEG", "button": "ファイルを選択"}, "camera": {"title": "写真を撮る", "subtitle": "カメラを使用", "button": "カメラを開く"}, "requirements": {"title": "写真の要件：", "background": "無地で明るい背景", "noObjects": "背景に人や物がないこと", "visibility": "頭、肩、上半身が完全に見えること", "lighting": "影や反射のない均一な照明", "features": "顔の特徴がはっきりと見えること"}}},
     "payment": {"title": "支払い", "subtitle": "申請を提出するには支払いを完了してください", "details": {"title": "支払い詳細", "cardholderName": {"label": "カード名義人 *", "placeholder": "カード名義人の名前を入力してください"}, "cardNumber": {"label": "カード番号 *", "placeholder": "1234 5678 9012 3456"}, "expiryDate": {"label": "有効期限 *", "placeholder": "MM/YY"}, "cvv": {"label": "CVV *", "placeholder": "123"}, "security": "お支払いはSSL暗号化で保護され、信頼できる決済プロバイダーを通じて処理されます。"}, "summary": {"title": "注文概要", "application": "英国ETA申請", "serviceFee": "サービス料", "vat": "VAT（20%）", "total": "合計", "sslSecured": "SSL保護された支払い", "moneyBack": "返金保証"}, "complete": "支払いを完了"},
-      "address": {
-        "title": "住所",
-      "sameAsMain": "主申請者と同じ",
-      "usingMain": "主申請者の住所を使用",
-      "sameAsPassport": {
-        "label": "パスポートと同じ住所を使用",
-        "description": "住所がパスポートと一致する場合はこれを選択してください"
-      },
-      "extracting": "住所を抽出中...",
-      "line1": { "label": "住所1行目" },
-      "line2": { "label": "住所2行目（任意）" },
-      "line3": { "label": "住所3行目（任意）" },
-      "city": { "label": "市区町村" },
-      "country": { "label": "国", "placeholder": "国を選択" },
-      "postalCode": { "label": "郵便番号" },
-      "upload": {
-        "title": "書類をアップロード",
-        "uploading": "アップロード中...",
-        "success": "ファイルが正常にアップロードされました",
-        "select": "ファイルを選択",
-        "replace": "別のファイルをアップロード",
-        "requirements": "JPGまたはPNG、最大5MB"
-      },
-      "passport": {
-        "upload": {
-          "title": "パスポート写真をアップロード",
-          "description": "ドラッグ＆ドロップまたはクリックしてファイルを選択"
-        },
-        "preview": {
-          "alt": "パスポート写真のプレビュー"
-        },
-        "requirements": {
-          "title": "要件:",
-          "format": "鮮明で高品質なJPGまたはPNG形式",
-          "size": "ファイルサイズ5MB未満",
-          "pages": "パスポートのメイン情報ページを表示",
-          "readable": "すべてのテキストが明確に読み取れること"
-        }
-      },
-      "personal": {
-        "upload": {
-          "title": "個人写真をアップロード",
-          "description": "ドラッグ＆ドロップまたはクリックしてファイルを選択"
-        },
-        "preview": {
-          "alt": "個人写真のプレビュー"
-        },
-        "requirements": {
-          "title": "要件:",
-          "format": "鮮明で高品質なJPGまたはPNG形式",
-          "size": "ファイルサイズ5MB未満",
-          "recent": "最近の写真（過去6ヶ月以内に撮影）",
-          "quality": "顔の特徴がはっきりと見える良好な照明"
-        }
-      },
-      "passportPhoto": { "title": "パスポート写真", "upload": "パスポート写真をアップロード", "requirements": "パスポート個人情報ページの鮮明な画像" },
-      "personalPhoto": { "title": "個人写真", "upload": "個人写真をアップロード", "camera": "カメラで写真を撮る", "requirements": "シンプルな背景の最近の写真" }
+    "mainApplicant": "主申請者",
+    "mainApplicantDocuments": "主申請者の書類",
+    "documentsFor": "{{name}}の書類",
+    "applicant": "申請者{{number}}",
+    "additionalNationalities": {
+      "label": "追加の国籍をお持ちですか？",
+      "description": "複数の市民権をお持ちの場合は選択してください",
+      "addButton": "国籍を追加"
     },
-        "line1": { "label": "住所1行目" },
-        "line2": { "label": "住所2行目（任意）" },
-        "city": { "label": "市区町村" },
-        "state": { "label": "都道府県" },
-        "postalCode": { "label": "郵便番号" },
-        "country": { "label": "国", "placeholder": "国を選択" },
-        "usingMain": "主申請者の住所を使用"
-      },
-      "employment": {
-        "hasJob": { "label": "職業はありますか？" },
-        "jobTitle": { "label": "ご職業は何ですか？", "placeholder": "職種/役職を入力してください" }
-      },
-      "security": {
-        "criminalConvictions": { "label": "刑事罰を受けたことはありますか？" },
-        "warCrimes": { "label": "戦争犯罪、テロ、過激主義で疑われた、または有罪判決を受けたことはありますか？" }
-      },
-      "email": {
-        "sameAsMain": "主申請者と同じ",
-        "usingMain": "主申請者のメールアドレスを使用"
-      },
-      "mainApplicant": "主申請者",
-      "mainApplicantDocuments": "主申請者の書類",
-      "documentsFor": "{{name}}の書類",
-      "applicant": "申請者{{number}}",
-      "additionalNationalities": {
-        "label": "追加の国籍をお持ちですか？",
-        "description": "複数の市民権をお持ちの場合は選択してください",
-        "addButton": "国籍を追加"
-      },
-      "options": { "yes": "はい", "no": "いいえ" }
-    },
+    "options": { "yes": "はい", "no": "いいえ" },
     "address": {
       "title": "住所",
       "sameAsMain": "主申請者と同じ",
@@ -229,30 +150,25 @@
       "invalidChars": "メールにはスペースや無効な文字を含めることはできません",
       "multipleAt": "メールは正確に1つの@記号を持つ必要があります",
       "missingParts": "メールはローカル部分とドメインの両方を持つ必要があります",
-      "consecutiveDots": "メールに連続したドットを含めることはできません",
+      "consecutiveDots": "メールには連続するドットを含めることはできません",
       "invalidFormat": "無効なメール形式"
     },
     "passportName": {
       "required": "名前が必要です",
       "format": "大文字A-Z、スペース、ハイフン、アポストロフィのみ使用してください",
       "tooLong": "名前は1-50文字である必要があります",
-      "invalidStart": "名前はスペースや特殊文字で始まったり終わったりすることはできません",
-      "consecutive": "連続したスペースや特殊文字を持つことはできません",
+      "invalidStart": "名前はスペースや特殊文字で始まったり終わったりしてはいけません",
+      "consecutive": "連続するスペースや特殊文字を持つことはできません",
       "passportFormat": "パスポートに表示されている通りに正確に名前を入力してください"
     }
   },
   "jobSelector": {
     "other": "その他",
     "customJobPrompt": "カスタム職業タイトルを入力",
-    "searchPlaceholder": "職業を検索...",
-    "popularJobs": "人気の職業",
+    "searchPlaceholder": "仕事を検索...",
+    "popularJobs": "人気の仕事",
     "enterJobTitle": "職業タイトルを入力してください",
-    "typeJobTitle": "職業タイトルを入力してください...",
-    "translating": "翻訳中...",
-    "englishTranslation": "英語翻訳：",
-    "manualTranslationPrompt": "職業タイトルを英語でも入力してください：",
-    "englishJobTitle": "英語で職業タイトルを入力",
-    "cancel": "キャンセル",
-    "noJobsFound": "職業が見つかりません。"
+    "jobClassificationNotFound": "職業分類が見つかりません",
+    "selectJob": "職業を選択してください"
   }
 }

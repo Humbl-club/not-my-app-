@@ -77,95 +77,16 @@
     "personalInfo": {"title": "개인정보", "nameSection": {"title": "전체 이름", "description": "여권에 표시된 이름과 정확히 일치하게 입력하세요", "helperText": "이름이 첫 번째 이름 필드에 다 들어가지 않으면 \"추가 이름\" 필드를 사용하세요. 필요하지 않으면 비워두세요."}, "optional": "(선택사항)", "firstName": {"label": "이름 (여권에 기재된 대로)", "placeholder": "이름을 입력하세요"}, "secondNames": {"label": "추가 이름 (여권에 기재된 대로)", "placeholder": "추가 이름이 있으면 입력하세요"}, "lastName": {"label": "성 (여권에 기재된 대로)", "placeholder": "성을 입력하세요"}, "dateOfBirth": {"label": "생년월일", "placeholder": "생년월일을 선택하세요", "helperText": "YYYY-MM-DD 또는 YYYY/MM/DD 형식으로 입력하거나 달력을 사용하세요"}, "nationality": {"label": "국적", "placeholder": "국적을 선택하세요"}, "email": {"label": "이메일 주소", "placeholder": "이메일 주소를 입력하세요"}, "passportNumber": {"label": "여권번호", "placeholder": "여권번호를 입력하세요"}},
     "documents": {"title": "문서 업로드", "subtitle": "여권과 사진을 업로드해주세요", "passport": {"title": "여권 정보 페이지", "uploadTitle": "여권 사진 업로드", "format": "JPG 또는 JPEG 형식만 가능", "chooseFile": "파일 선택", "requirements": {"title": "요구사항:", "readable": "여권 개인정보 페이지의 선명하고 읽기 쉬운 이미지", "visible": "모든 텍스트가 보이고 읽을 수 있어야 함", "noGlare": "반사나 그림자 없음", "format": "JPG 또는 JPEG 형식만 가능"}}, "photo": {"title": "개인 사진", "upload": {"title": "사진 업로드", "format": "JPG 또는 JPEG", "button": "파일 선택"}, "camera": {"title": "사진 촬영", "subtitle": "카메라 사용", "button": "카메라 열기"}, "requirements": {"title": "사진 요구사항:", "background": "단순하고 밝은 배경", "noObjects": "배경에 사람이나 물체 없음", "visibility": "머리, 어깨, 상체가 완전히 보여야 함", "lighting": "그림자나 반사 없는 균일한 조명", "features": "얼굴 특징이 명확히 보여야 함"}}},
     "payment": {"title": "결제", "subtitle": "신청을 제출하려면 결제를 완료하세요", "details": {"title": "결제 정보", "cardholderName": {"label": "카드 소유자 이름 *", "placeholder": "카드 소유자 이름을 입력하세요"}, "cardNumber": {"label": "카드 번호 *", "placeholder": "1234 5678 9012 3456"}, "expiryDate": {"label": "만료일 *", "placeholder": "MM/YY"}, "cvv": {"label": "CVV *", "placeholder": "123"}, "security": "귀하의 결제는 SSL 암호화로 보호되며 신뢰할 수 있는 결제 제공업체를 통해 처리됩니다."}, "summary": {"title": "주문 요약", "application": "영국 ETA 신청", "serviceFee": "서비스 수수료", "vat": "부가세 (20%)", "total": "총액", "sslSecured": "SSL 보안 결제", "moneyBack": "환불 보장"}, "complete": "결제 완료"},
-      "address": {
-        "title": "주소",
-      "sameAsMain": "주 신청자와 동일",
-      "usingMain": "주 신청자의 주소 사용",
-      "sameAsPassport": {
-        "label": "여권과 동일한 주소 사용",
-        "description": "주소가 여권과 일치하는 경우 이것을 선택하세요"
-      },
-      "extracting": "주소 추출 중...",
-      "line1": { "label": "주소 1" },
-      "line2": { "label": "주소 2 (선택 사항)" },
-      "line3": { "label": "주소 3 (선택 사항)" },
-      "city": { "label": "도시" },
-      "country": { "label": "국가", "placeholder": "국가 선택" },
-      "postalCode": { "label": "우편번호" },
-      "upload": {
-        "title": "문서 업로드",
-        "uploading": "업로드 중...",
-        "success": "파일이 성공적으로 업로드되었습니다",
-        "select": "파일 선택",
-        "replace": "다른 파일 업로드",
-        "requirements": "JPG 또는 PNG, 최대 5MB"
-      },
-      "passport": {
-        "upload": {
-          "title": "여권 사진 업로드",
-          "description": "드래그 앤 드롭하거나 클릭하여 파일을 선택하세요"
-        },
-        "preview": {
-          "alt": "여권 사진 미리보기"
-        },
-        "requirements": {
-          "title": "요구사항:",
-          "format": "선명하고 고품질의 JPG 또는 PNG 형식",
-          "size": "5MB 미만의 파일 크기",
-          "pages": "여권의 메인 정보 페이지 표시",
-          "readable": "모든 텍스트가 명확하게 읽을 수 있어야 함"
-        }
-      },
-      "personal": {
-        "upload": {
-          "title": "개인 사진 업로드",
-          "description": "드래그 앤 드롭하거나 클릭하여 파일을 선택하세요"
-        },
-        "preview": {
-          "alt": "개인 사진 미리보기"
-        },
-        "requirements": {
-          "title": "요구사항:",
-          "format": "선명하고 고품질의 JPG 또는 PNG 형식",
-          "size": "5MB 미만의 파일 크기",
-          "recent": "최근 사진 (지난 6개월 이내 촬영)",
-          "quality": "얼굴 특징이 선명한 좋은 조명"
-        }
-      },
-      "passportPhoto": { "title": "여권 사진", "upload": "여권 사진 업로드", "requirements": "여권 개인정보 페이지의 선명한 이미지" },
-      "personalPhoto": { "title": "개인 사진", "upload": "개인 사진 업로드", "camera": "카메라로 사진 찍기", "requirements": "단순한 배경의 최근 사진" }
+    "mainApplicant": "주 신청자",
+    "mainApplicantDocuments": "주 신청자 서류",
+    "documentsFor": "{{name}}의 서류",
+    "applicant": "신청자 {{number}}",
+    "additionalNationalities": {
+      "label": "추가 국적이 있습니까?",
+      "description": "복수 국적을 가지고 있다면 선택하세요",
+      "addButton": "국적 추가"
     },
-        "line1": { "label": "주소 1" },
-        "line2": { "label": "주소 2 (선택 사항)" },
-        "city": { "label": "도시" },
-        "state": { "label": "주/도" },
-        "postalCode": { "label": "우편번호" },
-        "country": { "label": "국가", "placeholder": "국가 선택" },
-        "usingMain": "주 신청자의 주소 사용"
-      },
-      "employment": {
-        "hasJob": { "label": "직업이 있으신가요?" },
-        "jobTitle": { "label": "직업은 무엇인가요?", "placeholder": "직함을 입력하세요" }
-      },
-      "security": {
-        "criminalConvictions": { "label": "형사 처벌을 받은 적이 있습니까?" },
-        "warCrimes": { "label": "전쟁범죄, 테러, 극단주의로 의심받거나 유죄 판결을 받은 적이 있습니까?" }
-      },
-      "email": {
-        "sameAsMain": "주 신청자와 동일",
-        "usingMain": "주 신청자의 이메일 주소 사용"
-      },
-      "mainApplicant": "주 신청자",
-      "mainApplicantDocuments": "주 신청자 서류",
-      "documentsFor": "{{name}}의 서류",
-      "applicant": "신청자 {{number}}",
-      "additionalNationalities": {
-        "label": "추가 국적이 있습니까?",
-        "description": "복수 국적을 가지고 있다면 선택하세요",
-        "addButton": "국적 추가"
-      },
-      "options": { "yes": "예", "no": "아니오" }
-    },
+    "options": { "yes": "예", "no": "아니오" },
     "address": {
       "title": "주소",
       "sameAsMain": "주 신청자와 동일",
@@ -256,12 +177,7 @@
     "searchPlaceholder": "직업 검색...",
     "popularJobs": "인기 직업",
     "enterJobTitle": "직업 제목을 입력하세요",
-    "typeJobTitle": "직업 제목을 입력하세요...",
-    "translating": "번역 중...",
-    "englishTranslation": "영어 번역:",
-    "manualTranslationPrompt": "직업 제목을 영어로도 입력해주세요:",
-    "englishJobTitle": "영어로 직업 제목 입력",
-    "cancel": "취소",
-    "noJobsFound": "직업을 찾을 수 없습니다."
+    "jobClassificationNotFound": "직업 분류를 찾을 수 없습니다",
+    "selectJob": "직업을 선택하세요"
   }
 }
