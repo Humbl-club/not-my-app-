@@ -1,8 +1,12 @@
 import { useTranslation } from 'react-i18next';
+import { DataManager } from '@/utils/dataManager';
+import { toast } from 'sonner';
+import { useAutoSave } from '@/hooks/useAutoSave';
+import { useFormCompletion } from '@/hooks/useFormCompletion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { ArrowLeft, ArrowRight, Plus, Minus } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Plus, Minus, Save } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { z } from 'zod';
 import { useEffect, useState, useMemo } from 'react';
@@ -23,6 +27,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { nationalities } from '@/constants/nationalities';
 import { FormValidationStatus } from '@/components/FormValidationStatus';
 import { FieldStatusIndicator } from '@/components/FieldStatusIndicator';
+import { SimpleSaveButton } from '@/components/SimpleSaveButton';
 import { cn } from '@/lib/utils';
 
 const ApplicantForm = () => {
@@ -60,30 +65,10 @@ const ApplicantForm = () => {
   // Load passport data for address extraction
   useEffect(() => {
     if (id) {
-      try {
-        const applicantsData = sessionStorage.getItem('application.applicants');
-        if (applicantsData) {
-          const applicants = JSON.parse(applicantsData);
-          let applicantData = null;
-          
-          if (id === 'main' && applicants[0]) {
-            applicantData = applicants[0];
-          } else {
-            const match = id.match(/^applicant-(\d+)$/);
-            if (match) {
-              const applicantNumber = parseInt(match[1]);
-              const applicantIndex = applicantNumber - 1;
-              if (applicants[applicantIndex]) {
-                applicantData = applicants[applicantIndex];
-              }
-            }
-          }
-          
-          if (applicantData?.passportPhoto) {
-            setPassportData({ photo: applicantData.passportPhoto });
-          }
-        }
-      } catch {}
+      const applicantData = DataManager.getApplicant(id);
+      if (applicantData?.passportPhoto) {
+        setPassportData({ photo: applicantData.passportPhoto });
+      }
     }
   }, [id]);
 
@@ -195,28 +180,10 @@ const ApplicantForm = () => {
   useEffect(() => {
     if (!id) return;
     
-    try {
-      const applicantsData = sessionStorage.getItem('application.applicants');
-      if (applicantsData) {
-        const applicants = JSON.parse(applicantsData);
-        if (id === 'main') {
-          // Load main applicant
-          if (applicants[0]) {
-            setExistingData(applicants[0]);
-          }
-        } else {
-          // Load additional applicant
-          const match = id.match(/^applicant-(\d+)$/);
-          if (match) {
-            const applicantNumber = parseInt(match[1]);
-            const applicantIndex = applicantNumber - 1; // Convert to 0-based index
-            if (applicants[applicantIndex]) {
-              setExistingData(applicants[applicantIndex]);
-            }
-          }
-        }
-      }
-    } catch {}
+    const applicantData = DataManager.getApplicant(id);
+    if (applicantData) {
+      setExistingData(applicantData);
+    }
   }, [id]);
 
   const form = useForm<ApplicantValues>({
@@ -251,70 +218,37 @@ const ApplicantForm = () => {
   // Watch form state for validation feedback
   const formState = form.formState;
   const formValues = form.watch();
+
+  // Auto-save functionality
+  const { saveNow } = useAutoSave({
+    applicantId: id || '1',
+    form,
+    interval: 30000, // 30 seconds
+    showToast: true
+  });
+
+  // Form completion tracking
+  const requiredFields = [
+    'firstName', 'lastName', 'dateOfBirth', 'nationality', 'email',
+    'passportNumber', 'hasJob', 'hasCriminalConvictions', 'hasWarCrimesConvictions'
+  ];
+
+  const optionalFields = [
+    'secondNames', 'address.line2', 'address.line3'
+  ];
+
+  const completion = useFormCompletion({
+    form,
+    requiredFields,
+    optionalFields
+  });
   
   // Simplified validation - use React Hook Form's built-in validation
   const isFormValid = formState.isValid;
   
-  // Enhanced debug logging
-  console.log('CONTINUE BUTTON DEBUG:', {
-    isFormValid,
-    formStateValid: formState.isValid,
-    hasErrors: Object.keys(formState.errors).length > 0,
-    errors: formState.errors,
-    isDirty: formState.isDirty,
-    isSubmitted: formState.isSubmitted,
-    radioValues: {
-      hasJob: formValues.hasJob,
-      hasCriminalConvictions: formValues.hasCriminalConvictions,
-      hasWarCrimesConvictions: formValues.hasWarCrimesConvictions
-    },
-    addressStates: {
-      useSameAsPrimary: formValues.useSameAddressAsPrimary,
-      useSameAsPassport: formValues.useSameAddressAsPassport,
-      addressLine1: formValues.address?.line1,
-      addressCity: formValues.address?.city
-    },
-    requiredFields: {
-      firstName: !!formValues.firstName?.trim(),
-      lastName: !!formValues.lastName?.trim(),
-      dateOfBirth: !!formValues.dateOfBirth?.trim(),
-      nationality: !!formValues.nationality?.trim(),
-      email: !!formValues.email?.trim(),
-      passportNumber: !!formValues.passportNumber?.trim()
-    },
-    jobTitle: formValues.jobTitle
-  });
   
-  // Calculate completion percentage
-  const calculateCompletion = () => {
-    const fields = [
-      'firstName', 'lastName', 'dateOfBirth', 'nationality', 'email', 
-      'passportNumber', 'hasJob', 'hasCriminalConvictions', 'hasWarCrimesConvictions'
-    ];
-    
-    // Address fields only required if not using same as primary or passport
-    const addressFields = (formValues.useSameAddressAsPrimary || formValues.useSameAddressAsPassport) 
-      ? [] 
-      : ['address.line1', 'address.city', 'address.country', 'address.postalCode'];
-    
-    // Job fields only required if user has a job
-    const jobFields = formValues.hasJob === 'yes' 
-      ? [(formValues.jobTitle?.titleOriginal || formValues.jobTitle?.titleEnglish) ? 'jobTitle' : null].filter(Boolean)
-      : [];
-    
-    const allFields = [...fields, ...addressFields, ...jobFields];
-    const completedFields = allFields.filter(field => {
-      if (!field) return false;
-      const value = field.includes('.') 
-        ? field.split('.').reduce((obj, key) => obj?.[key], formValues)
-        : formValues[field as keyof typeof formValues];
-      return value && value !== '' && value !== undefined;
-    });
-    
-    return Math.round((completedFields.length / allFields.length) * 100);
-  };
-  
-  const completionPercentage = calculateCompletion();
+  // Use completion from the hook
+  const completionPercentage = completion.percentage;
 
   // Watch checkbox values for reactive updates
   const useSameEmail = useWatch({ control: form.control, name: 'useSameEmailAsPrimary' });
@@ -360,47 +294,22 @@ const ApplicantForm = () => {
   const handleSubmit = async (values: ApplicantValues) => {
     if (!id) return;
     
-    try {
-      // Get existing applicants
-      const existingApplicants = JSON.parse(sessionStorage.getItem('application.applicants') || '[]');
-      
-      if (id === 'main') {
-        // Update main applicant (index 0)
-        existingApplicants[0] = values;
-      } else {
-        // Update additional applicant
-        const match = id.match(/^applicant-(\d+)$/);
-        if (match) {
-          const applicantNumber = parseInt(match[1]);
-          const applicantIndex = applicantNumber - 1; // Convert to 0-based index
-          
-          // Ensure array is large enough
-          while (existingApplicants.length <= applicantIndex) {
-            existingApplicants.push({});
-          }
-          existingApplicants[applicantIndex] = values;
-        }
-      }
-      
-      sessionStorage.setItem('application.applicants', JSON.stringify(existingApplicants));
-    } catch {}
+    // Save applicant data using DataManager
+    DataManager.updateApplicant(id, values);
     
+    // Navigate to documents page
     navigate(`/application/applicant/${id}/documents`);
   };
 
   // Parse applicant number with validation
   const getApplicantNumber = (applicantId: string | undefined): number => {
-    if (!applicantId || applicantId === 'main') return 1;
-    const match = applicantId.match(/^applicant-(\d+)$/);
-    if (match) {
-      const num = parseInt(match[1]);
-      return isNaN(num) ? 2 : num;
-    }
-    return 2; // fallback
+    if (!applicantId) return 1;
+    const num = parseInt(applicantId);
+    return isNaN(num) ? 1 : num;
   };
   
   const applicantNumber = getApplicantNumber(id);
-  const isMainApplicant = id === 'main';
+  const isMainApplicant = id === '1';
 
   return (
     <div className="min-h-screen bg-background">
@@ -410,9 +319,13 @@ const ApplicantForm = () => {
           <div className="mb-8">
             <div className="flex justify-between items-center mb-2">
               <span className="text-sm font-medium">{t('application.progress.step', { current: 2, total: 4 })}</span>
-              <span className="text-sm text-muted-foreground">{t('application.progress.complete', { percent: completionPercentage })}</span>
+              <span className="text-sm text-muted-foreground">{completionPercentage}% complete</span>
             </div>
             <Progress value={completionPercentage} className="h-2" />
+            <div className="flex justify-between items-center mt-2">
+              <span className="text-sm text-primary font-medium">{completion.motivationalMessage}</span>
+              <span className="text-xs text-muted-foreground">Auto-saves every 30 seconds</span>
+            </div>
           </div>
 
           {/* Header */}
@@ -824,17 +737,21 @@ const ApplicantForm = () => {
                        <ArrowLeft className="h-4 w-4" />
                        {t('application.back')}
                      </Button>
-                     <Button 
-                       type="submit" 
-                       disabled={!isFormValid}
-                       className={cn(
-                         "flex items-center gap-2",
-                         !isFormValid && "opacity-50 cursor-not-allowed"
-                       )}
-                     >
-                       {t('application.continue')}
-                       <ArrowRight className="h-4 w-4" />
-                     </Button>
+                     
+                     <div className="flex gap-3">
+                       <SimpleSaveButton currentStep={`applicant-${id}-personal-info`} />
+                       <Button 
+                         type="submit" 
+                         disabled={!isFormValid}
+                         className={cn(
+                           "flex items-center gap-2",
+                           !isFormValid && "opacity-50 cursor-not-allowed"
+                         )}
+                       >
+                         {t('application.continue')}
+                         <ArrowRight className="h-4 w-4" />
+                       </Button>
+                     </div>
                    </div>
                 </form>
               </Form>

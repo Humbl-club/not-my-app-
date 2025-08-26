@@ -224,7 +224,11 @@
       "description": "اختر هذا إذا كان لديك أكثر من جنسية",
       "addButton": "إضافة جنسية"
     },
-    "options": { "yes": "نعم", "no": "لا" }
+    "options": { "yes": "نعم", "no": "لا" },
+    "applicant": {
+      "main": "مقدم الطلب الرئيسي",
+      "title": "مقدم الطلب {{num}}"
+    }
   },
   "validation": {
     "email": {

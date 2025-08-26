@@ -221,7 +221,11 @@
       "description": "Wählen Sie dies aus, wenn Sie mehrere Staatsbürgerschaften besitzen",
       "addButton": "Staatsangehörigkeit hinzufügen"
     },
-    "options": { "yes": "Ja", "no": "Nein" }
+    "options": { "yes": "Ja", "no": "Nein" },
+    "applicant": {
+      "main": "Hauptantragsteller",
+      "title": "Antragsteller {{num}}"
+    }
   },
   "validation": {
     "email": {

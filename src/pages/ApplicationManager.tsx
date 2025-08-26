@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, UserPlus, Edit, Trash2, Check, X } from 'lucide-
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
+import { DataManager } from '@/utils/dataManager';
 
 interface Applicant {
   id: string;
@@ -27,75 +28,32 @@ const ApplicationManager = () => {
 
   // Load applicant data from sessionStorage
   useEffect(() => {
-    try {
-      // Load from new unified structure
-      const applicantsData = sessionStorage.getItem('application.applicants');
-      if (applicantsData) {
-        const parsedApplicants = JSON.parse(applicantsData);
-        const mappedApplicants = parsedApplicants.map((applicant: any, index: number) => ({
-          id: index === 0 ? 'main' : `applicant-${index + 1}`,
-          role: index === 0 ? 'main' : 'additional',
-          firstName: applicant.firstName || '',
-          lastName: applicant.lastName || '',
-          personalInfoComplete: !!(applicant.firstName && applicant.lastName && applicant.email && applicant.passportNumber),
-          documentsComplete: !!(applicant.passportPhoto && applicant.personalPhoto)
-        }));
-        setApplicants(mappedApplicants);
-        return;
-      }
-
-      // Fallback: Load from legacy structure and migrate
-      const mainApplicantData = sessionStorage.getItem('application.primaryApplicant');
-      const secondApplicantData = sessionStorage.getItem('application.secondApplicant');
-      
-      const legacyApplicants: Applicant[] = [];
-      
-      if (mainApplicantData) {
-        const mainApplicant = JSON.parse(mainApplicantData);
-        legacyApplicants.push({
-          id: 'main',
-          role: 'main',
-          firstName: mainApplicant.firstName || '',
-          lastName: mainApplicant.lastName || '',
-          personalInfoComplete: !!(mainApplicant.firstName && mainApplicant.lastName && mainApplicant.email && mainApplicant.passportNumber),
-          documentsComplete: !!(mainApplicant.passportPhoto && mainApplicant.personalPhoto)
-        });
-      } else {
-        // Create empty main applicant
-        legacyApplicants.push({
-          id: 'main',
-          role: 'main',
-          firstName: '',
-          lastName: '',
-          personalInfoComplete: false,
-          documentsComplete: false
-        });
-      }
-
-      if (secondApplicantData) {
-        const secondApplicant = JSON.parse(secondApplicantData);
-        legacyApplicants.push({
-          id: 'applicant-2',
-          role: 'additional',
-          firstName: secondApplicant.firstName || '',
-          lastName: secondApplicant.lastName || '',
-          personalInfoComplete: !!(secondApplicant.firstName && secondApplicant.lastName && secondApplicant.email && secondApplicant.passportNumber),
-          documentsComplete: !!(secondApplicant.passportPhoto && secondApplicant.personalPhoto)
-        });
-      }
-
-      setApplicants(legacyApplicants);
-    } catch (error) {
-      // Create default main applicant if no data exists
+    const applicantsData = DataManager.getApplicants();
+    
+    // If no applicants exist, create default main applicant
+    if (applicantsData.length === 0) {
       setApplicants([{
-        id: 'main',
+        id: '1',
         role: 'main',
         firstName: '',
         lastName: '',
         personalInfoComplete: false,
         documentsComplete: false
       }]);
+      return;
     }
+    
+    // Map applicants data to UI format
+    const mappedApplicants = applicantsData.map((applicant, index) => ({
+      id: (index + 1).toString(),
+      role: index === 0 ? 'main' as const : 'additional' as const,
+      firstName: applicant.firstName || '',
+      lastName: applicant.lastName || '',
+      personalInfoComplete: DataManager.hasCompletePersonalInfo((index + 1).toString()),
+      documentsComplete: DataManager.hasCompleteDocuments((index + 1).toString())
+    }));
+    
+    setApplicants(mappedApplicants);
   }, []);
 
   const totalApplicants = applicants.length;
@@ -105,7 +63,7 @@ const ApplicationManager = () => {
 
   const handleAddApplicant = () => {
     if (applicants.length < maxApplicants) {
-      const newId = `applicant-${applicants.length + 1}`;
+      const newId = (applicants.length + 1).toString();
       navigate(`/application/applicant/${newId}`);
     }
   };
@@ -115,7 +73,7 @@ const ApplicationManager = () => {
   };
 
   const handleRemoveApplicant = (applicantId: string) => {
-    if (applicantId === 'main') return; // Cannot remove main applicant
+    if (applicantId === '1') return; // Cannot remove main applicant
     
     const updatedApplicants = applicants.filter(a => a.id !== applicantId);
     
@@ -124,7 +82,7 @@ const ApplicationManager = () => {
       if (applicant.role === 'main') return applicant;
       return {
         ...applicant,
-        id: `applicant-${index + 1}`
+        id: (index + 1).toString()
       };
     });
     
@@ -135,7 +93,7 @@ const ApplicationManager = () => {
       const applicantsData = sessionStorage.getItem('application.applicants');
       if (applicantsData) {
         const allApplicants = JSON.parse(applicantsData);
-        const applicantIndex = applicantId === 'main' ? 0 : parseInt(applicantId.replace('applicant-', '')) - 1;
+        const applicantIndex = parseInt(applicantId) - 1;
         if (applicantIndex >= 0 && applicantIndex < allApplicants.length) {
           allApplicants.splice(applicantIndex, 1);
           sessionStorage.setItem('application.applicants', JSON.stringify(allApplicants));

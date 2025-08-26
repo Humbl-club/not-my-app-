@@ -2,15 +2,13 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { ArrowLeft, ArrowRight, CreditCard, Shield, Lock, Plus } from 'lucide-react';
+import { ArrowLeft, Plus, Users, Calculator, Banknote, Shield } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Checkbox } from '@/components/ui/checkbox';
 import { useEffect, useState } from 'react';
+import { DataManager } from '@/utils/dataManager';
+import { PaymentService, PaymentDetails } from '@/services/paymentService';
+import { StripeWrapper } from '@/components/StripeWrapper';
+import { StripeCheckout } from '@/components/StripeCheckout';
 
 const Payment = () => {
   const { t } = useTranslation();
@@ -18,78 +16,44 @@ const Payment = () => {
 
   // Track applicants from unified structure
   const [applicants, setApplicants] = useState<any[]>([]);
+  const [paymentDetails, setPaymentDetails] = useState<PaymentDetails | null>(null);
   
   useEffect(() => {
-    try {
-      // Load from new unified structure
-      const applicantsData = sessionStorage.getItem('application.applicants');
-      if (applicantsData) {
-        const parsedApplicants = JSON.parse(applicantsData);
-        setApplicants(parsedApplicants);
-        return;
-      }
-
-      // Fallback: Load from legacy structure
-      const legacyApplicants = [];
-      const mainApplicantData = sessionStorage.getItem('application.primaryApplicant');
-      const secondApplicantData = sessionStorage.getItem('application.secondApplicant');
-      
-      if (mainApplicantData) {
-        legacyApplicants.push(JSON.parse(mainApplicantData));
-      }
-      if (secondApplicantData) {
-        legacyApplicants.push(JSON.parse(secondApplicantData));
-      }
-      
-      setApplicants(legacyApplicants);
-    } catch {
-      setApplicants([]);
-    }
+    const applicantsData = DataManager.getApplicants();
+    setApplicants(applicantsData);
+    
+    // Calculate payment details
+    const numberOfApplicants = Math.max(1, applicantsData.length);
+    const payment = PaymentService.calculatePayment(numberOfApplicants);
+    setPaymentDetails(payment);
   }, []);
-
-  const paymentSchema = z.object({
-    cardholderName: z.string().min(1, 'Cardholder name is required'),
-    cardNumber: z.string().min(16, 'Card number must be at least 16 digits').max(19, 'Card number is too long'),
-    expiryDate: z.string().min(5, 'Expiry date is required (MM/YY)').regex(/^\d{2}\/\d{2}$/, 'Use MM/YY format'),
-    cvv: z.string().min(3, 'CVV must be at least 3 digits').max(4, 'CVV is too long'),
-    acceptTerms: z.boolean().refine((val) => val === true, 'You must accept the terms and conditions'),
-  });
-
-  type PaymentValues = z.infer<typeof paymentSchema>;
-
-  const form = useForm<PaymentValues>({
-    resolver: zodResolver(paymentSchema),
-    mode: 'onChange',
-    defaultValues: {
-      cardholderName: '',
-      cardNumber: '',
-      expiryDate: '',
-      cvv: '',
-      acceptTerms: false,
-    },
-  });
 
   const handleAddApplicant = () => {
     navigate('/application/manage');
   };
 
-  const handleSubmit = async (values: PaymentValues) => {
-    // Process payment here
-    navigate('/application/confirmation');
+  const handlePaymentSuccess = (referenceNumber: string) => {
+    // Payment successful, navigate to confirmation
+    navigate('/application/confirmation', { 
+      state: { referenceNumber } 
+    });
   };
 
-  // Dynamic fee calculation for 1-8 applicants
-  const numberOfApplicants = Math.max(1, applicants.length);
-  const governmentFee = 16.00; // £16.00 per applicant (government fee)
-  const mainAdminFee = 36.00; // £36.00 main admin fee for first applicant
-  const additionalAdminFee = 26.00; // £26.00 per additional applicant
-  
-  // Calculate fees
-  const totalGovernmentFees = governmentFee * numberOfApplicants;
-  const totalAdminFees = mainAdminFee + (additionalAdminFee * Math.max(0, numberOfApplicants - 1));
-  const subtotal = totalGovernmentFees + totalAdminFees;
-  const vat = subtotal * 0.2; // 20% VAT
-  const total = subtotal + vat;
+  const handlePaymentError = (error: string) => {
+    console.error('Payment error:', error);
+    // Handle payment error (could show toast notification)
+  };
+
+  if (!paymentDetails) {
+    return (
+      <div className="min-h-screen bg-gradient-subtle flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Loading payment details...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
@@ -115,132 +79,23 @@ const Payment = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Payment Form */}
-            <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-border/30 shadow-card hover:shadow-form transition-all duration-500">
-              <CardHeader className="pb-8">
-                <CardTitle className="flex items-center gap-3 text-2xl font-light text-foreground">
-                  <CreditCard className="h-6 w-6 text-primary" />
-                  {t('application.payment.details.title')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6" noValidate>
-                    <FormField control={form.control} name="cardholderName" render={({ field, fieldState }) => (
-                      <FormItem>
-                        <FormLabel>{t('application.payment.details.cardholderName.label')}</FormLabel>
-                        <FormControl>
-                          <Input 
-                            {...field} 
-                            placeholder={t('application.payment.details.cardholderName.placeholder')} 
-                            aria-invalid={!!fieldState.error} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )} />
-
-                    <FormField control={form.control} name="cardNumber" render={({ field, fieldState }) => (
-                      <FormItem>
-                        <FormLabel>{t('application.payment.details.cardNumber.label')}</FormLabel>
-                        <FormControl>
-                          <Input 
-                            {...field} 
-                            placeholder={t('application.payment.details.cardNumber.placeholder')} 
-                            maxLength={19}
-                            onChange={(e) => {
-                              // Format card number with spaces
-                              let value = e.target.value.replace(/\s/g, '').replace(/\D/g, '');
-                              value = value.replace(/(\d{4})/g, '$1 ').trim();
-                              field.onChange(value);
-                            }}
-                            aria-invalid={!!fieldState.error} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )} />
-
-                    <div className="grid grid-cols-2 gap-4">
-                      <FormField control={form.control} name="expiryDate" render={({ field, fieldState }) => (
-                        <FormItem>
-                          <FormLabel>{t('application.payment.details.expiryDate.label')}</FormLabel>
-                          <FormControl>
-                            <Input 
-                              {...field} 
-                              placeholder={t('application.payment.details.expiryDate.placeholder')} 
-                              maxLength={5}
-                              onChange={(e) => {
-                                let value = e.target.value.replace(/\D/g, '');
-                                if (value.length >= 2) {
-                                  value = value.substring(0, 2) + '/' + value.substring(2, 4);
-                                }
-                                field.onChange(value);
-                              }}
-                              aria-invalid={!!fieldState.error} 
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-
-                      <FormField control={form.control} name="cvv" render={({ field, fieldState }) => (
-                        <FormItem>
-                          <FormLabel>{t('application.payment.details.cvv.label')}</FormLabel>
-                          <FormControl>
-                            <Input 
-                              {...field} 
-                              placeholder={t('application.payment.details.cvv.placeholder')} 
-                              maxLength={4}
-                              onChange={(e) => {
-                                const value = e.target.value.replace(/\D/g, '');
-                                field.onChange(value);
-                              }}
-                              aria-invalid={!!fieldState.error} 
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                    </div>
-
-                    <FormField control={form.control} name="acceptTerms" render={({ field }) => (
-                      <FormItem>
-                        <div className="flex items-center gap-2">
-                          <Checkbox 
-                            id="acceptTerms" 
-                            checked={!!field.value} 
-                            onCheckedChange={field.onChange}
-                          />
-                          <label htmlFor="acceptTerms" className="text-sm">
-                            I accept the <a href="/terms" className="text-primary underline">terms and conditions</a> and <a href="/privacy" className="text-primary underline">privacy policy</a>
-                          </label>
-                        </div>
-                        <FormMessage />
-                      </FormItem>
-                    )} />
-
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Shield className="h-4 w-4" />
-                      <span>{t('application.payment.details.security')}</span>
-                    </div>
-
-                    <Button type="submit" className="w-full bg-gradient-to-r from-primary to-turquoise text-white rounded-full px-8 py-4 hover:shadow-lg transition-all duration-300" size="lg">
-                      <Lock className="h-5 w-5 mr-2" />
-                      {t('application.payment.complete')}
-                    </Button>
-                  </form>
-                </Form>
-              </CardContent>
-            </Card>
+            {/* Stripe Payment Form */}
+            <StripeWrapper>
+              <StripeCheckout 
+                paymentDetails={paymentDetails}
+                onSuccess={handlePaymentSuccess}
+                onError={handlePaymentError}
+              />
+            </StripeWrapper>
 
             {/* Order Summary */}
             <div className="space-y-8">
               {/* Applicants Summary */}
               <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-border/30 shadow-card">
                 <CardHeader className="pb-6">
-                  <CardTitle className="text-xl font-light text-foreground">
-                    Application Summary ({numberOfApplicants} {numberOfApplicants === 1 ? 'applicant' : 'applicants'})
+                  <CardTitle className="flex items-center gap-3 text-xl font-light text-foreground">
+                    <Users className="h-5 w-5 text-primary" />
+                    Application Summary ({paymentDetails.numberOfApplicants} {paymentDetails.numberOfApplicants === 1 ? 'applicant' : 'applicants'})
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -261,7 +116,7 @@ const Payment = () => {
                       </div>
                     ))}
                     
-                    {numberOfApplicants < 8 && (
+                    {paymentDetails.numberOfApplicants < 8 && (
                       <div className="text-center py-4 border-t">
                         <p className="text-muted-foreground mb-4">
                           Add more applicants to this application
@@ -283,39 +138,35 @@ const Payment = () => {
               {/* Fee Breakdown */}
               <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-border/30 shadow-card">
                 <CardHeader className="pb-6">
-                  <CardTitle className="text-xl font-light text-foreground">{t('application.payment.summary.title')}</CardTitle>
+                  <CardTitle className="flex items-center gap-3 text-xl font-light text-foreground">
+                    <Banknote className="h-5 w-5 text-primary" />
+                    {t('application.payment.summary.title')}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex justify-between">
-                    <span>Government fees ({numberOfApplicants} × £{governmentFee.toFixed(2)})</span>
-                    <span>£{totalGovernmentFees.toFixed(2)}</span>
+                    <span>Government fees ({paymentDetails.numberOfApplicants} × £16.00)</span>
+                    <span>£{paymentDetails.governmentFee.toFixed(2)}</span>
                   </div>
                   
                   <div className="flex justify-between">
-                    <span>Main applicant admin fee</span>
-                    <span>£{mainAdminFee.toFixed(2)}</span>
+                    <span>Service fee</span>
+                    <span>£{paymentDetails.adminFee.toFixed(2)}</span>
                   </div>
-                  
-                  {numberOfApplicants > 1 && (
-                    <div className="flex justify-between">
-                      <span>Additional applicants ({numberOfApplicants - 1} × £{additionalAdminFee.toFixed(2)})</span>
-                      <span>£{(additionalAdminFee * (numberOfApplicants - 1)).toFixed(2)}</span>
-                    </div>
-                  )}
                   
                   <div className="flex justify-between text-sm text-muted-foreground">
                     <span>{t('application.payment.summary.vat')}</span>
-                    <span>£{vat.toFixed(2)}</span>
+                    <span>£{paymentDetails.vat.toFixed(2)}</span>
                   </div>
                   
                   <div className="border-t pt-4">
                     <div className="flex justify-between font-bold text-lg">
                       <span>{t('application.payment.summary.total')}</span>
-                      <span>£{total.toFixed(2)}</span>
+                      <span>£{paymentDetails.total.toFixed(2)}</span>
                     </div>
                   </div>
                   
-                  <div className="space-y-2 text-sm text-muted-foreground">
+                  <div className="space-y-2 text-sm text-muted-foreground mt-6">
                     <div className="flex items-center gap-2">
                       <Shield className="h-4 w-4" />
                       <span>{t('application.payment.summary.sslSecured')}</span>
@@ -334,7 +185,7 @@ const Payment = () => {
           <div className="flex justify-between mt-16">
             <Button 
               variant="outline" 
-              onClick={() => navigate('/application/manage')}
+              onClick={() => navigate('/application/review')}
               className="flex items-center gap-2 rounded-full px-8 py-3 border-border/50 hover:bg-muted/50"
             >
               <ArrowLeft className="h-4 w-4" />

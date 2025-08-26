@@ -233,7 +233,11 @@
         "description": "Select this if you hold multiple citizenships",
         "addButton": "Add Nationality"
       },
-      "options": { "yes": "Yes", "no": "No" }
+      "options": { "yes": "Yes", "no": "No" },
+    "applicant": {
+      "main": "Main Applicant",
+      "title": "Applicant {{num}}"
+    }
     },
   "validation": {
     "email": {

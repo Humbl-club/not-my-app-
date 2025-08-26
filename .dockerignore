@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+
+# Development files
+.env.local
+.env.development
+
+# Build outputs
+dist/
+build/
+
+# Frontend files (not needed for backend)
+src/components/
+src/pages/
+src/hooks/
+public/
+index.html
+vite.config.ts
+
+# Development tools
+.git/
+.gitignore
+README.md
+*.md
+.vscode/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Test files
+test/
+tests/
+*.test.js

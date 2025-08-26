@@ -224,7 +224,11 @@
       "description": "如果您拥有多重国籍，请选择此项",
       "addButton": "添加国籍"
     },
-    "options": { "yes": "是", "no": "否" }
+    "options": { "yes": "是", "no": "否" },
+    "applicant": {
+      "main": "主申请人",
+      "title": "申请人 {{num}}"
+    }
   },
   "validation": {
     "email": {

@@ -3,10 +3,39 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, ArrowRight, Clock, Users, Globe, Plane } from 'lucide-react';
+import { DataManager } from '@/utils/dataManager';
 
 export const HeroSection = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  
+  const hasSavedApplication = DataManager.hasSavedApplication();
+  
+  const handleStartApplication = () => {
+    if (hasSavedApplication) {
+      // If there's a saved application, ask user what they want to do
+      const progress = DataManager.getApplicationProgress();
+      if (progress) {
+        switch (progress.step) {
+          case 1:
+            navigate(`/application/applicant/${progress.applicantId}`);
+            break;
+          case 2:
+            navigate(`/application/applicant/${progress.applicantId}/documents`);
+            break;
+          case 3:
+            navigate('/application/review');
+            break;
+          default:
+            navigate('/application');
+        }
+        return;
+      }
+    }
+    
+    // No saved application, start fresh
+    navigate('/application');
+  };
   
   return (
     <section className="relative bg-gradient-to-br from-primary to-turquoise text-white min-h-[85vh] flex items-center">
@@ -43,9 +72,9 @@ export const HeroSection = () => {
             <Button 
               size="xl" 
               className="bg-white text-primary hover:bg-white/95 shadow-2xl hover:shadow-3xl transition-all duration-500 font-semibold text-xl px-16 py-6 rounded-full hover:scale-105"
-              onClick={() => navigate('/application')}
+              onClick={handleStartApplication}
             >
-              {t('hero.startApplication')}
+              {hasSavedApplication ? 'Continue Application' : t('hero.startApplication')}
               <ArrowRight className="ml-4 h-6 w-6" />
             </Button>
           </div>

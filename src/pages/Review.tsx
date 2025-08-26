@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { ArrowLeft, AlertTriangle, Edit } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { DataManager } from '@/utils/dataManager';
 
 const Review = () => {
   const navigate = useNavigate();
@@ -31,20 +32,7 @@ const Review = () => {
   }, [t]);
 
   const applicants = useMemo(() => {
-    try { 
-      const stored = sessionStorage.getItem('application.applicants');
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        return Array.isArray(parsed) ? parsed.filter(Boolean) : [];
-      }
-      // Fallback to legacy structure for migration
-      const primary = JSON.parse(sessionStorage.getItem('application.primaryApplicant') || 'null');
-      const second = JSON.parse(sessionStorage.getItem('application.secondApplicant') || 'null');
-      return [primary, second].filter(Boolean);
-    } catch (error) { 
-      console.error('Error parsing applicant data:', error);
-      return []; 
-    }
+    return DataManager.getApplicants();
   }, []);
 
   const hasValidData = useMemo(() => {
@@ -111,7 +99,7 @@ const Review = () => {
                       variant="outline" 
                       size="sm" 
                       className="flex items-center gap-2"
-                      onClick={() => navigate(`/application/applicant/${index === 0 ? 'main' : index + 1}`)}
+                      onClick={() => navigate(`/application/applicant/${index + 1}`)}
                     >
                       <Edit className="h-4 w-4" />
                       {t('review.summary.editButton')}

@@ -87,6 +87,10 @@
       "addButton": "국적 추가"
     },
     "options": { "yes": "예", "no": "아니오" },
+    "applicant": {
+      "main": "주 신청자",
+      "title": "신청자 {{num}}"
+    },
     "address": {
       "title": "주소",
       "sameAsMain": "주 신청자와 동일",

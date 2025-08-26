@@ -224,7 +224,11 @@
       "description": "Seleziona questo se hai più cittadinanze",
       "addButton": "Aggiungi Nazionalità"
     },
-    "options": { "yes": "Sì", "no": "No" }
+    "options": { "yes": "Sì", "no": "No" },
+    "applicant": {
+      "main": "Richiedente Principale",
+      "title": "Richiedente {{num}}"
+    }
   },
   "validation": {
     "email": {

@@ -9,8 +9,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { SecureDocumentUpload } from "@/components/SecureDocumentUpload";
+import { EnhancedPhotoCapture } from "@/components/EnhancedPhotoCapture";
+import { SimpleSaveButton } from "@/components/SimpleSaveButton";
 import { toast } from "sonner";
+import { DataManager } from "@/utils/dataManager";
 
 const ApplicantDocuments = () => {
   const { t } = useTranslation();
@@ -19,24 +21,19 @@ const ApplicantDocuments = () => {
 
   // Check if applicant data exists
   const [applicant, setApplicant] = useState<any | null>(null);
+  const [photoAnalysisScores, setPhotoAnalysisScores] = useState<{
+    passport?: number;
+    personal?: number;
+  }>({});
+
   useEffect(() => {
     if (!id) return;
     
-    try {
-      const applicantsData = sessionStorage.getItem('application.applicants');
-      if (applicantsData) {
-        const applicants = JSON.parse(applicantsData);
-        const foundApplicant = applicants.find((app: any) => app.id === id);
-        if (foundApplicant) {
-          setApplicant(foundApplicant);
-        } else {
-          // Redirect back if no applicant data
-          navigate(`/application/applicant/${id}`);
-        }
-      } else {
-        navigate(`/application/applicant/${id}`);
-      }
-    } catch {
+    const applicantData = DataManager.getApplicant(id);
+    if (applicantData) {
+      setApplicant(applicantData);
+    } else {
+      // Redirect back if no applicant data
       navigate(`/application/applicant/${id}`);
     }
   }, [navigate, id]);
@@ -47,6 +44,14 @@ const ApplicantDocuments = () => {
   });
 
   type DocumentsValues = z.infer<typeof documentsSchema>;
+
+  const form = useForm<DocumentsValues>({
+    resolver: zodResolver(documentsSchema),
+    defaultValues: {
+      passportPhoto: '',
+      personalPhoto: '',
+    },
+  });
 
   // Load existing document data
   const [existingDocuments, setExistingDocuments] = useState<DocumentsValues | null>(null);
@@ -59,16 +64,7 @@ const ApplicantDocuments = () => {
     }
   }, [applicant]);
 
-  const form = useForm<DocumentsValues>({
-    resolver: zodResolver(documentsSchema),
-    mode: 'onChange',
-    defaultValues: existingDocuments || {
-      passportPhoto: '',
-      personalPhoto: '',
-    },
-  });
-
-  // Update form when existing documents load
+  // Set form values when existing documents are loaded
   useEffect(() => {
     if (existingDocuments) {
       form.setValue('passportPhoto', existingDocuments.passportPhoto);
@@ -76,67 +72,65 @@ const ApplicantDocuments = () => {
     }
   }, [existingDocuments, form]);
 
-  const handleFileUpload = (fieldName: 'passportPhoto' | 'personalPhoto', file: File) => {
-    // In a real application, you would upload the file to a server
-    // For now, we'll just create a mock file URL
-    const mockUrl = `${fieldName}_${Date.now()}.jpg`;
-    form.setValue(fieldName, mockUrl, { shouldValidate: true });
-  };
-
-  const openCamera = (fieldName: 'passportPhoto' | 'personalPhoto') => {
-    // In a real application, you would open the camera
-    // For now, we'll just create a mock camera URL
-    const mockUrl = `camera_${fieldName}_${Date.now()}.jpg`;
-    form.setValue(fieldName, mockUrl, { shouldValidate: true });
-  };
-
-  // Helper function to check if all applicants are complete
-  const areAllApplicantsComplete = (applicants: any[]) => {
-    return applicants.length > 0 && applicants.every(applicant =>
-      // Personal info complete
-      applicant.firstName && applicant.lastName && applicant.email && applicant.passportNumber &&
-      // Documents complete
-      applicant.passportPhoto && applicant.personalPhoto
-    );
+  const handlePhotoCapture = (photoData: string, analysisScore: number, fieldName: 'passportPhoto' | 'personalPhoto') => {
+    // Store the photo data
+    form.setValue(fieldName, photoData, { shouldValidate: true });
+    
+    // Store the analysis score
+    setPhotoAnalysisScores(prev => ({
+      ...prev,
+      [fieldName === 'passportPhoto' ? 'passport' : 'personal']: analysisScore
+    }));
+    
+    // Show feedback based on analysis score
+    if (analysisScore >= 75) {
+      toast.success('Photo quality is excellent! ✓', {
+        description: 'This photo meets all government requirements.'
+      });
+    } else if (analysisScore >= 50) {
+      toast.warning('Photo quality is acceptable', {
+        description: 'The photo may work but consider retaking for best results.'
+      });
+    } else {
+      toast.error('Photo quality needs improvement', {
+        description: 'Please retake the photo following the guidelines.'
+      });
+    }
   };
 
   const handleSubmit = async (values: DocumentsValues) => {
     if (!id) return;
     
-    try {
-      // Get existing applicants
-      const existingApplicants = JSON.parse(sessionStorage.getItem('application.applicants') || '[]');
-      
-      // Find and update the specific applicant
-      const applicantIndex = existingApplicants.findIndex((app: any) => app.id === id);
-      if (applicantIndex >= 0) {
-        existingApplicants[applicantIndex] = {
-          ...existingApplicants[applicantIndex],
-          ...values,
-        };
-        sessionStorage.setItem('application.applicants', JSON.stringify(existingApplicants));
-        
-        // Check if all applicants are now complete
-        if (areAllApplicantsComplete(existingApplicants)) {
-          // All applicants complete - go to review
-          navigate('/application/review');
-        } else {
-          // Still need more completion - go back to manager
-          navigate('/application/manage');
-        }
-      }
-    } catch {
+    // Check photo quality scores
+    const passportScore = photoAnalysisScores.passport || 0;
+    const personalScore = photoAnalysisScores.personal || 0;
+    
+    if (passportScore < 50 || personalScore < 50) {
+      const confirm = window.confirm(
+        'One or more photos have low quality scores. This may result in application delays. Do you want to continue anyway?'
+      );
+      if (!confirm) return;
+    }
+    
+    // Save document data using DataManager
+    DataManager.updateApplicant(id, values);
+    
+    // Check if all applicants are now complete
+    if (DataManager.areAllApplicantsComplete()) {
+      // All applicants complete - go to review
+      navigate('/application/review');
+    } else {
+      // Still need more completion - go back to manager
       navigate('/application/manage');
     }
   };
 
   const getApplicantDisplayInfo = () => {
-    if (id === 'main') {
+    if (id === '1') {
       return { title: t('application.mainApplicant'), subtitle: t('application.mainApplicantDocuments') };
     } else {
       // Parse applicant number with validation
-      const match = id?.match(/^applicant-(\d+)$/);
-      const applicantNumber = match ? parseInt(match[1]) : 2;
+      const applicantNumber = parseInt(id || '2');
       const safeNumber = isNaN(applicantNumber) ? 2 : applicantNumber;
       
       return { 
@@ -147,145 +141,130 @@ const ApplicantDocuments = () => {
   };
 
   if (!applicant) {
-    return <div>Loading...</div>;
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      </div>
+    );
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-3xl mx-auto">
+    <div className="min-h-screen bg-gradient-subtle">
+      <div className="container mx-auto px-6 py-24">
+        <div className="max-w-4xl mx-auto">
           {/* Progress Bar */}
-          <div className="mb-8">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium">{t('application.progress.step', { current: 3, total: 4 })}</span>
-              <span className="text-sm text-muted-foreground">{t('application.progress.complete', { percent: 75 })}</span>
+          <div className="mb-16">
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-sm font-medium text-muted-foreground">
+                {t('application.progress.step', { current: 3, total: 4 })}
+              </span>
+              <span className="text-sm text-muted-foreground">
+                {t('application.progress.complete', { percent: 75 })}
+              </span>
             </div>
-            <Progress value={75} className="h-2" />
+            <Progress value={75} className="h-3 bg-muted/50 [&>[data-state=complete]]:bg-gradient-travel" />
           </div>
 
           {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-2">{getApplicantDisplayInfo().title} {t('application.documents.title')}</h1>
-            <p className="text-muted-foreground">{getApplicantDisplayInfo().subtitle}</p>
+          <div className="text-center mb-16">
+            <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6 tracking-tight">
+              {getApplicantDisplayInfo().title} - {t('application.documents.title')}
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
+              {getApplicantDisplayInfo().subtitle}
+            </p>
+          </div>
+
+          {/* Save & Continue Later Button */}
+          <div className="flex justify-end mb-8">
+            <SimpleSaveButton currentStep={`documents-${id}`} />
           </div>
 
           {/* Document Upload */}
-          <div className="space-y-6">
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6" noValidate>
-                {/* Passport Upload */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>{t('application.documents.passportPhoto.title')}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                     <FormField
-                      control={form.control}
-                      name="passportPhoto"
-                      render={({ field, fieldState }) => (
-                        <FormItem>
-                          <FormControl>
-                            <SecureDocumentUpload
-                              type="passport"
-                              value={field.value}
-                              onChange={field.onChange}
-                              error={fieldState.error?.message}
-                              required={true}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <div className="mt-4 text-sm text-muted-foreground">
-                      <h4 className="font-medium mb-2">{t('application.documents.passport.requirements.title')}</h4>
-                      <ul className="list-disc list-inside space-y-1">
-                        <li>The photo must be unaltered by effects or filters</li>
-                        <li>Original, not a screenshot or photocopy</li>
-                        <li>Of a physical passport, not a digital passport</li>
-                        <li>In colour</li>
-                        <li>Horizontal (landscape)</li>
-                        <li>A jpg or jpeg file</li>
-                        <li>Clear, readable image of passport personal details page</li>
-                        <li>All text must be visible and legible</li>
-                        <li>No glare or shadows</li>
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Personal Photo Upload */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>{t('application.documents.personalPhoto.title')}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                     <FormField
-                      control={form.control}
-                      name="personalPhoto"
-                      render={({ field, fieldState }) => (
-                        <FormItem>
-                          <FormControl>
-                            <SecureDocumentUpload
-                              type="personal"
-                              value={field.value}
-                              onChange={field.onChange}
-                              error={fieldState.error?.message}
-                              required={true}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <div className="text-sm text-muted-foreground">
-                      <h4 className="font-medium mb-2">{t('application.documents.personal.requirements.title')}</h4>
-                      <div className="space-y-3">
-                        <div>
-                          <p className="font-medium text-foreground mb-1">The photo must be:</p>
-                          <ul className="list-disc list-inside space-y-1">
-                            <li>different to the one in your passport</li>
-                            <li>recently taken (no more than 3 months old)</li>
-                            <li>vertical (portrait)</li>
-                            <li>a jpg or jpeg file</li>
-                            <li>Plain, light background</li>
-                            <li>No people or objects in background</li>
-                            <li>Full head, shoulders, and upper body visible</li>
-                            <li>Even lighting with no shadows or glare</li>
-                            <li>Clear visibility of facial features</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <p className="font-medium text-foreground mb-1">You must not:</p>
-                          <ul className="list-disc list-inside space-y-1">
-                            <li>upload a photo of another photo</li>
-                            <li>use any effects or filters</li>
-                          </ul>
-                        </div>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8" noValidate>
+              {/* Passport Photo */}
+              <FormField
+                control={form.control}
+                name="passportPhoto"
+                render={({ field, fieldState }) => (
+                  <FormItem>
+                    <FormControl>
+                      <EnhancedPhotoCapture
+                        onPhotoCapture={(data, score, metadata) => handlePhotoCapture(data, score, 'passportPhoto')}
+                        fieldName="passportPhoto"
+                        title={t('application.documents.passport.uploadTitle')}
+                        documentType="passport"
+                      />
+                    </FormControl>
+                    {fieldState.error && (
+                      <FormMessage>{fieldState.error.message}</FormMessage>
+                    )}
+                    {field.value && photoAnalysisScores.passport && (
+                      <div className={`mt-2 text-sm ${
+                        photoAnalysisScores.passport >= 75 ? 'text-green-600' :
+                        photoAnalysisScores.passport >= 50 ? 'text-yellow-600' :
+                        'text-red-600'
+                      }`}>
+                        Quality Score: {photoAnalysisScores.passport}%
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    )}
+                  </FormItem>
+                )}
+              />
 
-                {/* Navigation */}
-                <div className="flex justify-between">
-                  <Button 
-                    type="button"
-                    variant="outline" 
-                    onClick={() => navigate(`/application/applicant/${id}`)}
-                    className="flex items-center gap-2"
-                  >
-                    <ArrowLeft className="h-4 w-4" />
-                    {t('application.back')}
-                  </Button>
-                  <Button type="submit" className="flex items-center gap-2">
-                    {t('application.continue')}
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </div>
-              </form>
-            </Form>
-          </div>
+              {/* Personal Photo */}
+              <FormField
+                control={form.control}
+                name="personalPhoto"
+                render={({ field, fieldState }) => (
+                  <FormItem>
+                    <FormControl>
+                      <EnhancedPhotoCapture
+                        onPhotoCapture={(data, score, metadata) => handlePhotoCapture(data, score, 'personalPhoto')}
+                        fieldName="personalPhoto"
+                        title={t('application.documents.photo.upload.title')}
+                        documentType="personal"
+                      />
+                    </FormControl>
+                    {fieldState.error && (
+                      <FormMessage>{fieldState.error.message}</FormMessage>
+                    )}
+                    {field.value && photoAnalysisScores.personal && (
+                      <div className={`mt-2 text-sm ${
+                        photoAnalysisScores.personal >= 75 ? 'text-green-600' :
+                        photoAnalysisScores.personal >= 50 ? 'text-yellow-600' :
+                        'text-red-600'
+                      }`}>
+                        Quality Score: {photoAnalysisScores.personal}%
+                      </div>
+                    )}
+                  </FormItem>
+                )}
+              />
+
+              {/* Navigation Buttons */}
+              <div className="flex justify-between gap-4 pt-8">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => navigate(`/application/applicant/${id}`)}
+                  className="min-w-[150px]"
+                >
+                  <ArrowLeft className="h-4 w-4 mr-2" />
+                  {t('common.back')}
+                </Button>
+                <Button
+                  type="submit"
+                  className="min-w-[150px] bg-gradient-to-r from-primary to-turquoise hover:opacity-90 transition-opacity"
+                  disabled={!form.formState.isValid}
+                >
+                  {t('common.continue')}
+                  <ArrowRight className="h-4 w-4 ml-2" />
+                </Button>
+              </div>
+            </form>
+          </Form>
         </div>
       </div>
     </div>

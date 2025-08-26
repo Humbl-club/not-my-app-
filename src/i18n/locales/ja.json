@@ -87,6 +87,10 @@
       "addButton": "国籍を追加"
     },
     "options": { "yes": "はい", "no": "いいえ" },
+    "applicant": {
+      "main": "メイン申請者",
+      "title": "申請者 {{num}}"
+    },
     "address": {
       "title": "住所",
       "sameAsMain": "主申請者と同じ",
