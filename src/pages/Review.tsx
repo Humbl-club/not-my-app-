@@ -3,17 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { ArrowLeft, Copy, Download, Send, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, Copy, Download, AlertTriangle, Edit } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const Review = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const { t } = useTranslation();
-  const [webhookUrl, setWebhookUrl] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const [loadingOperation, setLoadingOperation] = useState<string | null>(null);
 
   // SEO: title, description, canonical
@@ -212,72 +209,6 @@ const Review = () => {
     }
   };
 
-  const validateWebhookUrl = (url: string): boolean => {
-    try {
-      const parsed = new URL(url);
-      return parsed.protocol === 'https:' && parsed.hostname.includes('zapier.com');
-    } catch {
-      return false;
-    }
-  };
-
-  const handleSendZapier = async () => {
-    if (!webhookUrl.trim()) {
-      toast({ 
-        title: t('review.messages.webhookRequired'), 
-        description: t('review.messages.webhookRequired'), 
-        variant: 'destructive' 
-      });
-      return;
-    }
-
-    if (!validateWebhookUrl(webhookUrl)) {
-      toast({ 
-        title: t('review.validation.invalidWebhook'), 
-        description: t('review.validation.invalidWebhook'), 
-        variant: 'destructive' 
-      });
-      return;
-    }
-
-    if (!hasValidData) {
-      toast({ 
-        title: t('review.messages.invalidData'), 
-        description: t('review.validation.emptyData'), 
-        variant: 'destructive' 
-      });
-      return;
-    }
-
-    setIsLoading(true);
-    setLoadingOperation('zapier');
-    try {
-      await fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        mode: 'no-cors',
-        body: JSON.stringify({ 
-          timestamp: new Date().toISOString(), 
-          triggered_from: window.location.origin, 
-          payload: data 
-        }),
-      });
-      toast({ 
-        title: t('review.messages.zapierSuccess'), 
-        description: t('review.messages.zapierSuccess')
-      });
-    } catch (error) {
-      console.error('Zapier error', error);
-      toast({ 
-        title: t('review.messages.zapierError'), 
-        description: t('review.messages.zapierError'), 
-        variant: 'destructive' 
-      });
-    } finally {
-      setIsLoading(false);
-      setLoadingOperation(null);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -285,14 +216,14 @@ const Review = () => {
         <div className="container mx-auto px-4 py-6 flex items-center justify-between">
           <h1 className="text-2xl font-bold">{t('review.header.title')}</h1>
           <div className="flex items-center gap-3">
-            <Button variant="outline" onClick={() => navigate('/application/payment')} className="flex items-center gap-2">
+            <Button variant="outline" onClick={() => navigate('/application/manage')} className="flex items-center gap-2">
               <ArrowLeft className="h-4 w-4" /> {t('review.header.backButton')}
             </Button>
             <Button 
-              onClick={() => navigate('/application/confirmation')}
+              onClick={() => navigate('/application/payment')}
               disabled={!hasValidData}
             >
-              {t('review.header.continueButton')}
+              {t('review.header.proceedToPayment')}
             </Button>
           </div>
         </div>
@@ -310,12 +241,64 @@ const Review = () => {
         <section>
           <Card>
             <CardHeader>
-              <CardTitle>{t('review.dataPreview.title')}</CardTitle>
+              <CardTitle>{t('review.summary.title')}</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {applicants.map((applicant, index) => (
+                <div key={index} className="border rounded-lg p-4 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-semibold">
+                      {index === 0 ? t('review.summary.mainApplicant') : t('review.summary.additionalApplicant', { number: index + 1 })}
+                    </h3>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center gap-2"
+                      onClick={() => navigate(`/application/applicant/${index === 0 ? 'main' : index + 1}`)}
+                    >
+                      <Edit className="h-4 w-4" />
+                      {t('review.summary.editButton')}
+                    </Button>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <p><strong>{t('review.summary.name')}:</strong> {applicant.firstName} {applicant.lastName}</p>
+                      <p><strong>{t('review.summary.dateOfBirth')}:</strong> {applicant.dateOfBirth}</p>
+                      <p><strong>{t('review.summary.nationality')}:</strong> {applicant.nationality}</p>
+                      <p><strong>{t('review.summary.email')}:</strong> {applicant.email}</p>
+                    </div>
+                    <div>
+                      <p><strong>{t('review.summary.passportNumber')}:</strong> {applicant.passportNumber}</p>
+                      <p><strong>{t('review.summary.job')}:</strong> {applicant.job}</p>
+                      {applicant.address && (
+                        <p><strong>{t('review.summary.address')}:</strong> {applicant.address.line1}, {applicant.address.city}, {applicant.address.country}</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+              
+              <div className="bg-muted/30 rounded-lg p-4">
+                <p className="text-sm text-muted-foreground">
+                  {t('review.disclaimer')}
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Export Data - Secondary Feature */}
+        <section className="mt-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base">{t('review.dataPreview.title')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex flex-wrap gap-3">
                 <Button 
                   variant="outline" 
+                  size="sm"
                   className="flex items-center gap-2" 
                   onClick={handleCopyJSON}
                   disabled={!hasValidData || loadingOperation === 'copying'}
@@ -325,6 +308,7 @@ const Review = () => {
                 </Button>
                 <Button 
                   variant="outline" 
+                  size="sm"
                   className="flex items-center gap-2" 
                   onClick={handleDownloadJSON}
                   disabled={!hasValidData || loadingOperation === 'downloadingJSON'}
@@ -333,6 +317,8 @@ const Review = () => {
                   {loadingOperation === 'downloadingJSON' ? t('review.messages.processing') : t('review.dataPreview.downloadJson')}
                 </Button>
                 <Button 
+                  variant="outline" 
+                  size="sm"
                   className="flex items-center gap-2" 
                   onClick={handleDownloadCSV}
                   disabled={!hasValidData || loadingOperation === 'downloadingCSV'}
@@ -341,46 +327,6 @@ const Review = () => {
                   {loadingOperation === 'downloadingCSV' ? t('review.messages.processing') : t('review.dataPreview.downloadCsv')}
                 </Button>
               </div>
-              {hasValidData ? (
-                <div className="rounded-md border bg-muted/30 p-4 overflow-auto">
-                  <pre className="text-sm leading-relaxed whitespace-pre-wrap"><code>{JSON.stringify(data, null, 2)}</code></pre>
-                </div>
-              ) : (
-                <div className="rounded-md border bg-muted/30 p-4 text-center text-muted-foreground">
-                  <p>{t('review.dataPreview.noData')}</p>
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        </section>
-
-        <section>
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('review.zapier.title')}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <div className="md:col-span-2">
-                  <Input
-                    placeholder={t('review.zapier.placeholder')}
-                    value={webhookUrl}
-                    onChange={(e) => setWebhookUrl(e.currentTarget.value)}
-                    disabled={isLoading}
-                  />
-                </div>
-                <div className="flex md:justify-end">
-                  <Button 
-                    onClick={handleSendZapier} 
-                    className="w-full md:w-auto flex items-center gap-2"
-                    disabled={!hasValidData || isLoading || !webhookUrl.trim()}
-                  >
-                    <Send className="h-4 w-4" /> 
-                    {loadingOperation === 'zapier' ? t('review.messages.processing') : t('review.zapier.sendButton')}
-                  </Button>
-                </div>
-              </div>
-              <p className="text-sm text-muted-foreground">{t('review.zapier.tip')}</p>
             </CardContent>
           </Card>
         </section>

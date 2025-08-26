@@ -302,6 +302,45 @@
     "returnHome": "Torna alla Home"
   },
   "review": {
+    "pageTitle": "Revisione della Domanda",
+    "metaDescription": "Rivedi i dettagli della tua domanda ETA del Regno Unito prima di procedere al pagamento. Verifica che tutte le informazioni del richiedente siano accurate.",
+    "header": {
+      "title": "Revisione della Domanda",
+      "backButton": "Indietro",
+      "proceedToPayment": "Procedi al Pagamento"
+    },
+    "summary": {
+      "title": "Riepilogo della Domanda",
+      "mainApplicant": "Richiedente Principale",
+      "additionalApplicant": "Richiedente {{number}}",
+      "editButton": "Modifica",
+      "name": "Nome",
+      "dateOfBirth": "Data di Nascita",
+      "nationality": "Nazionalità",
+      "email": "Email",
+      "passportNumber": "Numero di Passaporto",
+      "job": "Titolo del Lavoro",
+      "address": "Indirizzo"
+    },
+    "disclaimer": "Il richiedente principale è responsabile dell'accuratezza di tutte le informazioni fornite in questa domanda. Si prega di rivedere tutti i dettagli attentamente prima di procedere al pagamento.",
+    "dataPreview": {
+      "title": "Esporta Dati (Avanzato)",
+      "copyJson": "Copia JSON",
+      "downloadJson": "Scarica JSON",
+      "downloadCsv": "Scarica CSV",
+      "noData": "Nessun dato del richiedente disponibile"
+    },
+    "messages": {
+      "copied": "Dati copiati negli appunti",
+      "copyError": "Errore nella copia dei dati",
+      "noApplicants": "Nessun richiedente da esportare",
+      "invalidData": "Dati della domanda non validi. Si prega di completare prima il modulo di domanda.",
+      "processing": "Elaborazione in corso..."
+    },
+    "validation": {
+      "emptyData": "Nessun dato della domanda trovato. Si prega di completare prima la domanda."
+    }
+  },
     "pageTitle": "Rivedi ed Esporta",
     "metaDescription": "Rivedi ed esporta i dati della tua domanda ETA del Regno Unito come JSON o CSV, o invia a Zapier.",
     "header": {

@@ -331,38 +331,42 @@
     "returnHome": "Return to Home"
   },
   "review": {
-    "pageTitle": "Review & Export",
-    "metaDescription": "Review and export your UK ETA application data as JSON or CSV, or send to Zapier.",
+    "pageTitle": "Review Application",
+    "metaDescription": "Review your UK ETA application details before proceeding to payment. Verify all applicant information is accurate.",
     "header": {
-      "title": "Review & Export",
+      "title": "Review Application",
       "backButton": "Back",
-      "continueButton": "Continue"
+      "proceedToPayment": "Proceed to Payment"
     },
+    "summary": {
+      "title": "Application Summary",
+      "mainApplicant": "Main Applicant",
+      "additionalApplicant": "Applicant {{number}}",
+      "editButton": "Edit",
+      "name": "Name",
+      "dateOfBirth": "Date of Birth",
+      "nationality": "Nationality",
+      "email": "Email",
+      "passportNumber": "Passport Number",
+      "job": "Job Title",
+      "address": "Address"
+    },
+    "disclaimer": "The main applicant is responsible for the accuracy of all information provided in this application. Please review all details carefully before proceeding to payment.",
     "dataPreview": {
-      "title": "Application Data Preview",
+      "title": "Export Data (Advanced)",
       "copyJson": "Copy JSON",
       "downloadJson": "Download JSON", 
       "downloadCsv": "Download CSV",
       "noData": "No applicant data available"
     },
-    "zapier": {
-      "title": "Send to Zapier (Optional)",
-      "placeholder": "https://hooks.zapier.com/hooks/catch/...",
-      "sendButton": "Send",
-      "tip": "Tip: Connect your webhook to Google Sheets to auto-fill rows for UK ETA submission."
-    },
     "messages": {
       "copied": "Data copied to clipboard",
       "copyError": "Failed to copy data",
-      "zapierSuccess": "Request sent to Zapier. Check your Zap's history to confirm it was triggered.",
-      "zapierError": "Failed to trigger Zapier webhook. Please check the URL and try again.",
-      "webhookRequired": "Please enter your Zapier webhook URL",
       "noApplicants": "No applicants to export",
       "invalidData": "Invalid application data. Please complete the application form first.",
       "processing": "Processing..."
     },
     "validation": {
-      "invalidWebhook": "Please enter a valid Zapier webhook URL",
       "emptyData": "No application data found. Please complete the application first."
     }
   },

@@ -163,6 +163,45 @@
     }
   },
   "review": {
+    "pageTitle": "申請の確認",
+    "metaDescription": "支払いに進む前に英国ETA申請の詳細を確認してください。すべての申請者情報が正確であることを確認してください。",
+    "header": {
+      "title": "申請の確認",
+      "backButton": "戻る",
+      "proceedToPayment": "支払いに進む"
+    },
+    "summary": {
+      "title": "申請の概要",
+      "mainApplicant": "主申請者",
+      "additionalApplicant": "申請者 {{number}}",
+      "editButton": "編集",
+      "name": "氏名",
+      "dateOfBirth": "生年月日",
+      "nationality": "国籍",
+      "email": "メールアドレス",
+      "passportNumber": "パスポート番号",
+      "job": "職種",
+      "address": "住所"
+    },
+    "disclaimer": "主申請者は、この申請で提供されるすべての情報の正確性について責任を負います。支払いに進む前に、すべての詳細を注意深く確認してください。",
+    "dataPreview": {
+      "title": "データをエクスポート（上級）",
+      "copyJson": "JSONをコピー",
+      "downloadJson": "JSONをダウンロード",
+      "downloadCsv": "CSVをダウンロード",
+      "noData": "申請者データがありません"
+    },
+    "messages": {
+      "copied": "データをクリップボードにコピーしました",
+      "copyError": "データのコピーに失敗しました",
+      "noApplicants": "エクスポートする申請者がありません",
+      "invalidData": "無効な申請データです。最初に申請フォームを完了してください。",
+      "processing": "処理中..."
+    },
+    "validation": {
+      "emptyData": "申請データが見つかりません。最初に申請を完了してください。"
+    }
+  },
     "pageTitle": "確認・エクスポート",
     "metaDescription": "英国ETA申請データをJSONまたはCSV形式で確認・エクスポート、またはZapierに送信します。",
     "header": {

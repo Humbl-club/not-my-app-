@@ -318,6 +318,45 @@
     "returnHome": "Zur Startseite zurückkehren"
   },
   "review": {
+    "pageTitle": "Antragsprüfung",
+    "metaDescription": "Überprüfen Sie die Details Ihres UK ETA-Antrags vor der Zahlung. Stellen Sie sicher, dass alle Antragstellerinformationen korrekt sind.",
+    "header": {
+      "title": "Antragsprüfung",
+      "backButton": "Zurück",
+      "proceedToPayment": "Zur Zahlung"
+    },
+    "summary": {
+      "title": "Antragsübersicht",
+      "mainApplicant": "Hauptantragsteller",
+      "additionalApplicant": "Antragsteller {{number}}",
+      "editButton": "Bearbeiten",
+      "name": "Name",
+      "dateOfBirth": "Geburtsdatum",
+      "nationality": "Staatsangehörigkeit",
+      "email": "E-Mail",
+      "passportNumber": "Reisepassnummer",
+      "job": "Berufsbezeichnung",
+      "address": "Adresse"
+    },
+    "disclaimer": "Der Hauptantragsteller ist für die Richtigkeit aller in diesem Antrag angegebenen Informationen verantwortlich. Bitte überprüfen Sie alle Details sorgfältig vor der Zahlung.",
+    "dataPreview": {
+      "title": "Daten Exportieren (Erweitert)",
+      "copyJson": "JSON Kopieren",
+      "downloadJson": "JSON Herunterladen",
+      "downloadCsv": "CSV Herunterladen",
+      "noData": "Keine Antragstellerdaten verfügbar"
+    },
+    "messages": {
+      "copied": "Daten in die Zwischenablage kopiert",
+      "copyError": "Fehler beim Kopieren der Daten",
+      "noApplicants": "Keine Antragsteller zum Exportieren",
+      "invalidData": "Ungültige Antragsdaten. Bitte füllen Sie zuerst das Antragsformular aus.",
+      "processing": "Wird verarbeitet..."
+    },
+    "validation": {
+      "emptyData": "Keine Antragsdaten gefunden. Bitte füllen Sie zuerst den Antrag aus."
+    }
+  },
     "pageTitle": "Überprüfen und Exportieren",
     "metaDescription": "Überprüfen und exportieren Sie Ihre UK ETA-Antragsdaten als JSON oder CSV oder senden Sie sie an Zapier.",
     "header": {

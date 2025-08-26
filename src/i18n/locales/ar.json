@@ -302,6 +302,45 @@
     "returnHome": "العودة إلى الصفحة الرئيسية"
   },
   "review": {
+    "pageTitle": "Review Application",
+    "metaDescription": "Review your UK ETA application details before proceeding to payment. Verify all applicant information is accurate.",
+    "header": {
+      "title": "Review Application",
+      "backButton": "Back",
+      "proceedToPayment": "Proceed to Payment"
+    },
+    "summary": {
+      "title": "Application Summary",
+      "mainApplicant": "Main Applicant",
+      "additionalApplicant": "Applicant {{number}}",
+      "editButton": "Edit",
+      "name": "Name",
+      "dateOfBirth": "Date of Birth",
+      "nationality": "Nationality",
+      "email": "Email",
+      "passportNumber": "Passport Number",
+      "job": "Job Title",
+      "address": "Address"
+    },
+    "disclaimer": "The main applicant is responsible for the accuracy of all information provided in this application. Please review all details carefully before proceeding to payment.",
+    "dataPreview": {
+      "title": "Export Data (Advanced)",
+      "copyJson": "Copy JSON",
+      "downloadJson": "Download JSON", 
+      "downloadCsv": "Download CSV",
+      "noData": "No applicant data available"
+    },
+    "messages": {
+      "copied": "Data copied to clipboard",
+      "copyError": "Failed to copy data",
+      "noApplicants": "No applicants to export",
+      "invalidData": "Invalid application data. Please complete the application form first.",
+      "processing": "Processing..."
+    },
+    "validation": {
+      "emptyData": "No application data found. Please complete the application first."
+    }
+  },
     "pageTitle": "مراجعة وتصدير",
     "metaDescription": "راجع وصدّر بيانات طلب تصريح السفر الإلكتروني للمملكة المتحدة كـ JSON أو CSV، أو أرسلها إلى Zapier.",
     "header": {

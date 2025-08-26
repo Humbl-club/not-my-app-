@@ -302,6 +302,45 @@
     "returnHome": "Retourner à l'Accueil"
   },
   "review": {
+    "pageTitle": "Révision de la Demande",
+    "metaDescription": "Révisez les détails de votre demande d'ETA du Royaume-Uni avant de procéder au paiement. Vérifiez que toutes les informations du demandeur sont exactes.",
+    "header": {
+      "title": "Révision de la Demande",
+      "backButton": "Retour",
+      "proceedToPayment": "Procéder au Paiement"
+    },
+    "summary": {
+      "title": "Résumé de la Demande",
+      "mainApplicant": "Demandeur Principal",
+      "additionalApplicant": "Demandeur {{number}}",
+      "editButton": "Modifier",
+      "name": "Nom",
+      "dateOfBirth": "Date de Naissance",
+      "nationality": "Nationalité",
+      "email": "Email",
+      "passportNumber": "Numéro de Passeport",
+      "job": "Titre du Poste",
+      "address": "Adresse"
+    },
+    "disclaimer": "Le demandeur principal est responsable de l'exactitude de toutes les informations fournies dans cette demande. Veuillez réviser tous les détails attentivement avant de procéder au paiement.",
+    "dataPreview": {
+      "title": "Exporter les Données (Avancé)",
+      "copyJson": "Copier JSON",
+      "downloadJson": "Télécharger JSON",
+      "downloadCsv": "Télécharger CSV",
+      "noData": "Aucune donnée de demandeur disponible"
+    },
+    "messages": {
+      "copied": "Données copiées dans le presse-papiers",
+      "copyError": "Échec de la copie des données",
+      "noApplicants": "Aucun demandeur à exporter",
+      "invalidData": "Données de demande invalides. Veuillez d'abord remplir le formulaire de demande.",
+      "processing": "Traitement en cours..."
+    },
+    "validation": {
+      "emptyData": "Aucune donnée de demande trouvée. Veuillez d'abord remplir la demande."
+    }
+  },
     "pageTitle": "Révision et Exportation",
     "metaDescription": "Révisez et exportez vos données de demande ETA du Royaume-Uni en JSON ou CSV, ou envoyez à Zapier.",
     "header": {

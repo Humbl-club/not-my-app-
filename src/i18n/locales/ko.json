@@ -172,6 +172,45 @@
     }
   },
   "review": {
+    "pageTitle": "신청 검토",
+    "metaDescription": "결제를 진행하기 전에 영국 ETA 신청 세부사항을 검토하세요. 모든 신청자 정보가 정확한지 확인하세요.",
+    "header": {
+      "title": "신청 검토",
+      "backButton": "뒤로",
+      "proceedToPayment": "결제 진행"
+    },
+    "summary": {
+      "title": "신청 요약",
+      "mainApplicant": "주신청자",
+      "additionalApplicant": "신청자 {{number}}",
+      "editButton": "편집",
+      "name": "이름",
+      "dateOfBirth": "생년월일",
+      "nationality": "국적",
+      "email": "이메일",
+      "passportNumber": "여권번호",
+      "job": "직업",
+      "address": "주소"
+    },
+    "disclaimer": "주신청자는 이 신청서에 제공된 모든 정보의 정확성에 대해 책임을 집니다. 결제를 진행하기 전에 모든 세부사항을 주의깊게 검토해주세요.",
+    "dataPreview": {
+      "title": "데이터 내보내기 (고급)",
+      "copyJson": "JSON 복사",
+      "downloadJson": "JSON 다운로드",
+      "downloadCsv": "CSV 다운로드",
+      "noData": "신청자 데이터가 없습니다"
+    },
+    "messages": {
+      "copied": "데이터가 클립보드에 복사되었습니다",
+      "copyError": "데이터 복사에 실패했습니다",
+      "noApplicants": "내보낼 신청자가 없습니다",
+      "invalidData": "유효하지 않은 신청 데이터입니다. 먼저 신청 양식을 완성해주세요.",
+      "processing": "처리 중..."
+    },
+    "validation": {
+      "emptyData": "신청 데이터를 찾을 수 없습니다. 먼저 신청을 완성해주세요."
+    }
+  },
     "pageTitle": "검토 및 내보내기",
     "metaDescription": "영국 ETA 신청 데이터를 JSON 또는 CSV로 검토하고 내보내거나 Zapier로 전송하세요.",
     "header": {

@@ -302,6 +302,45 @@
     "returnHome": "返回首页"
   },
   "review": {
+    "pageTitle": "申请审核",
+    "metaDescription": "在进入支付页面之前审核您的英国ETA申请详情。确认所有申请人信息准确无误。",
+    "header": {
+      "title": "申请审核",
+      "backButton": "返回",
+      "proceedToPayment": "进入支付"
+    },
+    "summary": {
+      "title": "申请摘要",
+      "mainApplicant": "主申请人",
+      "additionalApplicant": "申请人 {{number}}",
+      "editButton": "编辑",
+      "name": "姓名",
+      "dateOfBirth": "出生日期",
+      "nationality": "国籍",
+      "email": "电子邮箱",
+      "passportNumber": "护照号码",
+      "job": "职业",
+      "address": "地址"
+    },
+    "disclaimer": "主申请人对本申请中提供的所有信息的准确性负责。请在进入支付前仔细检查所有详情。",
+    "dataPreview": {
+      "title": "导出数据（高级）",
+      "copyJson": "复制JSON",
+      "downloadJson": "下载JSON",
+      "downloadCsv": "下载CSV",
+      "noData": "无可用申请人数据"
+    },
+    "messages": {
+      "copied": "数据已复制到剪贴板",
+      "copyError": "复制数据失败",
+      "noApplicants": "没有申请人可导出",
+      "invalidData": "无效的申请数据。请先完成申请表格。",
+      "processing": "处理中..."
+    },
+    "validation": {
+      "emptyData": "未找到申请数据。请先完成申请。"
+    }
+  },
     "pageTitle": "审核和导出",
     "metaDescription": "审核并导出您的英国ETA申请数据为JSON或CSV格式，或发送到Zapier。",
     "header": {

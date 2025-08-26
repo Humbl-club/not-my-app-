@@ -302,6 +302,45 @@
     "returnHome": "Volver al Inicio"
   },
   "review": {
+    "pageTitle": "Revisión de la Solicitud",
+    "metaDescription": "Revise los detalles de su solicitud de ETA del Reino Unido antes de proceder al pago. Verifique que toda la información del solicitante sea correcta.",
+    "header": {
+      "title": "Revisión de la Solicitud",
+      "backButton": "Volver",
+      "proceedToPayment": "Proceder al Pago"
+    },
+    "summary": {
+      "title": "Resumen de la Solicitud",
+      "mainApplicant": "Solicitante Principal",
+      "additionalApplicant": "Solicitante {{number}}",
+      "editButton": "Editar",
+      "name": "Nombre",
+      "dateOfBirth": "Fecha de Nacimiento",
+      "nationality": "Nacionalidad",
+      "email": "Correo Electrónico",
+      "passportNumber": "Número de Pasaporte",
+      "job": "Título del Trabajo",
+      "address": "Dirección"
+    },
+    "disclaimer": "El solicitante principal es responsable de la exactitud de toda la información proporcionada en esta solicitud. Por favor, revise todos los detalles cuidadosamente antes de proceder al pago.",
+    "dataPreview": {
+      "title": "Exportar Datos (Avanzado)",
+      "copyJson": "Copiar JSON",
+      "downloadJson": "Descargar JSON",
+      "downloadCsv": "Descargar CSV",
+      "noData": "No hay datos de solicitante disponibles"
+    },
+    "messages": {
+      "copied": "Datos copiados al portapapeles",
+      "copyError": "Error al copiar datos",
+      "noApplicants": "No hay solicitantes para exportar",
+      "invalidData": "Datos de solicitud inválidos. Por favor, complete el formulario de solicitud primero.",
+      "processing": "Procesando..."
+    },
+    "validation": {
+      "emptyData": "No se encontraron datos de solicitud. Por favor, complete la solicitud primero."
+    }
+  },
     "pageTitle": "Revisar y Exportar",
     "metaDescription": "Revisa y exporta tus datos de solicitud ETA del Reino Unido como JSON o CSV, o envía a Zapier.",
     "header": {
