@@ -238,12 +238,12 @@
   "validation": {
     "email": {
       "required": "Email address is required",
+      "invalid": "Please enter a valid email address",
       "invalidFormat": "Please enter a valid email address",
       "noSpaces": "Email address cannot contain spaces",
       "multipleAt": "Email must have exactly one @ symbol",
       "missingParts": "Email must have both local part and domain",
-      "consecutiveDots": "Email cannot have consecutive dots",
-      "invalidFormat": "Invalid email format"
+      "consecutiveDots": "Email cannot have consecutive dots"
     },
     "passportName": {
       "required": "Name is required",
@@ -256,14 +256,37 @@
     "passportNumber": {
       "required": "Passport number is required",
       "invalid": "Use only letters and numbers (A-Z, 0-9)",
-      "length": "Passport number must be 6-10 characters long",
-      "format": "Enter passport number exactly as shown on your passport"
+      "tooShort": "Passport number must be at least 6 characters",
+      "tooLong": "Passport number must be no more than 10 characters",
+      "format": "Passport number must contain only letters and numbers",
+      "length": "Passport number must be 6-10 characters long"
+    },
+    "nationality": {
+      "required": "Please select a nationality"
+    },
+    "dateOfBirth": {
+      "required": "Date of birth is required",
+      "invalid": "Please enter a valid date"
     },
     "address": {
       "line1Required": "Address line 1 is required",
       "cityRequired": "City is required",
       "countryRequired": "Country is required",
       "postalCodeRequired": "Postal code is required"
+    },
+    "employment": {
+      "required": "Please answer if you have a job"
+    },
+    "jobTitle": {
+      "required": "Please provide a job title"
+    },
+    "security": {
+      "criminalConvictions": {
+        "required": "Please answer about criminal convictions"
+      },
+      "warCrimes": {
+        "required": "Please answer about war crimes convictions"
+      }
     },
     "form": {
       "completed": "Form completed successfully",

@@ -5,7 +5,7 @@ import { Progress } from '@/components/ui/progress';
 import { ArrowLeft, ArrowRight, Plus, Minus } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { z } from 'zod';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
@@ -92,25 +92,26 @@ const ApplicantForm = () => {
   const passportRegex = /^[A-Z0-9]{6,9}$/i;
   const nationalityRegex = /^(AF|AL|DZ|AS|AD|AO|AI|AQ|AG|AR|AM|AW|AU|AT|AZ|BS|BH|BD|BB|BY|BE|BZ|BJ|BM|BT|BO|BQ|BA|BW|BV|BR|IO|BN|BG|BF|BI|CV|KH|CM|CA|KY|CF|TD|CL|CN|CX|CC|CO|KM|CG|CD|CK|CR|CI|HR|CU|CW|CY|CZ|DK|DJ|DM|DO|EC|EG|SV|GQ|ER|EE|SZ|ET|FK|FO|FJ|FI|FR|GF|PF|TF|GA|GM|GE|DE|GH|GI|GR|GL|GD|GP|GU|GT|GG|GN|GW|GY|HT|HM|VA|HN|HK|HU|IS|IN|ID|IR|IQ|IE|IM|IL|IT|JM|JP|JE|JO|KZ|KE|KI|KP|KR|KW|KG|LA|LV|LB|LS|LR|LY|LI|LT|LU|MO|MK|MG|MW|MY|MV|ML|MT|MH|MQ|MR|MU|YT|MX|FM|MD|MC|MN|ME|MS|MA|MZ|MM|NA|NR|NP|NL|NC|NZ|NI|NE|NG|NU|NF|MP|NO|OM|PK|PW|PS|PA|PG|PY|PE|PH|PN|PL|PT|PR|QA|RE|RO|RU|RW|BL|SH|KN|LC|MF|PM|VC|WS|SM|ST|SA|SN|RS|SC|SL|SG|SX|SK|SI|SB|SO|ZA|GS|SS|ES|LK|SD|SR|SJ|SE|CH|SY|TW|TJ|TZ|TH|TL|TG|TK|TO|TT|TN|TR|TM|TC|TV|UG|UA|AE|GB|US|UM|UY|UZ|VU|VE|VN|VG|VI|WF|EH|YE|ZM|ZW)$/;
 
-  const applicantSchema = z.object({
-    firstName: z.string().min(1, 'validation.passportName.required').regex(nameRegex, 'validation.passportName.format').max(50, 'validation.passportName.tooLong'),
-    secondNames: z.string().regex(nameRegex, 'validation.passportName.format').max(50, 'validation.passportName.tooLong').optional(),
-    lastName: z.string().min(1, 'validation.passportName.required').regex(nameRegex, 'validation.passportName.format').max(50, 'validation.passportName.tooLong'),
+  // Create Zod schema inside component to access translations
+  const applicantSchema = useMemo(() => z.object({
+    firstName: z.string().min(1, t('validation.passportName.required')).regex(nameRegex, t('validation.passportName.format')).max(50, t('validation.passportName.tooLong')),
+    secondNames: z.string().regex(nameRegex, t('validation.passportName.format')).max(50, t('validation.passportName.tooLong')).optional(),
+    lastName: z.string().min(1, t('validation.passportName.required')).regex(nameRegex, t('validation.passportName.format')).max(50, t('validation.passportName.tooLong')),
     dateOfBirth: z
       .string()
       .refine((val) => validateDateOfBirth(val) === null, (val) => ({
-        message: validateDateOfBirth(val) || 'Invalid date'
+        message: validateDateOfBirth(val) || t('validation.dateOfBirth.invalid')
       })),
-    nationality: z.string().regex(nationalityRegex, 'Please select a nationality'),
+    nationality: z.string().regex(nationalityRegex, t('validation.nationality.required')),
     hasAdditionalNationalities: z.boolean().optional().default(false),
-    additionalNationalities: z.array(z.string().regex(nationalityRegex, 'Please select a nationality')).optional().default([]),
-    email: z.string().min(1, 'Email is required').regex(emailRegex, 'Please enter a valid email address'),
+    additionalNationalities: z.array(z.string().regex(nationalityRegex, t('validation.nationality.required'))).optional().default([]),
+    email: z.string().min(1, t('validation.email.required')).regex(emailRegex, t('validation.email.invalid')),
     passportNumber: z
       .string()
-      .min(6, { message: "Passport number must be at least 6 characters" })
-      .max(10, { message: "Passport number must be no more than 10 characters" })
+      .min(6, { message: t('validation.passportNumber.tooShort') })
+      .max(10, { message: t('validation.passportNumber.tooLong') })
       .regex(/^[A-Z0-9]+$/, { 
-        message: "Passport number must contain only letters and numbers" 
+        message: t('validation.passportNumber.format')
       }),
     useSameAddressAsPrimary: z.boolean().optional().default(false),
     useSameAddressAsPassport: z.boolean().optional().default(false),
@@ -124,7 +125,7 @@ const ApplicantForm = () => {
       postalCode: z.string().optional(),
       country: z.string().optional(),
     }).optional(),
-    hasJob: z.enum(['yes', 'no'], { required_error: 'Please answer if you have a job' }),
+    hasJob: z.enum(['yes', 'no']).optional(),
     jobTitle: z.object({
       isStandardized: z.boolean().default(false),
       jobCode: z.string().optional(),
@@ -132,45 +133,76 @@ const ApplicantForm = () => {
       titleEnglish: z.string().default(""),
       category: z.string().optional(),
     }),
-    hasCriminalConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer about criminal convictions' }),
-    hasWarCrimesConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer about war crimes convictions' }),
+    hasCriminalConvictions: z.enum(['yes', 'no']).optional(),
+    hasWarCrimesConvictions: z.enum(['yes', 'no']).optional(),
   }).superRefine((data, ctx) => {
     // Address validation - only required if not using same address options
     if (!data.useSameAddressAsPrimary && !data.useSameAddressAsPassport) {
       if (!data.address?.line1?.trim()) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          message: 'validation.address.line1Required',
+          message: t('validation.address.line1Required'),
           path: ['address', 'line1'],
         });
       }
       if (!data.address?.city?.trim()) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          message: 'validation.address.cityRequired',
+          message: t('validation.address.cityRequired'),
           path: ['address', 'city'],
         });
       }
       if (!data.address?.country?.trim()) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          message: 'validation.address.countryRequired',
+          message: t('validation.address.countryRequired'),
           path: ['address', 'country'],
+        });
+      }
+      if (!data.address?.postalCode?.trim()) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: t('validation.address.postalCodeRequired'),
+          path: ['address', 'postalCode'],
         });
       }
     }
     
-    // Job title validation - only required if user has a job
-    if (data.hasJob === 'yes') {
-      if (!data.jobTitle?.titleOriginal?.trim() && !data.jobTitle?.titleEnglish?.trim()) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          message: 'Please provide a job title',
-          path: ['jobTitle', 'titleOriginal'],
-        });
-      }
+    // Job validation - require selection
+    if (!data.hasJob) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t('validation.employment.required'),
+        path: ['hasJob'],
+      });
     }
-  });
+
+    // Job title validation - only required if user has a job
+    if (data.hasJob === 'yes' && (!data.jobTitle?.titleOriginal?.trim() && !data.jobTitle?.titleEnglish?.trim())) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t('validation.jobTitle.required'),
+        path: ['jobTitle', 'titleOriginal'],
+      });
+    }
+
+    // Security questions validation - require answers
+    if (!data.hasCriminalConvictions) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t('validation.security.criminalConvictions.required'),
+        path: ['hasCriminalConvictions'],
+      });
+    }
+
+    if (!data.hasWarCrimesConvictions) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t('validation.security.warCrimes.required'),
+        path: ['hasWarCrimesConvictions'],
+      });
+    }
+  }), [t]);
 
   type ApplicantValues = z.infer<typeof applicantSchema>;
 
@@ -682,13 +714,13 @@ const ApplicantForm = () => {
                            if (field.startsWith('address.') && (formValues.useSameAddressAsPrimary || formValues.useSameAddressAsPassport)) {
                              return null; // Don't show address errors if using same address
                            }
-                           return (
-                             <li key={field} className="flex items-center gap-2">
-                               <span className="w-1 h-1 bg-error-gentle rounded-full"></span>
-                               {field.includes('address.') ? 
-                                 `Address ${field.split('.')[1]}: ${error?.message}` : 
-                                 `${field.charAt(0).toUpperCase() + field.slice(1)}: ${error?.message}`
-                               }
+                            return (
+                              <li key={field} className="flex items-center gap-2">
+                                <span className="w-1 h-1 bg-error-gentle rounded-full"></span>
+                                {field.includes('address.') ? 
+                                  `Address ${field.split('.')[1]}: ${(error as any)?.message || 'Invalid value'}` : 
+                                  `${field.charAt(0).toUpperCase() + field.slice(1)}: ${(error as any)?.message || 'Invalid value'}`
+                                }
                              </li>
                            );
                          }).filter(Boolean)}
