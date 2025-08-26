@@ -123,7 +123,7 @@ const ApplicantForm = () => {
       state: z.string().optional(),
       postalCode: z.string().optional(),
       country: z.string().optional(),
-    }).optional(), // Make address optional and handle validation in runtime
+    }).optional(),
     hasJob: z.enum(['yes', 'no'], { required_error: 'Please answer if you have a job' }),
     jobTitle: z.object({
       isStandardized: z.boolean().default(false),
@@ -134,6 +134,42 @@ const ApplicantForm = () => {
     }),
     hasCriminalConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer about criminal convictions' }),
     hasWarCrimesConvictions: z.enum(['yes', 'no'], { required_error: 'Please answer about war crimes convictions' }),
+  }).superRefine((data, ctx) => {
+    // Address validation - only required if not using same address options
+    if (!data.useSameAddressAsPrimary && !data.useSameAddressAsPassport) {
+      if (!data.address?.line1?.trim()) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: 'validation.address.line1Required',
+          path: ['address', 'line1'],
+        });
+      }
+      if (!data.address?.city?.trim()) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: 'validation.address.cityRequired',
+          path: ['address', 'city'],
+        });
+      }
+      if (!data.address?.country?.trim()) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: 'validation.address.countryRequired',
+          path: ['address', 'country'],
+        });
+      }
+    }
+    
+    // Job title validation - only required if user has a job
+    if (data.hasJob === 'yes') {
+      if (!data.jobTitle?.titleOriginal?.trim() && !data.jobTitle?.titleEnglish?.trim()) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: 'Please provide a job title',
+          path: ['jobTitle', 'titleOriginal'],
+        });
+      }
+    }
   });
 
   type ApplicantValues = z.infer<typeof applicantSchema>;
@@ -196,49 +232,20 @@ const ApplicantForm = () => {
     },
   });
 
-  // Create custom validation function for address
-  const validateAddress = () => {
-    const values = form.getValues();
-    if (values.useSameAddressAsPrimary || values.useSameAddressAsPassport) {
-      // Clear address errors when using same address options
-      form.clearErrors('address');
-      return true;
-    }
-    
-    // Validate required address fields manually
-    let hasErrors = false;
-    if (!values.address?.line1?.trim()) {
-      form.setError('address.line1', { message: t('validation.address.line1Required') });
-      hasErrors = true;
-    }
-    if (!values.address?.city?.trim()) {
-      form.setError('address.city', { message: t('validation.address.cityRequired') });
-      hasErrors = true;
-    }
-    if (!values.address?.country?.trim()) {
-      form.setError('address.country', { message: t('validation.address.countryRequired') });
-      hasErrors = true;
-    }
-    if (!values.address?.postalCode?.trim()) {
-      form.setError('address.postalCode', { message: t('validation.address.postalCodeRequired') });
-      hasErrors = true;
-    }
-    
-    return !hasErrors;
-  };
-
   // Watch form state for validation feedback
   const formState = form.formState;
   const formValues = form.watch();
   
-  // Custom form validation
-  const isCustomFormValid = () => {
-    const baseValid = formState.isValid;
-    const addressValid = validateAddress();
-    return baseValid && addressValid;
-  };
+  // Use React Hook Form's validation state directly
+  const isFormValid = formState.isValid;
   
-  const isFormValid = isCustomFormValid();
+  // Debug logging
+  console.log('Form validation debug:', {
+    isFormValid,
+    errors: formState.errors,
+    touchedFields: formState.touchedFields,
+    formValues: formValues
+  });
   
   // Calculate completion percentage
   const calculateCompletion = () => {
@@ -314,11 +321,6 @@ const ApplicantForm = () => {
 
   const handleSubmit = async (values: ApplicantValues) => {
     if (!id) return;
-    
-    // Run custom address validation before submit
-    if (!validateAddress()) {
-      return; // Stop submission if address validation fails
-    }
     
     try {
       // Get existing applicants
