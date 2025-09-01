@@ -21,7 +21,7 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { SecurityService } from '@/services/securityService';
-import { ImageAnalysisService } from '@/services/imageAnalysisService';
+import { imageAnalysisService } from '@/services/imageAnalysisService.lazy';
 import { toast } from 'sonner';
 
 interface EnhancedPhotoCaptureProps {
@@ -51,7 +51,7 @@ export const EnhancedPhotoCapture: React.FC<EnhancedPhotoCaptureProps> = ({
 
   // Load face detection models on mount
   useEffect(() => {
-    ImageAnalysisService.loadModels().catch(console.warn);
+    // Models will be loaded automatically when needed
   }, []);
 
   // Clean up camera stream when component unmounts
@@ -126,7 +126,7 @@ export const EnhancedPhotoCapture: React.FC<EnhancedPhotoCaptureProps> = ({
       const blob = await response.blob();
       
       // Run comprehensive analysis
-      const result = await ImageAnalysisService.analyzePhoto(blob);
+      const result = await imageAnalysisService.analyzeImage(dataUrl, { requireFaceDetection: true });
       setAnalysis(result);
       
       // Show appropriate feedback
@@ -189,7 +189,13 @@ export const EnhancedPhotoCapture: React.FC<EnhancedPhotoCaptureProps> = ({
       toast.info('Compressing image...', {
         description: 'Optimizing for faster upload'
       });
-      processedFile = await ImageAnalysisService.compressImage(file, 1);
+      // Use browser-image-compression directly
+      const imageCompression = (await import('browser-image-compression')).default;
+      processedFile = await imageCompression(file, {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 1920,
+        useWebWorker: true
+      });
     }
     
     const reader = new FileReader();

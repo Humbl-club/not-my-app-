@@ -1,0 +1,348 @@
+/**
+ * Professional Micro-Interactions & Animations
+ * Enterprise-grade motion design for business applications
+ */
+
+/* ================ Micro-Interactions ================ */
+
+/* Button Press Effect */
+.btn-press {
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-press:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Card Lift Effect */
+.card-lift {
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 20px 25px -5px rgb(0 0 0 / 0.08),
+    0 10px 10px -5px rgb(0 0 0 / 0.04);
+}
+
+/* Professional Pulse */
+@keyframes professional-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.pulse-professional {
+  animation: professional-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Success Check Animation */
+@keyframes check-mark {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.check-animation {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: check-mark 400ms ease-out forwards;
+}
+
+/* Trust Badge Glow */
+@keyframes trust-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+  50% {
+    box-shadow: 0 0 20px 2px rgba(59, 130, 246, 0.2);
+  }
+}
+
+.trust-glow {
+  animation: trust-glow 3s ease-in-out infinite;
+}
+
+/* Form Field Focus */
+.field-focus {
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.field-focus:focus {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 10px 15px -3px rgba(59, 130, 246, 0.1),
+    0 4px 6px -2px rgba(59, 130, 246, 0.05);
+}
+
+/* Progress Bar Fill */
+@keyframes progress-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.progress-fill-animation {
+  transform-origin: left;
+  animation: progress-fill 800ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Number Counter */
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.count-animation {
+  animation: count-up 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Professional Fade In */
+@keyframes fade-in-professional {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-professional {
+  animation: fade-in-professional 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Slide In from Right */
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-right {
+  animation: slide-in-right 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ================ Loading States ================ */
+
+/* Sophisticated Spinner */
+@keyframes spin-professional {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-professional {
+  animation: spin-professional 1s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+/* Three Dots Loading */
+@keyframes dot-bounce {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.loading-dot {
+  animation: dot-bounce 1.4s ease-in-out infinite;
+}
+
+.loading-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.loading-dot:nth-child(3) {
+  animation-delay: 0;
+}
+
+/* ================ Status Indicators ================ */
+
+/* Success Ripple */
+@keyframes success-ripple {
+  from {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+.success-ripple {
+  position: relative;
+}
+
+.success-ripple::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  border-radius: inherit;
+  animation: success-ripple 1s ease-out;
+}
+
+/* Warning Pulse */
+@keyframes warning-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
+  }
+}
+
+.warning-pulse {
+  animation: warning-pulse 2s infinite;
+}
+
+/* ================ Hover Effects ================ */
+
+/* Link Underline */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Icon Rotate */
+.icon-rotate {
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-rotate:hover {
+  transform: rotate(15deg);
+}
+
+/* ================ Page Transitions ================ */
+
+/* Stagger Children */
+.stagger-children > * {
+  opacity: 0;
+  animation: fade-in-professional 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 50ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 100ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 150ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 200ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 250ms; }
+
+/* ================ Form Validation Feedback ================ */
+
+/* Field Error Shake */
+@keyframes field-error-shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+.field-error-shake {
+  animation: field-error-shake 400ms ease-out;
+}
+
+/* Success Check Slide */
+@keyframes success-check-slide {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.success-check-slide {
+  animation: success-check-slide 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================ Notification Animations ================ */
+
+/* Toast Slide In */
+@keyframes toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.toast-slide-in {
+  animation: toast-slide-in 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================ Skeleton Shimmer ================ */
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.2) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+}

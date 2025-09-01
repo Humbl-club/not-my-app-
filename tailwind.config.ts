@@ -19,8 +19,10 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif'],
-				heading: ['Poppins', 'system-ui', 'sans-serif'],
+				sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+				heading: ['Inter', 'system-ui', 'sans-serif'],
+				body: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
+				mono: ['JetBrains Mono', 'Monaco', 'monospace'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

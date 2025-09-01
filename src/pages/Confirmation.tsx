@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import { DataManager } from '@/utils/dataManager';
 import { PaymentService } from '@/services/paymentService';
 import { PDFService, ReceiptData } from '@/services/pdfService';
+import { EmailNotificationService } from '@/services/emailNotificationService';
+import { EmailNotifications } from '@/components/EmailNotifications';
 import { toast } from 'sonner';
 
 const Confirmation = () => {
@@ -16,6 +18,8 @@ const Confirmation = () => {
   
   const [receiptData, setReceiptData] = useState<ReceiptData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
 
   useEffect(() => {
     const loadConfirmationData = async () => {
@@ -53,6 +57,20 @@ const Confirmation = () => {
         };
 
         setReceiptData(receipt);
+        
+        // Automatically send confirmation email
+        if (applicants[0]?.email) {
+          try {
+            await EmailNotificationService.sendApplicationConfirmation(
+              applicants[0].email,
+              `${applicants[0].firstName} ${applicants[0].lastName}`,
+              referenceNumber
+            );
+            setEmailSent(true);
+          } catch (error) {
+            console.error('Failed to send confirmation email:', error);
+          }
+        }
       } catch (error) {
         console.error('Error loading confirmation data:', error);
         toast.error('Error loading application data', {
@@ -259,11 +277,12 @@ const Confirmation = () => {
             </Button>
 
             <Button 
+              onClick={() => setShowEmailModal(true)}
               variant="outline" 
               className="flex items-center gap-2 rounded-full border-border/50 hover:bg-muted/50 px-6 py-3"
             >
               <Mail className="h-4 w-4" />
-              {t('confirmation.actions.emailReceipt')}
+              {emailSent ? 'Email Sent ✓' : t('confirmation.actions.emailReceipt')}
             </Button>
           </div>
 
@@ -302,6 +321,32 @@ const Confirmation = () => {
               {t('confirmation.returnHome')}
             </Button>
           </div>
+          
+          {/* Email Notification Modal */}
+          {showEmailModal && receiptData && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+              <div className="bg-white rounded-2xl shadow-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-xl font-semibold">Email Notifications</h3>
+                    <button
+                      onClick={() => setShowEmailModal(false)}
+                      className="text-gray-400 hover:text-gray-600 text-2xl"
+                    >
+                      ×
+                    </button>
+                  </div>
+                  <EmailNotifications
+                    recipientEmail={receiptData.applicants[0]?.email}
+                    referenceNumber={receiptData.referenceNumber}
+                    applicantName={`${receiptData.applicants[0]?.firstName} ${receiptData.applicants[0]?.lastName}`}
+                    showPreview={true}
+                    autoSend={false}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

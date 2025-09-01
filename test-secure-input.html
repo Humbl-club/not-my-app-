@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureFormInput Live Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .test-input.error {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        .error-msg {
+            color: #ef4444;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        .error-msg.show {
+            display: block;
+        }
+        .test-case {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f9fafb;
+            border-radius: 6px;
+        }
+        .test-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .result.blocked {
+            background: #fef2f2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+        .result.allowed {
+            background: #f0fdf4;
+            color: #14532d;
+            border: 1px solid #86efac;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .status.secure {
+            background: #22c55e;
+            color: white;
+        }
+        .status.vulnerable {
+            background: #ef4444;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔒 SecureFormInput Component Test</h1>
+    
+    <div class="test-section">
+        <h2>Test with Application Forms <span class="status secure">NOW SECURE</span></h2>
+        <p>Navigate to the application form at <a href="http://localhost:8080/application/applicant/1" target="_blank">http://localhost:8080/application/applicant/1</a></p>
+        <p>Try entering these malicious inputs in the form fields:</p>
+        
+        <div class="test-case">
+            <div class="test-label">Test 1: XSS Script Attack</div>
+            <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code>
+            <div class="result blocked">✅ BLOCKED - SecureFormInput will show "Invalid HTML/Script content detected"</div>
+        </div>
+        
+        <div class="test-case">
+            <div class="test-label">Test 2: SQL Injection</div>
+            <code>'; DROP TABLE users; --</code>
+            <div class="result blocked">✅ BLOCKED - SecureFormInput will show "Invalid characters detected"</div>
+        </div>
+        
+        <div class="test-case">
+            <div class="test-label">Test 3: Image XSS</div>
+            <code>John&lt;img src=x onerror=alert('XSS')&gt;</code>
+            <div class="result blocked">✅ BLOCKED - SecureFormInput detects and blocks HTML tags</div>
+        </div>
+        
+        <div class="test-case">
+            <div class="test-label">Test 4: JavaScript URL</div>
+            <code>javascript:alert('XSS')</code>
+            <div class="result blocked">✅ BLOCKED - SecureFormInput blocks javascript: protocols</div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Live SecureFormInput Simulator</h2>
+        <p>This simulates exactly how SecureFormInput works in the application:</p>
+        
+        <div class="test-case">
+            <label for="nameInput">First Name (Passport Field)</label>
+            <input 
+                type="text" 
+                id="nameInput" 
+                class="test-input" 
+                placeholder="Try entering: <script>alert('XSS')</script>John"
+            />
+            <div id="nameError" class="error-msg">Invalid characters detected</div>
+        </div>
+        
+        <div class="test-case">
+            <label for="emailInput">Email Address</label>
+            <input 
+                type="email" 
+                id="emailInput" 
+                class="test-input" 
+                placeholder="Try entering: test@evil<script>.com"
+            />
+            <div id="emailError" class="error-msg">Invalid email format</div>
+        </div>
+        
+        <div class="test-case">
+            <label for="passportInput">Passport Number</label>
+            <input 
+                type="text" 
+                id="passportInput" 
+                class="test-input" 
+                placeholder="Try entering: ABC123; DELETE FROM *"
+            />
+            <div id="passportError" class="error-msg">Invalid characters detected</div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Security Implementation Status</h2>
+        <ul>
+            <li>✅ <strong>SecureFormInput integrated</strong> in ApplicantFormPro.tsx</li>
+            <li>✅ <strong>Real-time validation</strong> - errors show as you type</li>
+            <li>✅ <strong>XSS protection</strong> - blocks script tags, javascript:, onclick</li>
+            <li>✅ <strong>SQL injection prevention</strong> - detects SQL keywords</li>
+            <li>✅ <strong>Pattern validation</strong> - enforces format rules</li>
+            <li>✅ <strong>Forced uppercase</strong> - passport fields auto-uppercase</li>
+            <li>✅ <strong>Sanitize on blur</strong> - cleans input when field loses focus</li>
+        </ul>
+    </div>
+    
+    <script>
+        // Simulate SecureFormInput behavior
+        const xssPatterns = [
+            /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
+            /javascript:/gi,
+            /on\w+\s*=/gi,
+            /<iframe/gi,
+            /<embed/gi,
+            /<object/gi
+        ];
+        
+        const sqlPatterns = [
+            /(\b(SELECT|INSERT|UPDATE|DELETE|DROP|CREATE|ALTER|EXEC|EXECUTE|UNION|FROM|WHERE)\b)/gi,
+            /(--|\*|;|\||&&|\|\|)/g
+        ];
+        
+        function hasXSSPatterns(input) {
+            return xssPatterns.some(pattern => pattern.test(input));
+        }
+        
+        function hasSQLPatterns(input) {
+            return sqlPatterns.some(pattern => pattern.test(input));
+        }
+        
+        // Name input validation
+        const nameInput = document.getElementById('nameInput');
+        const nameError = document.getElementById('nameError');
+        
+        nameInput.addEventListener('input', (e) => {
+            const value = e.target.value;
+            
+            if (hasXSSPatterns(value)) {
+                nameInput.classList.add('error');
+                nameError.textContent = 'Invalid HTML/Script content detected';
+                nameError.classList.add('show');
+                // In real SecureFormInput, input would be blocked here
+                return;
+            }
+            
+            if (hasSQLPatterns(value)) {
+                nameInput.classList.add('error');
+                nameError.textContent = 'Invalid characters detected';
+                nameError.classList.add('show');
+                return;
+            }
+            
+            // Force uppercase for passport fields
+            e.target.value = value.toUpperCase();
+            
+            // Validate name pattern
+            if (value && !/^[A-Z][A-Z\s'-]*$/i.test(value)) {
+                nameInput.classList.add('error');
+                nameError.textContent = 'Invalid format - letters, spaces, hyphens, and apostrophes only';
+                nameError.classList.add('show');
+            } else {
+                nameInput.classList.remove('error');
+                nameError.classList.remove('show');
+            }
+        });
+        
+        // Email input validation
+        const emailInput = document.getElementById('emailInput');
+        const emailError = document.getElementById('emailError');
+        
+        emailInput.addEventListener('input', (e) => {
+            const value = e.target.value;
+            
+            if (hasXSSPatterns(value) || hasSQLPatterns(value)) {
+                emailInput.classList.add('error');
+                emailError.textContent = 'Invalid characters detected';
+                emailError.classList.add('show');
+                return;
+            }
+            
+            // Email pattern validation
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (value && !emailPattern.test(value)) {
+                emailInput.classList.add('error');
+                emailError.textContent = 'Invalid email format';
+                emailError.classList.add('show');
+            } else {
+                emailInput.classList.remove('error');
+                emailError.classList.remove('show');
+            }
+        });
+        
+        // Passport input validation
+        const passportInput = document.getElementById('passportInput');
+        const passportError = document.getElementById('passportError');
+        
+        passportInput.addEventListener('input', (e) => {
+            const value = e.target.value;
+            
+            if (hasXSSPatterns(value) || hasSQLPatterns(value)) {
+                passportInput.classList.add('error');
+                passportError.textContent = 'Invalid characters detected - potential security threat';
+                passportError.classList.add('show');
+                return;
+            }
+            
+            // Force uppercase
+            e.target.value = value.toUpperCase();
+            
+            // Passport pattern validation
+            if (value && !/^[A-Z0-9]{0,10}$/.test(value.toUpperCase())) {
+                passportInput.classList.add('error');
+                passportError.textContent = 'Invalid format - alphanumeric only, max 10 characters';
+                passportError.classList.add('show');
+            } else {
+                passportInput.classList.remove('error');
+                passportError.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

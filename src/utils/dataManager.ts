@@ -61,6 +61,65 @@ const LEGACY_KEYS = [
 
 export class DataManager {
   /**
+   * Create an empty applicant scaffold
+   */
+  static createEmptyApplicant(): ApplicantData {
+    return {
+      firstName: '',
+      secondNames: '',
+      lastName: '',
+      dateOfBirth: '',
+      nationality: '',
+      email: '',
+      passportNumber: '',
+      hasJob: 'no',
+      address: {
+        line1: '',
+        city: '',
+        country: '',
+        postalCode: ''
+      },
+      hasCriminalConvictions: 'no',
+      hasWarCrimesConvictions: 'no',
+      passportPhoto: undefined,
+      personalPhoto: undefined,
+    };
+  }
+
+  /**
+   * Generate a simple unique ID for local use
+   */
+  static generateId(prefix: string = 'app'): string {
+    try {
+      // Prefer Web Crypto if available (browser)
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        return `${prefix}_${crypto.randomUUID()}`;
+      }
+    } catch {}
+    return `${prefix}_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+  }
+
+  /**
+   * Return lightweight application metadata used by submission bridge
+   */
+  static getApplicationData(): Record<string, any> {
+    const createdAt = sessionStorage.getItem('application.createdAt');
+    const lastModified = sessionStorage.getItem('application.lastModified');
+    const applicationRef = sessionStorage.getItem('application.applicationRef');
+    const stats = this.getCompletionStats();
+    return {
+      createdAt,
+      lastModified,
+      applicationRef,
+      completion: stats?.percentageComplete ?? 0,
+      totalApplicants: stats?.totalApplicants ?? this.getApplicants().length,
+    };
+  }
+  /**
    * Get all applicants from storage
    */
   static getApplicants(): ApplicantData[] {
@@ -311,25 +370,27 @@ export class DataManager {
       const applicants = this.getApplicants();
       if (applicants.length === 0) return null;
       
-      // Find the first incomplete applicant
+      // Find the first incomplete applicant (docs-first flow)
       for (let i = 0; i < applicants.length; i++) {
         const applicantId = (i + 1).toString();
         const hasInfo = this.hasCompletePersonalInfo(applicantId);
         const hasDocs = this.hasCompleteDocuments(applicantId);
         
-        if (!hasInfo) {
+        // Step 1: Upload documents first
+        if (!hasDocs) {
           return {
-            step: 1,
+            step: 1, 
             applicantId,
-            description: `Complete personal information for ${i === 0 ? 'main applicant' : `applicant ${i + 1}`}`
+            description: `Upload documents for ${i === 0 ? 'main applicant' : `applicant ${i + 1}`}`
           };
         }
         
-        if (!hasDocs) {
+        // Step 2: Then complete personal information
+        if (!hasInfo) {
           return {
-            step: 2, 
+            step: 2,
             applicantId,
-            description: `Upload documents for ${i === 0 ? 'main applicant' : `applicant ${i + 1}`}`
+            description: `Complete personal information for ${i === 0 ? 'main applicant' : `applicant ${i + 1}`}`
           };
         }
       }
@@ -400,4 +461,35 @@ export class DataManager {
     
     return applicants;
   }
+
+  // Instance wrappers for compatibility with existing imports
+  createEmptyApplicant(): ApplicantData {
+    return DataManager.createEmptyApplicant();
+  }
+
+  generateId(prefix: string = 'app'): string {
+    return DataManager.generateId(prefix);
+  }
+
+  // Lightweight application meta getters/setters used by legacy services
+  static saveApplicationStep(key: string, data: Record<string, any>): void {
+    try {
+      sessionStorage.setItem(`application.step.${key}`, JSON.stringify(data));
+    } catch (e) {
+      console.error('Error saving application step:', e);
+    }
+  }
+
+  static getApplication(): Record<string, any> | null {
+    try {
+      const raw = sessionStorage.getItem('application.step.application');
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      console.error('Error getting application meta:', e);
+      return null;
+    }
+  }
 }
+
+// Export singleton instance
+export const dataManager = new DataManager();

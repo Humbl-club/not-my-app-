@@ -67,11 +67,12 @@ export const getRedirectPath = (requestedPath: string): string | null => {
     return '/application';
   }
   
-  // Check specific route protection rules
-  if (requestedPath.includes('/documents')) {
-    const applicantId = requestedPath.match(/\/applicant\/(\d+)\/documents/)?.[1];
-    if (applicantId && !hasApplicantData(applicantId)) {
-      return `/application/applicant/${applicantId}`;
+  // Docs-first flow: if user opens personal form before uploading docs, redirect to docs
+  const personalMatch = requestedPath.match(/\/application\/applicant\/(\d+)(?:\/)?$/);
+  if (personalMatch) {
+    const applicantId = personalMatch[1];
+    if (!hasApplicantDocuments(applicantId)) {
+      return `/application/applicant/${applicantId}/documents`;
     }
   }
   

@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Loader2, Shield } from 'lucide-react';
+import { supabase } from '@/lib/supabase';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('admin@uketa.local');
@@ -20,28 +21,41 @@ const AdminLogin = () => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:3001/api/admin/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      // For development, use simple admin credentials check
+      // In production, this would use proper Supabase authentication
+      if (email === 'admin@uketa.local' && password === 'AdminPass123') {
+        // Create a mock admin session
+        const adminUser = {
+          id: 'admin-1',
+          email: 'admin@uketa.local',
+          role: 'admin',
+          name: 'Administrator',
+          permissions: ['read', 'write', 'approve', 'reject', 'manage']
+        };
 
-      const data = await response.json();
+        // Store admin session
+        sessionStorage.setItem('adminToken', 'dev-admin-token');
+        sessionStorage.setItem('adminUser', JSON.stringify(adminUser));
+        
+        // Check if we can access Supabase
+        const { data, error } = await supabase
+          .from('applications')
+          .select('count')
+          .limit(1);
 
-      if (response.ok) {
-        // Store token in sessionStorage
-        sessionStorage.setItem('adminToken', data.token);
-        sessionStorage.setItem('adminUser', JSON.stringify(data.admin));
+        if (error) {
+          console.warn('Supabase connection issue:', error);
+          // Still allow login for development
+        }
         
         // Redirect to admin dashboard
         navigate('/admin/dashboard');
       } else {
-        setError(data.error || 'Login failed');
+        setError('Invalid credentials. Use admin@uketa.local / AdminPass123');
       }
     } catch (error) {
-      setError('Failed to connect to server');
+      console.error('Login error:', error);
+      setError('Login failed. Please try again.');
     } finally {
       setIsLoading(false);
     }

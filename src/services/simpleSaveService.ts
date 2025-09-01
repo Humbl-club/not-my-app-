@@ -87,6 +87,13 @@ export class SimpleSaveService {
       throw error;
     }
   }
+
+  /**
+   * Backwards-compatible alias used elsewhere in the codebase
+   */
+  static saveApplication(applicants: ApplicantData[], currentStep: string): string {
+    return this.saveToCache(applicants, currentStep);
+  }
   
   /**
    * Check if current user has a cached application
@@ -175,6 +182,13 @@ export class SimpleSaveService {
     } catch (error) {
       console.error('Error clearing cached application:', error);
     }
+  }
+
+  /**
+   * Backwards-compatible alias to clear cache
+   */
+  static clearCache(): void {
+    this.clearCachedApplication();
   }
   
   /**

@@ -93,6 +93,28 @@ export class SecurityService {
   }
   
   /**
+   * Check for XSS patterns
+   */
+  static hasXSSPatterns(input: string): boolean {
+    const xssPatterns = [
+      /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
+      /javascript:/gi,
+      /on\w+\s*=/gi,
+      /<iframe/gi,
+      /<embed/gi,
+      /<object/gi,
+      /document\./gi,
+      /window\./gi,
+      /eval\(/gi,
+      /alert\(/gi,
+      /prompt\(/gi,
+      /confirm\(/gi
+    ];
+    
+    return xssPatterns.some(pattern => pattern.test(input));
+  }
+  
+  /**
    * Check for SQL injection attempts
    */
   static hasSQLInjectionPatterns(input: string): boolean {
